@@ -1,0 +1,110 @@
+local execute = vim.api.nvim_command
+local fn = vim.fn
+
+vim.api.nvim_set_keymap('i', '<expr><TAB>', 'pumvisible() ? \"\\<C-n>\" : \"\\<TAB>\"', { noremap = true, silent = true })
+local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+
+if fn.empty(fn.glob(install_path)) > 0 then
+  execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
+  execute 'packadd packer.nvim'
+end
+
+vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
+
+require('packer').init({ display = { auto_clean = false } })
+
+return require('packer').startup(function(use)
+  use 'wbthomason/packer.nvim'
+
+  use 'sainnhe/edge'
+  use 'ChristianChiarulli/nvcode-color-schemes.vim'
+  use 'norcalli/nvim-colorizer.lua'
+  use 'sheerun/vim-polyglot'
+
+  use { 'akinsho/nvim-bufferline.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
+
+  use {
+    'glepnir/galaxyline.nvim',
+    requires = { { 'ryanoasis/vim-devicons' }, { 'kyazdani42/nvim-web-devicons' } },
+    config = function()
+      require("nvim-galaxyline")
+    end
+  }
+
+  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
+
+  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
+  use 'nvim-telescope/telescope-media-files.nvim'
+
+  use 'glepnir/dashboard-nvim'
+
+  use 'neovim/nvim-lspconfig'
+  use 'hrsh7th/nvim-compe'
+  use 'hrsh7th/vim-vsnip'
+  use { 'glepnir/lspsaga.nvim', cmd = { "Lspsaga" } }
+  use 'kristijanhusak/vim-dadbod-completion'
+  use { 'tzachar/compe-tabnine', run = "./install.sh", requires = { "hrsh7th/nvim-compe" } }
+  use {
+    'kosayoda/nvim-lightbulb',
+    config = function()
+      require("nvim-lightbulb-config")
+    end
+  }
+
+  use {
+    'nvim-treesitter/nvim-treesitter',
+    run = ':TSUpdate',
+    requires = { { "p00f/nvim-ts-rainbow" }, { "windwp/nvim-ts-autotag" }, { "JoosepAlviste/nvim-ts-context-commentstring" } },
+    config = function()
+      require("nvim-treesitter-config")
+    end
+  }
+
+  use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
+
+  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+  use 'f-person/git-blame.nvim'
+  use 'tpope/vim-fugitive'
+  use 'tpope/vim-rhubarb'
+
+  use { 'kkoomen/vim-doge', run = ':call doge#install()' }
+
+  use 'wakatime/vim-wakatime'
+
+  use 'liuchengxu/vim-which-key'
+
+  use 'mfussenegger/nvim-dap'
+
+  use 'b3nj5m1n/kommentary'
+
+  use {
+    'windwp/nvim-autopairs',
+    config = function()
+      require("nvim-autopairs").setup()
+    end
+  }
+
+  use 'junegunn/goyo.vim'
+
+  use 'airblade/vim-rooter'
+
+  use 'monaqa/dial.nvim'
+
+  use 'tpope/vim-endwise'
+
+  use 'folke/lsp-colors.nvim'
+
+  use {
+    'pwntester/octo.nvim',
+    config = function()
+      require("octo").setup()
+    end
+  }
+
+  use 'notomo/gesture.nvim'
+
+  use 'haringsrob/nvim_context_vt'
+
+  use 'digitaltoad/vim-pug'
+end)
+
