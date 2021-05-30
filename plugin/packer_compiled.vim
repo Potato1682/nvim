@@ -112,6 +112,10 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
   },
+  kommentary = {
+    loaded = true,
+    path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/kommentary"
+  },
   ["lsp-colors.nvim"] = {
     loaded = true,
     path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/lsp-colors.nvim"
@@ -121,6 +125,10 @@ _G.packer_plugins = {
     loaded = false,
     needs_bufread = false,
     path = "/home/potato1682/.local/share/nvim/site/pack/packer/opt/lspsaga.nvim"
+  },
+  ["nvcode-color-schemes.vim"] = {
+    loaded = true,
+    path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/nvcode-color-schemes.vim"
   },
   ["nvim-autopairs"] = {
     config = { "\27LJ\1\2<\0\0\2\0\3\0\0064\0\0\0%\1\1\0>\0\2\0027\0\2\0>\0\1\1G\0\1\0\nsetup\19nvim-autopairs\frequire\0" },
@@ -134,10 +142,6 @@ _G.packer_plugins = {
   ["nvim-colorizer.lua"] = {
     loaded = true,
     path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/nvim-colorizer.lua"
-  },
-  ["nvim-comment"] = {
-    loaded = true,
-    path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/nvim-comment"
   },
   ["nvim-compe"] = {
     loaded = true,
