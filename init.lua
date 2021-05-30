@@ -15,6 +15,7 @@ require("nvim-gitsigns")
 require("nvim-doge")
 require("nvim-dadbod")
 require("nvim-mouse-gesture")
+require("nvim-zen-mode")
 
 vim.cmd("source ~/.config/nvim/vimscript/nvim-which-key/init.vim")
 

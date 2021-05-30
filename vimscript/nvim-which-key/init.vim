@@ -132,5 +132,12 @@ let g:which_key_map.l = {
   \   'S' : [':Telescope lsp_workspace_symbols'    , 'workspace symbols'],
 \ }
 
+let g:which_key_map.z = {
+  \ 'name' : '+zen',
+  \   's' : [':TZBottom'  , 'toggle status line'],
+  \   't' : [':TZTop'     , 'toggle buffer line'],
+  \   'z' : [':TZAtaraxis', 'toggle zen mode']
+\ }
+
 call which_key#register('<Space>', "g:which_key_map")
 

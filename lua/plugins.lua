@@ -107,5 +107,7 @@ return require('packer').startup(function(use)
   use 'haringsrob/nvim_context_vt'
 
   use 'digitaltoad/vim-pug'
+
+  use 'Pocco81/TrueZen.nvim'
 end)
 
