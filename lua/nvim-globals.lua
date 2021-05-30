@@ -13,6 +13,7 @@ O = {
   relative_number = false,
   timeoutlen = 100,
   shell = "zsh",
-  explorer = { disable_netrw = 0 }
+  explorer = { disable_netrw = 0 },
+  redmine = { site = "", api_key = "" }
 }
 

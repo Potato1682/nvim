@@ -47,13 +47,13 @@ My neovim settings
 - Show TODO List
 - Global settings
 - Errors List
-- Markdown preview *[NEW]*
+- Markdown preview
 - Template generation *[NEW]*
+- Redmine integration *[NEW]*
 
 ## WIP Features
 
 - Right mouse drag gestures
-- Redmine integration
 - Change background color by git changes
 - Template support
 - Automatic fetch and detect changes with remote branch

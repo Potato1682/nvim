@@ -151,5 +151,7 @@ return require('packer').startup(function(use)
   }
 
   use "thinca/vim-template"
+
+  use "toritori0318/vim-redmine"
 end)
 
