@@ -42,20 +42,20 @@ My neovim settings
 - Increase number on editor
 - Show current context on bracket ending
 - Online collaboration
-- Zen mode *[NEW]*
-- Colorbuddy support *[NEW]*
+- Zen mode
+- Colorbuddy support
+- Show TODO List *[NEW]*
+- Global settings *[NEW]*
 
 ## WIP Features
 
 - Right mouse drag gestures
 - Redmine integration
-- Global settings
 - Change background color by git changes
 - Render markdown
 - Template support
 - Automatic fetch and detect changes with remote branch
 - Spell check
 - Read maven dependencies
-- Show TODO List
 - Automatic license file generation
 
