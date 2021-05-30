@@ -1,5 +1,7 @@
 require("plugins")
 
+require("nvim-globals")
+
 require("colorscheme")
 require("settings")
 require("keys")
@@ -16,8 +18,7 @@ require("nvim-doge")
 require("nvim-dadbod")
 require("nvim-mouse-gesture")
 require("nvim-zen-mode")
-
-vim.cmd("source ~/.config/nvim/vimscript/nvim-which-key/init.vim")
+require("nvim-which-key")
 
 require("lsp")
 require("lsp.efm-ls")

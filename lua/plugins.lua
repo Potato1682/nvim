@@ -74,7 +74,7 @@ return require('packer').startup(function(use)
 
   use 'wakatime/vim-wakatime'
 
-  use 'liuchengxu/vim-which-key'
+  use 'folke/which-key.nvim'
 
   use 'mfussenegger/nvim-dap'
 
@@ -109,5 +109,7 @@ return require('packer').startup(function(use)
   use 'Pocco81/TrueZen.nvim'
 
   use 'tjdevries/colorbuddy.nvim'
+
+  use 'wsdjeg/vim-todo'
 end)
 

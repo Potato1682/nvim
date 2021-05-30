@@ -1,0 +1,18 @@
+CONFIG_PATH = vim.fn.stdpath('config')
+DATA_PATH = vim.fn.stdpath('data')
+CACHE_PATH = vim.fn.stdpath('cache')
+
+O = {
+  japanese = false,
+  auto_close_tree = 0,
+  colorscheme = 'edge',
+  -- @usage can be 'aura', 'neon'
+  edge_style = 'neon',
+  wrap_lines = false,
+  number = true,
+  relative_number = false,
+  timeoutlen = 100,
+  shell = "zsh",
+  explorer = { disable_netrw = 0 }
+}
+
