@@ -41,6 +41,7 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'hrsh7th/nvim-compe'
   use 'hrsh7th/vim-vsnip'
+  use 'rafamadriz/friendly-snippets'
   use { 'glepnir/lspsaga.nvim', cmd = { "Lspsaga" } }
   use 'kristijanhusak/vim-dadbod-completion'
   use { 'tzachar/compe-tabnine', run = "./install.sh", requires = { "hrsh7th/nvim-compe" } }
@@ -54,7 +55,9 @@ return require('packer').startup(function(use)
   use {
     'nvim-treesitter/nvim-treesitter',
     run = ':TSUpdate',
-    requires = { { "p00f/nvim-ts-rainbow" }, { "windwp/nvim-ts-autotag" }, { "JoosepAlviste/nvim-ts-context-commentstring" } },
+    requires = {
+      { "p00f/nvim-ts-rainbow" }, { "windwp/nvim-ts-autotag" }, { "JoosepAlviste/nvim-ts-context-commentstring" }, { "andymass/vim-matchup" }
+    },
     config = function()
       require("nvim-treesitter-config")
     end
@@ -74,8 +77,6 @@ return require('packer').startup(function(use)
   use 'liuchengxu/vim-which-key'
 
   use 'mfussenegger/nvim-dap'
-
-  use 'b3nj5m1n/kommentary'
 
   use {
     'windwp/nvim-autopairs',
