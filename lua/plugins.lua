@@ -102,7 +102,12 @@ return require('packer').startup(function(use)
     end
   }
 
-  use 'airblade/vim-rooter'
+  use {
+    'ahmedkhalf/lsp-rooter.nvim',
+    config = function()
+      require("lsp-rooter").setup()
+    end
+  }
 
   use 'monaqa/dial.nvim'
 
