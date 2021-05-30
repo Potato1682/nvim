@@ -1,6 +1,14 @@
 # nvim
 My neovim settings
 
+## Requires
+
+- **Neovim nightly build**
+- Pipenv
+- Git
+- GCC
+- Node.js and NPM
+
 ## Features
 
 - Plugin Manager
