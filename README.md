@@ -34,6 +34,7 @@ My neovim settings
 - Increase number on editor
 - Show current context on bracket ending
 - Zen mode *[NEW]*
+- Colorbuddy support *[NEW]*
 
 ## WIP Features
 
@@ -41,7 +42,6 @@ My neovim settings
 - Redmine integration
 - Global settings
 - Change background color by git changes
-- Colorbuddy support
 - Render markdown
 - Template support
 - Automatic fetch and detect changes with remote branch

@@ -107,5 +107,7 @@ return require('packer').startup(function(use)
   use 'digitaltoad/vim-pug'
 
   use 'Pocco81/TrueZen.nvim'
+
+  use 'tjdevries/colorbuddy.nvim'
 end)
 
