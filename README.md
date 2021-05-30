@@ -44,8 +44,9 @@ My neovim settings
 - Online collaboration
 - Zen mode
 - Colorbuddy support
-- Show TODO List *[NEW]*
+- Show TODO List
 - Global settings *[NEW]*
+- Errors List *[NEW]*
 
 ## WIP Features
 
