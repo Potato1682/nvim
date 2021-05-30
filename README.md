@@ -33,6 +33,7 @@ My neovim settings
 - Automatic root setting
 - Increase number on editor
 - Show current context on bracket ending
+- Online collaboration
 - Zen mode *[NEW]*
 - Colorbuddy support *[NEW]*
 
