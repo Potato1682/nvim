@@ -39,6 +39,23 @@ return require('packer').startup(function(use)
   use 'glepnir/dashboard-nvim'
 
   use 'neovim/nvim-lspconfig'
+
+  use {
+    'folke/trouble.nvim',
+    config = function()
+      require("trouble").setup()
+    end
+  }
+  use {
+    'folke/todo-comments.nvim',
+    requires = "nvim-lua/plenary.nvim",
+    config = function()
+      require("todo-comments").setup()
+    end
+  }
+
+  use { "simrat39/symbols-outline.nvim", cmd = { "SymbolsOutline" } }
+
   use 'hrsh7th/nvim-compe'
   use 'hrsh7th/vim-vsnip'
   use 'rafamadriz/friendly-snippets'
@@ -109,7 +126,5 @@ return require('packer').startup(function(use)
   use 'Pocco81/TrueZen.nvim'
 
   use 'tjdevries/colorbuddy.nvim'
-
-  use 'wsdjeg/vim-todo'
 end)
 
