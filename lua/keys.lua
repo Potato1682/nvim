@@ -28,3 +28,5 @@ vim.cmd([[
   nnoremap <silent> <C-Right> :vertical resize +2<CR>
 ]])
 
+vim.api.nvim_set_keymap('n', '$', "<cmd>lua require'hop'.hint_words()<cr>", {})
+
