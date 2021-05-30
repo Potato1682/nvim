@@ -45,15 +45,15 @@ My neovim settings
 - Zen mode
 - Colorbuddy support
 - Show TODO List
-- Global settings *[NEW]*
+- Global settings
 - Errors List *[NEW]*
+- Markdown preview *[NEW]*
 
 ## WIP Features
 
 - Right mouse drag gestures
 - Redmine integration
 - Change background color by git changes
-- Render markdown
 - Template support
 - Automatic fetch and detect changes with remote branch
 - Spell check

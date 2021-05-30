@@ -108,8 +108,6 @@ return require('packer').startup(function(use)
 
   use 'tpope/vim-endwise'
 
-  use 'folke/lsp-colors.nvim'
-
   use {
     'pwntester/octo.nvim',
     config = function()
@@ -142,6 +140,11 @@ return require('packer').startup(function(use)
         keys = "etovxqpdygfblzhckisuran"
       }
     end
+  }
+
+  use {
+    "iamcco/markdown-preview.nvim",
+    run = "cd app && npm install"
   }
 end)
 
