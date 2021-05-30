@@ -46,8 +46,9 @@ My neovim settings
 - Colorbuddy support
 - Show TODO List
 - Global settings
-- Errors List *[NEW]*
+- Errors List
 - Markdown preview *[NEW]*
+- Template generation *[NEW]*
 
 ## WIP Features
 
