@@ -71,6 +71,10 @@ end
 time("try_loadstring definition", false)
 time("Defining packer_plugins", true)
 _G.packer_plugins = {
+  ["TrueZen.nvim"] = {
+    loaded = true,
+    path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/TrueZen.nvim"
+  },
   ["compe-tabnine"] = {
     loaded = true,
     path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/compe-tabnine"
@@ -86,6 +90,10 @@ _G.packer_plugins = {
   edge = {
     loaded = true,
     path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/edge"
+  },
+  ["friendly-snippets"] = {
+    loaded = true,
+    path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/friendly-snippets"
   },
   ["galaxyline.nvim"] = {
     config = { "\27LJ\1\2/\0\0\2\0\2\0\0044\0\0\0%\1\1\0>\0\2\1G\0\1\0\20nvim-galaxyline\frequire\0" },
@@ -111,10 +119,6 @@ _G.packer_plugins = {
   ["indent-blankline.nvim"] = {
     loaded = true,
     path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/indent-blankline.nvim"
-  },
-  kommentary = {
-    loaded = true,
-    path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/kommentary"
   },
   ["lsp-colors.nvim"] = {
     loaded = true,
@@ -233,6 +237,10 @@ _G.packer_plugins = {
   ["vim-fugitive"] = {
     loaded = true,
     path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/vim-fugitive"
+  },
+  ["vim-matchup"] = {
+    loaded = true,
+    path = "/home/potato1682/.local/share/nvim/site/pack/packer/start/vim-matchup"
   },
   ["vim-polyglot"] = {
     loaded = true,

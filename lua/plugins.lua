@@ -85,8 +85,6 @@ return require('packer').startup(function(use)
     end
   }
 
-  use 'junegunn/goyo.vim'
-
   use 'airblade/vim-rooter'
 
   use 'monaqa/dial.nvim'
