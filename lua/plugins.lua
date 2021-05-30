@@ -118,13 +118,6 @@ return require('packer').startup(function(use)
 
   use 'tpope/vim-endwise'
 
-  use {
-    'pwntester/octo.nvim',
-    config = function()
-      require("octo").setup()
-    end
-  }
-
   use 'notomo/gesture.nvim'
 
   use 'haringsrob/nvim_context_vt'

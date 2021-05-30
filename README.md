@@ -35,7 +35,7 @@ My neovim settings
 - Document generation
 - Indent line
 - Automatic pair insert
-- Git and GitHub integrations
+- Git integrations
 - Leader key menu
 - **D**ebug **A**dapter **P**rotocol support
 - Automatic root setting
