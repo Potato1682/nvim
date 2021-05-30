@@ -7,6 +7,7 @@ vim.g.nvim_tree_lsp_diagnostics = true
 vim.g.nvim_tree_auto_close = false
 vim.g.nvim_tree_gitignore = true
 vim.g.nvim_tree_git_hl = true
+vim.g.nvim_tree_group_empty = true
 vim.g.nvim_tree_auto_ignore_ft = { 'dashboard' } -- "empty by default, don't auto open tree on specific filetypes.
 local tree_cb = require'nvim-tree.config'.nvim_tree_callback
 vim.g.nvim_tree_bindings = {
