@@ -133,6 +133,7 @@ local japanese_mappings = {
   },
   s = {
     name = "+検索",
+    a = { "<cmd>lua require('spectre').open_file_search()<cr>", "ファイル内を置換" },
     b = { "<cmd>Telescope git_branches<cr>", "ブランチをチェックアウト" },
     c = { "<cmd>Telescope colorscheme<cr>", "カラースキーム" },
     d = { "<cmd>Telescope lsp_document_diagnostics<cr>", "ドキュメント内の診断情報" },
@@ -144,7 +145,11 @@ local japanese_mappings = {
     R = { "<cmd>Telescope registers<cr>", "レジスター" },
     t = { "<cmd>Telescope live_grep<cr>", "テキスト" }
   },
-  S = { name = "+セッション", s = { "<cmd>SessionSave<cr>", "セッションを保存" }, l = { "<cmd>SessionLoad<cr>", "セッションを開く" } },
+  S = {
+    name = "+セッション",
+    s = { "<cmd>SessionSave<cr>", "セッションを保存" },
+    l = { "<cmd>SessionLoad<cr>", "セッションを開く" }
+  },
 
   -- extras
   z = {
@@ -218,6 +223,7 @@ local mappings = {
   },
   s = {
     name = "+Search",
+    a = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },
     d = { "<cmd>Telescope lsp_document_diagnostics<cr>", "Document Diagnostics" },
@@ -241,8 +247,8 @@ local mappings = {
 }
 
 if O.japanese then
-    require"which-key".register(japanese_mappings, opts)
+  require"which-key".register(japanese_mappings, opts)
 else
-    require"which-key".register(mappings, opts)
+  require"which-key".register(mappings, opts)
 end
 

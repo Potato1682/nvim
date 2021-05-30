@@ -42,7 +42,7 @@ return require('packer').startup(function(use)
 
   use {
     'folke/trouble.nvim',
-    config = function()
+   config = function()
       require("trouble").setup()
     end
   }
@@ -126,5 +126,12 @@ return require('packer').startup(function(use)
   use 'Pocco81/TrueZen.nvim'
 
   use 'tjdevries/colorbuddy.nvim'
+
+  use {
+    "windwp/nvim-spectre",
+    config = function()
+      require('spectre').setup()
+    end
+  }
 end)
 
