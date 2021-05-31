@@ -3,6 +3,7 @@ DATA_PATH = vim.fn.stdpath('data')
 CACHE_PATH = vim.fn.stdpath('cache')
 
 O = {
+  author = "", -- REQUIRED
   japanese = false,
   auto_close_tree = 0,
   colorscheme = 'edge',
