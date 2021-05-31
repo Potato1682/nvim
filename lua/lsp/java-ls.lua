@@ -6,10 +6,14 @@ else
   print("Java LS: Unsupported system")
 end
 
-local bundles = { vim.fn.glob(CONFIG_PATH .. "/./debuggers/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar") }
+local bundles = {
+  vim.fn.glob(vim.fn.stdpath("data") .. "/dapinstall/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar")
+}
+
+vim.list_extend(bundles, vim.split(vim.fn.glob(vim.fn.stdpath("data") .. "/dapinstall/java/java-test/server/*.jar"), "\n"))
 
 local on_attach = function()
-  require('jdtls').setup_dap()
+  require('jdtls').setup_dap({ hotcoderplace = "auto" })
 end
 
 if vim.bo.filetype == "java" then

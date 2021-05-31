@@ -66,3 +66,18 @@ My neovim settings
 - Read maven dependencies
 - Automatic license file generation
 
+## Trouble Shooting
+
+### Can't install java test runner with node-sass error
+
+It may be because your Node.js version is too high.  
+May succeed by running these commands and temporarily lowering your Node.js version.
+
+```bash
+$ sudo npm i -g n
+$ cd ~/.local/share/nvim/dapinstall/java/java-test
+$ PATH="/usr/local/bin/node:$PATH" bash
+$ npm i --cache $(mktemp -d)
+$ npm run build-plugin
+```
+
