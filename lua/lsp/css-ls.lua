@@ -8,7 +8,6 @@ require'lspconfig'.cssls.setup {
   cmd = { bin, "--stdio" },
   capabilities = capabilities,
   filetypes = { "css", "sass", "scss", "less" },
-  on_attach = require'lsp'.common_on_attach,
   settings = { css = { validate = true }, sass = { validate = true }, scss = { validate = true }, less = { validate = true } }
 }
 

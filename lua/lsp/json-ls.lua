@@ -4,7 +4,6 @@ if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("json
 
 require'lspconfig'.jsonls.setup {
   cmd = { "node", bin, "--stdio" },
-  on_attach = require'lsp'.common_on_attach,
   commands = {
     Format = {
       function()

@@ -8,9 +8,8 @@ end
 
 local bundles = { vim.fn.glob(CONFIG_PATH .. "./debuggers/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar") }
 
-local on_attach = function(client, bufr)
+local on_attach = function()
   require('jdtls').setup_dap()
-  require'lsp'.common_on_attach(client, bufr)
 end
 
 require('jdtls').start_or_attach({

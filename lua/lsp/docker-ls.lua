@@ -2,5 +2,5 @@ local bin = vim.fn.stdpath("data") .. "/lspinstall/dockerfile/node_modules/.bin/
 
 if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("dockerfile") end
 
-require'lspconfig'.dockerls.setup { cmd = { bin, "--stdio" }, on_attach = require'lsp'.common_on_attach, root_dir = vim.loop.cwd }
+require'lspconfig'.dockerls.setup { cmd = { bin, "--stdio" }, root_dir = vim.loop.cwd }
 
