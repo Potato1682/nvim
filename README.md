@@ -12,7 +12,7 @@ My neovim settings
 - Node.js and NPM
 - Yarn
 - `jq`
-- Java >= 11
+- Java >= 11 and Lombok (/usr/local/share/lombok/lombok.jar)
 
 ## Features
 

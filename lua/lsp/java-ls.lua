@@ -12,10 +12,12 @@ local on_attach = function()
   require('jdtls').setup_dap()
 end
 
-require('jdtls').start_or_attach({
-  on_attach = on_attach,
-  cmd = { JAVA_LS_EXECUTABLE },
-  root_dir = require('jdtls.setup').find_root({ 'build.gradle', 'pom.xml', '.git' }),
-  init_options = { bundles = bundles }
-})
+if vim.bo.filetype == "java" then
+  require('jdtls').start_or_attach({
+    on_attach = on_attach,
+    cmd = { vim.fn.stdpath("config") .. "/bin/" .. JAVA_LS_EXECUTABLE },
+    root_dir = require('jdtls.setup').find_root({ 'build.gradle', 'pom.xml', '.git' }),
+    init_options = { bundles = bundles }
+  })
+end
 
