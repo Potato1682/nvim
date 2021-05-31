@@ -30,7 +30,12 @@ require'bufferline'.setup{
       end
     end,
     show_close_icon = false,
-    separator_style = "thin"
+    separator_style = "thin",
+    offsets = {{
+      filetype = "NvimTree",
+      text = "Explorer",
+      text_align = "center"
+    }}
   },
   highlights = {
     fill = {
