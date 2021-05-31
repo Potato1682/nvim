@@ -20,6 +20,7 @@ require("nvim-mouse-gesture")
 require("nvim-zen-mode")
 require("nvim-which-key")
 require("nvim-template")
+require("nvim-lspinstall")
 
 require("lsp")
 require("lsp.efm-ls")

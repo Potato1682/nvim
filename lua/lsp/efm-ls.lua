@@ -1,4 +1,9 @@
+local bin = vim.fn.stdpath("data") .. "/lspinstall/efm/efm-langserver"
+
+if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("efm") end
+
 require"lspconfig".efm.setup {
+  cmd = { bin },
   init_options = { documentFormatting = true },
   filetypes = { "lua" },
   settings = {

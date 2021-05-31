@@ -1,8 +1,14 @@
+local bin = vim.fn.stdpath("data") .. "/lspinstall/css/vscode-css/css-language-features/server/dist/node/cssServerMain.js"
+
+if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("css") end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
 require'lspconfig'.cssls.setup {
-    cmd = {
-        "node", "/usr/lib/node_modules/vscode-css-languageserver-bin/cssServerMain.js",
-        "--stdio"
-    },
-    on_attach = require'lsp'.common_on_attach
+  cmd = { bin, "--stdio" },
+  capabilities = capabilities,
+  filetypes = { "css", "sass", "scss", "less" },
+  on_attach = require'lsp'.common_on_attach,
+  settings = { css = { validate = true }, sass = { validate = true }, scss = { validate = true }, less = { validate = true } }
 }
 

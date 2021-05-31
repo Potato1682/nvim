@@ -15,21 +15,7 @@ _G.lsp_organize_imports = function()
   vim.lsp.buf.execute_command(params)
 end
 
-local function on_attach(client, bufnr)
-  vim.cmd("command! LspDef lua vim.lsp.buf.definition()")
-  vim.cmd("command! LspFormatting lua vim.lsp.buf.formatting()")
-  vim.cmd("command! LspCodeAction lua vim.lsp.buf.code_action()")
-  vim.cmd("command! LspHover lua vim.lsp.buf.hover()")
-  vim.cmd("command! LspRename lua vim.lsp.buf.rename()")
-  vim.cmd("command! LspOrganize lua lsp_organize_imports()")
-  vim.cmd("command! LspRefs lua vim.lsp.buf.references()")
-  vim.cmd("command! LspTypeDef lua vim.lsp.buf.type_definition()")
-  vim.cmd("command! LspImplementation lua vim.lsp.buf.implementation()")
-  vim.cmd("command! LspDiagPrev lua vim.lsp.diagnostic.goto_prev()")
-  vim.cmd("command! LspDiagNext lua vim.lsp.diagnostic.goto_next()")
-  vim.cmd("command! LspDiagLine lua vim.lsp.diagnostic.show_line_diagnostics()")
-  vim.cmd("command! LspSignatureHelp lua vim.lsp.buf.signature_help()")
-
+local function on_attach(client)
   if client.resolved_capabilities.document_formatting then
     vim.api.nvim_exec([[
          augroup LspAutocommands
@@ -40,16 +26,27 @@ local function on_attach(client, bufnr)
   end
 end
 
+local tsserver_bin = vim.fn.stdpath("data") .. "/lspinstall/typescript/node_modules/.bin/typescript-language-server"
+
+if vim.fn.filereadable(tsserver_bin) == 0 then require("lspinstall").install_server("typescript") end
+
 require'lspconfig'.tsserver.setup {
+  cmd = { tsserver_bin, "--stdio" },
   on_attach = function(client)
     client.resolved_capabilities.document_formatting = false
     on_attach(client)
   end,
-  root_dir = require('lspconfig/util').root_pattern("package.json", "tsconfig.json", "jsconfig.json", ".git"),
   settings = { documentFormatting = false }
 }
 
+local diagnosticls_bin = vim.fn.stdpath("data") .. "/lspinstall/diagnosticls/node_modules/.bin/diagnostic-languageserver"
+
+if vim.fn.filereadable(diagnosticls_bin) == 0 then require("lspinstall").install_server("diagnosticls") end
+
+local eslintd_bin = vim.fn.stdpath("data") .. "/lspinstall/eslintd/node_modules/.bin/eslint_d"
+
 require'lspconfig'.diagnosticls.setup {
+  cmd = { diagnosticls_bin, "--stdio" },
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   on_attach = on_attach,
   init_options = {
@@ -64,7 +61,7 @@ require'lspconfig'.diagnosticls.setup {
     linters = {
       eslint = {
         sourceName = "eslint",
-        command = "eslint_d",
+        command = eslintd_bin,
         rootPatterns = { ".eslintrc", ".eslintrc.js", ".eslintrc.yml", ".eslintrc.json", "package.json" },
         debounce = 100,
         args = { "--stdin", "--stdin-filename=%filepath", "--format=json" },

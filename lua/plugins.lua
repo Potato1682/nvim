@@ -44,10 +44,12 @@ return require('packer').startup(function(use)
   use 'glepnir/dashboard-nvim'
 
   use 'neovim/nvim-lspconfig'
+  use 'kabouzeid/nvim-lspinstall'
+  use 'alexaandru/nvim-lspupdate'
 
   use {
     'folke/trouble.nvim',
-   config = function()
+    config = function()
       require("trouble").setup()
     end
   }
@@ -58,6 +60,16 @@ return require('packer').startup(function(use)
       require("todo-comments").setup()
     end
   }
+
+  use {
+    'tjdevries/nlua.nvim',
+
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
+
+  use 'tjdevries/manillua.nvim'
 
   use { "simrat39/symbols-outline.nvim", cmd = { "SymbolsOutline" } }
 
