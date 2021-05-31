@@ -36,5 +36,8 @@ require("lsp.css-ls")
 require("lsp.docker-ls")
 require("lsp.html-ls")
 require("lsp.csharp-ls")
+require("lsp.vue-ls")
+require("lsp.java-ls")
+require("lsp.docker-ls")
 require("lsp.virtual-text")
 

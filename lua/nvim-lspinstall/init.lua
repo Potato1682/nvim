@@ -4,9 +4,10 @@ require'lspconfig/configs'.jdtls = nil
 
 require'lspinstall/servers'.jdtls = vim.tbl_extend('error', config, {
   install_script = [[
+    rm -rf eclipse.jdt.ls
     git clone https://github.com/eclipse/eclipse.jdt.ls.git
     cd eclipse.jdt.ls
-    ./mvnw clean verify
+    ./mvnw clean verify -DskipTests
   ]]
 })
 

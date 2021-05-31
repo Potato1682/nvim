@@ -12,6 +12,7 @@ My neovim settings
 - Node.js and NPM
 - Yarn
 - `jq`
+- Java >= 11
 
 ## Features
 

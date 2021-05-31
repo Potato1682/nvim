@@ -71,6 +71,8 @@ return require('packer').startup(function(use)
 
   use 'tjdevries/manillua.nvim'
 
+  use 'mfussenegger/nvim-jdtls'
+
   use { "simrat39/symbols-outline.nvim", cmd = { "SymbolsOutline" } }
 
   use 'hrsh7th/nvim-compe'

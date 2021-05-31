@@ -6,7 +6,7 @@ else
   print("Java LS: Unsupported system")
 end
 
-local bundles = { vim.fn.glob(CONFIG_PATH .. "./debuggers/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar") }
+local bundles = { vim.fn.glob(CONFIG_PATH .. "/./debuggers/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar") }
 
 local on_attach = function()
   require('jdtls').setup_dap()
