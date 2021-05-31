@@ -93,12 +93,12 @@ local japanese_mappings = {
   },
   D = {
     name = "+デバッグ",
-    b = { "<cmd>DebugToggleBreakpoint<cr>", "ブレークポイントを切り替え" },
-    c = { "<cmd>DebugContinue<cr>", "コンティニュー" },
-    i = { "<cmd>DebugStepInto<cr>", "ブロック内へステップ" },
-    o = { "<cmd>DebugStepOver<cr>", "ブロック末尾までステップ" },
-    r = { "<cmd>DebugToggleRepl<cr>", "Repl表示を切り替え" },
-    s = { "<cmd>DebugStart<cr>", "開始" }
+    b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "ブレークポイントを切り替え" },
+    c = { "<cmd>lua require'dap'.continue()<cr>", "コンティニュー" },
+    i = { "<cmd>lua require'dap'.step_into()<cr>", "ブロック内へステップ" },
+    o = { "<cmd>lua require'dap'.step_out()<cr>", "ブロック末尾までステップ" },
+    r = { "<cmd>lua require'dap'.repl_open()<cr>", "Replを開く" },
+    s = { "<cmd>lua require'dap'.run()<cr>", "開始" }
   },
   g = {
     name = "+Git",
@@ -184,12 +184,12 @@ local mappings = {
   },
   D = {
     name = "+Debug",
-    b = { "<cmd>DebugToggleBreakpoint<cr>", "Toggle Breakpoint" },
-    c = { "<cmd>DebugContinue<cr>", "Continue" },
-    i = { "<cmd>DebugStepInto<cr>", "Step Into" },
-    o = { "<cmd>DebugStepOver<cr>", "Step Over" },
-    r = { "<cmd>DebugToggleRepl<cr>", "Toggle Repl" },
-    s = { "<cmd>DebugStart<cr>", "Start" }
+    b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
+    c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
+    i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
+    o = { "<cmd>lua require'dap'.step_out()<cr>", "Step Over" },
+    r = { "<cmd>lua require'dap'.repl_open()<cr>", "Open Repl" },
+    s = { "<cmd>lua require'dap'.run()<cr>", "Start" }
   },
   g = {
     name = "+Git",
