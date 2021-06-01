@@ -27,6 +27,7 @@ local function on_attach(client)
 end
 
 local tsserver_bin = vim.fn.stdpath("data") .. "/lspinstall/typescript/node_modules/.bin/typescript-language-server"
+local lsp_config = require("lsp")
 
 if vim.fn.filereadable(tsserver_bin) == 0 then require("lspinstall").install_server("typescript") end
 
@@ -35,6 +36,7 @@ require'lspconfig'.tsserver.setup {
   on_attach = function(client)
     client.resolved_capabilities.document_formatting = false
     on_attach(client)
+    lsp_config.common_on_attach()
   end,
   settings = { documentFormatting = false }
 }

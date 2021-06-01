@@ -1,5 +1,6 @@
 local bin = vim.fn.stdpath("data") .. "/lspinstall/lua/sumneko-lua-language-server"
 local server = vim.fn.stdpath("data") .. "/lspinstall/lua/sumneko-lua/extension/server/"
+local lsp_config = require("lsp")
 
 if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("lua") end
 
@@ -11,7 +12,8 @@ require'lspconfig'.sumneko_lua.setup {
       diagnostics = { globals = { 'vim' } },
       workspace = { library = { [vim.fn.expand('$VIMRUNTIME/lua')] = true, [vim.fn.expand('$VIMRUNTIME/lua/vim/lsp')] = true }, maxPreload = 10000 }
     }
-  }
+  },
+  on_attach = lsp_config.common_on_attach
 }
 
 local os = ""

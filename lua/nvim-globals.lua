@@ -12,7 +12,7 @@ O = {
   wrap_lines = false,
   number = true,
   relative_number = false,
-  timeoutlen = 100,
+  timeoutlen = 500,
   shell = "zsh",
   explorer = { disable_netrw = 0 },
   redmine = { site = "", api_key = "" },

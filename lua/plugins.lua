@@ -79,6 +79,7 @@ return require('packer').startup(function(use)
 
   use 'hrsh7th/nvim-compe'
   use 'hrsh7th/vim-vsnip'
+  use 'ray-x/lsp_signature.nvim'
   use 'rafamadriz/friendly-snippets'
   use { 'glepnir/lspsaga.nvim', cmd = { "Lspsaga" } }
   use 'kristijanhusak/vim-dadbod-completion'

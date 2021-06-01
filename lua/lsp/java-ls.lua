@@ -14,6 +14,7 @@ vim.list_extend(bundles, vim.split(vim.fn.glob(vim.fn.stdpath("data") .. "/dapin
 
 local on_attach = function()
   require('jdtls').setup_dap({ hotcoderplace = "auto" })
+  require("lsp").common_on_attach()
 end
 
 if vim.bo.filetype == "java" then

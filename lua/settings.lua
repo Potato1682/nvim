@@ -35,12 +35,13 @@ vim.o.showmode = false
 vim.o.backup = false
 vim.o.writebackup = false
 vim.wo.signcolumn = "yes"
-vim.o.updatetime = 300
+vim.o.updatetime = 100
+vim.o.redrawtime = 1500
 vim.o.timeoutlen = O.timeoutlen
+vim.o.ttimeoutlen = 10
 vim.o.clipboard = "unnamedplus"
 vim.o.ruler = true
 vim.o.sh = O.shell
-vim.o.wildmenu = true
 vim.o.ignorecase = true
 vim.o.smartcase = true
 vim.o.virtualedit = "onemore"
@@ -49,4 +50,7 @@ vim.o.errorbells = false
 vim.cmd("set formatoptions-=cro")
 vim.bo.autoindent = true
 vim.cmd("filetype plugin indent on")
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.wildmenu = true
 
