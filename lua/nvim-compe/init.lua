@@ -70,12 +70,17 @@ local npairs = require("nvim-autopairs")
 function _G.confirm_completion()
   if vim.fn.pumvisible() ~= 0 then
     if vim.fn.complete_info()["selected"] ~= -1 then
-      return vim.fn["compe#confirm"](npairs.esc("<cr>"))
+      vim.fn["compe#confirm"]()
+      return npairs.esc("<c-y>")
     else
-      return npairs.esc("<cr>")
+      vim.defer_fn(function()
+        vim.fn["compe#confirm"]()
+      end, 20)
+
+      return npairs.esc("<c-n>")
     end
   else
-    return npairs.autopairs_cr()
+    return npairs.check_break_line_char()
   end
 end
 
