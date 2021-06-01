@@ -21,6 +21,7 @@ require("nvim-zen-mode")
 require("nvim-which-key")
 require("nvim-template")
 require("nvim-lspinstall")
+require("nvim-presence")
 
 require("nvim-dap")
 

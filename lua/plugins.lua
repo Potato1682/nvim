@@ -256,5 +256,7 @@ return require('packer').startup(function(use)
   use "toritori0318/vim-redmine"
 
   use "antoyo/vim-licenses"
+
+  use "andweeb/presence.nvim"
 end)
 
