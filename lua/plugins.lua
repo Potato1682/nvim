@@ -126,6 +126,7 @@ return require('packer').startup(function(use)
 
     requires = { 'mfussenegger/nvim-dap' }
   }
+  use 'mfussenegger/nvim-dap-python'
 
   use {
     'windwp/nvim-autopairs',
