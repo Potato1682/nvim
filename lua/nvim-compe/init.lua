@@ -65,14 +65,28 @@ local function check_back_space()
   return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
 end
 
+local npairs = require("nvim-autopairs")
+
+function _G.confirm_completion()
+  if vim.fn.pumvisible() ~= 0 then
+    if vim.fn.complete_info()["selected"] ~= -1 then
+      return vim.fn["compe#confirm"](npairs.esc("<cr>"))
+    else
+      return npairs.esc("<cr>")
+    end
+  else
+    return npairs.autopairs_cr()
+  end
+end
+
 -- Use (s-)tab to:
 --- move to prev/next item in completion menuone
 --- jump to prev/next snippet's placeholder
 function _G.tab_complete()
-  if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif vim.fn.call("vsnip#available", { 1 }) == 1 then
+  if vim.fn.call("vsnip#available", { 1 }) == 1 then
     return t "<Plug>(vsnip-expand-or-jump)"
+  elseif vim.fn.pumvisible() == 1 then
+    return t "<C-n>"
   elseif check_back_space() then
     return t "<Tab>"
   else
@@ -89,6 +103,8 @@ function _G.s_tab_complete()
     return t "<S-Tab>"
   end
 end
+
+vim.api.nvim_set_keymap("i", "<CR>", "v:lua.confirm_completion()", { expr = true, noremap = true })
 
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
