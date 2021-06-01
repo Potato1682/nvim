@@ -227,6 +227,14 @@ return require('packer').startup(function(use)
   }
 
   use {
+    "kevinhwang91/nvim-hlslens",
+
+    config = function()
+      require("nvim-hlslens")
+    end
+  }
+
+  use {
     "iamcco/markdown-preview.nvim",
     run = "cd app && npm install"
   }
