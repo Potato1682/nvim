@@ -116,6 +116,16 @@ return require('packer').startup(function(use)
       }
     end
   }
+  use {
+    "lewis6991/spellsitter.nvim",
+
+    config = function()
+      require("spellsitter").setup {
+        hl = "SpellBad",
+        captures = { "comment" }
+      }
+    end
+  }
 
   use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
 
@@ -145,6 +155,25 @@ return require('packer').startup(function(use)
   use {
     'puremourning/vimspector',
     run = "python3 install_gadget.py --enable-c"
+  }
+
+  use {
+    "Pocco81/AbbrevMan.nvim",
+    
+    config = function()
+      require("abbrev-man").setup {
+        load_natural_dictionaries_at_startup = true,
+        load_programming_dictionaries_at_startup = true,
+        natural_dictionaries = {
+          ["nt_en"] = {}
+        },
+        programming_dictionaries = {
+          ["pr_py"] = {},
+          ["pr_java"] = {},
+          ["pr_lua"] = {}
+        }
+      }
+    end
   }
 
   use {
