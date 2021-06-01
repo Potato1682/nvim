@@ -25,6 +25,7 @@ return require('packer').startup(function(use)
 
   use {
     'glepnir/galaxyline.nvim',
+
     requires = { { 'ryanoasis/vim-devicons' }, { 'kyazdani42/nvim-web-devicons' } },
     config = function()
       require("nvim-galaxyline")
@@ -38,6 +39,8 @@ return require('packer').startup(function(use)
     'nvim-telescope/telescope-media-files.nvim',
     'nvim-telescope/telescope-fzy-native.nvim',
     'nvim-telescope/telescope-project.nvim',
+    'nvim-telescope/telescope-dap.nvim',
+
     requires = { 'nvim-telescope/telescope.nvim' }
   }
 
@@ -49,12 +52,14 @@ return require('packer').startup(function(use)
 
   use {
     'folke/trouble.nvim',
+
     config = function()
       require("trouble").setup()
     end
   }
   use {
     'folke/todo-comments.nvim',
+
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup()
@@ -83,6 +88,7 @@ return require('packer').startup(function(use)
   use { 'tzachar/compe-tabnine', run = "./install.sh", requires = { "hrsh7th/nvim-compe" } }
   use {
     'kosayoda/nvim-lightbulb',
+
     config = function()
       require("nvim-lightbulb-config")
     end
@@ -90,6 +96,7 @@ return require('packer').startup(function(use)
 
   use {
     'nvim-treesitter/nvim-treesitter',
+
     run = ':TSUpdate',
     requires = {
       { "p00f/nvim-ts-rainbow" }, { "windwp/nvim-ts-autotag" }, { "JoosepAlviste/nvim-ts-context-commentstring" }, { "andymass/vim-matchup" }
@@ -113,9 +120,16 @@ return require('packer').startup(function(use)
   use 'folke/which-key.nvim'
 
   use 'mfussenegger/nvim-dap'
+  use {
+    'theHamsta/nvim-dap-virtual-text',
+    'rcarriga/nvim-dap-ui',
+
+    requires = { 'mfussenegger/nvim-dap' }
+  }
 
   use {
     'windwp/nvim-autopairs',
+
     config = function()
       require("nvim-autopairs").setup()
     end
@@ -123,6 +137,7 @@ return require('packer').startup(function(use)
 
   use {
     'ahmedkhalf/lsp-rooter.nvim',
+
     config = function()
       require("lsp-rooter").setup()
     end
@@ -144,6 +159,7 @@ return require('packer').startup(function(use)
 
   use {
     "windwp/nvim-spectre",
+
     config = function()
       require('spectre').setup()
     end
@@ -151,6 +167,7 @@ return require('packer').startup(function(use)
 
   use {
     "phaazon/hop.nvim",
+
     as = "hop",
     config = function()
       require("hop").setup {
