@@ -11,5 +11,5 @@ end
 local dap = require("dap-python")
 
 dap.setup(debug_install_dir .. "debugpy/bin/python")
-dap.test_runner = "pytest"
+dap.test_runner = O.python.test_type
 

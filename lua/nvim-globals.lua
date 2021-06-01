@@ -15,6 +15,10 @@ O = {
   timeoutlen = 100,
   shell = "zsh",
   explorer = { disable_netrw = 0 },
-  redmine = { site = "", api_key = "" }
+  redmine = { site = "", api_key = "" },
+  python = {
+    -- @usage can be 'unittest', 'pytest'
+    test_type = "pytest"
+  }
 }
 
