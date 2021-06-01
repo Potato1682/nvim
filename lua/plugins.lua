@@ -108,6 +108,15 @@ return require('packer').startup(function(use)
     "andymass/vim-matchup",
     "theHamsta/crazy-node-movement"
   }
+  use {
+    "mizlan/iswap.nvim",
+    
+    config = function()
+      require("iswap").setup {
+        grey = "disable"
+      }
+    end
+  }
 
   use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
 
