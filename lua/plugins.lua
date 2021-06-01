@@ -105,7 +105,8 @@ return require('packer').startup(function(use)
     "p00f/nvim-ts-rainbow",
     "wind/nvim-ts-autotag",
     "JoosepAlviste/nvim-ts-context-commentstring",
-    "andymass/vim-matchup"
+    "andymass/vim-matchup",
+    "theHamsta/crazy-node-movement"
   }
 
   use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
