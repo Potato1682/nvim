@@ -53,18 +53,15 @@ My neovim settings
 - Global settings
 - Errors List
 - Markdown preview
+- Template support
+- Automatic license file generation
 - Template generation *[NEW]*
 - Redmine integration *[NEW]*
 
 ## WIP Features
 
 - Right mouse drag gestures
-- Change background color by git changes
-- Template support
-- Automatic fetch and detect changes with remote branch
 - Spell check
-- Read maven dependencies
-- Automatic license file generation
 
 ## Trouble Shooting
 
