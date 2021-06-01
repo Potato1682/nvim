@@ -257,6 +257,8 @@ return require('packer').startup(function(use)
 
   use "antoyo/vim-licenses"
 
+  use "tpope/vim-repeat"
+
   use "andweeb/presence.nvim"
 end)
 
