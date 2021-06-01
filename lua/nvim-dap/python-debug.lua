@@ -1,7 +1,7 @@
 local debug_install_dir = vim.fn.stdpath("data") .. "/dapinstall/python/"
 
 if vim.fn.glob(debug_install_dir) == "" then
-  require"nvim-dap.install".install("debugpy server", debug_install_dir, [[
+  require"nvim-dap.install".install("debugpy", debug_install_dir, [[
     python -m venv debugpy
     debugpy/bin/python -m pip install debugpy
     debugpy/bin/python -m pip install pytest
