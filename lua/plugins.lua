@@ -152,6 +152,7 @@ return require('packer').startup(function(use)
 
     config = function()
       require("nvim-autopairs").setup()
+      require("nvim-autopairs-config")
     end
   }
 
