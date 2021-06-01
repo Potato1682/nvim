@@ -188,6 +188,17 @@ return require('packer').startup(function(use)
     run = "cd app && npm install"
   }
 
+  use {
+    "Pocco81/NoCLC.nvim",
+    config = function()
+      require("no-clc").setup {
+        load_at_startup = true,
+        cursorline = true,
+        cursorcolumn = false
+      }
+    end
+  }
+
   use "thinca/vim-template"
 
   use "toritori0318/vim-redmine"
