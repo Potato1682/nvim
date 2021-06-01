@@ -42,6 +42,8 @@ require("lsp.vue-ls")
 require("nvim-dap.java-debug")
 require("lsp.java-ls")
 require("lsp.docker-ls")
+require("nvim-dap.c-cpp-rust-debug")
+require("lsp.rust-ls")
 require("lsp.virtual-text")
 require("nvim-dap.nvim-lua-debug")
 

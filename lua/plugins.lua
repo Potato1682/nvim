@@ -128,6 +128,12 @@ return require('packer').startup(function(use)
   use 'mfussenegger/nvim-dap-python'
   use 'jbyuki/one-small-step-for-vimkind'
 
+  -- Install vscode-cpptools using vimspector
+  use {
+    'puremourning/vimspector',
+    run = "python3 install_gadget.py --enable-c"
+  }
+
   use {
     'windwp/nvim-autopairs',
 
