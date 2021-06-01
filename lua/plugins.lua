@@ -103,7 +103,7 @@ return require('packer').startup(function(use)
   
   use {
     "p00f/nvim-ts-rainbow",
-    "wind/nvim-ts-autotag",
+    "windwp/nvim-ts-autotag",
     "JoosepAlviste/nvim-ts-context-commentstring",
     "andymass/vim-matchup",
     "theHamsta/crazy-node-movement"
