@@ -76,8 +76,6 @@ return require('packer').startup(function(use)
 
   use 'tjdevries/manillua.nvim'
 
-  use 'mfussenegger/nvim-jdtls'
-
   use { "simrat39/symbols-outline.nvim", cmd = { "SymbolsOutline" } }
 
   use 'hrsh7th/nvim-compe'
@@ -126,7 +124,9 @@ return require('packer').startup(function(use)
 
     requires = { 'mfussenegger/nvim-dap' }
   }
+  use 'mfussenegger/nvim-jdtls'
   use 'mfussenegger/nvim-dap-python'
+  use 'jbyuki/one-small-step-for-vimkind'
 
   use {
     'windwp/nvim-autopairs',
