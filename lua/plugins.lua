@@ -96,12 +96,16 @@ return require('packer').startup(function(use)
     'nvim-treesitter/nvim-treesitter',
 
     run = ':TSUpdate',
-    requires = {
-      { "p00f/nvim-ts-rainbow" }, { "windwp/nvim-ts-autotag" }, { "JoosepAlviste/nvim-ts-context-commentstring" }, { "andymass/vim-matchup" }
-    },
     config = function()
       require("nvim-treesitter-config")
     end
+  }
+  
+  use {
+    "p00f/nvim-ts-rainbow",
+    "wind/nvim-ts-autotag",
+    "JoosepAlviste/nvim-ts-context-commentstring",
+    "andymass/vim-matchup"
   }
 
   use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
