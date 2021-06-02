@@ -76,13 +76,21 @@ gls.left[3] = {
   }
 }
 
-gls.left[4] = { DiagnosticError = { provider = "DiagnosticError", icon = " ", highlight = { colors.red, colors.bg } } }
+gls.left[4] = { DiffAdd = { provider = "DiffAdd", condition = condition.check_git_workspace, icon = " ", highlight = { "#a0c980", colors.bg } } }
+gls.left[5] = {
+  DiffModified = { provider = "DiffModified", condition = condition.check_git_workspace, icon = " ", highlight = { "#6cb6eb", colors.bg } }
+}
+gls.left[6] = {
+  DiffRemove = { provider = "DiffRemove", condition = condition.check_git_workspace, icon = " ", highlight = { "#ec7239", colors.bg } }
+}
 
-gls.left[5] = { DiagnosticWarn = { provider = "DiagnosticWarn", icon = " ", highlight = { colors.yellow, colors.bg } } }
+gls.left[7] = { DiagnosticError = { provider = "DiagnosticError", icon = "  ", highlight = { colors.red, colors.bg } } }
 
-gls.left[6] = { DiagnosticInfo = { provider = "DiagnosticInfo", icon = " ", highlight = { colors.blue, colors.bg } } }
+gls.left[8] = { DiagnosticWarn = { provider = "DiagnosticWarn", icon = "  ", highlight = { colors.yellow, colors.bg } } }
 
-gls.left[7] = { DiagnosticHint = { provider = "DiagnosticHint", icon = " ", highlight = { colors.green, colors.bg } } }
+gls.left[9] = { DiagnosticInfo = { provider = "DiagnosticInfo", icon = "  ", highlight = { colors.blue, colors.bg } } }
+
+gls.left[10] = { DiagnosticHint = { provider = "DiagnosticHint", icon = "  ", highlight = { colors.green, colors.bg } } }
 
 gls.right[1] = {
   FileIcon = { provider = "FileIcon", separator = " ", separator_highlight = { "NONE", colors.bg }, highlight = { colors.blue, colors.bg } }
