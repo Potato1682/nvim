@@ -4,6 +4,7 @@ vim.g.nvim_tree_hide_dotfiles = 0
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_follow = 1
 vim.g.nvim_tree_lsp_diagnostics = 1
+vim.g.nvim_tree_auto_open = 1
 vim.g.nvim_tree_auto_close = O.auto_close_tree
 vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_git_hl = 1
@@ -51,6 +52,6 @@ vim.g.nvim_tree_icons = {
     untracked = ""
     -- ignored = "◌"
   },
-  folder = { default = "", open = "", empty = "", empty_open = "", symlink = "" }
+  folder = { default = "", open = "", empty = "", empty_open = "", symlink = "" }
 }
 
