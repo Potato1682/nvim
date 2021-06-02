@@ -2,6 +2,7 @@
 My neovim settings
 
 ![image](https://user-images.githubusercontent.com/48394190/120484401-ff21c200-c3ed-11eb-9036-cf03a0aa1335.png)
+#### Sample source code by [Peyang](https://github.com/peyang-Celeron)
 
 ## Requires
 
