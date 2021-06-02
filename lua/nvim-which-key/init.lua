@@ -2,8 +2,10 @@ require("which-key").setup {
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-    -- the presets plugin, adds help for a bunch of default keybindings in Neovim
-    -- No actual key bindings are created
+    spelling = {
+      enabled = true,
+      suggestions = 20
+    },
     presets = {
       operators = false, -- adds help for operators like d, y, ...
       motions = false, -- adds help for motions
@@ -19,6 +21,10 @@ require("which-key").setup {
     separator = "➜", -- symbol used between a key and it's label
     group = "+" -- symbol prepended to a group
   },
+  key_labels = {
+    ["<space>"] = "SPC",
+    ["<tab>"] = "TAB"
+  },
   window = {
     border = "single", -- none, single, double, shadow
     position = "bottom", -- bottom, top
@@ -31,7 +37,8 @@ require("which-key").setup {
     spacing = 3 -- spacing between columns
   },
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
-  show_help = true -- show help message on the command line when the popup is visible
+  show_help = true,
+  triggers = { "<leader>" }
 }
 
 local opts = {
@@ -48,7 +55,7 @@ vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true
 vim.g.mapleader = ' '
 
 -- no hl
-vim.api.nvim_set_keymap('n', '<Leader>h', ':set hlsearch!<CR>', { noremap = true, silent = true })
+vim.api.nvim_set_keymap('n', '<Leader>h', ':set nohlsearch<CR>', { noremap = true, silent = true })
 
 -- explorer
 vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
@@ -194,7 +201,7 @@ local mappings = {
     c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
     e = { "<cmd>lua require'dapui'.eval()<cr>", "Evaluate Current Expression" },
     i = { "<cmd>lua require'dap'.step_into()<cr>", "Step Into" },
-    f = { "<cmd>lua require'dapui'.float_element()", "Current Elements" },
+    f = { "<cmd>lua require'dapui'.float_element()<cr>", "Current Elements" },
     o = { "<cmd>lua require'dap'.step_out()<cr>", "Step Over" },
     r = { "<cmd>lua require'dap'.repl_open()<cr>", "Open Repl" },
     s = { "<cmd>lua require'dap'.run()<cr>", "Start" }

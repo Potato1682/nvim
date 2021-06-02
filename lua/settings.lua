@@ -53,6 +53,7 @@ vim.cmd("filetype plugin indent on")
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.wildmenu = true
+vim.o.spell = true
 
 vim.cmd("hi SignColumn ctermbg=235 guibg=#2b2d3a")
 vim.cmd("hi GreenSign ctermbg=235 guibg=#2b2d3a")
