@@ -45,6 +45,7 @@ require'lspconfig'.tsserver.setup {
     on_attach(client)
     lsp_config.common_on_attach()
   end,
+  filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   commands = { OrganizeImports = { organize_imports, description = "Organize imports" } },
   settings = { documentFormatting = false }
 }
