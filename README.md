@@ -57,8 +57,9 @@ My neovim settings
 - Markdown preview
 - Template support
 - Automatic license file generation
-- Template generation *[NEW]*
+- Template generation
 - Redmine integration *[NEW]*
+- Custom color highlighting *[NEW]*
 
 ## WIP Features
 
