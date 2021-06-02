@@ -21,7 +21,6 @@ require("nvim-zen-mode")
 require("nvim-which-key")
 require("nvim-template")
 require("nvim-lspinstall")
-require("nvim-presence")
 
 require("nvim-dap")
 
@@ -48,4 +47,6 @@ require("nvim-dap.c-cpp-rust-debug")
 require("lsp.rust-ls")
 require("lsp.virtual-text")
 require("nvim-dap.nvim-lua-debug")
+
+require("nvim-presence")
 
