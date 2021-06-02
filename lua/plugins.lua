@@ -99,6 +99,13 @@ return require('packer').startup(function(use)
       require("nvim-lightbulb-config")
     end
   }
+  use {
+    'folke/lsp-colors.nvim',
+
+    config = function()
+      require("lsp-colors").setup()
+    end
+  }
 
   use {
     'nvim-treesitter/nvim-treesitter',

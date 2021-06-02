@@ -4,6 +4,11 @@ vim.fn.sign_define("LspDiagnosticsSignHint", { texthl = "LspDiagnosticsSignHint"
 vim.fn.sign_define("LspDiagnosticsSignInformation",
                    { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation" })
 
+vim.cmd("hi LspDiagnosticsUnderlineError gui=undercurl guisp=#db4b4b")
+vim.cmd("hi LspDiagnosticsUnderlineWarning gui=undercurl guisp=#e0af68")
+vim.cmd("hi LspDiagnosticsUnderlineInformation gui=undercurl guisp=#0db9d7")
+vim.cmd("hi LspDiagnosticsUnderlineHint gui=undercurl guisp=#10b981")
+
 vim.cmd('nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>')
 vim.cmd('nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>')
 vim.cmd('nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>')
