@@ -182,6 +182,14 @@ return require('packer').startup(function(use)
   }
 
   use {
+    'mbbill/undotree',
+    
+    config = function()
+      require("nvim-undotree")
+    end
+  }
+
+  use {
     "Pocco81/AbbrevMan.nvim",
     
     config = function()

@@ -47,5 +47,4 @@ require("lsp.rust-ls")
 require("lsp.virtual-text")
 require("nvim-dap.nvim-lua-debug")
 
-require("nvim-presence")
-
+-- require("nvim-presence")
