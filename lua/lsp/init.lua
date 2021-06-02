@@ -26,17 +26,19 @@ vim.cmd("autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)")
 vim.cmd("autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)")
 vim.cmd("autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 100)")
 
-local function documentHighlight(_, _)
-  vim.api.nvim_exec([[
-    hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
-    hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
-    hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
-    augroup lsp_document_highlight
-      autocmd! * <buffer>
-      autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-      autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-    augroup END
-  ]], false)
+local function documentHighlight(client, bufnr)
+  if client and client.resolved_capabilities.document_highlight then
+    vim.api.nvim_exec([[
+      hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
+      hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
+      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
+      augroup lsp_document_highlight
+        autocmd! * <buffer>
+        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
+        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
+      augroup END
+    ]], false)
+  end
 end
 
 vim.lsp.protocol.CompletionItemKind = {
@@ -55,8 +57,11 @@ end
 
 lsp_config.common_on_attach()
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-                                                                   { virtual_text = true, signs = false, update_in_insert = true })
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
+  virtual_text = { prefix = "", spacing = 0 },
+  signs = false,
+  update_in_insert = true
+})
 
 return lsp_config
 

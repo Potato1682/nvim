@@ -34,7 +34,7 @@ vim.o.showtabline = 2
 vim.o.showmode = false
 vim.o.backup = false
 vim.o.writebackup = false
-vim.wo.signcolumn = "yes"
+vim.wo.signcolumn = "yes:3"
 vim.o.updatetime = 100
 vim.o.redrawtime = 1500
 vim.o.timeoutlen = O.timeoutlen
@@ -53,4 +53,10 @@ vim.cmd("filetype plugin indent on")
 vim.o.foldmethod = "expr"
 vim.o.foldexpr = "nvim_treesitter#foldexpr()"
 vim.o.wildmenu = true
+
+vim.cmd("hi SignColumn ctermbg=235 guibg=#2b2d3a")
+vim.cmd("hi GreenSign ctermbg=235 guibg=#2b2d3a")
+vim.cmd("hi BlueSign ctermbg=235 guibg=#2b2d3a")
+vim.cmd("hi RedSign ctermbg=235 guibg=#2b2d3a")
+vim.cmd("hi YellowSign ctermbg=235 guibg=#2b2d3a")
 

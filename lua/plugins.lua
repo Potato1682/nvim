@@ -15,9 +15,16 @@ require('packer').init({ display = { auto_clean = false } })
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use 'sainnhe/edge'
+  use { 'sainnhe/edge', config = function()  end }
   use 'ChristianChiarulli/nvcode-color-schemes.vim'
-  use 'norcalli/nvim-colorizer.lua'
+  use {
+    "RRethy/vim-hexokinase",
+
+    config = function()
+      require("nvim-hexokinase")
+    end,
+    run = "make hexokinase"
+  }
   use 'sheerun/vim-polyglot'
 
   use { 'akinsho/nvim-bufferline.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
@@ -275,5 +282,13 @@ return require('packer').startup(function(use)
   use "tpope/vim-repeat"
 
   use "andweeb/presence.nvim"
+
+  use {
+    "907th/vim-auto-save",
+
+    config = function()
+      vim.g.auto_save = 1
+    end
+  }
 end)
 
