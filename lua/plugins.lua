@@ -443,6 +443,8 @@ return require('packer').startup(function(use)
     end
   }
 
+  use "famiu/bufdelete.nvim"
+
   use "toritori0318/vim-redmine"
 
   use "antoyo/vim-licenses"
