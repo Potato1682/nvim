@@ -63,6 +63,7 @@ return require('packer').startup(function(use)
   use 'neovim/nvim-lspconfig'
   use 'kabouzeid/nvim-lspinstall'
   use 'alexaandru/nvim-lspupdate'
+  use 'lspcontainers/lspcontainers.nvim'
 
   use {
     'folke/trouble.nvim',

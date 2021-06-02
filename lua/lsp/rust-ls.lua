@@ -1,7 +1,5 @@
-local bin = vim.fn.stdpath("data") .. "/lspinstall/rust/rust-analyzer"
+local container = require("lspcontainers")
 local lsp_config = require("lsp")
 
-if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("rust") end
-
-require"lspconfig".rust_analyzer.setup { cmd = { bin }, on_attach = lsp_config.common_on_attach }
+require"lspconfig".rust_analyzer.setup { cmd = container.command("rust_analyzer"), on_attach = lsp_config.common_on_attach }
 

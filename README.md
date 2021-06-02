@@ -15,6 +15,7 @@ My neovim settings
 - Yarn
 - `jq`
 - Java >= 11 and Lombok (/usr/local/share/lombok/lombok.jar)
+- Docker Engine
 
 ## Features
 

@@ -26,7 +26,7 @@ vim.cmd("autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)")
 vim.cmd("autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)")
 vim.cmd("autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 100)")
 
-local function documentHighlight(client, bufnr)
+local function documentHighlight(client, _)
   if client and client.resolved_capabilities.document_highlight then
     vim.api.nvim_exec([[
       hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646

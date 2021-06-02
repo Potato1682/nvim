@@ -1,7 +1,12 @@
-local bin = vim.fn.stdpath("data") .. "/lspinstall/dockerfile/node_modules/.bin/docker-langserver"
+local container = require("lspcontainers")
 local lsp_config = require("lsp")
 
-if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("dockerfile") end
-
-require'lspconfig'.dockerls.setup { cmd = { bin, "--stdio" }, root_dir = vim.loop.cwd, on_attach = lsp_config.common_on_attach }
+require'lspconfig'.dockerls.setup {
+  before_init = function(params)
+    params.processId = vim.NIL
+  end,
+  cmd = container.command("dockerls"),
+  root_dir = vim.loop.cwd,
+  on_attach = lsp_config.common_on_attach
+}
 

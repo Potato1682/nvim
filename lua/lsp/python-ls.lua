@@ -1,7 +1,11 @@
-local bin = vim.fn.stdpath("data") .. "/lspinstall/python/node_modules/.bin/pyright-langserver"
+local container = require("lspcontainers")
 local lsp_config = require("lsp")
 
-if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("python") end
-
-require'lspconfig'.pyright.setup { cmd = { bin, "--stdio" }, on_attach = lsp_config.common_on_attach }
+require'lspconfig'.pyright.setup {
+  before_init = function(params)
+    params.processId = vim.NIL
+  end,
+  cmd = container.command("pyright"),
+  on_attach = lsp_config.common_on_attach
+}
 
