@@ -15,6 +15,22 @@
 		"&c": "#ff5555",
 		"&d": "#ff55ff",
 		"&e": "#ffff55",
-		"&f": "#ffffff"
+		"&f": "#ffffff",
+		"ChatColor.BLACK": "#000000",
+		"ChatColor.DARK_BLUE": "#0000aa",
+		"ChatColor.DARK_GREEN": "#00aa00",
+		"ChatColor.DARK_AQUA": "#00aaaa",
+		"ChatColor.DARK_RED": "#aa0000",
+		"ChatColor.DARK_PURPLE": "#aa00aa",
+		"ChatColor.GOLD": "#ffaa00",
+		"ChatColor.GRAY": "#aaaaaa",
+		"ChatColor.DARK_GREY": "#555555",
+		"ChatColor.BLUE": "#5555ff",
+		"ChatColor.GREEN": "#55ff55",
+		"ChatColor.AQUA": "#55ffff",
+		"ChatColor.RED": "#ff5555",
+		"ChatColor.LIGHT_PURPLE": "#ff55ff",
+		"ChatColor.YELLOW": "#ffff55",
+		"ChatColor.WHITE": "#ffffff"
 	}
 }
