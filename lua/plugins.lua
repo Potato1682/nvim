@@ -15,7 +15,7 @@ require('packer').init({ display = { auto_clean = false } })
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
-  use { 'sainnhe/edge', config = function()  end }
+  use 'sainnhe/edge'
   use 'ChristianChiarulli/nvcode-color-schemes.vim'
   use {
     "RRethy/vim-hexokinase",
@@ -27,20 +27,53 @@ return require('packer').startup(function(use)
   }
   use 'sheerun/vim-polyglot'
 
-  use { 'akinsho/nvim-bufferline.lua', requires = { 'kyazdani42/nvim-web-devicons' } }
+  use {
+    'akinsho/nvim-bufferline.lua',
+
+    config = function()
+      require("nvim-bufferline")
+    end,
+    requires = { 'kyazdani42/nvim-web-devicons' }
+  }
 
   use {
     'glepnir/galaxyline.nvim',
 
-    requires = { { 'ryanoasis/vim-devicons' }, { 'kyazdani42/nvim-web-devicons' } },
     config = function()
       require("nvim-galaxyline")
-    end
+    end,
+    requires = {
+      'ryanoasis/vim-devicons',
+      'kyazdani42/nvim-web-devicons'
+    }
   }
 
-  use { 'kyazdani42/nvim-tree.lua', requires = { 'kyazdani42/nvim-web-devicons' }}
+  use {
+    'kyazdani42/nvim-tree.lua',
 
-  use { 'nvim-telescope/telescope.nvim', requires = { { 'nvim-lua/popup.nvim' }, { 'nvim-lua/plenary.nvim' } } }
+    config = function()
+      require("nvim-explorer")
+    end,
+    requires = {
+      'kyazdani42/nvim-web-devicons'
+    },
+    cmd = {
+      "NvimTreeToggle",
+      "NvimTreeOpen"
+    }
+  }
+
+  use {
+    'nvim-telescope/telescope.nvim',
+    
+    config = function()
+      require("nvim-telescope")
+    end,
+    requires = {
+      'nvim-lua/popup.nvim',
+      'nvim-lua/plenary.nvim'
+    }
+  }
   use {
     'nvim-telescope/telescope-media-files.nvim',
     'nvim-telescope/telescope-fzy-native.nvim',
@@ -52,22 +85,50 @@ return require('packer').startup(function(use)
 
   use {
 		"PHSix/faster.nvim",
+
 		config = function()
 			vim.api.nvim_set_keymap("n", "j", "<Plug>(faster_move_j)", { noremap = false, silent = true })
 			vim.api.nvim_set_keymap("n", "k", "<Plug>(faster_move_k)", { noremap = false, silent = true })
-		end,
+		end
 	}
 
-  use 'glepnir/dashboard-nvim'
+  use {
+    'glepnir/dashboard-nvim',
 
-  use 'neovim/nvim-lspconfig'
-  use 'kabouzeid/nvim-lspinstall'
-  use 'alexaandru/nvim-lspupdate'
-  use 'lspcontainers/lspcontainers.nvim'
+    config = function()
+      require("nvim-dashboard")
+    end
+  }
+
+  use {
+    'neovim/nvim-lspconfig'
+  }
+  use {
+    'kabouzeid/nvim-lspinstall',
+
+    as = "lspinstall",
+    config = function()
+      require("nvim-lspinstall")
+    end
+  }
+  use {
+    'alexaandru/nvim-lspupdate',
+
+    as = "lspupdate",
+    cmd = {
+      "LspUpdate"
+    }
+  }
+  use {
+    'lspcontainers/lspcontainers.nvim',
+
+    as = "lspcontainers"
+  }
 
   use {
     'folke/trouble.nvim',
 
+    as = "trouble",
     config = function()
       require("trouble").setup()
     end
@@ -75,6 +136,7 @@ return require('packer').startup(function(use)
   use {
     'folke/todo-comments.nvim',
 
+    as = "trouble-todo-comments",
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup()
@@ -89,20 +151,51 @@ return require('packer').startup(function(use)
     }
   }
 
-  use 'tjdevries/manillua.nvim'
+  use {
+    'tjdevries/manillua.nvim',
 
-  use { "simrat39/symbols-outline.nvim", cmd = { "SymbolsOutline" } }
+    as = "manillua"
+  }
 
-  use 'hrsh7th/nvim-compe'
-  use 'hrsh7th/vim-vsnip'
-  use 'ray-x/lsp_signature.nvim'
+  use {
+    "simrat39/symbols-outline.nvim",
+
+    as = "symbols-outline",
+    cmd = {
+      "SymbolsOutline"
+    }
+  }
+
+  use {
+    'hrsh7th/nvim-compe',
+
+    config = function()
+      require("nvim-compe")
+    end,
+    after = "nvim-autopairs"
+  }
+  use {
+    'hrsh7th/vim-vsnip',
+
+  }
+  use {
+    'ray-x/lsp_signature.nvim',
+
+    as = "lsp-signature"
+  }
   use 'rafamadriz/friendly-snippets'
-  use { 'glepnir/lspsaga.nvim', cmd = { "Lspsaga" } }
-  use 'kristijanhusak/vim-dadbod-completion'
+  use {
+    'glepnir/lspsaga.nvim',
+
+    cmd = {
+      "Lspsaga"
+    }
+  }
   use { 'tzachar/compe-tabnine', run = "./install.sh", requires = { "hrsh7th/nvim-compe" } }
   use {
     'kosayoda/nvim-lightbulb',
 
+    as = "lightbulb",
     config = function()
       require("nvim-lightbulb-config")
     end
@@ -113,6 +206,20 @@ return require('packer').startup(function(use)
     config = function()
       require("lsp-colors").setup()
     end
+  }
+
+  use {
+    'kristijanhusak/vim-dadbod-completion',
+
+    config = function()
+      require("nvim-dadbod")
+    end,
+    requires = {{
+      'tpope/vim-dadbod',
+
+      ft = { 'sql' }
+    }},
+    ft = { 'sql' }
   }
 
   use {
@@ -129,7 +236,9 @@ return require('packer').startup(function(use)
     "windwp/nvim-ts-autotag",
     "JoosepAlviste/nvim-ts-context-commentstring",
     "andymass/vim-matchup",
-    "theHamsta/crazy-node-movement"
+    "theHamsta/crazy-node-movement",
+
+    after = "nvim-treesitter"
   }
   use {
     "mizlan/iswap.nvim",
@@ -151,18 +260,43 @@ return require('packer').startup(function(use)
     end
   }
 
-  use { 'lukas-reineke/indent-blankline.nvim', branch = 'lua' }
+  use {
+    'lukas-reineke/indent-blankline.nvim',
 
-  use { 'lewis6991/gitsigns.nvim', requires = { 'nvim-lua/plenary.nvim' } }
+    branch = 'lua',
+    config = function()
+      require("nvim-indentline")
+    end
+  }
+
+  use {
+    'lewis6991/gitsigns.nvim',
+
+    config = function()
+      require("nvim-gitsigns")
+    end,
+    requires = { 'nvim-lua/plenary.nvim' }
+  }
   use 'f-person/git-blame.nvim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
 
-  use { 'kkoomen/vim-doge', run = ':call doge#install()' }
+  use {
+    'kkoomen/vim-doge',
+    
+    config = function()
+      require("nvim-doge")
+    end,
+    run = ':call doge#install()'
+  }
 
   use 'wakatime/vim-wakatime'
 
-  use 'folke/which-key.nvim'
+  use {
+    'folke/which-key.nvim',
+
+    as = "which-key"
+  }
 
   use 'mfussenegger/nvim-dap'
   use {
@@ -178,15 +312,20 @@ return require('packer').startup(function(use)
   -- Install vscode-cpptools using vimspector
   use {
     'puremourning/vimspector',
-    run = "python3 install_gadget.py --enable-c"
+    run = "python3 install_gadget.py --enable-c",
+    opt = true
   }
 
   use {
     'mbbill/undotree',
     
-    config = function()
+    setup = function()
       require("nvim-undotree")
-    end
+    end,
+    cmd = {
+      "UndotreeToggle",
+      "UndotreeShow"
+    }
   }
 
   use {
@@ -214,7 +353,8 @@ return require('packer').startup(function(use)
     config = function()
       require("nvim-autopairs").setup()
       require("nvim-autopairs-config")
-    end
+    end,
+    event = "VimEnter"
   }
 
   use {
@@ -225,17 +365,35 @@ return require('packer').startup(function(use)
     end
   }
 
-  use 'monaqa/dial.nvim'
+  use {
+    'monaqa/dial.nvim',
+
+    config = function()
+      require("nvim-dial")
+    end
+  }
 
   use 'tpope/vim-endwise'
 
-  use 'notomo/gesture.nvim'
+  use {
+    'notomo/gesture.nvim',
+
+    config = function()
+      require("nvim-mouse-gesture")
+    end
+  }
 
   use 'haringsrob/nvim_context_vt'
 
   use 'digitaltoad/vim-pug'
 
-  use 'Pocco81/TrueZen.nvim'
+  use {
+    'Pocco81/TrueZen.nvim',
+
+    config = function()
+      require("nvim-zen-mode")
+    end
+  }
 
   use 'tjdevries/colorbuddy.nvim'
 
@@ -250,12 +408,8 @@ return require('packer').startup(function(use)
   use {
     "phaazon/hop.nvim",
 
+    branch = "pre-extmarks",
     as = "hop",
-    config = function()
-      require("hop").setup {
-        keys = "etovxqpdygfblzhckisuran"
-      }
-    end
   }
 
   use {
@@ -268,7 +422,16 @@ return require('packer').startup(function(use)
 
   use {
     "iamcco/markdown-preview.nvim",
-    run = "cd app && npm install"
+    run = "cd app && npm install",
+    cmd = {
+      "MarkdownPreview",
+      "MarkdownPreviewToggle"
+    },
+    ft = {
+      "markdown",
+      "pandoc.markdown",
+      "rmd"
+    }
   }
 
   use {
@@ -282,15 +445,19 @@ return require('packer').startup(function(use)
     end
   }
 
-  use "thinca/vim-template"
+  use {
+    "thinca/vim-template",
+
+    config = function()
+      require("nvim-template")
+    end
+  }
 
   use "toritori0318/vim-redmine"
 
   use "antoyo/vim-licenses"
 
   use "tpope/vim-repeat"
-
-  use "andweeb/presence.nvim"
 
   use {
     "907th/vim-auto-save",
@@ -299,5 +466,20 @@ return require('packer').startup(function(use)
       vim.g.auto_save = 1
     end
   }
-end)
+
+  use {
+    "winston0410/range-highlight.nvim",
+
+    config = function()
+      require("range-highlight").setup()
+    end,
+    requires = {
+      "winston0410/cmd-parser.nvim"
+    }
+  }
+end, {
+  profile = {
+    enable = true
+  }
+})
 
