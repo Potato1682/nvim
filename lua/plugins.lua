@@ -305,6 +305,8 @@ return require('packer').startup(function(use)
     opt = true
   }
 
+  use "gennaro-tedesco/nvim-commaround"
+
   use {
     'mbbill/undotree',
     

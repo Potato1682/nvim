@@ -48,8 +48,8 @@ vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', { noremap
 vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', { noremap = true, silent = true })
 
 -- Comments
-vim.api.nvim_set_keymap("n", "<leader>/", "gcc", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<leader>/", "gcc", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>/", "<Plug>ToggleCommaround", {})
+vim.api.nvim_set_keymap("v", "<leader>/", "<Plug>ToggleCommaround", {})
 
 -- close buffer
 vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", { noremap = true, silent = true })
