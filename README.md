@@ -60,12 +60,9 @@ My neovim settings
 - Template support
 - Automatic license file generation
 - Template generation
-- Redmine integration *[NEW]*
-- Custom color highlighting *[NEW]*
+- Redmine integration
+- Custom color highlighting
 - Spell check
-
-## WIP Features
-
 - Right mouse drag gestures
 
 ## Trouble Shooting
