@@ -166,18 +166,8 @@ return require('packer').startup(function(use)
     }
   }
 
-  use {
-    'hrsh7th/nvim-compe',
-
-    config = function()
-      require("nvim-compe")
-    end,
-    after = "nvim-autopairs"
-  }
-  use {
-    'hrsh7th/vim-vsnip',
-
-  }
+  use 'hrsh7th/nvim-compe'
+  use 'hrsh7th/vim-vsnip'
   use {
     'ray-x/lsp_signature.nvim',
 
@@ -352,8 +342,7 @@ return require('packer').startup(function(use)
     config = function()
       require("nvim-autopairs").setup()
       require("nvim-autopairs-config")
-    end,
-    event = "VimEnter"
+    end
   }
 
   use {

@@ -7,6 +7,7 @@ require("settings")
 require("keys")
 require("providers")
 require("nvim-which-key")
+require("nvim-compe")
 
 require("nvim-dap")
 
