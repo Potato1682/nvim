@@ -61,11 +61,11 @@ My neovim settings
 - Template generation
 - Redmine integration *[NEW]*
 - Custom color highlighting *[NEW]*
+- Spell check
 
 ## WIP Features
 
 - Right mouse drag gestures
-- Spell check
 
 ## Trouble Shooting
 
@@ -80,5 +80,13 @@ $ cd ~/.local/share/nvim/dapinstall/java/java-test
 $ PATH="/usr/local/bin/node:$PATH" bash
 $ npm i --cache $(mktemp -d)
 $ npm run build-plugin
+```
+
+### Some servers stopped working by exit code 125
+
+If you're using `podman`, you may not be using unqualified search registries.  
+Comment-out / Add the property to `/etc/containers/registries.conf` like this:
+```tst
+unqualified-search-registries = ["docker.io"]
 ```
 
