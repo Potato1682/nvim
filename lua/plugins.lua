@@ -277,7 +277,6 @@ return require('packer').startup(function(use)
     end,
     requires = { 'nvim-lua/plenary.nvim' }
   }
-  use 'f-person/git-blame.nvim'
   use 'tpope/vim-fugitive'
   use 'tpope/vim-rhubarb'
 
