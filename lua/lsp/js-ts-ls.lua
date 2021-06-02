@@ -26,6 +26,12 @@ local function on_attach(client)
   end
 end
 
+local function organize_imports()
+  local params = { command = "_typescript.organizeImports", arguments = { vim.api.nvim_buf_get_name(0) }, title = "" }
+
+  vim.lsp.buf.execute_command(params)
+end
+
 local container = require("lspcontainers")
 local lsp_config = require("lsp")
 
@@ -39,6 +45,7 @@ require'lspconfig'.tsserver.setup {
     on_attach(client)
     lsp_config.common_on_attach()
   end,
+  commands = { OrganizeImports = { organize_imports, description = "Organize imports" } },
   settings = { documentFormatting = false }
 }
 
