@@ -4,10 +4,10 @@ require'bufferline'.setup {
     tab_size = 24,
     diagnostics = "nvim_lsp",
     diagnostics_indicator = function(_, _, diagnostics_dict)
-      local s = " "
+      local s = ""
 
       for e, n in pairs(diagnostics_dict) do
-        local sym = (e == "error" and " ") or (e == "warning" and " " or " ")
+        local sym = (e == "error" and "  ") or (e == "warning" and "  " or "  ")
 
         s = s .. sym .. n
       end
@@ -33,7 +33,7 @@ require'bufferline'.setup {
 
         if warning ~= 0 then result[2] = { text = "  " .. warning, guifg = "#EFB839" } end
 
-        if hint ~= 0 then result[3] = { text = "  " .. hint, guifg = "#A3BA5E" } end
+        if hint ~= 0 then result[3] = { text = "  " .. hint, guifg = "#A3BA5E" } end
 
         if info ~= 0 then result[4] = { text = "  " .. info, guifg = "#7EA9A7" } end
 
