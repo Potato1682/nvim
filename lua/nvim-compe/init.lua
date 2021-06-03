@@ -92,7 +92,23 @@ function _G.MUtils.tab_complete()
     if vim.fn.call("vsnip#jumpable", { 1 }) == 1 then
       return t "<Plug>(vsnip-jump-next)"
     else
-      return npairs.esc("<Tab>")
+      local line = vim.fn.getline(".")
+
+      if line == "" then
+        vim.api.nvim_input("<ESC>s")
+
+        if line == vim.fn.getline(".") then
+          if not vim.bo.expandtab then
+            return npairs.esc("<Tab>")
+          end
+
+          return string.rep(" ", vim.bo.ts + 1)
+        end
+
+        return ""
+      elseif line:match("^%s$") ~= "" then
+        return npairs.esc("<Tab>")
+      end
     end
   end
 end

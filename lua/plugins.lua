@@ -84,13 +84,13 @@ return require('packer').startup(function(use)
   }
 
   use {
-		"PHSix/faster.nvim",
+    "PHSix/faster.nvim",
 
-		config = function()
-			vim.api.nvim_set_keymap("n", "j", "<Plug>(faster_move_j)", { noremap = false, silent = true })
-			vim.api.nvim_set_keymap("n", "k", "<Plug>(faster_move_k)", { noremap = false, silent = true })
-		end
-	}
+    config = function()
+      vim.api.nvim_set_keymap("n", "j", "<Plug>(faster_move_j)", { noremap = false, silent = true })
+      vim.api.nvim_set_keymap("n", "k", "<Plug>(faster_move_k)", { noremap = false, silent = true })
+    end
+  }
 
   use {
     'glepnir/dashboard-nvim',
