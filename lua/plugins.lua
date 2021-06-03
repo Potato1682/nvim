@@ -468,6 +468,14 @@ return require('packer').startup(function(use)
       "winston0410/cmd-parser.nvim"
     }
   }
+
+  use {
+    "steelsojka/headwind.nvim",
+
+    config = function()
+      require("headwind").setup()
+    end
+  }
 end, {
   profile = {
     enable = true
