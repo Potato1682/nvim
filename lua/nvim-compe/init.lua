@@ -67,53 +67,53 @@ end
 
 local npairs = require("nvim-autopairs")
 
-function _G.confirm_completion()
-  if vim.fn.call("vsnip#available", { 1 }) == 1 then return t "<Plug>(vsnip-expand-or-jump)" end
+_G.MUtils = {}
 
+function _G.MUtils.enter_confirm()
   if vim.fn.pumvisible() ~= 0 then
-    if vim.fn.complete_info()["selected"] ~= -1 then
+    if vim.fn.call("vsnip#available", { 1 }) == 1 then
+      return t "<Plug>(vsnip-expand-or-jump)"
+    elseif vim.fn.complete_info()["selected"] ~= -1 then
       vim.fn["compe#confirm"]()
-      return npairs.esc("<c-y>")
-    else
-      vim.defer_fn(function()
-        vim.fn["compe#confirm"]()
-      end, 20)
 
-      return npairs.esc("<c-n>")
+      return npairs.esc("")
+    else
+      return npairs.check_break_line_char()
     end
   else
     return npairs.check_break_line_char()
   end
 end
 
--- Use (s-)tab to:
---- move to prev/next item in completion menuone
---- jump to prev/next snippet's placeholder
-function _G.tab_complete()
+function _G.MUtils.tab_complete()
   if vim.fn.pumvisible() == 1 then
-    return t "<C-n>"
-  elseif check_back_space() then
-    return t "<Tab>"
+    return npairs.esc("<C-n>")
   else
-    return vim.fn["compe#complete"]()
+    if vim.fn.call("vsnip#jumpable", { 1 }) == 1 then
+      return t "<Plug>(vsnip-jump-next)"
+    else
+      return npairs.esc("<Tab>")
+    end
   end
 end
 
-function _G.s_tab_complete()
+function _G.MUtils.s_tab_complete()
   if vim.fn.pumvisible() == 1 then
-    return t "<C-p>"
-  elseif vim.fn.call("vsnip#jumpable", { -1 }) == 1 then
-    return t "<Plug>(vsnip-jump-prev)"
+    return npairs.esc("<C-p>")
   else
-    return t "<S-Tab>"
+    if vim.fn.call("vsnip#jumpable", { -1 }) == 1 then
+      return t "<Plug>(vsnip-jump-prev)"
+    else
+      return npairs.esc("<C-h>")
+    end
   end
 end
 
-vim.api.nvim_set_keymap("i", "<CR>", "v:lua.confirm_completion()", { expr = true })
+vim.api.nvim_set_keymap("i", "<CR>", "v:lua.MUtils.enter_confirm()", { expr = true })
 
-vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.MUtils.tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.MUtilstab_complete()", { expr = true })
 
-vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.s_tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.MUtils.s_tab_complete()", { expr = true })
+vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.MUtils.s_tab_complete()", { expr = true })
 

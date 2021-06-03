@@ -168,6 +168,7 @@ return require('packer').startup(function(use)
 
   use 'hrsh7th/nvim-compe'
   use 'hrsh7th/vim-vsnip'
+  use 'hrsh7th/vim-vsnip-integ'
   use {
     'ray-x/lsp_signature.nvim',
 
@@ -362,8 +363,6 @@ return require('packer').startup(function(use)
       require("nvim-dial")
     end
   }
-
-  use 'tpope/vim-endwise'
 
   use {
     'notomo/gesture.nvim',
