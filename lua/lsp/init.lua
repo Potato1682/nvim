@@ -1,8 +1,11 @@
-vim.fn.sign_define("LspDiagnosticsSignError", { texthl = "LspDiagnosticsSignError", text = " ", numhl = "LspDiagnosticsSignError" })
-vim.fn.sign_define("LspDiagnosticsSignWarning", { texthl = "LspDiagnosticsSignWarning", text = " ", numhl = "LspDiagnosticsSignWarning" })
-vim.fn.sign_define("LspDiagnosticsSignHint", { texthl = "LspDiagnosticsSignHint", text = " ", numhl = "LspDiagnosticsSignHint" })
+vim.fn.sign_define("LspDiagnosticsSignError",
+                   { texthl = "LspDiagnosticsSignError", text = " ", numhl = "LspDiagnosticsSignError", guifg = "#db4b4b" })
+vim.fn.sign_define("LspDiagnosticsSignWarning",
+                   { texthl = "LspDiagnosticsSignWarning", text = " ", numhl = "LspDiagnosticsSignWarning", guifg = "#e0af68" })
+vim.fn
+    .sign_define("LspDiagnosticsSignHint", { texthl = "LspDiagnosticsSignHint", text = " ", numhl = "LspDiagnosticsSignHint", guifg = "#0db9d7" })
 vim.fn.sign_define("LspDiagnosticsSignInformation",
-                   { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation" })
+                   { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation", guifg = "#10b981" })
 
 vim.cmd("hi LspDiagnosticsUnderlineError gui=undercurl guisp=#db4b4b")
 vim.cmd("hi LspDiagnosticsUnderlineWarning gui=undercurl guisp=#e0af68")
@@ -20,11 +23,6 @@ vim.cmd('nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>')
 vim.cmd('nnoremap <silent> <C-f> <cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(1)<CR>')
 vim.cmd('nnoremap <silent> <C-b> <cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(-1)<CR>')
 vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
-
-vim.cmd("autocmd BufWritePre *.js lua vim.lsp.buf.formatting_sync(nil, 100)")
-vim.cmd("autocmd BufWritePre *.jsx lua vim.lsp.buf.formatting_sync(nil, 100)")
-vim.cmd("autocmd BufWritePre *.ts lua vim.lsp.buf.formatting_sync(nil, 100)")
-vim.cmd("autocmd BufWritePre *.tsx lua vim.lsp.buf.formatting_sync(nil, 100)")
 
 local function documentHighlight(client, _)
   if client and client.resolved_capabilities.document_highlight then
@@ -57,11 +55,8 @@ end
 
 lsp_config.common_on_attach()
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics, {
-  virtual_text = { prefix = "", spacing = 0 },
-  signs = false,
-  update_in_insert = true
-})
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
+                                                                   { virtual_text = { spacing = 0 }, update_in_insert = true })
 
 return lsp_config
 
