@@ -311,9 +311,6 @@ return require('packer').startup(function(use)
   use {
     'mbbill/undotree',
     
-    setup = function()
-      require("nvim-undotree")
-    end,
     cmd = {
       "UndotreeToggle",
       "UndotreeShow"
