@@ -19,7 +19,8 @@ require("which-key").setup {
   },
   key_labels = { ["<space>"] = "SPC", ["<tab>"] = "TAB" },
   hidden = {"<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
-  show_help = true
+  show_help = true,
+  triggers = { "<leader>" }
 }
 
 local opts = {
