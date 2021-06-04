@@ -48,10 +48,6 @@ vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', { noremap
 -- dashboard
 vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', { noremap = true, silent = true })
 
--- Comments
-vim.api.nvim_set_keymap("n", "<leader>/", "<Plug>ToggleCommaround", {})
-vim.api.nvim_set_keymap("v", "<leader>/", "<Plug>ToggleCommaround", {})
-
 -- close buffer
 vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", { noremap = true, silent = true })
 
@@ -59,7 +55,6 @@ vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", { noremap = true, 
 vim.api.nvim_set_keymap('n', '<leader>p', ":lua require'telescope'.extensions.project.project{}<CR>", { noremap = true, silent = true })
 
 local japanese_mappings = {
-  ["/"] = "コメントアウトを切り替え",
   ["c"] = "バッファーを閉じる",
   ["e"] = "エクスプローラー",
   ["f"] = "ファイルを検索",
@@ -157,7 +152,6 @@ local japanese_mappings = {
 }
 
 local mappings = {
-  ["/"] = "Comment Toggle",
   ["c"] = "Close Buffer",
   ["e"] = "Explorer",
   ["f"] = "Find File",

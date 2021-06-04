@@ -298,7 +298,17 @@ return require('packer').startup(function(use)
     opt = true
   }
 
-  use "gennaro-tedesco/nvim-commaround"
+  use {
+    "b3nj5m1n/kommentary",
+
+    config = function()
+      require('kommentary.config').configure_language('typescriptreact', {
+        hook_function = function()
+          require('ts_context_commentstring.internal').update_commentstring()
+        end
+      })
+    end
+  }
 
   use {
     'mbbill/undotree',
