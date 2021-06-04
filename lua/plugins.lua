@@ -178,9 +178,9 @@ return require('packer').startup(function(use)
   use {
     'glepnir/lspsaga.nvim',
 
-    cmd = {
-      "Lspsaga"
-    }
+    config = function()
+      require("nvim-lspsaga")
+    end
   }
   use { 'tzachar/compe-tabnine', run = "./install.sh", requires = { "hrsh7th/nvim-compe" } }
   use {
@@ -394,8 +394,7 @@ return require('packer').startup(function(use)
   use {
     "phaazon/hop.nvim",
 
-    branch = "pre-extmarks",
-    as = "hop",
+    as = "hop"
   }
 
   use {
@@ -422,6 +421,7 @@ return require('packer').startup(function(use)
 
   use {
     "Pocco81/NoCLC.nvim",
+
     config = function()
       require("no-clc").setup {
         load_at_startup = true,
@@ -479,7 +479,7 @@ return require('packer').startup(function(use)
 
     config = function()
       require("toggleterm").setup {
-        open_mapping = [[<leader>r]]
+        open_mapping = [[<C-t>]]
       }
     end
   }
