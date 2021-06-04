@@ -476,6 +476,16 @@ return require('packer').startup(function(use)
       require("headwind").setup()
     end
   }
+
+  use {
+    "akinsho/nvim-toggleterm.lua",
+
+    config = function()
+      require("toggleterm").setup {
+        open_mapping = [[<leader>r]]
+      }
+    end
+  }
 end, {
   profile = {
     enable = true
