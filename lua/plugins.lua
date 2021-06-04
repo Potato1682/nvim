@@ -184,14 +184,6 @@ return require('packer').startup(function(use)
   }
   use { 'tzachar/compe-tabnine', run = "./install.sh", requires = { "hrsh7th/nvim-compe" } }
   use {
-    'kosayoda/nvim-lightbulb',
-
-    as = "lightbulb",
-    config = function()
-      require("nvim-lightbulb-config")
-    end
-  }
-  use {
     'folke/lsp-colors.nvim',
 
     config = function()
