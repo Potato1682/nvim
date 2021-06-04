@@ -97,7 +97,7 @@ function _G.MUtils.tab_complete()
           return string.rep(" ", vim.bo.ts + 1)
         end
 
-        return ""
+        -- return t ""
       elseif line:match("^%s$") ~= "" then
         return npairs.esc("<Tab>")
       end
@@ -120,7 +120,7 @@ end
 vim.api.nvim_set_keymap("i", "<CR>", "v:lua.MUtils.enter_confirm()", { expr = true })
 
 vim.api.nvim_set_keymap("i", "<Tab>", "v:lua.MUtils.tab_complete()", { expr = true })
-vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.MUtilstab_complete()", { expr = true })
+vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.MUtils.tab_complete()", { expr = true })
 
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.MUtils.s_tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.MUtils.s_tab_complete()", { expr = true })

@@ -191,18 +191,16 @@ return require('packer').startup(function(use)
     end
   }
 
+  use 'tpope/vim-dadbod'
   use {
     'kristijanhusak/vim-dadbod-completion',
+    'krisajenkins/vim-java-sql',
+    'kristijanhusak/vim-dadbod-ui',
 
     config = function()
       require("nvim-dadbod")
     end,
-    requires = {{
-      'tpope/vim-dadbod',
-
-      ft = { 'sql' }
-    }},
-    ft = { 'sql' }
+    requires = { 'tpope/vim-dadbod' }
   }
 
   use {
