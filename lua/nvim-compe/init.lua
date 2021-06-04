@@ -59,12 +59,6 @@ local function t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local function check_back_space()
-  local col = vim.fn.col(".") - 1
-
-  return col == 0 or vim.fn.getline("."):sub(col, col):match("%s")
-end
-
 local npairs = require("nvim-autopairs")
 
 _G.MUtils = {}
@@ -98,9 +92,7 @@ function _G.MUtils.tab_complete()
         vim.api.nvim_input("<ESC>s")
 
         if line == vim.fn.getline(".") then
-          if not vim.bo.expandtab then
-            return npairs.esc("<Tab>")
-          end
+          if not vim.bo.expandtab then return npairs.esc("<Tab>") end
 
           return string.rep(" ", vim.bo.ts + 1)
         end
