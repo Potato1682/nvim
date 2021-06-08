@@ -456,6 +456,15 @@ return require('packer').startup(function(use)
   }
 
   use {
+    "bfredl/nvim-miniyank",
+
+    config = function()
+      vim.api.nvim_set_keymap("", "p", "<Plug>(miniyank-autoput)", { noremap = false, silent = true, expr = true })
+      vim.api.nvim_set_keymap("", "P", "<Plug>(miniyank-autoPut)", { noremap = false, silent = true, expr = true })
+    end
+  }
+
+  use {
     "winston0410/range-highlight.nvim",
 
     config = function()
