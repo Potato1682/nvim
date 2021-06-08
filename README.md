@@ -16,6 +16,7 @@ My neovim settings
 - `jq`
 - Java >= 11 and Lombok (/usr/local/share/lombok/lombok.jar)
 - Docker Engine
+- Ruby and [Bundler](https://bundler.io)
 
 ## Features
 

@@ -35,6 +35,8 @@ require("lsp.java-ls")
 require("lsp.docker-ls")
 require("nvim-dap.c-cpp-rust-debug")
 require("lsp.rust-ls")
+require("lsp.graphql-ls")
+require("lsp.ruby-ls")
 require("lsp.virtual-text")
 require("nvim-dap.nvim-lua-debug")
 
