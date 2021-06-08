@@ -5,7 +5,7 @@ local function install(name, dir, script)
 
   local function onExit(_, code)
     if code ~= 0 then error("Couldn't install " .. name .. " server!") end
-    print("Successfully installed " .. name .. " debug server!")
+    print("Successfully installed " .. name .. " server!")
   end
 
   vim.cmd("new")
