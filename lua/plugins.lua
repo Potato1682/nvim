@@ -459,8 +459,8 @@ return require('packer').startup(function(use)
     "bfredl/nvim-miniyank",
 
     config = function()
-      vim.api.nvim_set_keymap("", "p", "<Plug>(miniyank-autoput)", { noremap = false, silent = true, expr = true })
-      vim.api.nvim_set_keymap("", "P", "<Plug>(miniyank-autoPut)", { noremap = false, silent = true, expr = true })
+      vim.api.nvim_set_keymap("", "p", "<Plug>(miniyank-autoput)", { noremap = false, silent = true })
+      vim.api.nvim_set_keymap("", "P", "<Plug>(miniyank-autoPut)", { noremap = false, silent = true })
     end
   }
 
