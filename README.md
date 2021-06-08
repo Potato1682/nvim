@@ -10,7 +10,6 @@ My neovim settings
 - Pipenv
 - Git
 - GCC
-- Ninja
 - Go
 - Node.js and NPM
 - Yarn

@@ -65,7 +65,7 @@ return require('packer').startup(function(use)
 
   use {
     'nvim-telescope/telescope.nvim',
-    
+
     config = function()
       require("nvim-telescope")
     end,
@@ -179,7 +179,7 @@ return require('packer').startup(function(use)
     'glepnir/lspsaga.nvim',
 
     config = function()
-      require("nvim-lspsaga")
+      -- require("nvim-lspsaga")
     end
   }
   use { 'tzachar/compe-tabnine', run = "./install.sh", requires = { "hrsh7th/nvim-compe" } }
@@ -211,7 +211,7 @@ return require('packer').startup(function(use)
       require("nvim-treesitter-config")
     end
   }
-  
+
   use {
     "p00f/nvim-ts-rainbow",
     "windwp/nvim-ts-autotag",
@@ -223,7 +223,7 @@ return require('packer').startup(function(use)
   }
   use {
     "mizlan/iswap.nvim",
-    
+
     config = function()
       require("iswap").setup {
         grey = "disable"
@@ -263,7 +263,7 @@ return require('packer').startup(function(use)
 
   use {
     'kkoomen/vim-doge',
-    
+
     config = function()
       require("nvim-doge")
     end,
@@ -310,7 +310,7 @@ return require('packer').startup(function(use)
 
   use {
     'mbbill/undotree',
-    
+
     cmd = {
       "UndotreeToggle",
       "UndotreeShow"
@@ -319,7 +319,7 @@ return require('packer').startup(function(use)
 
   use {
     "Pocco81/AbbrevMan.nvim",
-    
+
     config = function()
       require("abbrev-man").setup {
         load_natural_dictionaries_at_startup = true,
