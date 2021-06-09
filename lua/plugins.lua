@@ -492,6 +492,14 @@ return require('packer').startup(function(use)
     end
   }
 
+  use {
+    'andweeb/presence.nvim',
+
+    config = function()
+      require("presence"):setup()
+    end
+  }
+
   -- Rust
   use 'simrat39/rust-tools.nvim'
 end, {
