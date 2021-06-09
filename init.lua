@@ -44,5 +44,6 @@ require("nvim-dap.go")
 require("lsp.go")
 require("nvim-dap.php")
 require("lsp.php")
+require("lsp.terraform")
 require("lsp.virtual-text")
 
