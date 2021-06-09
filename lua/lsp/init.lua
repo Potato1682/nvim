@@ -2,15 +2,23 @@ vim.fn.sign_define("LspDiagnosticsSignError",
                    { texthl = "LspDiagnosticsSignError", text = " ", numhl = "LspDiagnosticsSignError", guifg = "#db4b4b" })
 vim.fn.sign_define("LspDiagnosticsSignWarning",
                    { texthl = "LspDiagnosticsSignWarning", text = " ", numhl = "LspDiagnosticsSignWarning", guifg = "#e0af68" })
-vim.fn
-    .sign_define("LspDiagnosticsSignHint", { texthl = "LspDiagnosticsSignHint", text = " ", numhl = "LspDiagnosticsSignHint", guifg = "#0db9d7" })
+vim.fn.sign_define("LspDiagnosticsSignHint",
+                   { texthl = "LspDiagnosticsSignHint", text = " ", numhl = "LspDiagnosticsSignHint", guifg = "#0db9d7" })
 vim.fn.sign_define("LspDiagnosticsSignInformation",
                    { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation", guifg = "#10b981" })
 
+vim.cmd("hi ErrorText gui=undercurl guisp=#db4b4b")
+vim.cmd("hi WarningText gui=undercurl guisp=#e0af68")
+vim.cmd("hi InfoText gui=undercurl guisp=#0db9d7")
+vim.cmd("hi HintText gui=undercurl guisp=#a0c980")
+vim.cmd("hi LspDiagnosticsDefaultError gui=NONE guifg=#db4b4b guibg=NONE")
+vim.cmd("hi LspDiagnosticsDefaultWarning gui=NONE guifg=#e0af68 guibg=NONE")
+vim.cmd("hi LspDiagnosticsDefaultInformation gui=NONE guifg=#0db9d7 guibg=NONE")
+vim.cmd("hi LspDiagnosticsDefaultHint gui=NONE guifg=#a0c980 guibg=NONE")
 vim.cmd("hi LspDiagnosticsUnderlineError gui=undercurl guisp=#db4b4b")
 vim.cmd("hi LspDiagnosticsUnderlineWarning gui=undercurl guisp=#e0af68")
 vim.cmd("hi LspDiagnosticsUnderlineInformation gui=undercurl guisp=#0db9d7")
-vim.cmd("hi LspDiagnosticsUnderlineHint gui=undercurl guisp=#10b981")
+vim.cmd("hi LspDiagnosticsUnderlineHint gui=undercurl guisp=#a0c980")
 
 vim.cmd('nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>')
 vim.cmd('nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>')
