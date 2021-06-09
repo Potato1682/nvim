@@ -106,10 +106,7 @@ return require('packer').startup(function(use)
   use {
     'kabouzeid/nvim-lspinstall',
 
-    as = "lspinstall",
-    config = function()
-      require("nvim-lspinstall")
-    end
+    as = "lspinstall"
   }
   use {
     'alexaandru/nvim-lspupdate',
@@ -494,6 +491,9 @@ return require('packer').startup(function(use)
       }
     end
   }
+
+  -- Rust
+  use 'simrat39/rust-tools.nvim'
 end, {
   profile = {
     enable = true

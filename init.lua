@@ -12,6 +12,8 @@ require("nvim-undotree")
 
 require("nvim-dap")
 
+require("nvim-lspinstall")
+
 require("lsp")
 require("lsp.efm-server")
 require("lsp.c-cpp")
