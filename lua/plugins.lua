@@ -483,6 +483,8 @@ return require('packer').startup(function(use)
     end
   }
 
+  use 'dstein64/nvim-scrollview'
+
   use {
     "akinsho/nvim-toggleterm.lua",
 

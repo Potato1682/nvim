@@ -108,17 +108,6 @@ gls.right[3] = {
   }
 }
 
-gls.right[4] = { LinePercent = { provider = "LinePercent", icon = " ", highlight = { colors.grey, colors.bg } } }
-
-gls.right[5] = {
-  ScrollBar = {
-    provider = "ScrollBar",
-    separator = " ",
-    separator_highlight = { colors.dark_grey, colors.bg },
-    highlight = { colors.blue, colors.bg }
-  }
-}
-
 gls.short_line_left[1] = {
   FileTypeName = { provider = "FileTypeName", separator = " ", separator_highlight = { "NONE", colors.bg }, highlight = { colors.grey, colors.bg } }
 }
