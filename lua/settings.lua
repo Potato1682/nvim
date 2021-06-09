@@ -60,4 +60,5 @@ vim.cmd("hi GreenSign ctermbg=235 guibg=#2b2d3a")
 vim.cmd("hi BlueSign ctermbg=235 guibg=#2b2d3a")
 vim.cmd("hi RedSign ctermbg=235 guibg=#2b2d3a")
 vim.cmd("hi YellowSign ctermbg=235 guibg=#2b2d3a")
+vim.cmd("hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg")
 
