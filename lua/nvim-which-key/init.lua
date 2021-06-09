@@ -103,8 +103,10 @@ local japanese_mappings = {
     u = { "<cmd>UndoStageHunk<cr>", "Hunkのステージを戻す" },
     o = { "<cmd>Telescope git_status<cr>", "変更済みファイルを開く" },
     b = { "<cmd>Telescope git_branches<cr>", "ブランチをチェックアウト" },
-    c = { "<cmd>Telescope git_commits<cr>", "コミットをチェックアウト" },
-    C = { "<cmd>Telescope git_bcommits<cr>", "開いているファイルのコミットをチェックアウト" }
+    c = { "<cmd>Neogit commit<cr>", "変更をコミット" },
+    C = { "<cmd>Telescope git_commits<cr>", "コミットをチェックアウト" },
+    g = { "<cmd>Neogit<cr>", "Git ウィンドウ" }
+
   },
   l = {
     name = "+LSP",
@@ -201,8 +203,9 @@ local mappings = {
     u = { "<cmd>UndoStageHunk<cr>", "Undo Stage Hunk" },
     o = { "<cmd>Telescope git_status<cr>", "Open changed file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
-    c = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    C = { "<cmd>Telescope git_bcommits<cr>", "Checkout commit(for current file)" }
+    c = { "<cmd>Neogit commit<cr>", "Commit changes" },
+    C = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
+    g = { "<cmd>Neogit<cr>", "Git Window" }
   },
   l = {
     name = "+LSP",

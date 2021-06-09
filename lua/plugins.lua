@@ -507,6 +507,14 @@ return require('packer').startup(function(use)
   }
 
   use {
+    "TimUntersberger/neogit",
+
+    config = function()
+      require("neogit").setup {}
+    end
+  }
+
+  use {
     "notomo/cmdbuf.nvim",
 
     config = function()
