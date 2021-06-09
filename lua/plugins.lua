@@ -493,6 +493,12 @@ return require('packer').startup(function(use)
   }
 
   use {
+      'NTBBloodbath/rest.nvim',
+
+      requires = { 'nvim-lua/plenary.nvim' }
+  }
+
+  use {
     'andweeb/presence.nvim',
 
     config = function()
