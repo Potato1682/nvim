@@ -42,5 +42,7 @@ require("nvim-dap.ruby")
 require("lsp.ruby")
 require("nvim-dap.go")
 require("lsp.go")
+require("nvim-dap.php")
+require("lsp.php")
 require("lsp.virtual-text")
 
