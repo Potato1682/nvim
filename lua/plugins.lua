@@ -378,6 +378,17 @@ return require('packer').startup(function(use)
     end
   }
 
+  use {
+    'jghauser/mkdir.nvim',
+
+    config = function()
+      require("mkdir")
+    end,
+    event = {
+      "BufEnter"
+    }
+  }
+
   use 'tjdevries/colorbuddy.nvim'
 
   use {
