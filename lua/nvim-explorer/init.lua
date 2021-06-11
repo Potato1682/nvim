@@ -42,16 +42,17 @@ vim.g.nvim_tree_bindings = {
   ["q"] = tree_cb("close")
 }
 vim.g.nvim_tree_icons = {
-  default = '',
-  symlink = '',
+  default = '',
+  symlink = '',
   git = {
     unstaged = "",
-    staged = "",
+    staged = "",
     unmerged = "",
     renamed = "➜",
-    untracked = ""
+    untracked = ""
     -- ignored = "◌"
   },
-  folder = { default = "", open = "", empty = "", empty_open = "", symlink = "" }
+  folder = { default = "", open = "", empty = "", empty_open = "", symlink = "" },
+  lsp = { hint = "", info = "", warning = "", error = "" }
 }
 

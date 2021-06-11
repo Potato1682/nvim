@@ -3,8 +3,8 @@ require('telescope').setup {
   defaults = {
     find_command = { 'rg', '--no-heading', '--with-filename', '--line-number', '--column', '--smart-case' },
     prompt_position = "top",
-    prompt_prefix = " ",
-    selection_caret = " ",
+    prompt_prefix = "  ",
+    selection_caret = " ❯ ",
     entry_prefix = "  ",
     initial_mode = "insert",
     selection_strategy = "reset",

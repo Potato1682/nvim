@@ -15,6 +15,8 @@ require('packer').init({ display = { auto_clean = false } })
 return require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
+  use 'yamatsum/nvim-nonicons'
+
   use 'sainnhe/edge'
   use 'ChristianChiarulli/nvcode-color-schemes.vim'
   use {

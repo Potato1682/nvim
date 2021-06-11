@@ -2,10 +2,10 @@ vim.fn.sign_define("LspDiagnosticsSignError",
                    { texthl = "LspDiagnosticsSignError", text = " ", numhl = "LspDiagnosticsSignError", guifg = "#db4b4b" })
 vim.fn.sign_define("LspDiagnosticsSignWarning",
                    { texthl = "LspDiagnosticsSignWarning", text = " ", numhl = "LspDiagnosticsSignWarning", guifg = "#e0af68" })
-vim.fn.sign_define("LspDiagnosticsSignHint",
-                   { texthl = "LspDiagnosticsSignHint", text = " ", numhl = "LspDiagnosticsSignHint", guifg = "#0db9d7" })
 vim.fn.sign_define("LspDiagnosticsSignInformation",
-                   { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation", guifg = "#10b981" })
+                   { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation", guifg = "#0db9d7" })
+vim.fn.sign_define("LspDiagnosticsSignHint",
+                   { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint", guifg = "#a0c980" })
 
 vim.cmd("hi ErrorText gui=undercurl guisp=#db4b4b")
 vim.cmd("hi WarningText gui=undercurl guisp=#e0af68")
@@ -48,10 +48,10 @@ local function documentHighlight(client, _)
 end
 
 vim.lsp.protocol.CompletionItemKind = {
-  "   (Text)", "   (Method)", "   (Function)", "   (Constructor)", "   (Field)", "[] (Variable)", "   (Class)",
-  "   (Interface)", "   (Module)", " 襁 (Property)", "   (Unit)", "   (Value)", "   (Enum)", "   (Keyword)", "   (Snippet)",
-  "   (Color)", "   (File)", " ﬌  (Reference)", "   (Folder)", "   (EnumMember)", "   (Constant)", "   (Struct)", "   (Event)",
-  " ±  (Operator)", "<> (TypeParameter)"
+  " (Text)", " (Method)", " (Function)", " (Constructor)", " (Field)", "[] (Variable)", " (Class)",
+  " (Interface)", "{} (Module)", " (Property)", " (Unit)", " (Value)", "  (Enum)", " (Keyword)", " (Snippet)",
+  " (Color)", " (File)", " (Reference)", " (Folder)", " (EnumMember)", " (Constant)", " (Struct)", " (Event)",
+  " (Operator)", " (TypeParameter)"
 }
 
 local lsp_config = {}

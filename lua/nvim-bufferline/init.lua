@@ -29,13 +29,13 @@ require'bufferline'.setup {
         local info = vim.lsp.diagnostic.get_count(0, [[Information]])
         local hint = vim.lsp.diagnostic.get_count(0, [[Hint]])
 
-        if error ~= 0 then result[1] = { text = "  " .. error, guifg = "#EC5241" } end
+        if error ~= 0 then result[1] = { text = "  " .. error, guifg = "#db4b4b" } end
 
-        if warning ~= 0 then result[2] = { text = "  " .. warning, guifg = "#EFB839" } end
+        if warning ~= 0 then result[2] = { text = "  " .. warning, guifg = "#e0af68" } end
 
-        if hint ~= 0 then result[3] = { text = "  " .. hint, guifg = "#A3BA5E" } end
+        if info ~= 0 then result[4] = { text = "  " .. info, guifg = "#0db9d7" } end
 
-        if info ~= 0 then result[4] = { text = "  " .. info, guifg = "#7EA9A7" } end
+        if hint ~= 0 then result[3] = { text = "  " .. hint, guifg = "#a0c980" } end
 
         return result
       end
@@ -45,21 +45,21 @@ require'bufferline'.setup {
     offsets = { { filetype = "NvimTree", text = "Explorer", text_align = "center" } }
   },
   highlights = {
-    fill = { guibg = "#282C34" },
-    separator_selected = { guibg = "#282C34" },
+    fill = { guibg = "#282c34" },
+    separator_selected = { guibg = "#282c34" },
     buffer_selected = { gui = "italic" },
-    info = { guifg = "#569CD6" },
-    info_selected = { guifg = "#569CD6", guisp = "#569CD6" },
-    info_diagnostic = { guisp = "#569CD6" },
-    info_diagnostic_selected = { guifg = "#569CD6", guisp = "#569CD6" },
-    warning = { guifg = "#D7BA7D" },
-    warning_selected = { guifg = "#D7BA7D", guisp = "#D7BA7D" },
-    warning_diagnostic = { guisp = "#D7BA7D" },
-    warning_diagnostic_selected = { guifg = "#D7BA7D", guisp = "#D7BA7D" },
-    error = { guifg = "#D16969" },
-    error_selected = { guifg = "#D16969", guisp = "#D16969" },
-    error_diagnostic = { guisp = "#D16969" },
-    error_diagnostic_selected = { guifg = "#D16969", guisp = "#D16969" }
+    info = { guifg = "#0db9d7" },
+    info_selected = { guifg = "#0db9d7", guisp = "#0db9d7" },
+    info_diagnostic = { guisp = "#0db9d7" },
+    info_diagnostic_selected = { guifg = "#0db9d7", guisp = "#0db9d7" },
+    warning = { guifg = "#e0af68" },
+    warning_selected = { guifg = "#e0af68", guisp = "#e0af68" },
+    warning_diagnostic = { guisp = "#e0af68" },
+    warning_diagnostic_selected = { guifg = "#e0af68", guisp = "#e0af68" },
+    error = { guifg = "#db4b4b" },
+    error_selected = { guifg = "#db4b4b", guisp = "#db4b4b" },
+    error_diagnostic = { guisp = "#db4b4b" },
+    error_diagnostic_selected = { guifg = "#db4b4b", guisp = "#db4b4b" }
   }
 }
 

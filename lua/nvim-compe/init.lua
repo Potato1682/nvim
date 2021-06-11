@@ -15,45 +15,19 @@ require'compe'.setup {
   documentation = true,
 
   source = {
-    path = { kind = "  " },
+    path = { kind = "  " },
     buffer = { kind = "  " },
-    calc = { kind = "  " },
-    vsnip = { kind = "  " },
-    nvim_lsp = { kind = "  " },
-    nvim_lua = { kind = "  " },
-    spell = { kind = "  " },
+    calc = { kind = "  " },
+    vsnip = { kind = "  " },
+    nvim_lsp = { kind = "  " },
+    nvim_lua = { kind = "  " },
+    spell = { kind = "  " },
     tags = false,
     vim_dadbod_completion = true,
     tabnine = true,
     emoji = { kind = " ﲃ ", filetypes = { "markdown" } }
   }
 }
-
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- 
--- ﬘
--- 
--- 
--- 
--- m
--- 
--- 
--- 
--- 
 
 local function t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
