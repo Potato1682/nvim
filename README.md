@@ -67,6 +67,7 @@ My neovim settings
 - Right mouse drag gestures
 - Discord Rich Presence support
 - Under cursor increment and decrement
+- Editorconfig support
 
 ## Trouble Shooting
 
