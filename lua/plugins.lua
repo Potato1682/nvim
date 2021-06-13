@@ -26,12 +26,22 @@ return require('packer').startup(function(use)
   }
 
   use {
+    "dstein64/vim-startuptime",
+
+    config = function()
+      vim.g.startuptime_tries = 10
+    end,
+    cmd = "StartupTime"
+  }
+
+  use {
     "RRethy/vim-hexokinase",
 
     config = function()
       require("nvim-hexokinase")
     end,
-    run = "make hexokinase"
+    run = "make hexokinase",
+    event = "BufEnter"
   }
   use 'sheerun/vim-polyglot'
 
@@ -99,7 +109,8 @@ return require('packer').startup(function(use)
     config = function()
       vim.api.nvim_set_keymap("n", "j", "<Plug>(faster_move_j)", { noremap = false, silent = true })
       vim.api.nvim_set_keymap("n", "k", "<Plug>(faster_move_k)", { noremap = false, silent = true })
-    end
+    end,
+    event = "BufEnter"
   }
 
   use {
@@ -131,7 +142,7 @@ return require('packer').startup(function(use)
 
     as = "lspcontainers"
   }
-
+  use 'RRethy/vim-illuminate'
   use {
     'folke/trouble.nvim',
 
@@ -149,21 +160,6 @@ return require('packer').startup(function(use)
       require("todo-comments").setup()
     end
   }
-
-  use {
-    'tjdevries/nlua.nvim',
-
-    requires = {
-      'nvim-lua/plenary.nvim'
-    }
-  }
-
-  use {
-    'tjdevries/manillua.nvim',
-
-    as = "manillua"
-  }
-
   use {
     "simrat39/symbols-outline.nvim",
 
@@ -173,27 +169,54 @@ return require('packer').startup(function(use)
     }
   }
 
-  use 'hrsh7th/nvim-compe'
-  use 'hrsh7th/vim-vsnip'
-  use 'hrsh7th/vim-vsnip-integ'
-  use 'rafamadriz/friendly-snippets'
+  use {
+    'tjdevries/nlua.nvim',
+
+    requires = {
+      'nvim-lua/plenary.nvim'
+    }
+  }
+  use {
+    'tjdevries/manillua.nvim',
+
+    as = "manillua"
+  }
+
+  use {
+    'hrsh7th/nvim-compe',
+
+    config = function()
+      require("nvim-compe")
+    end,
+    event = "InsertEnter *",
+  }
+  use {
+    'hrsh7th/vim-vsnip',
+    'hrsh7th/vim-vsnip-integ',
+    'rafamadriz/friendly-snippets',
+  }
+
   use {
     'glepnir/lspsaga.nvim',
 
     config = function()
       require("nvim-lspsaga")
-    end
+    end,
+    event = "BufEnter"
   }
-  use { 'tzachar/compe-tabnine', run = "./install.sh", requires = { "hrsh7th/nvim-compe" } }
-  --[[ use {
-    'folke/lsp-colors.nvim',
+  use {
+    'tzachar/compe-tabnine',
+    run = "./install.sh",
+    event = "InsertEnter *",
+    requires = { "hrsh7th/nvim-compe" }
+  }
 
-    config = function()
-      require("lsp-colors").setup()
-    end
-  } ]]
+  use {
+    'tpope/vim-dadbod',
 
-  use 'tpope/vim-dadbod'
+    as = "dadbod",
+    event = "BufEnter"
+  }
   use {
     'kristijanhusak/vim-dadbod-completion',
     'krisajenkins/vim-java-sql',
@@ -202,6 +225,7 @@ return require('packer').startup(function(use)
     config = function()
       require("nvim-dadbod")
     end,
+    after = "dadbod",
     requires = { 'tpope/vim-dadbod' }
   }
 
@@ -213,15 +237,14 @@ return require('packer').startup(function(use)
       require("nvim-treesitter-config")
     end
   }
-
   use {
     "p00f/nvim-ts-rainbow",
     "windwp/nvim-ts-autotag",
     "JoosepAlviste/nvim-ts-context-commentstring",
     "andymass/vim-matchup",
+    "nvim-treesitter/nvim-treesitter-textobjects",
     "theHamsta/crazy-node-movement",
-
-    after = "nvim-treesitter"
+    "haringsrob/nvim_context_vt"
   }
   use {
     "mizlan/iswap.nvim",
@@ -230,7 +253,8 @@ return require('packer').startup(function(use)
       require("iswap").setup {
         grey = "disable"
       }
-    end
+    end,
+    cmd = "ISwap"
   }
   use {
     "lewis6991/spellsitter.nvim",
@@ -240,7 +264,8 @@ return require('packer').startup(function(use)
         hl = "SpellBad",
         captures = { "comment" }
       }
-    end
+    end,
+    event = "BufEnter"
   }
 
   use {
@@ -249,7 +274,8 @@ return require('packer').startup(function(use)
     branch = 'lua',
     config = function()
       require("nvim-indentline")
-    end
+    end,
+    event = "BufEnter"
   }
 
   use {
@@ -258,10 +284,25 @@ return require('packer').startup(function(use)
     config = function()
       require("nvim-gitsigns")
     end,
+    event = "BufEnter",
     requires = { 'nvim-lua/plenary.nvim' }
   }
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-rhubarb'
+  use {
+    'tpope/vim-fugitive',
+
+    cmd = {
+      "Git",
+      "Gstatus",
+      "Gblame",
+      "Gpush",
+      "Gpull"
+    }
+  }
+  use {
+    'tpope/vim-rhubarb',
+
+    cmd = "GBrowse"
+  }
 
   use {
     'kkoomen/vim-doge',
@@ -269,6 +310,7 @@ return require('packer').startup(function(use)
     config = function()
       require("nvim-doge")
     end,
+    event = "BufEnter",
     run = ':call doge#install()'
   }
 
@@ -310,7 +352,8 @@ return require('packer').startup(function(use)
           require('ts_context_commentstring.internal').update_commentstring()
         end
       })
-    end
+    end,
+    event = "BufEnter"
   }
 
   use {
@@ -319,7 +362,10 @@ return require('packer').startup(function(use)
     cmd = {
       "UndotreeToggle",
       "UndotreeShow"
-    }
+    },
+    config = function()
+      vim.g.undotree_SetFocusWhenToggle = 1
+    end
   }
 
   use {
@@ -338,7 +384,8 @@ return require('packer').startup(function(use)
           ["pr_lua"] = {}
         }
       }
-    end
+    end,
+    event = "InsertEnter *"
   }
 
   use {
@@ -363,7 +410,8 @@ return require('packer').startup(function(use)
 
     config = function()
       require("nvim-dial")
-    end
+    end,
+    event = "BufEnter *"
   }
 
   use {
@@ -371,12 +419,15 @@ return require('packer').startup(function(use)
 
     config = function()
       require("nvim-mouse-gesture")
-    end
+    end,
+    keys = "<RightMouse>"
   }
 
-  use 'haringsrob/nvim_context_vt'
+  use {
+    'digitaltoad/vim-pug',
 
-  use 'digitaltoad/vim-pug'
+    ft = "pug"
+  }
 
   use {
     'Pocco81/TrueZen.nvim',
@@ -392,9 +443,7 @@ return require('packer').startup(function(use)
     config = function()
       require("mkdir")
     end,
-    event = {
-      "BufEnter"
-    }
+    event = "BufEnter"
   }
 
   use 'tjdevries/colorbuddy.nvim'
@@ -410,7 +459,8 @@ return require('packer').startup(function(use)
   use {
     "phaazon/hop.nvim",
 
-    as = "hop"
+    as = "hop",
+    event = "BufEnter"
   }
 
   use {
@@ -468,7 +518,8 @@ return require('packer').startup(function(use)
 
     config = function()
       vim.g.auto_save = 1
-    end
+    end,
+    event = "BufEnter"
   }
 
   use {
@@ -496,10 +547,22 @@ return require('packer').startup(function(use)
 
     config = function()
       require("headwind").setup()
-    end
+    end,
+    ft = {
+      "html",
+      "pug",
+      "vue",
+      "javascriptreact",
+      "typescriptreact",
+      "ejs"
+    }
   }
 
-  use 'dstein64/nvim-scrollview'
+  use {
+    'dstein64/nvim-scrollview',
+
+    event = "BufEnter"
+  }
 
   use {
     "akinsho/nvim-toggleterm.lua",
@@ -530,7 +593,8 @@ return require('packer').startup(function(use)
 
     config = function()
       require("neogit").setup {}
-    end
+    end,
+    cmd = "Neogit"
   }
 
   use {
@@ -543,7 +607,11 @@ return require('packer').startup(function(use)
   }
 
   -- Rust
-  use 'simrat39/rust-tools.nvim'
+  use {
+    'simrat39/rust-tools.nvim',
+
+    ft = "rust"
+  }
 end, {
   profile = {
     enable = true
