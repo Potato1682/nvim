@@ -29,6 +29,8 @@ return require('packer').startup(function(use)
   }
   use 'sheerun/vim-polyglot'
 
+  use 'jbyuki/contextmenu.nvim'
+
   use {
     'akinsho/nvim-bufferline.lua',
 
@@ -449,7 +451,7 @@ return require('packer').startup(function(use)
     end
   }
 
-  use "famiu/bufdelete.nvim"
+  use "ojroques/nvim-bufdel"
 
   use "toritori0318/vim-redmine"
 

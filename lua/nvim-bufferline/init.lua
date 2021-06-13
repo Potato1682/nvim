@@ -2,6 +2,96 @@ require'bufferline'.setup {
   options = {
     view = "multiwindow",
     tab_size = 24,
+    close_command = function(bufnum)
+      require"bufdel".delete_buffer(bufnum, false)
+    end,
+    right_mouse_command = function(bufnum)
+      vim.api.nvim_input("<ESC>")
+
+      local choises = {
+        " New Buffer        ",
+        " Close             ",
+        " Close All         ",
+        "",
+        "/Copy Path         ",
+        " Copy Relative Path",
+        "",
+        " Split Vertically  ",
+        " Split Horizontally",
+        " Move Right        ",
+        " Move Left         ",
+        "  Pick Buffers ...  ",
+        "  Sort By .extension",
+        "  Sort By directory/",
+        "  Sort By /directory",
+        "",
+        " Select Next Buffer",
+        " Select Prev Buffer"
+      }
+
+      local choise_callbacks = {
+        function()
+          vim.cmd([[ enew ]])
+        end,
+        function()
+          require"bufdel".delete_buffer(bufnum)
+        end,
+        function()
+          vim.cmd([[ bwipe ]])
+        end,
+        function() end,
+        function()
+          vim.cmd([[ let @* = expand("%:p") ]])
+        end,
+        function()
+          vim.cmd([[ let @* = expand("%") ]])
+        end,
+        function() end,
+        function()
+          vim.cmd("vertical sbuffer " .. bufnum)
+        end,
+        function()
+          vim.cmd("sbuffer " .. bufnum)
+        end,
+        function()
+          require"bufferline".move(1)
+        end,
+        function()
+          require"bufferline".move(-1)
+        end,
+        function()
+          require"bufferline".pick_buffer()
+        end,
+        function()
+          require"bufferline".sort_buffers_by("extension")
+        end,
+        function()
+          require"bufferline".sort_buffers_by("relative_directory")
+        end,
+        function()
+          require"bufferline".sort_buffers_by("directory")
+        end,
+        function() end,
+        function()
+          require"bufferline".cycle(1)
+        end,
+        function()
+          require"bufferline".cycle(-1)
+        end
+      }
+
+      require"contextmenu".open(choises, {
+        callback = function(chosen)
+          local choise_func = choise_callbacks[chosen]
+
+          if choise_func == nil then
+            return
+          end
+
+          return choise_func()
+        end
+      })
+    end,
     diagnostics = "nvim_lsp",
     diagnostics_indicator = function(_, _, diagnostics_dict)
       local s = ""
@@ -42,7 +132,7 @@ require'bufferline'.setup {
     },
     show_close_icon = false,
     separator_style = "thin",
-    offsets = { { filetype = "NvimTree", text = "Explorer", text_align = "center" } }
+    offsets = { { filetype = "NvimTree", text = O.japanese and "エクスプローラー" or "Explorer", text_align = "center" } }
   },
   highlights = {
     fill = { guibg = "#282c34" },
