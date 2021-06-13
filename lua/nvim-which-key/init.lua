@@ -32,28 +32,6 @@ local opts = {
   nowait = false -- use `nowait` when creating keymaps
 }
 
--- Set leader
-vim.api.nvim_set_keymap('n', '<Space>', '<NOP>', { noremap = true, silent = true })
-vim.g.mapleader = ' '
-
--- no hl
-vim.api.nvim_set_keymap('n', '<Leader>h', ':set nohlsearch<CR>', { noremap = true, silent = true })
-
--- explorer
-vim.api.nvim_set_keymap('n', '<Leader>e', ':NvimTreeToggle<CR>', { noremap = true, silent = true })
-
--- telescope
-vim.api.nvim_set_keymap('n', '<Leader>f', ':Telescope find_files<CR>', { noremap = true, silent = true })
-
--- dashboard
-vim.api.nvim_set_keymap('n', '<Leader>;', ':Dashboard<CR>', { noremap = true, silent = true })
-
--- close buffer
-vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", { noremap = true, silent = true })
-
--- open projects
-vim.api.nvim_set_keymap('n', '<leader>p', ":lua require'telescope'.extensions.project.project{}<CR>", { noremap = true, silent = true })
-
 local japanese_mappings = {
   ["c"] = "バッファーを閉じる",
   ["e"] = "エクスプローラー",
