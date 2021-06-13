@@ -17,6 +17,7 @@ My neovim settings
 - Java >= 11 and Lombok (/usr/local/share/lombok/lombok.jar)
 - Docker Engine
 - Ruby and [Bundler](https://bundler.io)
+- [nonicons](https://github.com/yamatsum/nonicons) patched font
 
 ## Features
 
@@ -58,14 +59,14 @@ My neovim settings
 - Global settings
 - Errors List
 - Markdown preview
-- Template support
+- [Template generation](docs/TEMPLATE-FILE.md)
 - Automatic license file generation
-- Template generation
 - Redmine integration
 - Custom color highlighting
 - Spell check
 - Right mouse drag gestures
 - Discord Rich Presence support
+- Under cursor increment and decrement
 
 ## Trouble Shooting
 
