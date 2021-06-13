@@ -1,64 +1,57 @@
 vim.cmd("set iskeyword+=-")
 vim.cmd("set shortmess+=c")
 vim.cmd("set inccommand=split")
-vim.o.hidden = true
-vim.o.title = true
-vim.o.titlestring = "%<%F%=%l/%L - nvim"
-vim.wo.wrap = O.wrap_lines
+vim.opt.hidden = true
+vim.opt.title = true
+vim.opt.titlestring = "%<%F%=%l/%L - nvim"
+vim.opt.wrap = O.wrap_lines
 vim.cmd("set whichwrap+=<,>,[,],h,l")
-vim.cmd("syntax on")
-vim.o.pumheight = 10
-vim.o.encoding = "UTF-8"
-vim.o.fileencoding = "UTF-8"
-vim.o.cmdheight = 2
+vim.opt.pumheight = 10
+vim.opt.encoding = "UTF-8"
+vim.opt.fileencoding = "UTF-8"
+vim.opt.cmdheight = 2
 vim.cmd("set colorcolumn=99999")
-vim.o.mouse = "a"
-vim.o.splitbelow = true
-vim.o.splitright = true
-if vim.fn.has("termguicolors") then
-  vim.o.t_Co = "256"
-  vim.o.termguicolors = true
-end
-vim.o.conceallevel = 0
-vim.cmd("set ts=4")
-vim.cmd("set sw=4")
-vim.cmd("set sts=4")
-vim.bo.expandtab = true
-vim.bo.smartindent = true
-vim.o.smarttab = true
-vim.bo.autoindent = true
-vim.wo.number = O.number
-vim.wo.relativenumber = O.relative_number
-vim.wo.cursorline = true
-vim.o.showtabline = 2
-vim.o.showmode = false
-vim.o.backup = false
-vim.o.writebackup = false
-vim.wo.signcolumn = "yes:3"
-vim.o.updatetime = 100
-vim.o.redrawtime = 1500
-vim.o.timeoutlen = O.timeoutlen
-vim.o.ttimeoutlen = 10
-vim.o.clipboard = "unnamedplus"
-vim.o.ruler = true
-vim.o.sh = O.shell
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.virtualedit = "onemore"
-vim.o.showcmd = true
-vim.o.errorbells = false
+vim.opt.mouse = "a"
+vim.opt.splitbelow = true
+vim.opt.splitright = true
+vim.opt.termguicolors = true
+vim.opt.conceallevel = 0
+vim.opt.ts = 4
+vim.opt.sw = 4
+vim.opt.sts = 4
+vim.opt.expandtab = true
+vim.opt.smartindent = true
+vim.opt.smarttab = true
+vim.opt.pumblend = 10
+vim.opt.winblend = 10
+vim.opt.autoindent = true
+vim.opt.number = O.number
+vim.opt.relativenumber = O.relative_number
+vim.opt.cursorline = true
+vim.opt.showtabline = 2
+vim.opt.showmode = false
+vim.opt.backup = false
+vim.opt.writebackup = false
+vim.opt.signcolumn = "yes:3"
+vim.opt.updatetime = 100
+vim.opt.redrawtime = 1500
+vim.opt.timeoutlen = O.timeoutlen
+vim.opt.ttimeoutlen = 10
+vim.opt.clipboard = "unnamedplus"
+vim.opt.ruler = true
+vim.opt.sh = O.shell
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.virtualedit = "onemore"
+vim.opt.showcmd = true
+vim.opt.errorbells = false
 vim.cmd("set formatoptions-=cro")
-vim.bo.autoindent = true
+vim.opt.autoindent = true
 vim.cmd("filetype plugin indent on")
-vim.o.foldmethod = "expr"
-vim.o.foldexpr = "nvim_treesitter#foldexpr()"
-vim.o.wildmenu = true
-vim.o.spell = true
+vim.opt.foldmethod = "expr"
+vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
+vim.opt.wildmenu = true
+vim.opt.spell = true
 
-vim.cmd("hi SignColumn ctermbg=235 guibg=#2b2d3a")
-vim.cmd("hi GreenSign ctermbg=235 guibg=#2b2d3a")
-vim.cmd("hi BlueSign ctermbg=235 guibg=#2b2d3a")
-vim.cmd("hi RedSign ctermbg=235 guibg=#2b2d3a")
-vim.cmd("hi YellowSign ctermbg=235 guibg=#2b2d3a")
-vim.cmd("hi! EndOfBuffer ctermbg=bg ctermfg=bg guibg=bg guifg=bg")
+vim.cmd("colorscheme " .. O.colorscheme)
 

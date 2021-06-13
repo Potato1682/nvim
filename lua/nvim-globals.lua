@@ -8,7 +8,7 @@ O = {
   auto_close_tree = 0,
   colorscheme = 'edge',
   -- @usage can be 'aura', 'neon'
-  edge_style = 'neon',
+  colorscheme_style = 'neon',
   wrap_lines = false,
   number = true,
   relative_number = false,
