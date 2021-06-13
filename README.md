@@ -37,6 +37,7 @@ My neovim settings
 	- Diagnostics
 		- Diagnostics report will shown on statusline, bufferline, editor and explorer
 	- Show lightbulb when code action is available
+	- Show signature and document on hover
 - Rainbow brackets
 - Toggle comments
 - Show git status on editor
@@ -64,6 +65,7 @@ My neovim settings
 - Custom color highlighting
 - Spell check
 - Right mouse drag gestures
+- Discord Rich Presence support
 
 ## Trouble Shooting
 
@@ -87,4 +89,10 @@ Comment-out / Add the property to `/etc/containers/registries.conf` like this:
 ```tst
 unqualified-search-registries = ["docker.io"]
 ```
+
+### Discord Rich Presence is not working
+
+nvim using [presence.nvim](https://github.com/andweeb/presence.nvim) to show Rich Presence.  
+If there is a Failed to get Discord IPC socket error, your particular OS may not yet be supported, check [Projects card](https://github.com/andweeb/presence.nvim/projects/1#column-14183588).
+Or if you're using Flatpak'ed discord, [this link](https://github.com/flathub/com.discordapp.Discord/wiki/Rich-Precense-(discord-rpc) might useful.
 
