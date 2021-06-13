@@ -241,7 +241,6 @@ return require('packer').startup(function(use)
     "p00f/nvim-ts-rainbow",
     "windwp/nvim-ts-autotag",
     "JoosepAlviste/nvim-ts-context-commentstring",
-    "andymass/vim-matchup",
     "nvim-treesitter/nvim-treesitter-textobjects",
     "theHamsta/crazy-node-movement",
     "haringsrob/nvim_context_vt"
