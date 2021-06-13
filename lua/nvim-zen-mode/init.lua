@@ -33,7 +33,7 @@ require("true-zen").setup({
     integration_galaxyline = true,
     integration_vim_airline = false,
     integration_vim_powerline = false,
-    integration_tmux = vim.fn.exists("$TMUX"),
+    integration_tmux = false,
     integration_express_line = false,
     integration_gitgutter = false,
     integration_vim_signify = false,
