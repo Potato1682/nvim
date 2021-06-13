@@ -7,6 +7,7 @@ O = {
   japanese = false,
   auto_close_tree = 0,
   colorscheme = 'edge',
+  edge_better_performance = false, -- If true, edge show some logs on startup
   -- @usage can be 'aura', 'neon'
   colorscheme_style = 'neon',
   wrap_lines = false,
