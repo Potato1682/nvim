@@ -40,6 +40,13 @@ require("lspinstall/servers").cpp = vim.tbl_extend('error', clangd_config, {
   ]]
 })
 
+require("lspinstall/servers")["vscode-servers"] = vim.tbl_extend("error", {}, {
+  install_script = [[
+    ! test -f package.json && npm init -y --scope=lspinstall || true
+    npm install vscode-langservers-extracted@latest
+  ]]
+})
+
 require("lspinstall/servers").emmet = vim.tbl_extend('error', {}, {
   install_script = [[
     ! test -f package.json && npm init -y --scope=lspinstall || true
