@@ -5,7 +5,7 @@ require("nvim-globals")
 require("settings")
 require("keys")
 require("providers")
-require("nvim-compe")
+require("events")
 require("nvim-undotree")
 
 require("nvim-dap")

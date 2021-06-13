@@ -19,6 +19,8 @@ O = {
   python = {
     -- @usage can be 'unittest', 'pytest'
     test_type = "pytest"
-  }
+  },
+  enter_event = {},
+  color_event = {}
 }
 
