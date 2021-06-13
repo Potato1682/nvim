@@ -30,6 +30,7 @@ vim.lsp.protocol.CompletionItemKind = {
 local lsp_config = {}
 
 function lsp_config.common_on_attach(client, _)
+  -- fix 'command not found' error
   vim.cmd([[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]])
   require"illuminate".on_attach(client)
 end
