@@ -17,8 +17,14 @@ return require('packer').startup(function(use)
 
   use 'yamatsum/nvim-nonicons'
 
-  use 'sainnhe/edge'
-  use 'ChristianChiarulli/nvcode-color-schemes.vim'
+  use {
+    'sainnhe/edge',
+
+    config = function()
+      require("colorscheme")
+    end
+  }
+
   use {
     "RRethy/vim-hexokinase",
 
@@ -170,27 +176,22 @@ return require('packer').startup(function(use)
   use 'hrsh7th/nvim-compe'
   use 'hrsh7th/vim-vsnip'
   use 'hrsh7th/vim-vsnip-integ'
-  use {
-    'ray-x/lsp_signature.nvim',
-
-    as = "lsp-signature"
-  }
   use 'rafamadriz/friendly-snippets'
   use {
     'glepnir/lspsaga.nvim',
 
     config = function()
-      -- require("nvim-lspsaga")
+      require("nvim-lspsaga")
     end
   }
   use { 'tzachar/compe-tabnine', run = "./install.sh", requires = { "hrsh7th/nvim-compe" } }
-  use {
+  --[[ use {
     'folke/lsp-colors.nvim',
 
     config = function()
       require("lsp-colors").setup()
     end
-  }
+  } ]]
 
   use 'tpope/vim-dadbod'
   use {
@@ -276,7 +277,10 @@ return require('packer').startup(function(use)
   use {
     'folke/which-key.nvim',
 
-    as = "which-key"
+    as = "which-key",
+    config = function()
+      require("nvim-which-key")
+    end
   }
 
   use 'mfussenegger/nvim-dap'

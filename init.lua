@@ -2,11 +2,9 @@ require("plugins")
 
 require("nvim-globals")
 
-require("colorscheme")
 require("settings")
 require("keys")
 require("providers")
-require("nvim-which-key")
 require("nvim-compe")
 require("nvim-undotree")
 
@@ -47,4 +45,6 @@ require("lsp.php")
 require("lsp.terraform")
 require("lsp.svelte")
 require("lsp.virtual-text")
+
+require("colorscheme")
 
