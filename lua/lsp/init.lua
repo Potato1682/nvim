@@ -1,51 +1,24 @@
 vim.fn.sign_define("LspDiagnosticsSignError",
-                   { texthl = "LspDiagnosticsSignError", text = " ", numhl = "LspDiagnosticsSignError", guifg = "#db4b4b" })
+                   { texthl = "LspDiagnosticsSignError", text = " ", numhl = "LspDiagnosticsSignError" })
 vim.fn.sign_define("LspDiagnosticsSignWarning",
-                   { texthl = "LspDiagnosticsSignWarning", text = " ", numhl = "LspDiagnosticsSignWarning", guifg = "#e0af68" })
+                   { texthl = "LspDiagnosticsSignWarning", text = " ", numhl = "LspDiagnosticsSignWarning" })
 vim.fn.sign_define("LspDiagnosticsSignInformation",
-                   { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation", guifg = "#0db9d7" })
+                   { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation" })
 vim.fn.sign_define("LspDiagnosticsSignHint",
-                   { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint", guifg = "#a0c980" })
+                   { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" })
 
-vim.cmd("hi ErrorText gui=undercurl guisp=#db4b4b")
-vim.cmd("hi WarningText gui=undercurl guisp=#e0af68")
-vim.cmd("hi InfoText gui=undercurl guisp=#0db9d7")
-vim.cmd("hi HintText gui=undercurl guisp=#a0c980")
-vim.cmd("hi LspDiagnosticsDefaultError gui=NONE guifg=#db4b4b guibg=NONE")
-vim.cmd("hi LspDiagnosticsDefaultWarning gui=NONE guifg=#e0af68 guibg=NONE")
-vim.cmd("hi LspDiagnosticsDefaultInformation gui=NONE guifg=#0db9d7 guibg=NONE")
-vim.cmd("hi LspDiagnosticsDefaultHint gui=NONE guifg=#a0c980 guibg=NONE")
-vim.cmd("hi LspDiagnosticsUnderlineError gui=undercurl guisp=#db4b4b")
-vim.cmd("hi LspDiagnosticsUnderlineWarning gui=undercurl guisp=#e0af68")
-vim.cmd("hi LspDiagnosticsUnderlineInformation gui=undercurl guisp=#0db9d7")
-vim.cmd("hi LspDiagnosticsUnderlineHint gui=undercurl guisp=#a0c980")
+local keymap = vim.api.nvim_set_keymap
 
-vim.cmd('nnoremap <silent> gd <cmd>lua vim.lsp.buf.definition()<CR>')
-vim.cmd('nnoremap <silent> gD <cmd>lua vim.lsp.buf.declaration()<CR>')
-vim.cmd('nnoremap <silent> gr <cmd>lua vim.lsp.buf.references()<CR>')
-vim.cmd('nnoremap <silent> gi <cmd>lua vim.lsp.buf.implementation()<CR>')
-vim.cmd('nnoremap <silent> ca :Lspsaga code_action<CR>')
-vim.cmd('nnoremap <silent> K :Lspsaga hover_doc<CR>')
-vim.cmd('nnoremap <silent> <C-p> :Lspsaga diagnostic_jump_prev<CR>')
-vim.cmd('nnoremap <silent> <C-n> :Lspsaga diagnostic_jump_next<CR>')
-vim.cmd('nnoremap <silent> <C-f> <cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(1)<CR>')
-vim.cmd('nnoremap <silent> <C-b> <cmd>lua require(\'lspsaga.action\').smart_scroll_with_saga(-1)<CR>')
+keymap("n", "gd", ":lua vim.lsp.buf.definition()<CR>", { noremap = true, silent = true })
+keymap("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent = true })
+keymap("n", "gr", ":lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
+keymap("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", { noremap = true, silent = true })
+keymap("n", "<C-p>", ":Lspsaga diagnostic_jump_prev<CR>", { noremap = true, silent = true })
+keymap("n", "<C-n>", ":Lspsaga diagnostic_jump_next<CR>", { noremap = true, silent = true })
+keymap("n", "<C-f>", ":lua require'lspsaga.action'.smart_scroll_with_saga(1)<CR>", { noremap = true, silent = true })
+keymap("n", "<C-b>", ":lua require'lspsaga.action'.smart_scroll_with_saga(-1)<CR>", { noremap = true, silent = true })
+
 vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
-
-local function documentHighlight(client, _)
-  if client and client.resolved_capabilities.document_highlight then
-    vim.api.nvim_exec([[
-      hi LspReferenceRead cterm=bold ctermbg=red guibg=#464646
-      hi LspReferenceText cterm=bold ctermbg=red guibg=#464646
-      hi LspReferenceWrite cterm=bold ctermbg=red guibg=#464646
-      augroup lsp_document_highlight
-        autocmd! * <buffer>
-        autocmd CursorHold <buffer> lua vim.lsp.buf.document_highlight()
-        autocmd CursorMoved <buffer> lua vim.lsp.buf.clear_references()
-      augroup END
-    ]], false)
-  end
-end
 
 vim.lsp.protocol.CompletionItemKind = {
   " (Text)", " (Method)", " (Function)", " (Constructor)", " (Field)", "[] (Variable)", " (Class)",
@@ -56,8 +29,9 @@ vim.lsp.protocol.CompletionItemKind = {
 
 local lsp_config = {}
 
-function lsp_config.common_on_attach(client, bufnr)
-  documentHighlight(client, bufnr)
+function lsp_config.common_on_attach(client, _)
+  vim.cmd([[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]])
+  require"illuminate".on_attach(client)
 end
 
 lsp_config.common_on_attach()
