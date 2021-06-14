@@ -46,9 +46,17 @@ function _G.MUtils.enter_confirm()
 
       return npairs.esc("")
     else
+      vim.defer_fn(function()
+        require('nvim-autospace').format(-1)
+      end,20)
+
       return npairs.check_break_line_char()
     end
   else
+    vim.defer_fn(function()
+      require('nvim-autospace').format(-1)
+    end,20)
+
     return npairs.check_break_line_char()
   end
 end

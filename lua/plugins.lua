@@ -335,7 +335,7 @@ return require('packer').startup(function(use)
     requires = { "mfussenegger/nvim-dap" }
   }
   use "mfussenegger/nvim-jdtls"
-  use "fussenegger/nvim-dap-python"
+  use "mfussenegger/nvim-dap-python"
   use "jbyuki/one-small-step-for-vimkind"
 
   -- Install vscode-cpptools using vimspector
@@ -398,6 +398,7 @@ return require('packer').startup(function(use)
       require("nvim-autopairs-config")
     end
   }
+  use "windwp/nvim-autospace"
 
   use {
     "ahmedkhalf/lsp-rooter.nvim",
