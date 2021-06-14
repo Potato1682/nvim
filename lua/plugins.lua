@@ -13,12 +13,12 @@ vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
 require('packer').init({ display = { auto_clean = false } })
 
 return require('packer').startup(function(use)
-  use 'wbthomason/packer.nvim'
+  use "wbthomason/packer.nvim"
 
-  use 'yamatsum/nvim-nonicons'
+  use "yamatsum/nvim-nonicons"
 
   use {
-    'sainnhe/edge',
+    "sainnhe/edge",
 
     config = function()
       require("colorscheme")
@@ -43,41 +43,41 @@ return require('packer').startup(function(use)
     run = "make hexokinase",
     event = "BufEnter"
   }
-  use 'sheerun/vim-polyglot'
+  use "sheerun/vim-polyglot"
 
-  use 'editorconfig/editorconfig-vim'
+  use "editorconfig/editorconfig-vim"
 
-  use 'jbyuki/contextmenu.nvim'
+  use "jbyuki/contextmenu.nvim"
 
   use {
-    'akinsho/nvim-bufferline.lua',
+    "akinsho/nvim-bufferline.lua",
 
     config = function()
       require("nvim-bufferline")
     end,
-    requires = { 'kyazdani42/nvim-web-devicons' }
+    requires = { "kyazdani42/nvim-web-devicons" }
   }
 
   use {
-    'glepnir/galaxyline.nvim',
+    "glepnir/galaxyline.nvim",
 
     config = function()
       require("nvim-galaxyline")
     end,
     requires = {
-      'ryanoasis/vim-devicons',
-      'kyazdani42/nvim-web-devicons'
+      "ryanoasis/vim-devicons",
+      "kyazdani42/nvim-web-devicons"
     }
   }
 
   use {
-    'kyazdani42/nvim-tree.lua',
+    "kyazdani42/nvim-tree.lua",
 
     config = function()
       require("nvim-explorer")
     end,
     requires = {
-      'kyazdani42/nvim-web-devicons'
+      "kyazdani42/nvim-web-devicons"
     },
     cmd = {
       "NvimTreeToggle",
@@ -86,21 +86,21 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'nvim-telescope/telescope.nvim',
+    "nvim-telescope/telescope.nvim",
 
     config = function()
       require("nvim-telescope")
     end,
     requires = {
-      'nvim-lua/popup.nvim',
-      'nvim-lua/plenary.nvim'
+      "nvim-lua/popup.nvim",
+      "nvim-lua/plenary.nvim"
     }
   }
   use {
-    'nvim-telescope/telescope-media-files.nvim',
-    'nvim-telescope/telescope-fzy-native.nvim',
-    'nvim-telescope/telescope-project.nvim',
-    'nvim-telescope/telescope-dap.nvim',
+    "nvim-telescope/telescope-media-files.nvim",
+    "nvim-telescope/telescope-fzy-native.nvim",
+    "nvim-telescope/telescope-project.nvim",
+    "nvim-telescope/telescope-dap.nvim",
 
     requires = { 'nvim-telescope/telescope.nvim' }
   }
@@ -116,7 +116,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'glepnir/dashboard-nvim',
+    "glepnir/dashboard-nvim",
 
     config = function()
       require("nvim-dashboard")
@@ -124,15 +124,15 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'neovim/nvim-lspconfig'
+    "neovim/nvim-lspconfig"
   }
   use {
-    'kabouzeid/nvim-lspinstall',
+    "kabouzeid/nvim-lspinstall",
 
     as = "lspinstall"
   }
   use {
-    'alexaandru/nvim-lspupdate',
+    "alexaandru/nvim-lspupdate",
 
     as = "lspupdate",
     cmd = {
@@ -140,13 +140,13 @@ return require('packer').startup(function(use)
     }
   }
   use {
-    'lspcontainers/lspcontainers.nvim',
+    "lspcontainers/lspcontainers.nvim",
 
     as = "lspcontainers"
   }
-  use 'RRethy/vim-illuminate'
+  use "RRethy/vim-illuminate"
   use {
-    'folke/trouble.nvim',
+    "folke/trouble.nvim",
 
     as = "trouble",
     config = function()
@@ -154,7 +154,7 @@ return require('packer').startup(function(use)
     end
   }
   use {
-    'folke/todo-comments.nvim',
+    "folke/todo-comments.nvim",
 
     as = "trouble-todo-comments",
     requires = "nvim-lua/plenary.nvim",
@@ -172,30 +172,30 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'tjdevries/nlua.nvim',
+    "tjdevries/nlua.nvim",
 
     requires = {
-      'nvim-lua/plenary.nvim'
+      "nvim-lua/plenary.nvim"
     }
   }
   use {
-    'tjdevries/manillua.nvim',
+    "tjdevries/manillua.nvim",
 
     as = "manillua"
   }
 
   use {
-    'hrsh7th/nvim-compe',
+    "hrsh7th/nvim-compe",
 
     config = function()
       require("nvim-compe")
     end,
-    event = "InsertEnter *",
+    event = "InsertEnter *"
   }
   use {
-    'hrsh7th/vim-vsnip',
-    'hrsh7th/vim-vsnip-integ',
-    'rafamadriz/friendly-snippets',
+    "hrsh7th/vim-vsnip",
+    "hrsh7th/vim-vsnip-integ",
+    "rafamadriz/friendly-snippets"
   }
 
   use {
@@ -207,32 +207,33 @@ return require('packer').startup(function(use)
     event = "BufEnter"
   }
   use {
-    'tzachar/compe-tabnine',
+    "tzachar/compe-tabnine",
+
     run = "./install.sh",
     event = "InsertEnter *",
     requires = { "hrsh7th/nvim-compe" }
   }
 
   use {
-    'tpope/vim-dadbod',
+    "tpope/vim-dadbod",
 
     as = "dadbod",
     event = "BufEnter"
   }
   use {
-    'kristijanhusak/vim-dadbod-completion',
-    'krisajenkins/vim-java-sql',
-    'kristijanhusak/vim-dadbod-ui',
+    "kristijanhusak/vim-dadbod-completion",
+    "krisajenkins/vim-java-sql",
+    "kristijanhusak/vim-dadbod-ui",
 
     config = function()
       require("nvim-dadbod")
     end,
     after = "dadbod",
-    requires = { 'tpope/vim-dadbod' }
+    requires = { "tpope/vim-dadbod" }
   }
 
   use {
-    'nvim-treesitter/nvim-treesitter',
+    "nvim-treesitter/nvim-treesitter",
 
     run = ':TSUpdate',
     config = function()
@@ -270,7 +271,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'lukas-reineke/indent-blankline.nvim',
+    "lukas-reineke/indent-blankline.nvim",
 
     branch = 'lua',
     config = function()
@@ -280,16 +281,16 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'lewis6991/gitsigns.nvim',
+    "lewis6991/gitsigns.nvim",
 
     config = function()
       require("nvim-gitsigns")
     end,
     event = "BufEnter",
-    requires = { 'nvim-lua/plenary.nvim' }
+    requires = { "nvim-lua/plenary.nvim" }
   }
   use {
-    'tpope/vim-fugitive',
+    "tpope/vim-fugitive",
 
     cmd = {
       "Git",
@@ -300,25 +301,25 @@ return require('packer').startup(function(use)
     }
   }
   use {
-    'tpope/vim-rhubarb',
+    "tpope/vim-rhubarb",
 
     cmd = "GBrowse"
   }
 
   use {
-    'kkoomen/vim-doge',
+    "kkoomen/vim-doge",
 
     config = function()
       require("nvim-doge")
     end,
     event = "BufEnter",
-    run = ':call doge#install()'
+    run = ":call doge#install()"
   }
 
-  use 'wakatime/vim-wakatime'
+  use "wakatime/vim-wakatime"
 
   use {
-    'folke/which-key.nvim',
+    "folke/which-key.nvim",
 
     as = "which-key",
     config = function()
@@ -326,20 +327,20 @@ return require('packer').startup(function(use)
     end
   }
 
-  use 'mfussenegger/nvim-dap'
+  use "mfussenegger/nvim-dap"
   use {
-    'theHamsta/nvim-dap-virtual-text',
-    'rcarriga/nvim-dap-ui',
+    "theHamsta/nvim-dap-virtual-text",
+    "rcarriga/nvim-dap-ui",
 
-    requires = { 'mfussenegger/nvim-dap' }
+    requires = { "mfussenegger/nvim-dap" }
   }
-  use 'mfussenegger/nvim-jdtls'
-  use 'mfussenegger/nvim-dap-python'
-  use 'jbyuki/one-small-step-for-vimkind'
+  use "mfussenegger/nvim-jdtls"
+  use "fussenegger/nvim-dap-python"
+  use "jbyuki/one-small-step-for-vimkind"
 
   -- Install vscode-cpptools using vimspector
   use {
-    'puremourning/vimspector',
+    "puremourning/vimspector",
     run = "python3 install_gadget.py --enable-c",
     opt = true
   }
@@ -348,9 +349,9 @@ return require('packer').startup(function(use)
     "b3nj5m1n/kommentary",
 
     config = function()
-      require('kommentary.config').configure_language('typescriptreact', {
+      require("kommentary.config").configure_language("typescriptreact", {
         hook_function = function()
-          require('ts_context_commentstring.internal').update_commentstring()
+          require("ts_context_commentstring.internal").update_commentstring()
         end
       })
     end,
@@ -358,7 +359,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'mbbill/undotree',
+    "mbbill/undotree",
 
     cmd = {
       "UndotreeToggle",
@@ -390,7 +391,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'windwp/nvim-autopairs',
+    "windwp/nvim-autopairs",
 
     config = function()
       require("nvim-autopairs").setup()
@@ -399,7 +400,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'ahmedkhalf/lsp-rooter.nvim',
+    "ahmedkhalf/lsp-rooter.nvim",
 
     config = function()
       require("lsp-rooter").setup()
@@ -407,7 +408,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'monaqa/dial.nvim',
+    "monaqa/dial.nvim",
 
     config = function()
       require("nvim-dial")
@@ -416,7 +417,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'notomo/gesture.nvim',
+    "notomo/gesture.nvim",
 
     config = function()
       require("nvim-mouse-gesture")
@@ -425,13 +426,13 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'digitaltoad/vim-pug',
+    "digitaltoad/vim-pug",
 
     ft = "pug"
   }
 
   use {
-    'Pocco81/TrueZen.nvim',
+    "Pocco81/TrueZen.nvim",
 
     config = function()
       require("nvim-zen-mode")
@@ -439,7 +440,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'jghauser/mkdir.nvim',
+    "jghauser/mkdir.nvim",
 
     config = function()
       require("mkdir")
@@ -447,7 +448,7 @@ return require('packer').startup(function(use)
     event = "BufEnter"
   }
 
-  use 'tjdevries/colorbuddy.nvim'
+  use "tjdevries/colorbuddy.nvim"
 
   use {
     "windwp/nvim-spectre",
@@ -462,6 +463,23 @@ return require('packer').startup(function(use)
 
     as = "hop",
     event = "BufEnter"
+  }
+
+  use {
+    "junegunn/vim-easy-align",
+
+    as = "easyalign",
+    config = function()
+      vim.api.nvim_set_keymap("x", "ga", "<Plug>(EasyAlign)", {})
+      vim.api.nvim_set_keymap("n", "ga", "<Plug>(EasyAlign)", {})
+    end,
+    event = "BufEnter"
+  }
+
+  use {
+    "machakann/vim-sandwich",
+
+    as = "sandwich"
   }
 
   use {
