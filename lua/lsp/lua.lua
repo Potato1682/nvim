@@ -13,19 +13,7 @@ require'lspconfig'.sumneko_lua.setup {
   on_attach = lsp_config.common_on_attach
 }
 
-local os = ""
-
-if vim.fn.has('win64') == 1 or vim.fn.has('win32') == 1 or vim.fn.has('win16') == 1 then
-  os = "WINDOWS"
-else
-  os = vim.fn.toupper(vim.fn.substitute(vim.fn.system("uname"), '\n', '', ''))
-end
-
-local os_table = { WINDOWS = "Windows", CYGWIN = "Windows", MINGW = "Windows", LINUX = "Linux", DARWIN = "macOS" }
-
-os = os_table[os]
-
-require('nlua.lsp.nvim').setup(require('lspconfig'), {
+require('nlua.lsp.nvim').setup(require("lspconfig"), {
   cmd = bin,
   globals = { "Color", "c", "Group", "g", "s" }
 })
