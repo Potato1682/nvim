@@ -1,10 +1,11 @@
-local bin = vim.fn.stdpath("data") .. "/lspinstall/vue/node_modules/.bin/vls"
 local lsp_config = require("lsp")
-
-if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("vue") end
+local container = require("lspcontainers")
 
 require"lspconfig".vuels.setup {
-  cmd = { bin },
+  before_init = function(params)
+    params.processId = vim.NIL
+  end,
+  cmd = container.command("vuels"),
   on_attach = lsp_config.common_on_attach,
   vetur = { completion = { autoImport = true, useScaffoldSnippets = true }, format = { defualtFormatter = { js = "eslint", ts = "eslint" } } }
 }
