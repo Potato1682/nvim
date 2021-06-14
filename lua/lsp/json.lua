@@ -1,3 +1,4 @@
+local lsp_config = require("lsp")
 local container = require("lspcontainers")
 
 require"lspconfig".jsonls.setup {
@@ -5,6 +6,7 @@ require"lspconfig".jsonls.setup {
     params.processId = vim.NIL
   end,
   cmd = container.command("jsonls"),
+  on_attach = lsp_config.common_on_attach,
   commands = {
     Format = {
       function()

@@ -1,3 +1,4 @@
+local lsp_config = require("lsp")
 local container = require("lspcontainers")
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -8,6 +9,7 @@ require"lspconfig".html.setup {
   before_init = function(params)
     params.processId = vim.NIL
   end,
-  cmd = container.command("html")
+  cmd = container.command("html"),
+  on_attach = lsp_config.common_on_attach
 }
 
