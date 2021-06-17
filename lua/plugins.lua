@@ -22,8 +22,7 @@ return require('packer').startup(function(use)
 
     config = function()
       require("colorscheme")
-    end,
-    opt = true
+    end
   }
 
   use {
@@ -592,7 +591,7 @@ return require('packer').startup(function(use)
   }
 
   use {
-    'dstein64/nvim-scrollview',
+    "dstein64/nvim-scrollview",
 
     event = "BufEnter"
   }
@@ -608,13 +607,13 @@ return require('packer').startup(function(use)
   }
 
   use {
-      'NTBBloodbath/rest.nvim',
+      "NTBBloodbath/rest.nvim",
 
-      requires = { 'nvim-lua/plenary.nvim' }
+      requires = { "nvim-lua/plenary.nvim" }
   }
 
   use {
-    'andweeb/presence.nvim',
+    "andweeb/presence.nvim",
 
     config = function()
       require("presence"):setup()
@@ -625,9 +624,17 @@ return require('packer').startup(function(use)
     "TimUntersberger/neogit",
 
     config = function()
-      require("neogit").setup {}
+      require"neogit".setup {}
     end,
     cmd = "Neogit"
+  }
+  use {
+    "sindrets/diffview.nvim",
+
+    config = function()
+      require"diffview".setup {}
+    end,
+    cmd = "DiffviewOpen"
   }
 
   use {
@@ -647,7 +654,7 @@ return require('packer').startup(function(use)
 
   -- Rust
   use {
-    'simrat39/rust-tools.nvim',
+    "simrat39/rust-tools.nvim",
 
     ft = "rust"
   }
