@@ -624,7 +624,11 @@ return require('packer').startup(function(use)
     "TimUntersberger/neogit",
 
     config = function()
-      require"neogit".setup {}
+      require"neogit".setup {
+        integrations = {
+          diffview = true
+        }
+      }
     end,
     cmd = "Neogit"
   }
@@ -633,8 +637,7 @@ return require('packer').startup(function(use)
 
     config = function()
       require"diffview".setup {}
-    end,
-    cmd = "DiffviewOpen"
+    end
   }
 
   use {
