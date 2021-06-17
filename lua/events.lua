@@ -3,33 +3,36 @@ local M = {}
 
 function M.nvim_create_augroups(definitions)
     for group_name, definition in pairs(definitions) do
-        vim.api.nvim_command('augroup '..group_name)
-        vim.api.nvim_command('autocmd!')
+        vim.api.nvim_command("augroup " .. group_name)
+        vim.api.nvim_command("autocmd!")
+
         for _, def in ipairs(definition) do
-            local command = table.concat(vim.tbl_flatten{'autocmd', def}, ' ')
+            local command = table.concat(vim.tbl_flatten{"autocmd", def}, " ")
+
             vim.api.nvim_command(command)
         end
-        vim.api.nvim_command('augroup END')
+
+        vim.api.nvim_command("augroup END")
     end
 end
 
 function M.setup()
   local definitions = {
     lens ={
-      {"BufWinEnter,WinEnter" ,"*", "silent! call win#lens()"}
+      { "BufWinEnter,WinEnter", "*", "silent! call win#lens()" }
     },
     bufs = {
-      {"BufWritePre","*.tmp","setlocal noundofile"};
-      {"BufWritePre","*.log","setlocal noundofile"};
-      {"BufWritePre","*.bak","setlocal noundofile"};
+      { "BufWritePre", "*.tmp", "setlocal noundofile" },
+      { "BufWritePre", "*.log", "setlocal noundofile" },
+      { "BufWritePre", "*.bak", "setlocal noundofile" }
     },
     wins = {
-      {'FocusLost','*','silent! wa'},
-      {"VimEnter"    , "*" , "lua require'events'.on_enter()"};
-      {"ColorScheme" , "*" , "lua require'events'.on_color()"}
+      { "FocusLost"  , "*", "silent! wa" },
+      { "VimEnter"   , "*", "lua require'events'.on_enter()" },
+      { "ColorScheme", "*", "lua require'events'.on_color()" }
     },
     yank = {
-      {"TextYankPost", [[* silent! lua vim.highlight.on_yank({higroup="IncSearch", timeout=400})]]};
+      { "TextYankPost", [[* silent! lua vim.highlight.on_yank({ higroup="IncSearch", timeout=400 })]] }
     }
   }
 
