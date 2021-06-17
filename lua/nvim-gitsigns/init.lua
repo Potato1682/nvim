@@ -18,3 +18,5 @@ require('gitsigns').setup {
   current_line_blame = true
 }
 
+vim.cmd([[ hi link GitSignsCurrentLineBlame Comment ]])
+
