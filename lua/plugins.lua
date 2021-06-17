@@ -22,7 +22,8 @@ return require('packer').startup(function(use)
 
     config = function()
       require("colorscheme")
-    end
+    end,
+    opt = true
   }
 
   use {
