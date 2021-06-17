@@ -29,7 +29,13 @@ status.config {
   indicator_info = "",
   indicator_hint = "",
   indicator_ok = "",
-  status_symbol = ""
+  status_symbol = "",
+  kind_labels = {
+    Text = " ", Method = " ", Function = " ", Constructor = " ", Field = " ", Variable = "[]", Class = " ",
+    Interface = " ", Module = "{} ", Property = " ", Unit = " ", Value = " ", Enum = " ", Keyword = " ", Snippet = " ",
+    Color = " ", File = " ", Reference = " ", Folder = " ", EnumMember = " ", Constant = " ", Struct = " ", Event = " ",
+    Operator = " ", TypeParameter = " "
+  }
 }
 
 vim.lsp.protocol.CompletionItemKind = {
