@@ -35,6 +35,11 @@ end
 local container = require("lspcontainers")
 local lsp_config = require("lsp")
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.window = capabilities.window or {}
+capabilities.window.workDoneProgress = true
+
 require'lspconfig'.tsserver.setup {
   before_init = function(params)
     params.processId = vim.NIL
@@ -43,8 +48,9 @@ require'lspconfig'.tsserver.setup {
   on_attach = function(client)
     client.resolved_capabilities.document_formatting = false
     on_attach(client)
-    lsp_config.common_on_attach()
+    lsp_config.common_on_attach(client)
   end,
+  capabilities = capabilities,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   commands = { OrganizeImports = { organize_imports, description = "Organize imports" } },
   settings = { documentFormatting = false }
@@ -60,6 +66,7 @@ require'lspconfig'.diagnosticls.setup {
   cmd = { diagnosticls_bin, "--stdio" },
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   on_attach = on_attach,
+  capabilities = capabilities,
   init_options = {
     filetypes = {
       javascript = "eslint",

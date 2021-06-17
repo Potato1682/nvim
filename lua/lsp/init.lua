@@ -5,7 +5,7 @@ vim.fn.sign_define("LspDiagnosticsSignWarning",
 vim.fn.sign_define("LspDiagnosticsSignInformation",
                    { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation" })
 vim.fn.sign_define("LspDiagnosticsSignHint",
-                   { texthl = "LspDiagnosticsSignHint", text = "", numhl = "LspDiagnosticsSignHint" })
+                   { texthl = "LspDiagnosticsSignHint", text = " ", numhl = "LspDiagnosticsSignHint" })
 
 local keymap = vim.api.nvim_set_keymap
 
@@ -20,6 +20,18 @@ keymap("n", "<C-b>", ":lua require'lspsaga.action'.smart_scroll_with_saga(-1)<CR
 
 vim.cmd('command! -nargs=0 LspVirtualTextToggle lua require("lsp/virtual_text").toggle()')
 
+local status = require("lsp-status")
+
+status.register_progress()
+status.config {
+  indicator_errors = "",
+  indicator_warnings = "",
+  indicator_info = "",
+  indicator_hint = "",
+  indicator_ok = "",
+  status_symbol = ""
+}
+
 vim.lsp.protocol.CompletionItemKind = {
   " (Text)", " (Method)", " (Function)", " (Constructor)", " (Field)", "[] (Variable)", " (Class)",
   " (Interface)", "{} (Module)", " (Property)", " (Unit)", " (Value)", "  (Enum)", " (Keyword)", " (Snippet)",
@@ -33,9 +45,8 @@ function lsp_config.common_on_attach(client, _)
   -- fix 'command not found' error
   vim.cmd([[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]])
   require"illuminate".on_attach(client)
+  require"lsp-status".on_attach(client)
 end
-
-lsp_config.common_on_attach()
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
                                                                    { virtual_text = { spacing = 0 }, update_in_insert = true })

@@ -1,7 +1,16 @@
 local container = require("lspcontainers")
 
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.window = capabilities.window or {}
+capabilities.window.workDoneProgress = true
+
 require"lspconfig".gopls.setup {
-  cmd = container.command("gopls")
+  before_init = function(params)
+    params.processId = vim.NIL
+  end,
+  cmd = container.command("gopls"),
+  capabilities = capabilities
 }
 
 -- Code from https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-imports

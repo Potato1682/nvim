@@ -1,7 +1,16 @@
-local bin = vim.fn.stdpath("data") .. "/lspinstall/vim/node_modules/.bin/vim-language-server"
 local lsp_config = require("lsp")
+local bin = vim.fn.stdpath("data") .. "/lspinstall/vim/node_modules/.bin/vim-language-server"
 
 if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("vim") end
 
-require'lspconfig'.vimls.setup { cmd = { bin, "--stdio" }, on_attach = lsp_config.common_on_attach }
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.window = capabilities.window or {}
+capabilities.window.workDoneProgress = true
+
+require'lspconfig'.vimls.setup {
+  cmd = { bin, "--stdio" },
+  on_attach = lsp_config.common_on_attach,
+  capabilities = capabilities
+}
 

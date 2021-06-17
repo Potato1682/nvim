@@ -12,15 +12,21 @@ local bundles = {
 
 vim.list_extend(bundles, vim.split(vim.fn.glob(vim.fn.stdpath("data") .. "/dapinstall/java/java-test/server/*.jar"), "\n"))
 
-local on_attach = function()
-  require('jdtls').setup_dap({ hotcoderplace = "auto" })
-  require("lsp").common_on_attach()
+local on_attach = function(client)
+  require"jdtls".setup_dap({ hotcoderplace = "auto" })
+  require"lsp".common_on_attach(client)
 end
+
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.window = capabilities.window or {}
+capabilities.window.workDoneProgress = true
 
 if vim.bo.filetype == "java" then
   require('jdtls').start_or_attach({
-    on_attach = on_attach,
     cmd = { vim.fn.stdpath("config") .. "/bin/" .. JAVA_LS_EXECUTABLE },
+    on_attach = on_attach,
+    capabilities = capabilities,
     root_dir = require('jdtls.setup').find_root({ 'build.gradle', 'pom.xml', '.git' }),
     init_options = { bundles = bundles }
   })

@@ -3,5 +3,14 @@ local lsp_config = require("lsp")
 
 if vim.fn.filereadable(bin) == 0 then require("lspinstall").install_server("cpp") end
 
-require'lspconfig'.clangd.setup { cmd = { bin, "--background-index" }, on_attach = lsp_config.common_on_attach }
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.window = capabilities.window or {}
+capabilities.window.workDoneProgress = true
+
+require'lspconfig'.clangd.setup {
+  cmd = { bin, "--background-index" },
+  capabilities = capabilities,
+  on_attach = lsp_config.common_on_attach
+}
 
