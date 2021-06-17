@@ -83,8 +83,13 @@ local japanese_mappings = {
     b = { "<cmd>Telescope git_branches<cr>", "ブランチをチェックアウト" },
     c = { "<cmd>Neogit commit<cr>", "変更をコミット" },
     C = { "<cmd>Telescope git_commits<cr>", "コミットをチェックアウト" },
-    g = { "<cmd>Neogit<cr>", "Git ウィンドウ" }
-
+    g = { "<cmd>Neogit<cr>", "Git ウィンドウ" },
+    m = {
+      name = "+マージ",
+      t = { "<Plug>(MergetoolToggle)", "マージ ツール" },
+      g = { "<cmd>diffget<cr>", "リモートの変更を受け入れる" },
+      p = { "<cmd>diffput<cr>", "ローカルの変更を適用" }
+    }
   },
   l = {
     name = "+LSP",
@@ -183,7 +188,13 @@ local mappings = {
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Neogit commit<cr>", "Commit changes" },
     C = { "<cmd>Telescope git_commits<cr>", "Checkout commit" },
-    g = { "<cmd>Neogit<cr>", "Git Window" }
+    g = { "<cmd>Neogit<cr>", "Git Window" },
+    m = {
+      name = "+Merge",
+      t = { "<Plug>(MergetoolToggle)", "Merge Tool" },
+      g = { "<cmd>diffget<cr>", "Get diff" },
+      p = { "<cmd>diffput<cr>", "Put diff" }
+    }
   },
   l = {
     name = "+LSP",

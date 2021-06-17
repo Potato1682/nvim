@@ -639,6 +639,14 @@ return require('packer').startup(function(use)
       require"diffview".setup {}
     end
   }
+  use {
+    "samoshkin/vim-mergetool",
+
+    config = function()
+      vim.g.mergetool_layout = "mr"
+      vim.g.mergetool_prefer_revision = "local"
+    end
+  }
 
   use {
     "notomo/cmdbuf.nvim",
