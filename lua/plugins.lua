@@ -144,6 +144,11 @@ return require('packer').startup(function(use)
 
     as = "lspcontainers"
   }
+  use {
+    "nvim-lua/lsp-status.nvim",
+
+    as = "lspstatus"
+  }
   use "RRethy/vim-illuminate"
   use {
     "folke/trouble.nvim",
@@ -349,7 +354,14 @@ return require('packer').startup(function(use)
     "b3nj5m1n/kommentary",
 
     config = function()
-      require("kommentary.config").configure_language("typescriptreact", {
+      local config = require("kommentary.config")
+      config.configure_language("typescriptreact", {
+        hook_function = function()
+          require("ts_context_commentstring.internal").update_commentstring()
+        end
+      })
+
+      config.configure_language("vue", {
         hook_function = function()
           require("ts_context_commentstring.internal").update_commentstring()
         end
@@ -624,6 +636,12 @@ return require('packer').startup(function(use)
       vim.api.nvim_set_keymap("n", "q:", "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight)<CR>", { noremap = true })
       vim.api.nvim_set_keymap("c", "<C-f>", "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight, { line = vim.fn.getcmdline(), column = vim.fn.getcmdpos() })<CR><C-c>", { noremap = true })
     end
+  }
+
+  use {
+    "arecarn/vim-fold-cycle",
+
+    event = "BufEnter"
   }
 
   -- Rust
