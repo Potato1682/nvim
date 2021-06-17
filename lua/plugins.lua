@@ -294,22 +294,6 @@ return require('packer').startup(function(use)
     event = "BufEnter",
     requires = { "nvim-lua/plenary.nvim" }
   }
-  use {
-    "tpope/vim-fugitive",
-
-    cmd = {
-      "Git",
-      "Gstatus",
-      "Gblame",
-      "Gpush",
-      "Gpull"
-    }
-  }
-  use {
-    "tpope/vim-rhubarb",
-
-    cmd = "GBrowse"
-  }
 
   use {
     "kkoomen/vim-doge",
