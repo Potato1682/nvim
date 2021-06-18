@@ -1,8 +1,20 @@
+require("nvim-globals")
+require("settings")
+
+vim.cmd [[ command! PackerInstall packadd packer.nvim | lua require"plugins".install() ]]
+vim.cmd [[ command! PackerUpdate packadd packer.nvim | lua require"plugins".update() ]]
+vim.cmd [[ command! PackerSync packadd packer.nvim | lua require"plugins".sync() ]]
+vim.cmd [[ command! PackerClean packadd packer.nvim | lua require"plugins".clean() ]]
+vim.cmd [[ command! PackerCompile packadd packer.nvim | lua require"plugins".compile() ]]
+
+if require("first-load")() then
+  return
+end
+
 require("plugins")
 
-require("nvim-globals")
+vim.cmd("colorscheme " .. O.colorscheme)
 
-require("settings")
 require("keys")
 require("providers")
 require("events")

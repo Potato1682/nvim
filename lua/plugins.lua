@@ -1,19 +1,17 @@
-local execute = vim.api.nvim_command
-local fn = vim.fn
+local packer = nil
 
-local install_path = fn.stdpath('data') .. '/site/pack/packer/start/packer.nvim'
+local function init()
+  if packer == nil then
+    packer = require("packer")
 
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-  execute 'packadd packer.nvim'
-end
+    packer.init()
+  end
 
-vim.cmd 'autocmd BufWritePost plugins.lua PackerCompile'
+  local use = packer.use
 
-require('packer').init({ display = { auto_clean = false } })
+  packer.reset()
 
-return require('packer').startup(function(use)
-  use "wbthomason/packer.nvim"
+  use { "wbthomason/packer.nvim", opt = true }
 
   use "yamatsum/nvim-nonicons"
 
@@ -648,6 +646,8 @@ return require('packer').startup(function(use)
     end
   }
 
+  use "AndrewRadev/splitjoin.vim"
+
   use {
     "arecarn/vim-fold-cycle",
 
@@ -657,15 +657,27 @@ return require('packer').startup(function(use)
     }
   }
 
+  -- Help document
+  use {
+    "vim-jp/vimdoc-ja",
+
+    disable = not O.japanese
+  }
   -- Rust
   use {
     "simrat39/rust-tools.nvim",
 
     ft = "rust"
   }
-end, {
-  profile = {
-    enable = true
-  }
+end
+
+local plugins = setmetatable({}, {
+  __index = function(_, key)
+    init()
+
+    return packer[key]
+  end
 })
+
+return plugins
 
