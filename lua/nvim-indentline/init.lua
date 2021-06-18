@@ -11,6 +11,7 @@ vim.g.indent_blankline_context_patterns = {
 }
 vim.g.indent_blankline_space_char = "·"
 
+vim.cmd [[ hi IndentBlanklineContextChar guifg=#3d8cf0 guibg=NONE gui=nocombine ]]
 vim.cmd [[ hi IndentRainbow1 guifg=#be5046 guibg=NONE gui=nocombine ]]
 vim.cmd [[ hi IndentRainbow2 guifg=#e5c07b guibg=NONE gui=nocombine ]]
 vim.cmd [[ hi IndentRainbow3 guifg=#98c379 guibg=NONE gui=nocombine ]]
