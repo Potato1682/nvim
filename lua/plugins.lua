@@ -66,7 +66,8 @@ return require('packer').startup(function(use)
     end,
     requires = {
       "ryanoasis/vim-devicons",
-      "kyazdani42/nvim-web-devicons"
+      "kyazdani42/nvim-web-devicons",
+      "yamatsum/nvim-nonicons"
     }
   }
 
@@ -603,6 +604,14 @@ return require('packer').startup(function(use)
   }
 
   use {
+    "thinca/vim-fontzoom",
+
+    cond = function()
+      return vim.fn.has("gui") == 1
+    end
+  }
+
+  use {
     "TimUntersberger/neogit",
 
     config = function()
@@ -642,7 +651,10 @@ return require('packer').startup(function(use)
   use {
     "arecarn/vim-fold-cycle",
 
-    event = "BufEnter"
+    keys = {
+      "<BS>",
+      "<CR>"
+    }
   }
 
   -- Rust
