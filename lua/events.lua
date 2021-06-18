@@ -7,7 +7,7 @@ function M.nvim_create_augroups(definitions)
         vim.api.nvim_command("autocmd!")
 
         for _, def in ipairs(definition) do
-            local command = table.concat(vim.tbl_flatten{"autocmd", def}, " ")
+            local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
 
             vim.api.nvim_command(command)
         end
@@ -18,6 +18,16 @@ end
 
 function M.setup()
   local definitions = {
+    java = {
+      { "FileType", "java", "lua require'nvim-dap.java'; require'lsp.java'" }
+    },
+    dashboard = {
+      {
+        "FileType", "dashboard",
+        "setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell nolist nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= "
+      }, { "FileType", "dashboard", "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2" },
+      { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>" }
+    },
     lens ={
       { "BufWinEnter,WinEnter", "*", "silent! call win#lens()" }
     },

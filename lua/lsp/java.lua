@@ -23,7 +23,7 @@ capabilities.window = capabilities.window or {}
 capabilities.window.workDoneProgress = true
 
 if vim.bo.filetype == "java" then
-  require('jdtls').start_or_attach({
+  require"jdtls".start_or_attach({
     cmd = { vim.fn.stdpath("config") .. "/bin/" .. JAVA_LS_EXECUTABLE },
     on_attach = on_attach,
     capabilities = capabilities,
