@@ -1,6 +1,6 @@
 vim.o.completeopt = "menuone,noselect"
 
-require'compe'.setup {
+require"compe".setup {
   enabled = true,
   autocomplete = true,
   debug = false,
@@ -38,13 +38,11 @@ local npairs = require("nvim-autopairs")
 _G.MUtils = {}
 
 function _G.MUtils.enter_confirm()
-  if vim.fn.pumvisible() ~= 0 then
+  if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info().selected ~= -1 then
     if vim.fn.call("vsnip#available", { 1 }) == 1 then
       return t "<Plug>(vsnip-expand-or-jump)"
     elseif vim.fn.complete_info()["selected"] ~= -1 then
-      vim.fn["compe#confirm"]()
-
-      return npairs.esc("")
+      return vim.fn["compe#confirm"]("<CR>")
     else
       vim.defer_fn(function()
         require('nvim-autospace').format(-1)
