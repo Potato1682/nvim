@@ -171,9 +171,7 @@ return require('packer').startup(function(use)
     "simrat39/symbols-outline.nvim",
 
     as = "symbols-outline",
-    cmd = {
-      "SymbolsOutline"
-    }
+    cmd = "SymbolsOutline"
   }
 
   use {
