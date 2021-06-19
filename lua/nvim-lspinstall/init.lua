@@ -7,6 +7,8 @@ require("lspinstall/servers").jdtls = vim.tbl_extend('error', config, {
     rm -rf eclipse.jdt.ls
     git clone https://github.com/eclipse/eclipse.jdt.ls.git
     cd eclipse.jdt.ls
+    mkdir - pv lombok
+    curl -fLo lombok/lombok.jar https://projectlombok.org/downloads/lombok.jar
     ./mvnw clean verify -DskipTests
   ]]
 })
