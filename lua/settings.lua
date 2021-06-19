@@ -27,11 +27,12 @@ vim.opt.inccommand = "split"
 if O.wrap_lines then
   vim.opt.wrap = true
   vim.opt.whichwrap = "b,s,<,>,[,],h,l"
+else
+  vim.opt.wrap = false
 end
 
 vim.opt.encoding = "UTF-8"
 vim.opt.fileencoding = "UTF-8"
-vim.opt.confirm = true
 
 vim.opt.hidden = true
 vim.opt.splitbelow = true
