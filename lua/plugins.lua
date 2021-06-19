@@ -208,6 +208,15 @@ local function init()
     end,
     event = "BufEnter"
   }
+
+  use {
+    "RishabhRD/nvim-lsputils",
+
+    requires = {
+      "RishabhRD/popfix"
+    }
+  }
+
   use {
     "tzachar/compe-tabnine",
 

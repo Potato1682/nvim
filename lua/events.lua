@@ -18,9 +18,6 @@ end
 
 function M.setup()
   local definitions = {
-    java = {
-      { "FileType", "java", "lua require'nvim-dap.java'; require'lsp.java'" }
-    },
     dashboard = {
       {
         "FileType", "dashboard",

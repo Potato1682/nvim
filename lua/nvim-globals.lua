@@ -1,7 +1,3 @@
-CONFIG_PATH = vim.fn.stdpath('config')
-DATA_PATH = vim.fn.stdpath('data')
-CACHE_PATH = vim.fn.stdpath('cache')
-
 O = {
   author = "", -- REQUIRED
   japanese = false,
@@ -20,6 +16,25 @@ O = {
   python = {
     -- @usage can be 'unittest', 'pytest'
     test_type = "pytest"
+  },
+  java = {
+    format = {
+      -- @usage Load .xml file from lua/lsp/java/styles, can use google-style and allman by default
+      name = "google-style",
+      profile = "GoogleStyle"
+    },
+    -- @usage set your java runtime
+    runtimes = {{
+      name = "JavaSE-1.8",
+      path = "/usr/lib/jvm/java-8-openjdk",
+      default = true
+    }, {
+      name = "JavaSE-11",
+      path = "/usr/lib/jvm/java-11-openjdk"
+    }--[[, {
+      name = "JavaSE-16",
+      path = "/usr/lib/jvm/zulu-16"
+    }]]}
   },
   enter_event = {},
   color_event = {}
