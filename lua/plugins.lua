@@ -41,7 +41,6 @@ local function init()
     run = "make hexokinase",
     event = "BufEnter"
   }
-  use "sheerun/vim-polyglot"
 
   use "editorconfig/editorconfig-vim"
 

@@ -5,6 +5,7 @@ end
 -- treesitter fixes
 vim.cmd [[ TSEnableAll highlight ]]
 vim.cmd [[ TSEnableAll rainbow ]]
+vim.cmd [[ TSEnableAll indent ]]
 vim.cmd [[ TSEnableAll autotag ]]
 vim.cmd [[ TSEnableAll rainbow ]]
 vim.cmd [[ TSEnableAll context_commentstring ]]
