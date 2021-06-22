@@ -100,7 +100,7 @@ local function init()
     "nvim-telescope/telescope-project.nvim",
     "nvim-telescope/telescope-dap.nvim",
 
-    requires = { 'nvim-telescope/telescope.nvim' }
+    requires = { "nvim-telescope/telescope.nvim" }
   }
 
   use {
@@ -146,6 +146,15 @@ local function init()
     "nvim-lua/lsp-status.nvim",
 
     as = "lspstatus"
+  }
+  use "ray-x/lsp_signature.nvim"
+  use {
+    "kosayoda/nvim-lightbulb",
+
+    config = function()
+      require("nvim-lightbulb-config")
+    end,
+    event = "BufEnter"
   }
   use "RRethy/vim-illuminate"
   use {
@@ -197,15 +206,6 @@ local function init()
     "hrsh7th/vim-vsnip",
     "hrsh7th/vim-vsnip-integ",
     "rafamadriz/friendly-snippets"
-  }
-
-  use {
-    'glepnir/lspsaga.nvim',
-
-    config = function()
-      require("nvim-lspsaga")
-    end,
-    event = "BufEnter"
   }
 
   use {

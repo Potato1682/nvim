@@ -23,15 +23,18 @@ function M.setup()
         "FileType", "dashboard",
         "setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell nolist nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= "
       }, { "FileType", "dashboard", "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2" },
-      { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<CR>" }
+      { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<cr>" }
     },
-    lens ={
+    lens = {
       { "BufWinEnter,WinEnter", "*", "silent! call win#lens()" }
     },
     bufs = {
       { "BufWritePre", "*.tmp", "setlocal noundofile" },
       { "BufWritePre", "*.log", "setlocal noundofile" },
       { "BufWritePre", "*.bak", "setlocal noundofile" }
+    },
+    lsp = {
+      { "CursorHold,CursorHoldI", "*", "lua vim.lsp.buf.hover()" }
     },
     wins = {
       { "FocusLost"  , "*", "silent! wa" },

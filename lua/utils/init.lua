@@ -14,5 +14,13 @@ function M.define_command(name, action, option)
   vim.cmd("command!" .. option_string .. " " .. name .. " " .. action)
 end
 
+function M.is_lsp_active()
+  if next(vim.lsp.get_active_clients()) == nil then
+    return false
+  end
+
+  return true
+end
+
 return M
 

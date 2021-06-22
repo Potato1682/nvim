@@ -112,13 +112,14 @@ gls.left[7] = {
 }
 
 gls.left[8] = {
-
   Diagnostics = {
     provider = function()
       return require"lsp-status".status()
     end,
     condition = condition.hide_in_width or condition.check_active_lsp,
-    highlight = { "NONE", colors.bg }
+    separator = " ",
+    highlight = { "NONE", colors.bg },
+    separator_highlight = { "NONE", colors.bg }
   }
 }
 gls.left[9] = {
@@ -133,8 +134,20 @@ gls.left[9] = {
 
       return true
     end,
-    icon = "   ",
-    highlight = { colors.magenta, colors.bg, "bold" }
+    separator = " ",
+    icon = "  ",
+    highlight = { colors.magenta, colors.bg, "bold" },
+    separator_highlight = { "NONE", colors.bg }
+  }
+}
+
+gls.left[10] = {
+  LightBulb = {
+    provider = function()
+      return require"nvim-lightbulb".get_status_text()
+    end,
+    condition = condition.check_active_lsp,
+    highlight = { colors.green, colors.bg }
   }
 }
 
