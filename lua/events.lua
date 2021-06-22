@@ -22,6 +22,9 @@ function M.setup()
       { "BufEnter", "*", "setlocal formatoptions-=r" },
       { "BufEnter", "*", "setlocal formatoptions-=o" },
     },
+    cursor = {
+      { "BufRead", "*", [[ if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g`\"" | endif ]] }
+    },
     dashboard = {
       {
         "FileType",
@@ -47,7 +50,7 @@ function M.setup()
       { "CursorHold,CursorHoldI", "*", "lua vim.lsp.buf.hover()" },
     },
     wins = {
-      { "FocusLost", "*", "silent! wa" },
+      { "FocusLost", "*", "noautocmd silent! wa" },
       { "VimEnter", "*", "lua require'events'.on_enter()" },
       { "ColorScheme", "*", "lua require'events'.on_color()" },
     },
