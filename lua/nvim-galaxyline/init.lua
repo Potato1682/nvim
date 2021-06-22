@@ -48,12 +48,24 @@ gls.left[1] = {
 
       return "  " .. mode_color[vim.fn.mode()][2] .. "  "
     end,
+    separator = "  ",
     highlight = { colors.red, colors.bg },
-    separator = " ",
   }
 }
 
 gls.left[2] = {
+  CurrentDirectory = {
+    provider = function()
+      return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+    end,
+    icon = icons.get("file-directory-outline"),
+    separator = "   ",
+    highlight = { colors.blue, colors.bg },
+    separator_highlight = { colors.dark_grey, colors.bg }
+  }
+}
+
+gls.left[3] = {
   GitIcon = {
     provider = function()
       return " " .. icons.get("git-branch")
@@ -65,17 +77,17 @@ gls.left[2] = {
   }
 }
 
-gls.left[3] = {
+gls.left[4] = {
   GitBranch = {
     provider = "GitBranch",
     condition = condition.hide_in_width or condition.check_git_workspace,
     separator = "   ",
+    highlight = { colors.grey, colors.bg },
     separator_highlight = { colors.dark_grey, colors.bg },
-    highlight = { colors.grey, colors.bg }
   }
 }
 
-gls.left[4] = {
+gls.left[5] = {
   DiffAdd = {
     provider = "DiffAdd",
     condition = condition.hide_in_width or condition.check_git_workspace,
@@ -84,7 +96,7 @@ gls.left[4] = {
   }
 }
 
-gls.left[5] = {
+gls.left[6] = {
   DiffModified = {
     provider = "DiffModified",
     condition = condition.hide_in_width or condition.check_git_workspace,
@@ -92,7 +104,7 @@ gls.left[5] = {
     highlight = { "#6cb6eb", colors.bg }
   }
 }
-gls.left[6] = {
+gls.left[7] = {
   DiffRemove = {
     provider = "DiffRemove",
     condition = condition.hide_in_width or condition.check_git_workspace,
@@ -101,7 +113,7 @@ gls.left[6] = {
   }
 }
 
-gls.left[7] = {
+gls.left[8] = {
   DiagnosticsSeparator = {
     provider = function()
       return "   "
@@ -111,7 +123,7 @@ gls.left[7] = {
   }
 }
 
-gls.left[8] = {
+gls.left[9] = {
   Diagnostics = {
     provider = function()
       return require"lsp-status".status()
@@ -122,13 +134,14 @@ gls.left[8] = {
     separator_highlight = { "NONE", colors.bg }
   }
 }
-gls.left[9] = {
-  LspServer = {
+
+gls.left[10] = {
+  LspClient = {
     provider = "GetLspClient",
     condition = condition.hide_in_width or function()
       local tbl = { ["dashboard"] = true, [""] = true }
 
-      if tbl[vim.bo.filetype] then
+      if tbl[vim.opt.filetype] then
         return false
       end
 
@@ -141,7 +154,7 @@ gls.left[9] = {
   }
 }
 
-gls.left[10] = {
+gls.left[11] = {
   LightBulb = {
     provider = function()
       return require"nvim-lightbulb".get_status_text()
@@ -154,7 +167,7 @@ gls.left[10] = {
 gls.right[1] = {
   LineColumnIcon = {
     provider = function()
-      return ""
+      return " "
     end,
     highlight = { colors.blue, colors.bg }
   }
