@@ -543,15 +543,6 @@ local function init()
   use "tpope/vim-repeat"
 
   use {
-    "907th/vim-auto-save",
-
-    config = function()
-      vim.g.auto_save = 1
-    end,
-    event = "BufEnter",
-  }
-
-  use {
     "bfredl/nvim-miniyank",
 
     config = function()

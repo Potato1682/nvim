@@ -18,6 +18,10 @@ end
 
 function M.setup()
   local definitions = {
+    comment = {
+      { "BufEnter", "*", "setlocal formatoptions-=r" },
+      { "BufEnter", "*", "setlocal formatoptions-=o" },
+    },
     dashboard = {
       {
         "FileType",
