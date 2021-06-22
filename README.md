@@ -1,7 +1,9 @@
 # nvim
+
 My neovim settings
 
 ![image](https://user-images.githubusercontent.com/48394190/120484401-ff21c200-c3ed-11eb-9036-cf03a0aa1335.png)
+
 #### Sample source code by [Peyang](https://github.com/peyang-Celeron)
 
 ## Requires
@@ -31,14 +33,15 @@ My neovim settings
 - Fuzzy search with floating window
 - Nerd fonts support
 - **L**anguage **S**erver **P**rotocol support
-	- Code folding
-	- Renaming
-	- Completion
-	- Database support
-	- Diagnostics
-		- Diagnostics report will shown on statusline, bufferline, editor and explorer
-	- Show lightbulb when code action is available
-	- Show signature and document on hover
+  - Code folding
+  - Renaming
+  - Completion
+  - Database support
+  - Diagnostics
+    - Diagnostics report will shown on statusline, bufferline, editor and explorer
+  - Show lightbulb when code action is available
+  - Show signature and document on hover
+  - Automatic formatting
 - Rainbow brackets
 - Toggle comments
 - Show git status on editor
@@ -88,6 +91,7 @@ $ npm run build-plugin
 
 If you're using `podman`, you may not be using unqualified search registries.  
 Comment-out / Add the property to `/etc/containers/registries.conf` like this:
+
 ```tst
 unqualified-search-registries = ["docker.io"]
 ```
@@ -97,4 +101,3 @@ unqualified-search-registries = ["docker.io"]
 nvim using [presence.nvim](https://github.com/andweeb/presence.nvim) to show Rich Presence.  
 If there is a Failed to get Discord IPC socket error, your particular OS may not yet be supported, check [Projects card](https://github.com/andweeb/presence.nvim/projects/1#column-14183588).
 Or if you're using Flatpak'ed discord, [this link](https://github.com/flathub/com.discordapp.Discord/wiki/Rich-Precense-(discord-rpc) might useful.
-
