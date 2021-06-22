@@ -1,12 +1,12 @@
-require'bufferline'.setup {
+require("bufferline").setup {
   options = {
     view = "multiwindow",
     tab_size = 24,
     close_command = function(bufnum)
-      require"bufdel".delete_buffer(bufnum, false)
+      require("bufdel").delete_buffer(bufnum, false)
     end,
     right_mouse_command = function(bufnum)
-      vim.api.nvim_input("<ESC>")
+      vim.api.nvim_input "<ESC>"
 
       local choises = {
         " New Buffer        ",
@@ -26,25 +26,25 @@ require'bufferline'.setup {
         "  Sort By /directory",
         "",
         " Select Next Buffer",
-        " Select Prev Buffer"
+        " Select Prev Buffer",
       }
 
       local choise_callbacks = {
         function()
-          vim.cmd([[ enew ]])
+          vim.cmd [[ enew ]]
         end,
         function()
-          require"bufdel".delete_buffer(bufnum)
+          require("bufdel").delete_buffer(bufnum)
         end,
         function()
-          vim.cmd([[ bwipe ]])
+          vim.cmd [[ bwipe ]]
         end,
         function() end,
         function()
-          vim.cmd([[ let @* = expand("%:p") ]])
+          vim.cmd [[ let @* = expand("%:p") ]]
         end,
         function()
-          vim.cmd([[ let @* = expand("%") ]])
+          vim.cmd [[ let @* = expand("%") ]]
         end,
         function() end,
         function()
@@ -54,33 +54,33 @@ require'bufferline'.setup {
           vim.cmd("sbuffer " .. bufnum)
         end,
         function()
-          require"bufferline".move(1)
+          require("bufferline").move(1)
         end,
         function()
-          require"bufferline".move(-1)
+          require("bufferline").move(-1)
         end,
         function()
-          require"bufferline".pick_buffer()
+          require("bufferline").pick_buffer()
         end,
         function()
-          require"bufferline".sort_buffers_by("extension")
+          require("bufferline").sort_buffers_by "extension"
         end,
         function()
-          require"bufferline".sort_buffers_by("relative_directory")
+          require("bufferline").sort_buffers_by "relative_directory"
         end,
         function()
-          require"bufferline".sort_buffers_by("directory")
+          require("bufferline").sort_buffers_by "directory"
         end,
         function() end,
         function()
-          require"bufferline".cycle(1)
+          require("bufferline").cycle(1)
         end,
         function()
-          require"bufferline".cycle(-1)
-        end
+          require("bufferline").cycle(-1)
+        end,
       }
 
-      require"contextmenu".open(choises, {
+      require("contextmenu").open(choises, {
         callback = function(chosen)
           local choise_func = choise_callbacks[chosen]
 
@@ -89,7 +89,7 @@ require'bufferline'.setup {
           end
 
           return choise_func()
-        end
+        end,
       })
     end,
     diagnostics = "nvim_lsp",
@@ -105,11 +105,17 @@ require'bufferline'.setup {
       return s
     end,
     custom_filter = function(buf_number)
-      if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then return true end
+      if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
+        return true
+      end
 
-      if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then return true end
+      if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
+        return true
+      end
 
-      if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then return true end
+      if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
+        return true
+      end
     end,
     custom_areas = {
       right = function()
@@ -119,20 +125,30 @@ require'bufferline'.setup {
         local info = vim.lsp.diagnostic.get_count(0, [[Information]])
         local hint = vim.lsp.diagnostic.get_count(0, [[Hint]])
 
-        if error ~= 0 then result[1] = { text = "  " .. error, guifg = "#db4b4b" } end
+        if error ~= 0 then
+          result[1] = { text = "  " .. error, guifg = "#db4b4b" }
+        end
 
-        if warning ~= 0 then result[2] = { text = "  " .. warning, guifg = "#e0af68" } end
+        if warning ~= 0 then
+          result[2] = { text = "  " .. warning, guifg = "#e0af68" }
+        end
 
-        if info ~= 0 then result[4] = { text = "  " .. info, guifg = "#0db9d7" } end
+        if info ~= 0 then
+          result[4] = { text = "  " .. info, guifg = "#0db9d7" }
+        end
 
-        if hint ~= 0 then result[3] = { text = "  " .. hint, guifg = "#a0c980" } end
+        if hint ~= 0 then
+          result[3] = { text = "  " .. hint, guifg = "#a0c980" }
+        end
 
         return result
-      end
+      end,
     },
     show_close_icon = false,
     separator_style = "thin",
-    offsets = { { filetype = "NvimTree", text = O.japanese and "エクスプローラー" or "Explorer", text_align = "center" } }
+    offsets = {
+      { filetype = "NvimTree", text = O.japanese and "エクスプローラー" or "Explorer", text_align = "center" },
+    },
   },
   highlights = {
     fill = { guibg = "#282c34" },
@@ -149,7 +165,6 @@ require'bufferline'.setup {
     error = { guifg = "#db4b4b" },
     error_selected = { guifg = "#db4b4b", guisp = "#db4b4b" },
     error_diagnostic = { guisp = "#db4b4b" },
-    error_diagnostic_selected = { guifg = "#db4b4b", guisp = "#db4b4b" }
-  }
+    error_diagnostic_selected = { guifg = "#db4b4b", guisp = "#db4b4b" },
+  },
 }
-

@@ -1,9 +1,12 @@
-local format_install_dir = vim.fn.stdpath("data") .. "/fmtinstall/"
+local format_install_dir = vim.fn.stdpath "data" .. "/fmtinstall/"
 
 local lua_bin = format_install_dir .. "lua/stylua"
 
 if vim.fn.filereadable(lua_bin) == 0 then
-  require"nvim-formatter.install".install("stylua", format_install_dir .. "lua", [[
+  require("nvim-formatter.install").install(
+    "stylua",
+    format_install_dir .. "lua",
+    [[
     os=$(uname -s | tr "[:upper:]" "[:lower:]")
     
     case $os in
@@ -19,102 +22,106 @@ if vim.fn.filereadable(lua_bin) == 0 then
     unzip stylua.zip
     rm stylua.zip
     chmod +x stylua
-  ]])
+  ]]
+  )
 end
 
 local prettier_bin = format_install_dir .. "prettier/node_modules/.bin/prettier"
 
 if vim.fn.filereadable(prettier_bin) == 0 then
-  require"nvim-formatter.install".install("prettier", format_install_dir .. "prettier", [[
+  require("nvim-formatter.install").install(
+    "prettier",
+    format_install_dir .. "prettier",
+    [[
     ! test -f package.json && npm init -y --scope=fmtinstall || true
     npm i prettier@latest
-  ]])
+  ]]
+  )
 end
 
-require"formatter".setup {
+require("formatter").setup {
   logging = false,
   filetype = {
     rust = {
-            function()
+      function()
         return {
           exe = "rustfmt",
-          args = {"--emit=stdout"},
-          stdin = true
+          args = { "--emit=stdout" },
+          stdin = true,
         }
-      end
+      end,
     },
-      lua = {
-    function()
-      return {
-        exe = lua_bin,
-        args = { "-" },
-        stdin = true
-      }
-    end
-  },
+    lua = {
+      function()
+        return {
+          exe = lua_bin,
+          args = { "-" },
+          stdin = true,
+        }
+      end,
+    },
     less = {
       function()
         return {
           exe = prettier_bin,
           args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-          stdin = true
+          stdin = true,
         }
-      end
+      end,
     },
     scss = {
       function()
         return {
           exe = prettier_bin,
           args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-          stdin = true
+          stdin = true,
         }
-      end
+      end,
     },
     json = {
       function()
         return {
           exe = prettier_bin,
           args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-          stdin = true
+          stdin = true,
         }
-      end
+      end,
     },
     graphql = {
       function()
         return {
           exe = prettier_bin,
           args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-          stdin = true
+          stdin = true,
         }
-      end
+      end,
     },
     markdown = {
       function()
         return {
           exe = prettier_bin,
           args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-          stdin = true
+          stdin = true,
         }
-      end
+      end,
     },
     yaml = {
       function()
         return {
           exe = prettier_bin,
           args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-          stdin = true
+          stdin = true,
         }
-      end
+      end,
     },
-   flow = {
+    flow = {
       function()
         return {
           exe = prettier_bin,
           args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
-          stdin = true
+          stdin = true,
         }
-      end
-    }
-  }
+      end,
+    },
+  },
 }
-

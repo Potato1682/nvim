@@ -6,9 +6,8 @@ if O.japanese then
     plugin_manager_text = "プラグインを管理中",
     reading_text = "%s を読書中",
     workspace_text = "%s で作業中",
-    line_number_text = "行 %s | ファイル %s"
+    line_number_text = "行 %s | ファイル %s",
   }
 else
   require("presence"):setup()
 end
-

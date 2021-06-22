@@ -1,10 +1,14 @@
 local function format_async(err, _, result, _, bufnr)
-  if err ~= nil or result == nil then return end
+  if err ~= nil or result == nil then
+    return
+  end
   if not vim.api.nvim_buf_get_option(bufnr, "modified") then
     local view = vim.fn.winsaveview()
     vim.lsp.util.apply_text_edits(result, bufnr)
     vim.fn.winrestview(view)
-    if bufnr == vim.api.nvim_get_current_buf() then vim.api.nvim_command("noautocmd :update") end
+    if bufnr == vim.api.nvim_get_current_buf() then
+      vim.api.nvim_command "noautocmd :update"
+    end
   end
 end
 
@@ -17,12 +21,15 @@ end
 
 local function on_attach(client)
   if client.resolved_capabilities.document_formatting then
-    vim.api.nvim_exec([[
+    vim.api.nvim_exec(
+      [[
          augroup LspAutocommands
              autocmd! * <buffer>
              autocmd BufWritePost <buffer> LspFormatting
          augroup END
-         ]], true)
+         ]],
+      true
+    )
   end
 end
 
@@ -32,19 +39,19 @@ local function organize_imports()
   vim.lsp.buf.execute_command(params)
 end
 
-local container = require("lspcontainers")
-local lsp_config = require("lsp")
+local container = require "lspcontainers"
+local lsp_config = require "lsp"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities.window = capabilities.window or {}
 capabilities.window.workDoneProgress = true
 
-require'lspconfig'.tsserver.setup {
+require("lspconfig").tsserver.setup {
   before_init = function(params)
     params.processId = vim.NIL
   end,
-  cmd = container.command("tsserver"),
+  cmd = container.command "tsserver",
   on_attach = function(client)
     client.resolved_capabilities.document_formatting = false
     on_attach(client)
@@ -53,16 +60,18 @@ require'lspconfig'.tsserver.setup {
   capabilities = capabilities,
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   commands = { OrganizeImports = { organize_imports, description = "Organize imports" } },
-  settings = { documentFormatting = false }
+  settings = { documentFormatting = false },
 }
 
-local diagnosticls_bin = vim.fn.stdpath("data") .. "/lspinstall/diagnosticls/node_modules/.bin/diagnostic-languageserver"
+local diagnosticls_bin = vim.fn.stdpath "data" .. "/lspinstall/diagnosticls/node_modules/.bin/diagnostic-languageserver"
 
-if vim.fn.filereadable(diagnosticls_bin) == 0 then require("lspinstall").install_server("diagnosticls") end
+if vim.fn.filereadable(diagnosticls_bin) == 0 then
+  require("lspinstall").install_server "diagnosticls"
+end
 
-local eslintd_bin = vim.fn.stdpath("data") .. "/lspinstall/eslintd/node_modules/.bin/eslint_d"
+local eslintd_bin = vim.fn.stdpath "data" .. "/lspinstall/eslintd/node_modules/.bin/eslint_d"
 
-require'lspconfig'.diagnosticls.setup {
+require("lspconfig").diagnosticls.setup {
   cmd = { diagnosticls_bin, "--stdio" },
   filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" },
   on_attach = on_attach,
@@ -74,7 +83,7 @@ require'lspconfig'.diagnosticls.setup {
       ["javascript.jsx"] = "eslint",
       typescript = "eslint",
       typescriptreact = "eslint",
-      ["typescript.tsx"] = "eslint"
+      ["typescript.tsx"] = "eslint",
     },
     linters = {
       eslint = {
@@ -90,10 +99,10 @@ require'lspconfig'.diagnosticls.setup {
           endLine = "endLine",
           endColumn = "endColumn",
           message = "${message} [${ruleId}]",
-          security = "severity"
+          security = "severity",
         },
-        securities = { [2] = "error", [1] = "warning" }
-      }
+        securities = { [2] = "error", [1] = "warning" },
+      },
     },
     formatters = {
       eslint = {
@@ -102,8 +111,8 @@ require'lspconfig'.diagnosticls.setup {
         rootPatterns = { ".eslintrc", ".eslintrc.js", ".eslintrc.yml", ".eslintrc.json", "package.json" },
         args = { "--fix", "--fix-to-stdout", "--stdin", "--stdin-filename=%filepath" },
         isStdout = true,
-        isStderr = true
-      }
+        isStderr = true,
+      },
     },
     formatFiletypes = {
       javascript = "eslint",
@@ -111,8 +120,7 @@ require'lspconfig'.diagnosticls.setup {
       ["javascript.jsx"] = "eslint",
       typescript = "eslint",
       typescriptreact = "eslint",
-      ["typescript.tsx"] = "eslint"
-    }
-  }
+      ["typescript.tsx"] = "eslint",
+    },
+  },
 }
-

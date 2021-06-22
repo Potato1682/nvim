@@ -7,20 +7,20 @@ require("which-key").setup {
   icons = {
     breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
     separator = "➜", -- symbol used between a key and it's label
-    group = "+" -- symbol prepended to a group
+    group = "+", -- symbol prepended to a group
   },
   window = {
-    border = "single"
+    border = "single",
   },
   layout = {
-    height = { min = 4, max = 25},
+    height = { min = 4, max = 25 },
     width = { min = 20, max = 50 },
-    spacing = 3
+    spacing = 3,
   },
   key_labels = { ["<space>"] = "SPC", ["<tab>"] = "TAB" },
-  hidden = {"<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ "}, -- hide mapping boilerplate
+  hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true,
-  triggers = { "<leader>" }
+  triggers = { "<leader>" },
 }
 
 local opts = {
@@ -29,7 +29,7 @@ local opts = {
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
   silent = true, -- use `silent` when creating keymaps
   noremap = true, -- use `noremap` when creating keymaps
-  nowait = false -- use `nowait` when creating keymaps
+  nowait = false, -- use `nowait` when creating keymaps
 }
 
 local japanese_mappings = {
@@ -55,7 +55,7 @@ local japanese_mappings = {
     d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "ドキュメント内" },
     q = { "<cmd>TroubleToggle quickfix<cr>", "クイックフィックス" },
     l = { "<cmd>TroubleToggle loclist<cr>", "場所を検索" },
-    r = { "<cmd>TroubleToggle lsp_references<cr>", "リファレンス" }
+    r = { "<cmd>TroubleToggle lsp_references<cr>", "リファレンス" },
   },
   D = {
     name = "+デバッグ",
@@ -68,7 +68,7 @@ local japanese_mappings = {
     f = { "<cmd>lua require'dapui'.float_element()", "フィールドを確認" },
     o = { "<cmd>lua require'dap'.step_out()<cr>", "ブロック末尾までステップ" },
     r = { "<cmd>lua require'dap'.repl_open()<cr>", "Replを開く" },
-    s = { "<cmd>lua require'dap'.run()<cr>", "開始" }
+    s = { "<cmd>lua require'dap'.run()<cr>", "開始" },
   },
   g = {
     name = "+Git",
@@ -88,8 +88,8 @@ local japanese_mappings = {
       name = "+マージ",
       t = { "<Plug>(MergetoolToggle)", "マージ ツール" },
       g = { "<cmd>diffget<cr>", "リモートの変更を受け入れる" },
-      p = { "<cmd>diffput<cr>", "ローカルの変更を適用" }
-    }
+      p = { "<cmd>diffput<cr>", "ローカルの変更を適用" },
+    },
   },
   l = {
     name = "+LSP",
@@ -99,13 +99,16 @@ local japanese_mappings = {
     D = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "ワークスペースを診断" },
     f = { "<cmd>LspFormatting<cr>", "フォーマット" },
     i = { "<cmd>LspInfo<cr>", "情報" },
-    L = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr><cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", "今の行の診断" },
+    L = {
+      "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr><cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>",
+      "今の行の診断",
+    },
     q = { "<cmd>Telescope quickfix<cr>", "クイックフィックス" },
     r = { "<cmd>require'lsp'.rename()<cr>", "名前を変更" },
     t = { "<cmd>LspTypeDefinition<cr>", "型定義へジャンプ" },
     x = { "<cmd>cclose<cr>", "クイックフィックスを閉じる" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "ドキュメント内のシンボル" },
-    S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "ワークスペースのシンボル" }
+    S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "ワークスペースのシンボル" },
   },
   s = {
     name = "+検索",
@@ -119,12 +122,12 @@ local japanese_mappings = {
     M = { "<cmd>Telescope man_pages<cr>", "マニュアル" },
     r = { "<cmd>Telescope oldfiles<cr>", "最近開いたファイル" },
     R = { "<cmd>Telescope registers<cr>", "レジスター" },
-    t = { "<cmd>Telescope live_grep<cr>", "テキスト" }
+    t = { "<cmd>Telescope live_grep<cr>", "テキスト" },
   },
   S = {
     name = "+セッション",
     s = { "<cmd>SessionSave<cr>", "セッションを保存" },
-    l = { "<cmd>SessionLoad<cr>", "セッションを開く" }
+    l = { "<cmd>SessionLoad<cr>", "セッションを開く" },
   },
 
   -- extras
@@ -132,8 +135,8 @@ local japanese_mappings = {
     name = "+Zen Mode",
     s = { "<cmd>TZBottom<cr>", "ステータスバーの表示を切り替え" },
     t = { "<cmd>TZTop<cr>", "タブの表示を切り替え" },
-    z = { "<cmd>TZAtaraxis<cr>", "Zen モードを切り替え" }
-  }
+    z = { "<cmd>TZAtaraxis<cr>", "Zen モードを切り替え" },
+  },
 }
 
 local mappings = {
@@ -158,7 +161,7 @@ local mappings = {
     d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
     q = { "<cmd>TroubleToggle quickfix<cr>", "quickfix" },
     l = { "<cmd>TroubleToggle loclist<cr>", "loclist" },
-    r = { "<cmd>TroubleToggle lsp_references<cr>", "references" }
+    r = { "<cmd>TroubleToggle lsp_references<cr>", "references" },
   },
   D = {
     name = "+Debug",
@@ -171,7 +174,7 @@ local mappings = {
     f = { "<cmd>lua require'dapui'.float_element()<cr>", "Current Elements" },
     o = { "<cmd>lua require'dap'.step_out()<cr>", "Step Over" },
     r = { "<cmd>lua require'dap'.repl_open()<cr>", "Open Repl" },
-    s = { "<cmd>lua require'dap'.run()<cr>", "Start" }
+    s = { "<cmd>lua require'dap'.run()<cr>", "Start" },
   },
   g = {
     name = "+Git",
@@ -191,8 +194,8 @@ local mappings = {
       name = "+Merge",
       t = { "<Plug>(MergetoolToggle)", "Merge Tool" },
       g = { "<cmd>diffget<cr>", "Get diff" },
-      p = { "<cmd>diffput<cr>", "Put diff" }
-    }
+      p = { "<cmd>diffput<cr>", "Put diff" },
+    },
   },
   l = {
     name = "+LSP",
@@ -202,13 +205,16 @@ local mappings = {
     D = { "<cmd>Telescope lsp_workspace_diagnostics<cr>", "Workspace Diagnostics" },
     f = { "<cmd>LspFormatting<cr>", "Format" },
     i = { "<cmd>LspInfo<cr>", "Info" },
-    L = { "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr><cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>", "Line Diagnostics" },
+    L = {
+      "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr><cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>",
+      "Line Diagnostics",
+    },
     q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
     r = { "<cmd>lua require'lsp'.rename()<cr>", "Rename" },
     t = { "<cmd>LspTypeDefinition<cr>", "Type Definition" },
     x = { "<cmd>cclose<cr>", "Close Quickfix" },
     s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" }
+    S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
   },
   s = {
     name = "+Search",
@@ -222,22 +228,25 @@ local mappings = {
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
     r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
     R = { "<cmd>Telescope registers<cr>", "Registers" },
-    t = { "<cmd>Telescope live_grep<cr>", "Text" }
+    t = { "<cmd>Telescope live_grep<cr>", "Text" },
   },
-  S = { name = "+Session", s = { "<cmd>SessionSave<cr>", "Save Session" }, l = { "<cmd>SessionLoad<cr>", "Load Session" } },
+  S = {
+    name = "+Session",
+    s = { "<cmd>SessionSave<cr>", "Save Session" },
+    l = { "<cmd>SessionLoad<cr>", "Load Session" },
+  },
 
   -- extras
   z = {
     name = "+Zen",
     s = { "<cmd>TZBottom<cr>", "toggle status line" },
     t = { "<cmd>TZTop<cr>", "toggle tab bar" },
-    z = { "<cmd>TZAtaraxis<cr>", "toggle zen" }
-  }
+    z = { "<cmd>TZAtaraxis<cr>", "toggle zen" },
+  },
 }
 
 if O.japanese then
-  require"which-key".register(japanese_mappings, opts)
+  require("which-key").register(japanese_mappings, opts)
 else
-  require"which-key".register(mappings, opts)
+  require("which-key").register(mappings, opts)
 end
-

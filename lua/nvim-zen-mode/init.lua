@@ -1,4 +1,4 @@
-require("true-zen").setup({
+require("true-zen").setup {
   true_false_commands = false,
   cursor_by_mode = false,
   before_minimalist_mode_shown = false,
@@ -16,7 +16,7 @@ require("true-zen").setup({
     shown_ruler = true,
     shown_showmode = false,
     shown_showcmd = false,
-    shown_cmdheight = 1
+    shown_cmdheight = 1,
   },
   top = { hidden_showtabline = 0, shown_showtabline = 2 },
   left = {
@@ -26,7 +26,7 @@ require("true-zen").setup({
 
     shown_number = true,
     shown_relativenumber = false,
-    shown_signcolumn = "no"
+    shown_signcolumn = "no",
   },
   ataraxis = { just_do_it_for_me = false, left_padding = 5, right_padding = 5, top_padding = 1, bottom_padding = 1 },
   integrations = {
@@ -37,7 +37,6 @@ require("true-zen").setup({
     integration_express_line = false,
     integration_gitgutter = false,
     integration_vim_signify = false,
-    integration_limelight = false
-  }
-})
-
+    integration_limelight = false,
+  },
+}

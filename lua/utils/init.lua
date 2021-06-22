@@ -23,4 +23,3 @@ function M.is_lsp_active()
 end
 
 return M
-

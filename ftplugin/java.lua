@@ -1,5 +1,5 @@
-if vim.fn.glob(vim.fn.stdpath("data") .. "/lspinstall/jdtls/eclipse.jdt.ls/launch") == "" then
-  require"lspinstall".install_server("jdtls")
+if vim.fn.glob(vim.fn.stdpath "data" .. "/lspinstall/jdtls/eclipse.jdt.ls/launch") == "" then
+  require("lspinstall").install_server "jdtls"
 end
 
 -- treesitter fixes
@@ -11,13 +11,13 @@ vim.cmd [[ TSEnableAll rainbow ]]
 vim.cmd [[ TSEnableAll context_commentstring ]]
 vim.cmd [[ TSEnableAll textobjects.swap ]]
 
-require("nvim-dap.java")
-require("lsp.java")
+require "nvim-dap.java"
+require "lsp.java"
 
-local jdtls_ui = require"jdtls.ui"
+local jdtls_ui = require "jdtls.ui"
 
 function jdtls_ui.pick_one_async(items, _, _, cb)
-  require"lsputil.codeAction".code_action_handler(nil, nil, items, nil, nil, nil, cb)
+  require("lsputil.codeAction").code_action_handler(nil, nil, items, nil, nil, nil, cb)
 end
 
 local function keymap(key, action)
@@ -36,11 +36,10 @@ keymap("lc", ":lua require'jdtls'.extract_constant()<cr>")
 vkeymap("lC", ":lua require'jdtls'.extract_constant(true)<cr>")
 vkeymap("lm", ":lua require'jdtls'.extract_method(true)<cr>")
 
-local utils = require("utils")
+local utils = require "utils"
 
 utils.define_command("Make", "lua require'jdtls'.compile()", { buffer = true })
 utils.define_command("JShell", "lua require'jdtls'.jshell()", { buffer = true })
 utils.define_command("UpdateProject", "lua require'jdtls'.update_project_config()", { buffer = true })
 utils.define_command("JdtBytecode", "lua require'jdtls'.javap()", { buffer = true })
 utils.define_command("JdtJol", "lua require'jdtls'.jol()", { buffer = true })
-

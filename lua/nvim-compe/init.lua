@@ -1,6 +1,6 @@
 vim.o.completeopt = "menuone,noselect"
 
-require"compe".setup {
+require("compe").setup {
   enabled = true,
   autocomplete = true,
   debug = false,
@@ -25,15 +25,15 @@ require"compe".setup {
     tags = false,
     vim_dadbod_completion = true,
     tabnine = true,
-    emoji = { kind = " ﲃ ", filetypes = { "markdown" } }
-  }
+    emoji = { kind = " ﲃ ", filetypes = { "markdown" } },
+  },
 }
 
 local function t(str)
   return vim.api.nvim_replace_termcodes(str, true, true, true)
 end
 
-local npairs = require("nvim-autopairs")
+local npairs = require "nvim-autopairs"
 
 _G.MUtils = {}
 
@@ -42,18 +42,18 @@ function _G.MUtils.enter_confirm()
     if vim.fn.call("vsnip#available", { 1 }) == 1 then
       return t "<Plug>(vsnip-expand-or-jump)"
     elseif vim.fn.complete_info()["selected"] ~= -1 then
-      return vim.fn["compe#confirm"]("<CR>")
+      return vim.fn["compe#confirm"] "<CR>"
     else
       vim.defer_fn(function()
-        require('nvim-autospace').format(-1)
-      end,20)
+        require("nvim-autospace").format(-1)
+      end, 20)
 
       return npairs.check_break_line_char()
     end
   else
     vim.defer_fn(function()
-      require('nvim-autospace').format(-1)
-    end,20)
+      require("nvim-autospace").format(-1)
+    end, 20)
 
     return npairs.check_break_line_char()
   end
@@ -61,25 +61,27 @@ end
 
 function _G.MUtils.tab_complete()
   if vim.fn.pumvisible() == 1 then
-    return npairs.esc("<C-n>")
+    return npairs.esc "<C-n>"
   else
     if vim.fn.call("vsnip#jumpable", { 1 }) == 1 then
       return t "<Plug>(vsnip-jump-next)"
     else
-      local line = vim.fn.getline(".")
+      local line = vim.fn.getline "."
 
       if line == "" then
-        vim.api.nvim_input("<ESC>s")
+        vim.api.nvim_input "<ESC>s"
 
-        if line == vim.fn.getline(".") then
-          if not vim.bo.expandtab then return npairs.esc("<Tab>") end
+        if line == vim.fn.getline "." then
+          if not vim.bo.expandtab then
+            return npairs.esc "<Tab>"
+          end
 
           return string.rep(" ", vim.bo.ts + 1)
         end
 
         -- return t ""
-      elseif line:match("^%s$") ~= "" then
-        return npairs.esc("<Tab>")
+      elseif line:match "^%s$" ~= "" then
+        return npairs.esc "<Tab>"
       end
     end
   end
@@ -87,12 +89,12 @@ end
 
 function _G.MUtils.s_tab_complete()
   if vim.fn.pumvisible() == 1 then
-    return npairs.esc("<C-p>")
+    return npairs.esc "<C-p>"
   else
     if vim.fn.call("vsnip#jumpable", { -1 }) == 1 then
       return t "<Plug>(vsnip-jump-prev)"
     else
-      return npairs.esc("<C-h>")
+      return npairs.esc "<C-h>"
     end
   end
 end
@@ -104,4 +106,3 @@ vim.api.nvim_set_keymap("s", "<Tab>", "v:lua.MUtils.tab_complete()", { expr = tr
 
 vim.api.nvim_set_keymap("i", "<S-Tab>", "v:lua.MUtils.s_tab_complete()", { expr = true })
 vim.api.nvim_set_keymap("s", "<S-Tab>", "v:lua.MUtils.s_tab_complete()", { expr = true })
-

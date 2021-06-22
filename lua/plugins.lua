@@ -2,7 +2,7 @@ local packer = nil
 
 local function init()
   if packer == nil then
-    packer = require("packer")
+    packer = require "packer"
 
     packer.init()
   end
@@ -19,8 +19,8 @@ local function init()
     "sainnhe/edge",
 
     config = function()
-      require("colorscheme")
-    end
+      require "colorscheme"
+    end,
   }
 
   use {
@@ -29,17 +29,17 @@ local function init()
     config = function()
       vim.g.startuptime_tries = 10
     end,
-    cmd = "StartupTime"
+    cmd = "StartupTime",
   }
 
   use {
     "RRethy/vim-hexokinase",
 
     config = function()
-      require("nvim-hexokinase")
+      require "nvim-hexokinase"
     end,
     run = "make hexokinase",
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use "editorconfig/editorconfig-vim"
@@ -50,49 +50,49 @@ local function init()
     "akinsho/nvim-bufferline.lua",
 
     config = function()
-      require("nvim-bufferline")
+      require "nvim-bufferline"
     end,
-    requires = { "kyazdani42/nvim-web-devicons" }
+    requires = { "kyazdani42/nvim-web-devicons" },
   }
 
   use {
     "glepnir/galaxyline.nvim",
 
     config = function()
-      require("nvim-galaxyline")
+      require "nvim-galaxyline"
     end,
     requires = {
       "ryanoasis/vim-devicons",
       "kyazdani42/nvim-web-devicons",
-      "yamatsum/nvim-nonicons"
-    }
+      "yamatsum/nvim-nonicons",
+    },
   }
 
   use {
     "kyazdani42/nvim-tree.lua",
 
     config = function()
-      require("nvim-explorer")
+      require "nvim-explorer"
     end,
     requires = {
-      "kyazdani42/nvim-web-devicons"
+      "kyazdani42/nvim-web-devicons",
     },
     cmd = {
       "NvimTreeToggle",
-      "NvimTreeOpen"
-    }
+      "NvimTreeOpen",
+    },
   }
 
   use {
     "nvim-telescope/telescope.nvim",
 
     config = function()
-      require("nvim-telescope")
+      require "nvim-telescope"
     end,
     requires = {
       "nvim-lua/popup.nvim",
-      "nvim-lua/plenary.nvim"
-    }
+      "nvim-lua/plenary.nvim",
+    },
   }
   use {
     "nvim-telescope/telescope-media-files.nvim",
@@ -100,7 +100,7 @@ local function init()
     "nvim-telescope/telescope-project.nvim",
     "nvim-telescope/telescope-dap.nvim",
 
-    requires = { "nvim-telescope/telescope.nvim" }
+    requires = { "nvim-telescope/telescope.nvim" },
   }
 
   use {
@@ -110,59 +110,59 @@ local function init()
       vim.api.nvim_set_keymap("n", "j", "<Plug>(faster_move_j)", { noremap = false, silent = true })
       vim.api.nvim_set_keymap("n", "k", "<Plug>(faster_move_k)", { noremap = false, silent = true })
     end,
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use {
     "glepnir/dashboard-nvim",
 
     config = function()
-      require("nvim-dashboard")
-    end
+      require "nvim-dashboard"
+    end,
   }
 
   use {
-    "neovim/nvim-lspconfig"
+    "neovim/nvim-lspconfig",
   }
   use {
     "kabouzeid/nvim-lspinstall",
 
-    as = "lspinstall"
+    as = "lspinstall",
   }
   use {
     "alexaandru/nvim-lspupdate",
 
     as = "lspupdate",
     cmd = {
-      "LspUpdate"
-    }
+      "LspUpdate",
+    },
   }
   use {
     "lspcontainers/lspcontainers.nvim",
 
-    as = "lspcontainers"
+    as = "lspcontainers",
   }
   use {
     "mhartington/formatter.nvim",
 
     as = "formatter",
     config = function()
-      require("nvim-formatter")
-    end
+      require "nvim-formatter"
+    end,
   }
   use {
     "nvim-lua/lsp-status.nvim",
 
-    as = "lspstatus"
+    as = "lspstatus",
   }
   use "ray-x/lsp_signature.nvim"
   use {
     "kosayoda/nvim-lightbulb",
 
     config = function()
-      require("nvim-lightbulb-config")
+      require "nvim-lightbulb-config"
     end,
-    event = "BufEnter"
+    event = "BufEnter",
   }
   use "RRethy/vim-illuminate"
   use {
@@ -171,7 +171,7 @@ local function init()
     as = "trouble",
     config = function()
       require("trouble").setup()
-    end
+    end,
   }
   use {
     "folke/todo-comments.nvim",
@@ -180,48 +180,48 @@ local function init()
     requires = "nvim-lua/plenary.nvim",
     config = function()
       require("todo-comments").setup()
-    end
+    end,
   }
   use {
     "simrat39/symbols-outline.nvim",
 
     as = "symbols-outline",
-    cmd = "SymbolsOutline"
+    cmd = "SymbolsOutline",
   }
 
   use {
     "tjdevries/nlua.nvim",
 
     requires = {
-      "nvim-lua/plenary.nvim"
-    }
+      "nvim-lua/plenary.nvim",
+    },
   }
   use {
     "tjdevries/manillua.nvim",
 
-    as = "manillua"
+    as = "manillua",
   }
 
   use {
     "hrsh7th/nvim-compe",
 
     config = function()
-      require("nvim-compe")
+      require "nvim-compe"
     end,
-    event = "InsertEnter *"
+    event = "InsertEnter *",
   }
   use {
     "hrsh7th/vim-vsnip",
     "hrsh7th/vim-vsnip-integ",
-    "rafamadriz/friendly-snippets"
+    "rafamadriz/friendly-snippets",
   }
 
   use {
     "RishabhRD/nvim-lsputils",
 
     requires = {
-      "RishabhRD/popfix"
-    }
+      "RishabhRD/popfix",
+    },
   }
 
   use {
@@ -229,14 +229,14 @@ local function init()
 
     run = "./install.sh",
     event = "InsertEnter *",
-    requires = { "hrsh7th/nvim-compe" }
+    requires = { "hrsh7th/nvim-compe" },
   }
 
   use {
     "tpope/vim-dadbod",
 
     as = "dadbod",
-    event = "BufEnter"
+    event = "BufEnter",
   }
   use {
     "kristijanhusak/vim-dadbod-completion",
@@ -244,19 +244,19 @@ local function init()
     "kristijanhusak/vim-dadbod-ui",
 
     config = function()
-      require("nvim-dadbod")
+      require "nvim-dadbod"
     end,
     after = "dadbod",
-    requires = { "tpope/vim-dadbod" }
+    requires = { "tpope/vim-dadbod" },
   }
 
   use {
     "nvim-treesitter/nvim-treesitter",
 
-    run = ':TSUpdate',
+    run = ":TSUpdate",
     config = function()
-      require("nvim-treesitter-config")
-    end
+      require "nvim-treesitter-config"
+    end,
   }
   use {
     "p00f/nvim-ts-rainbow",
@@ -264,58 +264,58 @@ local function init()
     "JoosepAlviste/nvim-ts-context-commentstring",
     "nvim-treesitter/nvim-treesitter-textobjects",
     "theHamsta/crazy-node-movement",
-    "haringsrob/nvim_context_vt"
+    "haringsrob/nvim_context_vt",
   }
   use {
     "mizlan/iswap.nvim",
 
     config = function()
-      require"iswap".setup {
-        grey = "disable"
+      require("iswap").setup {
+        grey = "disable",
       }
     end,
-    cmd = "ISwap"
+    cmd = "ISwap",
   }
   use {
     "lewis6991/spellsitter.nvim",
 
     config = function()
-      require"spellsitter".setup {
+      require("spellsitter").setup {
         hl = "SpellBad",
-        captures = { "comment" }
+        captures = { "comment" },
       }
     end,
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use {
     "lukas-reineke/indent-blankline.nvim",
 
-    branch = 'lua',
+    branch = "lua",
     config = function()
-      require("nvim-indentline")
+      require "nvim-indentline"
     end,
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use {
     "lewis6991/gitsigns.nvim",
 
     config = function()
-      require("nvim-gitsigns")
+      require "nvim-gitsigns"
     end,
     event = "BufEnter",
-    requires = { "nvim-lua/plenary.nvim" }
+    requires = { "nvim-lua/plenary.nvim" },
   }
 
   use {
     "kkoomen/vim-doge",
 
     config = function()
-      require("nvim-doge")
+      require "nvim-doge"
     end,
     event = "BufEnter",
-    run = ":call doge#install()"
+    run = ":call doge#install()",
   }
 
   use "wakatime/vim-wakatime"
@@ -325,8 +325,8 @@ local function init()
 
     as = "which-key",
     config = function()
-      require("nvim-which-key")
-    end
+      require "nvim-which-key"
+    end,
   }
 
   use "mfussenegger/nvim-dap"
@@ -334,7 +334,7 @@ local function init()
     "theHamsta/nvim-dap-virtual-text",
     "rcarriga/nvim-dap-ui",
 
-    requires = { "mfussenegger/nvim-dap" }
+    requires = { "mfussenegger/nvim-dap" },
   }
   use "mfussenegger/nvim-jdtls"
   use "mfussenegger/nvim-dap-python"
@@ -344,27 +344,27 @@ local function init()
   use {
     "puremourning/vimspector",
     run = "python3 install_gadget.py --enable-c",
-    opt = true
+    opt = true,
   }
 
   use {
     "b3nj5m1n/kommentary",
 
     config = function()
-      local config = require("kommentary.config")
+      local config = require "kommentary.config"
       config.configure_language("typescriptreact", {
         hook_function = function()
           require("ts_context_commentstring.internal").update_commentstring()
-        end
+        end,
       })
 
       config.configure_language("vue", {
         hook_function = function()
           require("ts_context_commentstring.internal").update_commentstring()
-        end
+        end,
       })
     end,
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use {
@@ -372,11 +372,11 @@ local function init()
 
     cmd = {
       "UndotreeToggle",
-      "UndotreeShow"
+      "UndotreeShow",
     },
     config = function()
       vim.g.undotree_SetFocusWhenToggle = 1
-    end
+    end,
   }
 
   use {
@@ -387,16 +387,16 @@ local function init()
         load_natural_dictionaries_at_startup = true,
         load_programming_dictionaries_at_startup = true,
         natural_dictionaries = {
-          ["nt_en"] = {}
+          ["nt_en"] = {},
         },
         programming_dictionaries = {
           ["pr_py"] = {},
           ["pr_java"] = {},
-          ["pr_lua"] = {}
-        }
+          ["pr_lua"] = {},
+        },
       }
     end,
-    event = "InsertEnter *"
+    event = "InsertEnter *",
   }
 
   use {
@@ -404,8 +404,8 @@ local function init()
 
     config = function()
       require("nvim-autopairs").setup()
-      require("nvim-autopairs-config")
-    end
+      require "nvim-autopairs-config"
+    end,
   }
   use "windwp/nvim-autospace"
 
@@ -414,48 +414,48 @@ local function init()
 
     config = function()
       require("lsp-rooter").setup()
-    end
+    end,
   }
 
   use {
     "monaqa/dial.nvim",
 
     config = function()
-      require("nvim-dial")
+      require "nvim-dial"
     end,
-    event = "BufEnter *"
+    event = "BufEnter *",
   }
 
   use {
     "notomo/gesture.nvim",
 
     config = function()
-      require("nvim-mouse-gesture")
+      require "nvim-mouse-gesture"
     end,
-    keys = "<RightMouse>"
+    keys = "<RightMouse>",
   }
 
   use {
     "digitaltoad/vim-pug",
 
-    ft = "pug"
+    ft = "pug",
   }
 
   use {
     "Pocco81/TrueZen.nvim",
 
     config = function()
-      require("nvim-zen-mode")
-    end
+      require "nvim-zen-mode"
+    end,
   }
 
   use {
     "jghauser/mkdir.nvim",
 
     config = function()
-      require("mkdir")
+      require "mkdir"
     end,
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use "tjdevries/colorbuddy.nvim"
@@ -464,15 +464,15 @@ local function init()
     "windwp/nvim-spectre",
 
     config = function()
-      require('spectre').setup()
-    end
+      require("spectre").setup()
+    end,
   }
 
   use {
     "phaazon/hop.nvim",
 
     as = "hop",
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use {
@@ -483,21 +483,21 @@ local function init()
       vim.api.nvim_set_keymap("x", "ga", "<Plug>(EasyAlign)", {})
       vim.api.nvim_set_keymap("n", "ga", "<Plug>(EasyAlign)", {})
     end,
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use {
     "machakann/vim-sandwich",
 
-    as = "sandwich"
+    as = "sandwich",
   }
 
   use {
     "kevinhwang91/nvim-hlslens",
 
     config = function()
-      require("nvim-hlslens")
-    end
+      require "nvim-hlslens"
+    end,
   }
 
   use {
@@ -505,13 +505,13 @@ local function init()
     run = "cd app && npm install",
     cmd = {
       "MarkdownPreview",
-      "MarkdownPreviewToggle"
+      "MarkdownPreviewToggle",
     },
     ft = {
       "markdown",
       "pandoc.markdown",
-      "rmd"
-    }
+      "rmd",
+    },
   }
 
   use {
@@ -521,17 +521,17 @@ local function init()
       require("no-clc").setup {
         load_at_startup = true,
         cursorline = true,
-        cursorcolumn = false
+        cursorcolumn = false,
       }
-    end
+    end,
   }
 
   use {
     "thinca/vim-template",
 
     config = function()
-      require("nvim-template")
-    end
+      require "nvim-template"
+    end,
   }
 
   use "ojroques/nvim-bufdel"
@@ -548,7 +548,7 @@ local function init()
     config = function()
       vim.g.auto_save = 1
     end,
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use {
@@ -557,7 +557,7 @@ local function init()
     config = function()
       vim.api.nvim_set_keymap("", "p", "<Plug>(miniyank-autoput)", { noremap = false, silent = true })
       vim.api.nvim_set_keymap("", "P", "<Plug>(miniyank-autoPut)", { noremap = false, silent = true })
-    end
+    end,
   }
 
   use {
@@ -567,8 +567,8 @@ local function init()
       require("range-highlight").setup()
     end,
     requires = {
-      "winston0410/cmd-parser.nvim"
-    }
+      "winston0410/cmd-parser.nvim",
+    },
   }
 
   use {
@@ -583,14 +583,14 @@ local function init()
       "vue",
       "javascriptreact",
       "typescriptreact",
-      "ejs"
-    }
+      "ejs",
+    },
   }
 
   use {
     "dstein64/nvim-scrollview",
 
-    event = "BufEnter"
+    event = "BufEnter",
   }
 
   use {
@@ -598,15 +598,15 @@ local function init()
 
     config = function()
       require("toggleterm").setup {
-        open_mapping = [[<C-t>]]
+        open_mapping = [[<C-t>]],
       }
-    end
+    end,
   }
 
   use {
-      "NTBBloodbath/rest.nvim",
+    "NTBBloodbath/rest.nvim",
 
-      requires = { "nvim-lua/plenary.nvim" }
+    requires = { "nvim-lua/plenary.nvim" },
   }
 
   use {
@@ -614,35 +614,35 @@ local function init()
 
     config = function()
       require("presence"):setup()
-    end
+    end,
   }
 
   use {
     "thinca/vim-fontzoom",
 
     cond = function()
-      return vim.fn.has("gui") == 1
-    end
+      return vim.fn.has "gui" == 1
+    end,
   }
 
   use {
     "TimUntersberger/neogit",
 
     config = function()
-      require"neogit".setup {
+      require("neogit").setup {
         integrations = {
-          diffview = true
-        }
+          diffview = true,
+        },
       }
     end,
-    cmd = "Neogit"
+    cmd = "Neogit",
   }
   use {
     "sindrets/diffview.nvim",
 
     config = function()
-      require"diffview".setup {}
-    end
+      require("diffview").setup {}
+    end,
   }
   use {
     "samoshkin/vim-mergetool",
@@ -650,16 +650,26 @@ local function init()
     config = function()
       vim.g.mergetool_layout = "mr"
       vim.g.mergetool_prefer_revision = "local"
-    end
+    end,
   }
 
   use {
     "notomo/cmdbuf.nvim",
 
     config = function()
-      vim.api.nvim_set_keymap("n", "q:", "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight)<CR>", { noremap = true })
-      vim.api.nvim_set_keymap("c", "<C-f>", "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight, { line = vim.fn.getcmdline(), column = vim.fn.getcmdpos() })<CR><C-c>", { noremap = true })
-    end
+      vim.api.nvim_set_keymap(
+        "n",
+        "q:",
+        "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight)<CR>",
+        { noremap = true }
+      )
+      vim.api.nvim_set_keymap(
+        "c",
+        "<C-f>",
+        "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight, { line = vim.fn.getcmdline(), column = vim.fn.getcmdpos() })<CR><C-c>",
+        { noremap = true }
+      )
+    end,
   }
 
   use "AndrewRadev/splitjoin.vim"
@@ -669,21 +679,21 @@ local function init()
 
     keys = {
       "<BS>",
-      "<CR>"
-    }
+      "<CR>",
+    },
   }
 
   -- Help document
   use {
     "vim-jp/vimdoc-ja",
 
-    disable = not O.japanese
+    disable = not O.japanese,
   }
   -- Rust
   use {
     "simrat39/rust-tools.nvim",
 
-    ft = "rust"
+    ft = "rust",
   }
 end
 
@@ -692,8 +702,7 @@ local plugins = setmetatable({}, {
     init()
 
     return packer[key]
-  end
+  end,
 })
 
 return plugins
-

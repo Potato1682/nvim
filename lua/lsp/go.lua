@@ -1,16 +1,16 @@
-local container = require("lspcontainers")
+local container = require "lspcontainers"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
 capabilities.window = capabilities.window or {}
 capabilities.window.workDoneProgress = true
 
-require"lspconfig".gopls.setup {
+require("lspconfig").gopls.setup {
   before_init = function(params)
     params.processId = vim.NIL
   end,
-  cmd = container.command("gopls"),
-  capabilities = capabilities
+  cmd = container.command "gopls",
+  capabilities = capabilities,
 }
 
 -- Code from https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-imports
@@ -24,9 +24,13 @@ function goimports(timeout_ms)
   -- See the implementation of the textDocument/codeAction callback
   -- (lua/vim/lsp/handler.lua) for how to do this properly.
   local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
-  if not result or next(result) == nil then return end
+  if not result or next(result) == nil then
+    return
+  end
   local actions = result[1].result
-  if not actions then return end
+  if not actions then
+    return
+  end
   local action = actions[1]
 
   -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
@@ -45,4 +49,3 @@ function goimports(timeout_ms)
 end
 
 vim.cmd [[autocmd BufWritePre *.go lua goimports(1000)]]
-

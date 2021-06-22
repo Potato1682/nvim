@@ -5,10 +5,9 @@ vim.api.nvim_set_keymap("v", "<C-x>", "<Plug>(dial-decrement)", {})
 vim.api.nvim_set_keymap("v", "g<C-a>", "<Plug>(dial-increment-additional)", {})
 vim.api.nvim_set_keymap("v", "g<C-x>", "<Plug>(dial-decrement-additional)", {})
 
-local dial = require("dial")
+local dial = require "dial"
 
-dial.augends["custom#boolean"] = dial.common.enum_cyclic{
+dial.augends["custom#boolean"] = dial.common.enum_cyclic {
   name = "boolean",
   strlist = { "true", "false" },
 }
-

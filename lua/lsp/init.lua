@@ -1,20 +1,28 @@
-vim.fn.sign_define("LspDiagnosticsSignError",
-                   { texthl = "LspDiagnosticsSignError", text = " ", numhl = "LspDiagnosticsSignError" })
-vim.fn.sign_define("LspDiagnosticsSignWarning",
-                   { texthl = "LspDiagnosticsSignWarning", text = " ", numhl = "LspDiagnosticsSignWarning" })
-vim.fn.sign_define("LspDiagnosticsSignInformation",
-                   { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation" })
-vim.fn.sign_define("LspDiagnosticsSignHint",
-                   { texthl = "LspDiagnosticsSignHint", text = " ", numhl = "LspDiagnosticsSignHint" })
+vim.fn.sign_define(
+  "LspDiagnosticsSignError",
+  { texthl = "LspDiagnosticsSignError", text = " ", numhl = "LspDiagnosticsSignError" }
+)
+vim.fn.sign_define(
+  "LspDiagnosticsSignWarning",
+  { texthl = "LspDiagnosticsSignWarning", text = " ", numhl = "LspDiagnosticsSignWarning" }
+)
+vim.fn.sign_define(
+  "LspDiagnosticsSignInformation",
+  { texthl = "LspDiagnosticsSignInformation", text = " ", numhl = "LspDiagnosticsSignInformation" }
+)
+vim.fn.sign_define(
+  "LspDiagnosticsSignHint",
+  { texthl = "LspDiagnosticsSignHint", text = " ", numhl = "LspDiagnosticsSignHint" }
+)
 
-vim.lsp.handlers["textDocument/codeAction"] = require"lsputil.codeAction".code_action_handler
-vim.lsp.handlers["textDocument/references"] = require"lsputil.locations".references_handler
-vim.lsp.handlers["textDocument/definition"] = require"lsputil.locations".definition_handler
-vim.lsp.handlers["textDocument/declaration"] = require"lsputil.locations".declaration_handler
-vim.lsp.handlers["textDocument/typeDefinition"] = require"lsputil.locations".typeDefinition_handler
-vim.lsp.handlers["textDocument/implementation"] = require"lsputil.locations".implementation_handler
-vim.lsp.handlers["textDocument/documentSymbol"] = require"lsputil.symbols".document_handler
-vim.lsp.handlers["workspace/symbol"] = require"lsputil.symbols".workspace_handler
+vim.lsp.handlers["textDocument/codeAction"] = require("lsputil.codeAction").code_action_handler
+vim.lsp.handlers["textDocument/references"] = require("lsputil.locations").references_handler
+vim.lsp.handlers["textDocument/definition"] = require("lsputil.locations").definition_handler
+vim.lsp.handlers["textDocument/declaration"] = require("lsputil.locations").declaration_handler
+vim.lsp.handlers["textDocument/typeDefinition"] = require("lsputil.locations").typeDefinition_handler
+vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").implementation_handler
+vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
+vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
 
 local keymap = vim.api.nvim_set_keymap
 
@@ -23,13 +31,11 @@ keymap("n", "gD", ":lua vim.lsp.buf.declaration()<CR>", { noremap = true, silent
 keymap("n", "gr", ":lua vim.lsp.buf.references()<CR>", { noremap = true, silent = true })
 keymap("n", "gi", ":lua vim.lsp.buf.implementation()<CR>", { noremap = true, silent = true })
 
-vim.cmd("command! -nargs=0 LspVirtualTextToggle lua require'lsp.virtual-text'.toggle()")
+vim.cmd "command! -nargs=0 LspVirtualTextToggle lua require'lsp.virtual-text'.toggle()"
 
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(
-  vim.lsp.handlers.hover, { focusable = false }
-)
+vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { focusable = false })
 
-local status = require("lsp-status")
+local status = require "lsp-status"
 
 status.register_progress()
 status.config {
@@ -40,18 +46,60 @@ status.config {
   indicator_ok = "",
   status_symbol = "",
   kind_labels = {
-    Text = " ", Method = " ", Function = " ", Constructor = " ", Field = " ", Variable = "[]", Class = " ",
-    Interface = " ", Module = "{} ", Property = " ", Unit = " ", Value = " ", Enum = " ", Keyword = " ", Snippet = " ",
-    Color = " ", File = " ", Reference = " ", Folder = " ", EnumMember = " ", Constant = " ", Struct = " ", Event = " ",
-    Operator = " ", TypeParameter = " "
-  }
+    Text = " ",
+    Method = " ",
+    Function = " ",
+    Constructor = " ",
+    Field = " ",
+    Variable = "[]",
+    Class = " ",
+    Interface = " ",
+    Module = "{} ",
+    Property = " ",
+    Unit = " ",
+    Value = " ",
+    Enum = " ",
+    Keyword = " ",
+    Snippet = " ",
+    Color = " ",
+    File = " ",
+    Reference = " ",
+    Folder = " ",
+    EnumMember = " ",
+    Constant = " ",
+    Struct = " ",
+    Event = " ",
+    Operator = " ",
+    TypeParameter = " ",
+  },
 }
 
 vim.lsp.protocol.CompletionItemKind = {
-  " (Text)", " (Method)", " (Function)", " (Constructor)", " (Field)", "[] (Variable)", " (Class)",
-  " (Interface)", "{} (Module)", " (Property)", " (Unit)", " (Value)", "  (Enum)", " (Keyword)", " (Snippet)",
-  " (Color)", " (File)", " (Reference)", " (Folder)", " (EnumMember)", " (Constant)", " (Struct)", " (Event)",
-  " (Operator)", " (TypeParameter)"
+  " (Text)",
+  " (Method)",
+  " (Function)",
+  " (Constructor)",
+  " (Field)",
+  "[] (Variable)",
+  " (Class)",
+  " (Interface)",
+  "{} (Module)",
+  " (Property)",
+  " (Unit)",
+  " (Value)",
+  "  (Enum)",
+  " (Keyword)",
+  " (Snippet)",
+  " (Color)",
+  " (File)",
+  " (Reference)",
+  " (Folder)",
+  " (EnumMember)",
+  " (Constant)",
+  " (Struct)",
+  " (Event)",
+  " (Operator)",
+  " (TypeParameter)",
 }
 
 local lsp_config = {}
@@ -59,16 +107,16 @@ local pos = {}
 
 function lsp_config.common_on_attach(client, _)
   -- fix 'command not found' error
-  vim.cmd([[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]])
-  require"illuminate".on_attach(client)
-  require"lsp-status".on_attach(client)
-  require"lsp_signature".on_attach {
+  vim.cmd [[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]]
+  require("illuminate").on_attach(client)
+  require("lsp-status").on_attach(client)
+  require("lsp_signature").on_attach {
     bind = true,
     hint_prefix = "",
     hi_parameter = "Blue",
     handler_opts = {
-      border = "none"
-    }
+      border = "none",
+    },
   }
 end
 
@@ -95,13 +143,13 @@ function window.nvim_close_valid_window(winid)
     end,
     ["number"] = function()
       close_win(winid)
-    end
+    end,
   }
 
   local _switch_metatable = {
     __index = function(_, t)
       error(string.format("Wrong type %s of winid", t))
-    end
+    end,
   }
 
   setmetatable(_switch, _switch_metatable)
@@ -111,14 +159,14 @@ end
 
 local function make_floating_popup_options(width, height, opts)
   vim.validate {
-    opts = { opts, "t", true }
+    opts = { opts, "t", true },
   }
 
   opts = opts or {}
 
   vim.validate {
     ["opts.offset_x"] = { opts.offset_x, "n", true },
-    ["opts.offset_y"] = { opts.offset_y, "n", true }
+    ["opts.offset_y"] = { opts.offset_y, "n", true },
   }
   local new_option = {}
 
@@ -145,7 +193,7 @@ local function make_floating_popup_options(width, height, opts)
     local pum_pos = vim.fn.pum_getpos()
     local pum_vis = not vim.tbl_isempty(pum_pos)
 
-    if pum_vis and vim.fn.line(".") >= pum_pos.row or not pum_vis and lines_above < lines_below then
+    if pum_vis and vim.fn.line "." >= pum_pos.row or not pum_vis and lines_above < lines_below then
       new_option.anchor = "N"
       new_option.row = 1
     else
@@ -153,7 +201,7 @@ local function make_floating_popup_options(width, height, opts)
       new_option.row = -2
     end
 
-    if vim.fn.wincol() + width <= api.nvim_get_option("columns") then
+    if vim.fn.wincol() + width <= api.nvim_get_option "columns" then
       new_option.anchor = new_option.anchor .. "W"
 
       new_option.col = 0
@@ -178,10 +226,10 @@ local function generate_win_opts(contents, opts)
 end
 
 function window.create_win_with_border(content_opts, opts)
-  vim.validate{
+  vim.validate {
     content_opts = { content_opts, "t" },
     contents = { content_opts.content, "t", true },
-    opts = { opts, "t", true }
+    opts = { opts, "t", true },
   }
 
   local contents, filetype = content_opts.contents, content_opts.filetype
@@ -225,16 +273,18 @@ local function apply_action_keys()
       api.nvim_command("inoremap <buffer><nowait><silent>" .. k .. " <cmd>lua require'lsp'.close_rename_window()<cr>")
     end
   else
-    api.nvim_command("inoremap <buffer><nowait><silent>" .. quit_key .. " <cmd>lua require'lsp'.close_rename_window()<cr>")
+    api.nvim_command(
+      "inoremap <buffer><nowait><silent>" .. quit_key .. " <cmd>lua require'lsp'.close_rename_window()<cr>"
+    )
   end
 
-  api.nvim_command("nnoremap <buffer><silent>q <cmd>lua require'lsp'.close_rename_window()<cr>")
+  api.nvim_command "nnoremap <buffer><silent>q <cmd>lua require'lsp'.close_rename_window()<cr>"
 end
 
 local unique_name = "textDocument-rename"
 
 function lsp_config.rename()
-  local active = require"utils".is_lsp_active()
+  local active = require("utils").is_lsp_active()
 
   if not active then
     return
@@ -242,22 +292,22 @@ function lsp_config.rename()
 
   lsp_config.close_rename_window()
 
-  pos[1], pos[2] = vim.fn.line("."), vim.fn.col(".")
+  pos[1], pos[2] = vim.fn.line ".", vim.fn.col "."
 
   local opts = {
     height = 1,
-    width = 30
+    width = 30,
   }
 
   local content_opts = {
     contents = {},
     filetype = "",
     enter = true,
-    highlight = "FloatBorder"
+    highlight = "FloatBorder",
   }
 
   local bufnr, winid = window.create_win_with_border(content_opts, opts)
-  local rename_prompt_prefix = api.nvim_create_namespace("rename_prompt_prefix")
+  local rename_prompt_prefix = api.nvim_create_namespace "rename_prompt_prefix"
 
   api.nvim_win_set_option(winid, "scrolloff", 0)
   api.nvim_win_set_option(winid, "sidescrolloff", 0)
@@ -270,7 +320,7 @@ function lsp_config.rename()
   api.nvim_buf_add_highlight(bufnr, rename_prompt_prefix, "Blue", 0, 0, #prompt_prefix)
   vim.cmd [[ startinsert! ]]
   api.nvim_win_set_var(0, unique_name, winid)
-  api.nvim_command("autocmd QuitPre <buffer> ++nested ++once :silent lua require'lsp'.close_rename_window()")
+  api.nvim_command "autocmd QuitPre <buffer> ++nested ++once :silent lua require'lsp'.close_rename_window()"
 
   apply_action_keys()
 end
@@ -282,7 +332,7 @@ function lsp_config.do_rename()
   lsp_config.close_rename_window()
 
   local params = vim.lsp.util.make_position_params()
-  local current_name = vim.fn.expand("<cword>")
+  local current_name = vim.fn.expand "<cword>"
 
   if not (new_name and #new_name > 0) or new_name == current_name then
     return
@@ -307,8 +357,9 @@ function lsp_config.close_rename_window()
   end
 end
 
-vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(vim.lsp.diagnostic.on_publish_diagnostics,
-                                                                   { virtual_text = { spacing = 0 }, update_in_insert = true })
+vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
+  vim.lsp.diagnostic.on_publish_diagnostics,
+  { virtual_text = { spacing = 0 }, update_in_insert = true }
+)
 
 return lsp_config
-

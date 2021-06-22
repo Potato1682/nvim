@@ -2,51 +2,53 @@ local vim = vim
 local M = {}
 
 function M.nvim_create_augroups(definitions)
-    for group_name, definition in pairs(definitions) do
-        vim.api.nvim_command("augroup " .. group_name)
-        vim.api.nvim_command("autocmd!")
+  for group_name, definition in pairs(definitions) do
+    vim.api.nvim_command("augroup " .. group_name)
+    vim.api.nvim_command "autocmd!"
 
-        for _, def in ipairs(definition) do
-            local command = table.concat(vim.tbl_flatten({ "autocmd", def }), " ")
+    for _, def in ipairs(definition) do
+      local command = table.concat(vim.tbl_flatten { "autocmd", def }, " ")
 
-            vim.api.nvim_command(command)
-        end
-
-        vim.api.nvim_command("augroup END")
+      vim.api.nvim_command(command)
     end
+
+    vim.api.nvim_command "augroup END"
+  end
 end
 
 function M.setup()
   local definitions = {
     dashboard = {
       {
-        "FileType", "dashboard",
-        "setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell nolist nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= "
-      }, { "FileType", "dashboard", "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2" },
-      { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<cr>" }
+        "FileType",
+        "dashboard",
+        "setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell nolist nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= ",
+      },
+      { "FileType", "dashboard", "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2" },
+      { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<cr>" },
     },
     lens = {
-      { "BufWinEnter,WinEnter", "*", "silent! call win#lens()" }
+      { "BufWinEnter,WinEnter", "*", "silent! call win#lens()" },
     },
     bufs = {
       { "BufWritePre", "*.tmp", "setlocal noundofile" },
       { "BufWritePre", "*.log", "setlocal noundofile" },
-      { "BufWritePre", "*.bak", "setlocal noundofile" }
+      { "BufWritePre", "*.bak", "setlocal noundofile" },
     },
     lsp = {
-      { "CursorHold,CursorHoldI", "*", "lua vim.lsp.buf.hover()" }
+      { "CursorHold,CursorHoldI", "*", "lua vim.lsp.buf.hover()" },
     },
     wins = {
-      { "FocusLost"  , "*", "silent! wa" },
-      { "VimEnter"   , "*", "lua require'events'.on_enter()" },
-      { "ColorScheme", "*", "lua require'events'.on_color()" }
+      { "FocusLost", "*", "silent! wa" },
+      { "VimEnter", "*", "lua require'events'.on_enter()" },
+      { "ColorScheme", "*", "lua require'events'.on_color()" },
     },
     yank = {
-      { "TextYankPost", [[* silent! lua vim.highlight.on_yank({ higroup="IncSearch", timeout=400 })]] }
+      { "TextYankPost", [[* silent! lua vim.highlight.on_yank({ higroup="IncSearch", timeout=400 })]] },
     },
     plugins = {
-      { "BufWritePost", "plugins.lua", "PackerCompile" }
-    }
+      { "BufWritePost", "plugins.lua", "PackerCompile" },
+    },
   }
 
   M.nvim_create_augroups(definitions)
@@ -65,7 +67,7 @@ function M.on_enter()
   end
 end
 
-function M.add_autocmd_color(name, func,add_to_enter)
+function M.add_autocmd_color(name, func, add_to_enter)
   O.color_event[name] = func
   if add_to_enter then
     O.enter_event[name] = func
@@ -77,17 +79,16 @@ function M.on_color()
     handler()
   end
 
-  vim.cmd("hi GreenSign ctermbg=235 guibg=#2b2d3a")
-  vim.cmd("hi BlueSign ctermbg=235 guibg=#2b2d3a")
-  vim.cmd("hi YellowSign ctermbg=235 guibg=#2b2d3a")
-  vim.cmd("hi RedSign ctermbg=235 guibg=#2b2d3a")
-  vim.cmd("hi link NvimTreeLspDiagnosticsError RedSign")
-  vim.cmd("hi link NvimTreeLspDiagnosticsWarning YellowSign")
-  vim.cmd("hi link NvimTreeLspDiagnosticsInformation BlueSign")
-  vim.cmd("hi link NvimTreeLspDiagnosticsHint GreenSign")
+  vim.cmd "hi GreenSign ctermbg=235 guibg=#2b2d3a"
+  vim.cmd "hi BlueSign ctermbg=235 guibg=#2b2d3a"
+  vim.cmd "hi YellowSign ctermbg=235 guibg=#2b2d3a"
+  vim.cmd "hi RedSign ctermbg=235 guibg=#2b2d3a"
+  vim.cmd "hi link NvimTreeLspDiagnosticsError RedSign"
+  vim.cmd "hi link NvimTreeLspDiagnosticsWarning YellowSign"
+  vim.cmd "hi link NvimTreeLspDiagnosticsInformation BlueSign"
+  vim.cmd "hi link NvimTreeLspDiagnosticsHint GreenSign"
 end
 
 M.setup()
 
 return M
-

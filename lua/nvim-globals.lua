@@ -2,10 +2,10 @@ O = {
   author = "", -- REQUIRED
   japanese = false,
   auto_close_tree = 0,
-  colorscheme = 'edge',
+  colorscheme = "edge",
   edge_better_performance = false, -- If true, edge show some logs on startup
   -- @usage can be 'aura', 'neon'
-  colorscheme_style = 'neon',
+  colorscheme_style = "neon",
   wrap_lines = false,
   number = true,
   relative_number = false,
@@ -15,28 +15,30 @@ O = {
   redmine = { site = "", api_key = "" },
   python = {
     -- @usage can be 'unittest', 'pytest'
-    test_type = "pytest"
+    test_type = "pytest",
   },
   java = {
     format = {
       -- @usage Load .xml file from lua/lsp/java/styles, can use google-style and allman by default
       name = "google-style",
-      profile = "GoogleStyle"
+      profile = "GoogleStyle",
     },
     -- @usage set your java runtime
-    runtimes = {{
-      name = "JavaSE-1.8",
-      path = "/usr/lib/jvm/java-8-openjdk",
-      default = true
-    }, {
-      name = "JavaSE-11",
-      path = "/usr/lib/jvm/java-11-openjdk"
-    }--[[, {
+    runtimes = {
+      {
+        name = "JavaSE-1.8",
+        path = "/usr/lib/jvm/java-8-openjdk",
+        default = true,
+      },
+      {
+        name = "JavaSE-11",
+        path = "/usr/lib/jvm/java-11-openjdk",
+      },--[[, {
       name = "JavaSE-16",
       path = "/usr/lib/jvm/zulu-16"
-    }]]}
+    }]]
+    },
   },
   enter_event = {},
-  color_event = {}
+  color_event = {},
 }
-

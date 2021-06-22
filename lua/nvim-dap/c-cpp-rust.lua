@@ -1,11 +1,11 @@
-local dap = require("dap")
+local dap = require "dap"
 
 dap.adapters.cpp = {
-  type = 'executable',
+  type = "executable",
   name = "cppdbg",
   command = vim.api.nvim_get_runtime_file("gadgets/linux/vscode-cpptools/debugAdapters/OpenDebugAD7", false)[1],
   args = {},
-  attach = { pidProperty = "processId", pidSelect = "ask" }
+  attach = { pidProperty = "processId", pidSelect = "ask" },
 }
 
 local M = {}
@@ -23,12 +23,12 @@ M.start_c_debugger = function(args, mi_mode, mi_debugger_path)
       env = { "VAR1=value1", "VAR2=value" }, -- environment variables are set via `ENV_VAR_NAME=value` pairs
       externalConsole = true,
       MIMode = mi_mode or "gdb",
-      MIDebuggerPath = mi_debugger_path
+      MIDebuggerPath = mi_debugger_path,
     }
   end
 
   if not last_gdb_config then
-    print('No binary to debug set! Use ":DebugC <binary> <args>" or ":DebugRust <binary> <args>"')
+    print 'No binary to debug set! Use ":DebugC <binary> <args>" or ":DebugRust <binary> <args>"'
     return
   end
 
@@ -45,4 +45,3 @@ vim.cmd [[
 
 -- Export module to use this by the commands' function call
 return M
-
