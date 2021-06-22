@@ -15,8 +15,7 @@ require("lspinstall/servers").jdtls = vim.tbl_extend("error", config, {
 
 require("lspinstall/servers").eslintd = vim.tbl_extend("error", {}, {
   install_script = [[
-    ! test -f package.json && npm init -y --scope=lspinstall || true
-    npm install eslint_d@latest
+    npm install -g eslint_d@latest
   ]],
 })
 

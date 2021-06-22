@@ -689,6 +689,27 @@ local function init()
 
     disable = not O.japanese,
   }
+  -- Typescript
+  use {
+    "jose-elias-alvarez/null-ls.nvim",
+
+    ft = {
+      "javascript",
+      "javascriptreact",
+      "javascript.jsx",
+      "typescript",
+      "typescriptreact",
+      "typescript.tsx",
+    },
+    config = function()
+      require("null-ls").setup {}
+    end,
+  }
+  use {
+    "jose-elias-alvarez/nvim-lsp-ts-utils",
+
+    after = "null-ls.nvim",
+  }
   -- Rust
   use {
     "simrat39/rust-tools.nvim",
