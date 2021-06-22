@@ -25,7 +25,6 @@ require "nvim-dap"
 require "nvim-lspinstall"
 
 require "lsp"
-require "lsp.efm-server"
 require "lsp.c-cpp"
 require "nvim-dap.lua"
 require "lsp.lua"

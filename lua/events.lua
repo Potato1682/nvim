@@ -35,6 +35,9 @@ function M.setup()
       { "BufWritePre", "*.log", "setlocal noundofile" },
       { "BufWritePre", "*.bak", "setlocal noundofile" },
     },
+    format = {
+      { "BufWritePost", "*", "FormatWrite" }
+    },
     lsp = {
       { "CursorHold,CursorHoldI", "*", "lua vim.lsp.buf.hover()" },
     },
