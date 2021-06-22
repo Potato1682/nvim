@@ -2,8 +2,8 @@ local function install(name, dir, script)
   vim.fn.mkdir(dir, "p")
 
   local function onExit(_, code)
-    if code ~= 0 then error("[dapinstall] Couldn't install " .. name .. " server!") end
-    print("[dapinstall] Successfully installed " .. name .. " server!")
+    if code ~= 0 then error("[fmtinstall] Couldn't install " .. name .. "!") end
+    print("[fmtinstall] Successfully installed " .. name .. "!")
   end
 
   vim.cmd("new")

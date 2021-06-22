@@ -143,6 +143,14 @@ local function init()
     as = "lspcontainers"
   }
   use {
+    "mhartington/formatter.nvim",
+
+    as = "formatter",
+    config = function()
+      require("nvim-formatter")
+    end
+  }
+  use {
     "nvim-lua/lsp-status.nvim",
 
     as = "lspstatus"
@@ -262,7 +270,7 @@ local function init()
     "mizlan/iswap.nvim",
 
     config = function()
-      require("iswap").setup {
+      require"iswap".setup {
         grey = "disable"
       }
     end,
@@ -272,7 +280,7 @@ local function init()
     "lewis6991/spellsitter.nvim",
 
     config = function()
-      require("spellsitter").setup {
+      require"spellsitter".setup {
         hl = "SpellBad",
         captures = { "comment" }
       }
