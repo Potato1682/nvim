@@ -552,14 +552,12 @@ local function init()
   }
 
   use {
-    "winston0410/range-highlight.nvim",
+    "nacro90/numb.nvim",
 
     config = function()
-      require("range-highlight").setup()
+      require("numb").setup()
     end,
-    requires = {
-      "winston0410/cmd-parser.nvim",
-    },
+    event = "CmdlineEnter"
   }
 
   use {
@@ -592,6 +590,10 @@ local function init()
         open_mapping = [[<C-t>]],
       }
     end,
+    cmd = {
+      "ToggleTerm",
+      "ToggleTermOpenAll"
+    }
   }
 
   use {
@@ -642,6 +644,10 @@ local function init()
       vim.g.mergetool_layout = "mr"
       vim.g.mergetool_prefer_revision = "local"
     end,
+    cmd = {
+      "MergetoolToggle",
+      "MergetoolStart"
+    }
   }
 
   use {
