@@ -404,7 +404,7 @@ local function init()
 
     config = function()
       require("nvim-autopairs").setup {
-        enable_check_bracket_line = false
+        enable_check_bracket_line = false,
       }
       require "nvim-autopairs-config"
     end,

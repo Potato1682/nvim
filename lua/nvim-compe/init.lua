@@ -29,6 +29,11 @@ require("compe").setup {
   },
 }
 
+require("nvim-autopairs.completion.compe").setup {
+  map_cr = false,
+  map_complete = true
+}
+
 local npairs = require "nvim-autopairs"
 local indent = require "nvim-treesitter.indent"
 
