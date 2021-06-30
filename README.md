@@ -87,14 +87,20 @@ $ npm i --cache $(mktemp -d)
 $ npm run build-plugin
 ```
 
-### Some servers stopped working by exit code 125
+### Some servers stopped working by exit code 125 or 126
 
-If you're using `podman`, you may not be using unqualified search registries.  
+If you're using `podman`, you may not be using unqualified search registries. ( code 125 )  
 Comment-out / Add the property to `/etc/containers/registries.conf` like this:
 
 ```tst
 unqualified-search-registries = ["docker.io"]
 ```
+
+If it doesn't work, you may not installed OCI runtime. ( code 126 )  
+These are runtime binaries:
+
+- For cgroups v1 : `runc`
+- For cgroups v2 : `crun`
 
 ### Discord Rich Presence is not working
 
