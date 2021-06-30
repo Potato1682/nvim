@@ -2,6 +2,13 @@ O = {
   author = "", -- REQUIRED
   leader = " ",
   japanese = false,
+  toggle = {
+    enabled = true,
+    user_tables = {
+      ["=="] = "!=",
+      ["==="] = "!=="
+    }
+  },
   auto_close_tree = 0,
   colorscheme = "edge",
   edge_better_performance = false, -- If true, edge shows some logs on startup

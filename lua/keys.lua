@@ -1,54 +1,51 @@
+local keymap = vim.api.nvim_set_keymap
+
 -- Set leader
 if O.leader == " " then
-  vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
+  keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
   vim.g.mapleader = " "
 else
   vim.g.mapleader = O.leader
 end
 
 -- no hl
-vim.api.nvim_set_keymap("n", "<Leader>h", ":let @/=''<CR>", { noremap = true, silent = true })
+keymap("n", "<Leader>h", ":let @/=''<CR>", { noremap = true, silent = true })
 
 -- explorer
-vim.api.nvim_set_keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
 
 -- telescope
-vim.api.nvim_set_keymap("n", "<Leader>f", ":Telescope find_files<CR>", { noremap = true, silent = true })
+keymap("n", "<Leader>f", ":Telescope find_files<CR>", { noremap = true, silent = true })
 
 -- dashboard
-vim.api.nvim_set_keymap("n", "<Leader>;", ":Dashboard<CR>", { noremap = true, silent = true })
+keymap("n", "<Leader>;", ":Dashboard<CR>", { noremap = true, silent = true })
 
 -- close buffer
-vim.api.nvim_set_keymap("n", "<leader>q", ":BufferClose<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>q", ":BufferClose<CR>", { noremap = true, silent = true })
 
 -- generate documents
-vim.api.nvim_set_keymap("n", "<leader>*", ":DogeGenerate<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>*", ":DogeGenerate<CR>", { noremap = true, silent = true })
 
 -- open projects
-vim.api.nvim_set_keymap(
-  "n",
-  "<leader>p",
-  ":lua require'telescope'.extensions.project.project{}<CR>",
-  { noremap = true, silent = true }
-)
+keymap("n", "<leader>p", ":lua require'telescope'.extensions.project.project{}<CR>", { noremap = true, silent = true })
 
 -- Better window movement
-vim.api.nvim_set_keymap("n", "<C-h>", "<C-w>h", { silent = true })
-vim.api.nvim_set_keymap("n", "<C-j>", "<C-w>j", { silent = true })
-vim.api.nvim_set_keymap("n", "<C-k>", "<C-w>k", { silent = true })
-vim.api.nvim_set_keymap("n", "<C-l>", "<C-w>l", { silent = true })
+keymap("n", "<C-h>", "<C-w>h", { silent = true })
+keymap("n", "<C-j>", "<C-w>j", { silent = true })
+keymap("n", "<C-k>", "<C-w>k", { silent = true })
+keymap("n", "<C-l>", "<C-w>l", { silent = true })
 
 -- Better indenting
-vim.api.nvim_set_keymap("v", "<", "<gv", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", ">", ">gv", { noremap = true, silent = true })
+keymap("v", "<", "<gv", { noremap = true, silent = true })
+keymap("v", ">", ">gv", { noremap = true, silent = true })
 
 -- Tab switch buffer
-vim.api.nvim_set_keymap("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true })
+keymap("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true })
+keymap("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true })
 
 -- Move selected line / block of text in visual line
-vim.api.nvim_set_keymap("x", "K", ":move '<-2<CR>gv-gv'", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("x", "J", ":move '>+1<CR>gv-gv'", { noremap = true, silent = true })
+keymap("x", "K", ":move '<-2<CR>gv-gv'", { noremap = true, silent = true })
+keymap("x", "J", ":move '>+1<CR>gv-gv'", { noremap = true, silent = true })
 
 -- Resize with arrow keys
 vim.cmd [[
@@ -58,4 +55,8 @@ vim.cmd [[
   nnoremap <silent> <C-Right> :vertical resize +2<CR>
 ]]
 
-vim.api.nvim_set_keymap("n", "$", "<cmd>lua require'hop'.hint_words()<cr>", {})
+keymap("n", "$", "<cmd>lua require'hop'.hint_words()<cr>", {})
+
+if O.toggle.enabled then
+  keymap("n", "<C-s>", "<cmd>lua require'utils'.toggleString()<cr>", { noremap = true })
+end
