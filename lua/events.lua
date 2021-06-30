@@ -57,6 +57,9 @@ function M.setup()
     lsp = {
       { "CursorHold,CursorHoldI", "*", "silent! lua vim.lsp.buf.hover()" },
     },
+    mkdir = {
+      { "BufWritePre", "*", "lua require'utils'.file_mkdirp()" }
+    },
     wins = {
       { "FocusLost", "*", "noautocmd silent! wa" },
       { "VimEnter", "*", "lua require'events'.on_enter()" },

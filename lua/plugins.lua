@@ -451,15 +451,6 @@ local function init()
     end,
   }
 
-  use {
-    "jghauser/mkdir.nvim",
-
-    config = function()
-      require "mkdir"
-    end,
-    event = "BufEnter",
-  }
-
   use "tjdevries/colorbuddy.nvim"
 
   use {
@@ -594,6 +585,10 @@ local function init()
     "NTBBloodbath/rest.nvim",
 
     requires = { "nvim-lua/plenary.nvim" },
+    keys = {
+      "<Plug>RestNvim",
+      "<Plug>RestNvimPreview"
+    }
   }
 
   use {
@@ -663,7 +658,14 @@ local function init()
     end,
   }
 
-  use "AndrewRadev/splitjoin.vim"
+  use {
+    "AndrewRadev/splitjoin.vim",
+
+    keys = {
+      "gS",
+      "gJ"
+    }
+  }
 
   use {
     "arecarn/vim-fold-cycle",

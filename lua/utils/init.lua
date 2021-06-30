@@ -56,4 +56,12 @@ function M.toggleString()
   xpcall(vim.cmd("normal ciw" .. merged_table[str]), errorHandler)
 end
 
+function M.file_mkdirp()
+  local dir = vim.fn.expand "%:p:h"
+
+  if vim.fn.isdirectory(dir) == 0 then
+    vim.fn.mkdir(dir, "p")
+  end
+end
+
 return M
