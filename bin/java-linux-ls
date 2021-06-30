@@ -7,7 +7,7 @@ GRADLE_HOME=$HOME/gradle /usr/lib/jvm/java-11-openjdk/bin/java \
   -Declipse.product=org.eclipse.jdt.ls.core.product \
   -Dlog.protocol=true \
   -Dlog.level=ALL \
-  -javaagent:$HOME/.local/share/nvim/lspinstall/jdtls/eclipse.jdt.ls/lombok/lombok.jar \
+  -javaagent:$HOME/.local/share/nvim/lspinstall/jdtls/lombok/lombok.jar \
   -Xms1g \
   -Xmx2G \
   -jar $(echo "$JAR") \
