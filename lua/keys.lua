@@ -1,9 +1,13 @@
 -- Set leader
-vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
-vim.g.mapleader = " "
+if O.leader == " " then
+  vim.api.nvim_set_keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
+  vim.g.mapleader = " "
+else
+  vim.g.mapleader = O.leader
+end
 
 -- no hl
-vim.api.nvim_set_keymap("n", "<Leader>h", ":set nohlsearch<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<Leader>h", ":let @/=''<CR>", { noremap = true, silent = true })
 
 -- explorer
 vim.api.nvim_set_keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
@@ -15,7 +19,10 @@ vim.api.nvim_set_keymap("n", "<Leader>f", ":Telescope find_files<CR>", { noremap
 vim.api.nvim_set_keymap("n", "<Leader>;", ":Dashboard<CR>", { noremap = true, silent = true })
 
 -- close buffer
-vim.api.nvim_set_keymap("n", "<leader>c", ":BufferClose<CR>", { noremap = true, silent = true })
+vim.api.nvim_set_keymap("n", "<leader>q", ":BufferClose<CR>", { noremap = true, silent = true })
+
+-- generate documents
+vim.api.nvim_set_keymap("n", "<leader>*", ":DogeGenerate<CR>", { noremap = true, silent = true })
 
 -- open projects
 vim.api.nvim_set_keymap(

@@ -23,7 +23,7 @@ require("which-key").setup {
   triggers = { "<leader>" },
 }
 
-local opts = {
+local options = {
   mode = "n", -- NORMAL mode
   prefix = "<leader>",
   buffer = nil, -- Global mappings. Specify a buffer number for buffer local mappings
@@ -33,7 +33,7 @@ local opts = {
 }
 
 local japanese_mappings = {
-  ["c"] = "バッファーを閉じる",
+  ["q"] = "バッファーを閉じる",
   ["e"] = "エクスプローラー",
   ["f"] = "ファイルを検索",
   ["h"] = "検索ハイライトを切る",
@@ -46,7 +46,7 @@ local japanese_mappings = {
   ["w"] = { "<cmd>lua require'dapui'.toggle()<cr>", "デバッグ インターフェース" },
   ["x"] = { "<cmd>TroubleToggle<cr>", "エラー一覧" },
   ["u"] = { "<cmd>UndotreeToggle<cr>", "ナビゲーター" },
-  ["q"] = { "<cmd>DBUIToggle<cr>", "データベース エクスプローラー" },
+  ["c"] = { "<cmd>DBUIToggle<cr>", "データベース エクスプローラー" },
   ["m"] = { "<Plug>MarkdownPreviewToggle", "Markdownのプレビューを切り替え" },
   d = {
     name = "+診断",
@@ -246,7 +246,7 @@ local mappings = {
 }
 
 if O.japanese then
-  require("which-key").register(japanese_mappings, opts)
+  require("which-key").register(japanese_mappings, options)
 else
-  require("which-key").register(mappings, opts)
+  require("which-key").register(mappings, options)
 end
