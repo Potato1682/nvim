@@ -15,6 +15,8 @@ O = {
   -- @usage can be 'aura', 'neon'
   colorscheme_style = "neon",
   wrap_lines = false,
+  cursorline = true,
+  cursorcolumn = false,
   number = true,
   relative_number = false,
   timeoutlen = 500,

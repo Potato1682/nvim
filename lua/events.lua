@@ -28,6 +28,10 @@ function M.setup()
     },
     cursor = {
       { "BufRead", "*", [[ if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g`\"" | endif ]] },
+      { "WinEnter,BufEnter", "*", [[ if luaeval("O.cursorline") | setlocal cursorline | endif ]] },
+      { "WinLeave,BufLeave", "*", [[ if luaeval("O.cursorline") | setlocal nocursorline | endif ]] },
+      { "WinEnter,BufEnter", "*", [[ if luaeval("O.cursorcolumn") | setlocal cursorcolumn | endif ]] },
+      { "WinLeave,BufLeave", "*", [[ if luaeval("O.cursorcolumn") | setlocal nocursorcolumn | endif ]] },
     },
     dashboard = {
       {

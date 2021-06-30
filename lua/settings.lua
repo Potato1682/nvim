@@ -58,8 +58,8 @@ vim.opt.laststatus = 2
 
 vim.opt.number = O.number
 vim.opt.relativenumber = O.relative_number
-vim.opt.cursorline = true
-vim.opt.cursorcolumn = false
+vim.opt.cursorline = O.cursorline
+vim.opt.cursorcolumn = O.cursorcolumn
 vim.opt.ruler = true
 vim.opt.showtabline = 2
 vim.opt.signcolumn = "yes:3"

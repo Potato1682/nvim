@@ -517,18 +517,6 @@ local function init()
   }
 
   use {
-    "Pocco81/NoCLC.nvim",
-
-    config = function()
-      require("no-clc").setup {
-        load_at_startup = true,
-        cursorline = true,
-        cursorcolumn = false,
-      }
-    end,
-  }
-
-  use {
     "thinca/vim-template",
 
     config = function()
@@ -559,7 +547,7 @@ local function init()
     config = function()
       require("numb").setup()
     end,
-    event = "CmdlineEnter"
+    event = "CmdlineEnter",
   }
 
   use {
@@ -598,8 +586,8 @@ local function init()
     end,
     cmd = {
       "ToggleTerm",
-      "ToggleTermOpenAll"
-    }
+      "ToggleTermOpenAll",
+    },
   }
 
   use {
@@ -652,8 +640,8 @@ local function init()
     end,
     cmd = {
       "MergetoolToggle",
-      "MergetoolStart"
-    }
+      "MergetoolStart",
+    },
   }
 
   use {
