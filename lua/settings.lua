@@ -49,7 +49,7 @@ vim.opt.softtabstop = 4
 vim.opt.pumheight = 10
 vim.opt.pumblend = 17
 
-vim.opt.winblend = 10
+vim.opt.winblend = 0
 vim.opt.scrolloff = 8
 vim.opt.sidescrolloff = 16
 vim.opt.sidescroll = 1

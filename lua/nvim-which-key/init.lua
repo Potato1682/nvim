@@ -237,12 +237,7 @@ local mappings = {
   },
 
   -- extras
-  z = {
-    name = "+Zen",
-    s = { "<cmd>TZBottom<cr>", "toggle status line" },
-    t = { "<cmd>TZTop<cr>", "toggle tab bar" },
-    z = { "<cmd>TZAtaraxis<cr>", "toggle zen" },
-  },
+  z = { "<cmd>ZenMode<cr>", "Zen Mode" },
 }
 
 if O.japanese then

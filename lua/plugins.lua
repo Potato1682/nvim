@@ -444,7 +444,7 @@ local function init()
   }
 
   use {
-    "Pocco81/TrueZen.nvim",
+    "folke/zen-mode.nvim",
 
     config = function()
       require "nvim-zen-mode"
@@ -581,6 +581,10 @@ local function init()
   use {
     "dstein64/nvim-scrollview",
 
+    config = function()
+      vim.g.scrollview_nvim_14040_workaround = 1
+      vim.g.scrollview_hide_on_intersect = 1
+    end,
     event = "BufEnter",
   }
 
