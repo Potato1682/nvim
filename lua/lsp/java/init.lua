@@ -18,6 +18,11 @@ vim.list_extend(
   vim.split(vim.fn.glob(vim.fn.stdpath "data" .. "/dapinstall/java/java-test/server/*.jar"), "\n")
 )
 
+vim.list_extend(
+  bundles,
+  vim.split(vim.fn.glob(vim.fn.stdpath "data" .. "/lspinstall/jdtls/java-decompiler/server/*.jar"), "\n")
+)
+
 local on_attach = function(client)
   require("jdtls").setup_dap { hotcoderplace = "auto" }
   require("lsp").common_on_attach(client)
@@ -51,9 +56,16 @@ if vim.bo.filetype == "java" then
       allow_incremental_sync = true,
     },
     settings = {
-      ["java.format.settings.url"] = vim.fn.stdpath "config" .. "/lua/lsp/java/styles/" .. O.java.format.name .. ".xml",
-      ["java.format.settings.profile"] = O.java.format.profile,
       java = {
+        format = {
+          enabled = O.java.format.enabled,
+          settings = {
+            url = vim.fn.stdpath "config" .. "/lua/lsp/java/styles/" .. O.java.format.name .. ".xml",
+            profile = O.java.format.profile,
+          },
+        },
+        referenceCodeLens = O.java.codelens.references,
+        implementationCodeLens = O.java.codelens.implementation,
         signatureHelp = {
           enabled = true,
         },
@@ -88,6 +100,25 @@ if vim.bo.filetype == "java" then
         },
         configuration = {
           runtimes = O.java.runtimes,
+          updateBuildConfiguration = "automatic",
+        },
+        autobuild = {
+          enabled = O.java.autobuild,
+        },
+        import = {
+          gradle = {
+            enabled = true,
+          },
+          maven = {
+            enabled = true,
+          },
+          exclusions = {
+            "**/node_modules/**",
+            "**/.metadata/**",
+            "**/archetype-resources",
+            "**/META-INF/maven/**",
+            "/**/test/**",
+          },
         },
       },
     },

@@ -5,11 +5,13 @@ require("lspconfig/configs").jdtls = nil
 require("lspinstall/servers").jdtls = vim.tbl_extend("error", config, {
   install_script = [[
     rm -rf eclipse.jdt.ls
-    git clone https://github.com/eclipse/eclipse.jdt.ls.git
+    git clone https://github.com/eclipse/eclipse.jdt.ls.git --depth 1 --recursive
     cd eclipse.jdt.ls
     mkdir - pv lombok
     curl -fLo lombok/lombok.jar https://projectlombok.org/downloads/lombok.jar
-    ./mvnw clean verify -DskipTests
+    ./mvnw clean verify - DskipTests
+    cd ..
+    git clone https://github.com/dgileadi/vscode-java-decompiler --depth 1 --recursive java-decompiler
   ]],
 })
 

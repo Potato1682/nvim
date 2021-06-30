@@ -19,9 +19,11 @@ O = {
   },
   java = {
     format = {
+      enabled = true,
       -- @usage Load .xml file from lua/lsp/java/styles, can use google-style and allman by default
       name = "google-style",
       profile = "GoogleStyle",
+      on_type = false
     },
     -- @usage set your java runtime
     runtimes = {
@@ -38,6 +40,15 @@ O = {
       path = "/usr/lib/jvm/zulu-16"
     }]]
     },
+    codelens = {
+      references = true,
+      implementation = true
+    },
+    decompiler = {
+      -- @usage can be 'common', 'cfr', 'fernflower', 'procyon'
+      preferred = "fernflower"
+    },
+    autobuild = false
   },
   enter_event = {},
   color_event = {},
