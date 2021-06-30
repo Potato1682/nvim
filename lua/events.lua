@@ -24,10 +24,10 @@ function M.setup()
     },
     backspace = {
       { "BufEnter", "*", "silent! iunmap <buffer> <BS>" },
-      { "BufEnter", "*", "imap <silent> <bs> <cmd>call v:lua.MPairs.check_bs()<cr>" }
+      { "BufEnter", "*", "imap <silent> <bs> <cmd>call v:lua.MPairs.check_bs()<cr>" },
     },
     cursor = {
-      { "BufRead", "*", [[ if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g`\"" | endif ]] }
+      { "BufRead", "*", [[ if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g`\"" | endif ]] },
     },
     dashboard = {
       {
@@ -51,7 +51,7 @@ function M.setup()
       { "BufWritePost", "<buffer>", "FormatWrite" },
     },
     lsp = {
-      { "CursorHold,CursorHoldI", "*", "lua vim.lsp.buf.hover()" },
+      { "CursorHold,CursorHoldI", "*", "silent! lua vim.lsp.buf.hover()" },
     },
     wins = {
       { "FocusLost", "*", "noautocmd silent! wa" },
