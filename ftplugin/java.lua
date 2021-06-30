@@ -3,13 +3,13 @@ if vim.fn.glob(vim.fn.stdpath "data" .. "/lspinstall/jdtls/eclipse.jdt.ls/launch
 end
 
 -- treesitter fixes
-vim.cmd [[ TSEnableAll highlight ]]
-vim.cmd [[ TSEnableAll rainbow ]]
-vim.cmd [[ TSEnableAll indent ]]
-vim.cmd [[ TSEnableAll autotag ]]
-vim.cmd [[ TSEnableAll rainbow ]]
-vim.cmd [[ TSEnableAll context_commentstring ]]
-vim.cmd [[ TSEnableAll textobjects.swap ]]
+vim.cmd [[ TSBufEnable highlight ]]
+vim.cmd [[ TSBufEnable rainbow ]]
+vim.cmd [[ TSBufEnable indent ]]
+vim.cmd [[ TSBufEnable autotag ]]
+vim.cmd [[ TSBufEnable rainbow ]]
+vim.cmd [[ TSBufEnable context_commentstring ]]
+vim.cmd [[ TSBufEnable textobjects.swap ]]
 
 require "nvim-dap.java"
 require "lsp.java"
@@ -21,11 +21,11 @@ function jdtls_ui.pick_one_async(items, _, _, cb)
 end
 
 local function keymap(key, action)
-  vim.api.nvim_set_keymap("n", "<leader>" .. key, action, { noremap = true, silent = true })
+  vim.cmd("nnoremap <silent> <buffer> <leader>" .. key .. " " .. action)
 end
 
 local function vkeymap(key, action)
-  vim.api.nvim_set_keymap("v", "<leader>" .. key, action, { noremap = true, silent = true })
+  vim.cmd("vnoremap <silent> <buffer> <leader>" .. key .. " " .. action)
 end
 
 keymap("la", ":lua require'jdtls'.code_action()<cr>")
