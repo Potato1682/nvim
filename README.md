@@ -16,7 +16,7 @@ My neovim settings
 - Node.js and NPM
 - Yarn
 - `jq`
-- Java >= 11 and Lombok (/usr/local/share/lombok/lombok.jar)
+- Java >= 11
 - Docker Engine
 - Ruby and [Bundler](https://bundler.io)
 - [nonicons](https://github.com/yamatsum/nonicons) patched font
