@@ -515,8 +515,6 @@ local function init()
     end,
   }
 
-  use "ojroques/nvim-bufdel"
-
   use "toritori0318/vim-redmine"
 
   use "antoyo/vim-licenses"
@@ -587,8 +585,8 @@ local function init()
     requires = { "nvim-lua/plenary.nvim" },
     keys = {
       "<Plug>RestNvim",
-      "<Plug>RestNvimPreview"
-    }
+      "<Plug>RestNvimPreview",
+    },
   }
 
   use {
@@ -663,8 +661,8 @@ local function init()
 
     keys = {
       "gS",
-      "gJ"
-    }
+      "gJ",
+    },
   }
 
   use {

@@ -133,14 +133,12 @@ local japanese_mappings = {
   -- extras
   z = {
     name = "+Zen Mode",
-    s = { "<cmd>TZBottom<cr>", "ステータスバーの表示を切り替え" },
-    t = { "<cmd>TZTop<cr>", "タブの表示を切り替え" },
-    z = { "<cmd>TZAtaraxis<cr>", "Zen モードを切り替え" },
+    z = { "<cmd>ZenMode<cr>", "Zen モードを切り替え" },
   },
 }
 
 local mappings = {
-  ["c"] = "Close Buffer",
+  ["q"] = "Close Buffer",
   ["e"] = "Explorer",
   ["f"] = "Find File",
   ["h"] = "No Highlight",
@@ -152,7 +150,7 @@ local mappings = {
   ["w"] = { "<cmd>lua require'dapui'.toggle()<cr>", "Debug UI" },
   ["x"] = { "<cmd>TroubleToggle<cr>", "Error List" },
   ["u"] = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
-  ["q"] = { "<cmd>DBUIToggle", "Database UI" },
+  ["c"] = { "<cmd>DBUIToggle<cr>", "Database UI" },
   ["m"] = { "<Plug>MarkdownPreviewToggle", "Toggle markdown preview" },
   d = {
     name = "+Diagnostics",
