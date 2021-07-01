@@ -46,6 +46,7 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = 4
 
+vim.opt.shortmess = vim.opt.shortmess._value .. "c"
 vim.opt.pumheight = 10
 vim.opt.pumblend = 17
 
@@ -77,4 +78,3 @@ vim.opt.errorbells = false
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
-vim.opt.spell = true
