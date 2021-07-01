@@ -9,7 +9,6 @@ O = {
       ["==="] = "!=="
     }
   },
-  auto_close_tree = 0,
   colorscheme = "edge",
   edge_better_performance = false, -- If true, edge shows some logs on startup
   -- @usage can be 'aura', 'neon'
@@ -21,7 +20,10 @@ O = {
   relative_number = false,
   timeoutlen = 500,
   shell = "zsh",
-  explorer = { disable_netrw = 0 },
+  explorer = {
+    disable_netrw = false,
+    auto_close = false,
+  },
   redmine = { site = "", api_key = "" },
   python = {
     -- @usage can be 'unittest', 'pytest'
