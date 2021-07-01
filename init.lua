@@ -17,6 +17,7 @@ vim.cmd("colorscheme " .. O.colorscheme)
 
 require "keys"
 require "providers"
+require "commands"
 require "events"
 require "nvim-undotree"
 
