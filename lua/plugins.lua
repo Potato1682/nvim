@@ -216,6 +216,12 @@ local function init()
   }
   use {
     "hrsh7th/vim-vsnip",
+
+    config = function()
+      vim.g.vsnip_snippet_dir = vim.fn.stdpath "config" .. "/snippets"
+    end,
+  }
+  use {
     "hrsh7th/vim-vsnip-integ",
     "rafamadriz/friendly-snippets",
   }
@@ -678,6 +684,17 @@ local function init()
     },
   }
 
+  -- Containers
+  use {
+    "kkvh/vim-docker-tools",
+
+    cmd = {
+      "DockerToolsOpen",
+      "DockerToolsToggle",
+      "DockerToolsSetHost",
+    },
+  }
+
   -- Testing
   use {
     "vim-test/vim-test",
@@ -722,6 +739,7 @@ local function init()
 
     disable = not O.japanese,
   }
+
   -- Typescript
   use {
     "jose-elias-alvarez/null-ls.nvim",
@@ -743,6 +761,7 @@ local function init()
 
     after = "null-ls.nvim",
   }
+
   -- Rust
   use {
     "simrat39/rust-tools.nvim",
