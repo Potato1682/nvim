@@ -148,6 +148,8 @@ require("bufferline").setup {
     separator_style = "thin",
     offsets = {
       { filetype = "NvimTree", text = O.japanese and "エクスプローラー" or "Explorer", text_align = "center" },
+      { filetype = "dbui", text = O.japanese and "データベース" or "DBUI", text_align = "center" },
+      { filetype = "Outline", text = O.japanese and "シンボル" or "Symbols", text_align = "center" },
     },
   },
   highlights = {
