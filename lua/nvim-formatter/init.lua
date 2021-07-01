@@ -64,7 +64,14 @@ require("formatter").setup {
       function()
         return {
           exe = prettier_bin,
-          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          args = {
+            "--stdin-filepath",
+            vim.api.nvim_buf_get_name(0),
+            "--tab-width",
+            vim.opt_local.tabstop._value,
+            "--use-tabs",
+            not vim.opt_local.expandtab._value,
+          },
           stdin = true,
         }
       end,
@@ -73,7 +80,14 @@ require("formatter").setup {
       function()
         return {
           exe = prettier_bin,
-          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          args = {
+            "--stdin-filepath",
+            vim.api.nvim_buf_get_name(0),
+            "--tab-width",
+            vim.opt_local.tabstop._value,
+            "--use-tabs",
+            not vim.opt_local.expandtab._value,
+          },
           stdin = true,
         }
       end,
@@ -82,7 +96,14 @@ require("formatter").setup {
       function()
         return {
           exe = prettier_bin,
-          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          args = {
+            "--stdin-filepath",
+            vim.api.nvim_buf_get_name(0),
+            "--tab-width",
+            vim.opt_local.tabstop._value,
+            "--use-tabs",
+            not vim.opt_local.expandtab._value,
+          },
           stdin = true,
         }
       end,
@@ -91,7 +112,14 @@ require("formatter").setup {
       function()
         return {
           exe = prettier_bin,
-          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          args = {
+            "--stdin-filepath",
+            vim.api.nvim_buf_get_name(0),
+            "--tab-width",
+            vim.opt_local.tabstop._value,
+            "--use-tabs",
+            not vim.opt_local.expandtab._value,
+          },
           stdin = true,
         }
       end,
@@ -100,7 +128,14 @@ require("formatter").setup {
       function()
         return {
           exe = prettier_bin,
-          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          args = {
+            "--stdin-filepath",
+            vim.api.nvim_buf_get_name(0),
+            "--tab-width",
+            vim.opt_local.tabstop._value,
+            "--use-tabs",
+            not vim.opt_local.expandtab._value,
+          },
           stdin = true,
         }
       end,
@@ -109,7 +144,14 @@ require("formatter").setup {
       function()
         return {
           exe = prettier_bin,
-          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          args = {
+            "--stdin-filepath",
+            vim.api.nvim_buf_get_name(0),
+            "--tab-width",
+            vim.opt_local.tabstop._value,
+            "--use-tabs",
+            not vim.opt_local.expandtab._value,
+          },
           stdin = true,
         }
       end,
@@ -118,7 +160,14 @@ require("formatter").setup {
       function()
         return {
           exe = prettier_bin,
-          args = { "--stdin-filepath", vim.api.nvim_buf_get_name(0) },
+          args = {
+            "--stdin-filepath",
+            vim.api.nvim_buf_get_name(0),
+            "--tab-width",
+            vim.opt_local.tabstop._value,
+            "--use-tabs",
+            not vim.opt_local.expandtab._value,
+          },
           stdin = true,
         }
       end,
