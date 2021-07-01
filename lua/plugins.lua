@@ -189,7 +189,7 @@ local function init()
     as = "symbols-outline",
     cmd = {
       "SymbolsOutline",
-      "SymbolsOutlineOpen"
+      "SymbolsOutlineOpen",
     },
   }
 
@@ -676,6 +676,44 @@ local function init()
       "<BS>",
       "<CR>",
     },
+  }
+
+  -- Testing
+  use {
+    "vim-test/vim-test",
+
+    config = function()
+      vim.g["test#strategy"] = "neomake"
+    end,
+  }
+  use {
+    "rcarriga/vim-ultest",
+
+    config = function()
+      vim.api.nvim_set_keymap("n", "]t", "<Plug>(ultest-next-fail)", {})
+      vim.api.nvim_set_keymap("n", "[t", "<Plug>(ultest-prev-fail)", {})
+      vim.api.nvim_set_keymap("n", "<F6>", "<cmd>Ultest<cr>", { noremap = true, silent = true })
+
+      vim.g.ultest_use_pty = 1
+
+      local icons = require "nvim-nonicons"
+
+      vim.g.ultest_pass_sign = icons.get "check-circle"
+      vim.g.ultest_fail_sign = icons.get "x-circle"
+      vim.g.ultest_running_sign = icons.get "sync"
+    end,
+    run = ":UpdateRemotePlugins",
+    requires = { "vim-test/vim-test", "yamatsum/nvim-nonicons" },
+  }
+
+  -- Building
+  use "johnsyweb/vim-makeshift"
+  use {
+    "neomake/neomake",
+
+    config = function()
+      vim.api.nvim_set_keymap("n", "<F5>", "<cmd>NeomakeProject<cr>", { noremap = true, silent = true })
+    end,
   }
 
   -- Help document

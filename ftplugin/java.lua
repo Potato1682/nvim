@@ -38,7 +38,6 @@ vkeymap("lm", ":lua require'jdtls'.extract_method(true)<cr>")
 
 local utils = require "utils"
 
-utils.define_command("Make", "lua require'jdtls'.compile()", { buffer = true })
 utils.define_command("JShell", "lua require'jdtls'.jshell()", { buffer = true })
 utils.define_command("UpdateProject", "lua require'jdtls'.update_project_config()", { buffer = true })
 utils.define_command("JdtBytecode", "lua require'jdtls'.javap()", { buffer = true })

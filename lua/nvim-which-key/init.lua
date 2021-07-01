@@ -40,7 +40,8 @@ local japanese_mappings = {
   ["p"] = "プロジェクト",
   [";"] = "ダッシュボード",
   ["*"] = "ドキュメントを生成",
-  ["t"] = { "<cmd>TodoTrouble<cr>", "TODO 一覧" },
+  ["T"] = { "<cmd>TodoTrouble<cr>", "TODO 一覧" },
+  ["a"] = { "<cmd>UltestSummary<cr>", "テスト エクスプローラー" },
   ["r"] = { "<cmd>ToggleTerm<cr>", "端末" },
   ["v"] = { "<cmd>SymbolsOutline<cr>", "シンボル リスト" },
   ["w"] = { "<cmd>lua require'dapui'.toggle()<cr>", "デバッグ インターフェース" },
@@ -130,6 +131,16 @@ local japanese_mappings = {
     s = { "<cmd>SessionSave<cr>", "セッションを保存" },
     l = { "<cmd>SessionLoad<cr>", "セッションを開く" },
   },
+  t = {
+    name = "+テスト",
+
+    a = { "<cmd>UltestAttach<cr>", "動作中のデバッグにアタッチ" },
+    c = { "<cmd>UltestClear<cr>", "結果を消去" },
+    d = { "<cmd>UltestDebug<cr>", "デバッグテストを開始" },
+    D = { "<cmd>UltestDebugNearest<cr>", "近くのデバッグテストを開始" },
+    t = { "<cmd>UltestSummary<cr>", "テスト エクスプローラー" },
+    s = { "<cmd>UltestStop<cr>", "動作中のテストを停止" },
+  },
 
   -- extras
   z = {
@@ -145,7 +156,8 @@ local mappings = {
   ["h"] = "No Highlight",
   ["p"] = "Projects",
   ["*"] = "Generate document",
-  ["t"] = { "<cmd>TodoTrouble<cr>", "Open TODOs" },
+  ["T"] = { "<cmd>TodoTrouble<cr>", "Open TODOs" },
+  ["a"] = { "<cmd>UltestSummary<cr>", "Test Explorer" },
   ["r"] = { "<cmd>ToggleTerm<cr>", "Terminal" },
   ["v"] = { "<cmd>SymbolsOutline<cr>", "Symbol List" },
   ["w"] = { "<cmd>lua require'dapui'.toggle()<cr>", "Debug UI" },
@@ -234,6 +246,16 @@ local mappings = {
     name = "+Session",
     s = { "<cmd>SessionSave<cr>", "Save Session" },
     l = { "<cmd>SessionLoad<cr>", "Load Session" },
+  },
+  t = {
+    name = "+Test",
+
+    a = { "<cmd>UltestAttach<cr>", "Attach to Running Debug" },
+    c = { "<cmd>UltestClear<cr>", "Clear Results" },
+    d = { "<cmd>UltestDebug<cr>", "Debug Current File" },
+    D = { "<cmd>UltestDebugNearest<cr>", "Debug Nearest Position" },
+    t = { "<cmd>UltestSummary<cr>", "Test Explorer" },
+    s = { "<cmd>UltestStop<cr>", "Stop Running Test Jobs" },
   },
 
   -- extras

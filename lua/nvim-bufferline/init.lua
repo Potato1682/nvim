@@ -150,6 +150,7 @@ require("bufferline").setup {
       { filetype = "NvimTree", text = O.japanese and "エクスプローラー" or "Explorer", text_align = "center" },
       { filetype = "dbui", text = O.japanese and "データベース" or "DBUI", text_align = "center" },
       { filetype = "Outline", text = O.japanese and "シンボル" or "Symbols", text_align = "center" },
+      { filetype = "UltestSummary", text = O.japanese and "テスト エクスプローラー" or "Test Explorer", text_align = "center" }
     },
   },
   highlights = {
