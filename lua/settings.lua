@@ -51,8 +51,8 @@ vim.opt.pumheight = 10
 vim.opt.pumblend = 17
 
 vim.opt.winblend = 0
-vim.opt.scrolloff = 8
-vim.opt.sidescrolloff = 16
+vim.opt.scrolloff = O.scroll.scrolloff
+vim.opt.sidescrolloff = O.scroll.sidescrolloff
 vim.opt.sidescroll = 1
 
 vim.opt.laststatus = 2

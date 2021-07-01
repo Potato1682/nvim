@@ -6,8 +6,14 @@ O = {
     enabled = true,
     user_tables = {
       ["=="] = "!=",
-      ["==="] = "!=="
-    }
+      ["!="] = "==",
+      ["==="] = "!==",
+      ["!=="] = "===",
+    },
+  },
+  scroll = {
+    scrolloff = 4,
+    sidescrolloff = 16,
   },
   colorscheme = "edge",
   edge_better_performance = false, -- If true, edge shows some logs on startup
@@ -35,7 +41,7 @@ O = {
       -- @usage Load .xml file from lua/lsp/java/styles, can use google-style and allman by default
       name = "google-style",
       profile = "GoogleStyle",
-      on_type = false
+      on_type = false,
     },
     -- @usage set your java runtime
     runtimes = {
@@ -54,13 +60,13 @@ O = {
     },
     codelens = {
       references = true,
-      implementation = true
+      implementation = true,
     },
     decompiler = {
       -- @usage can be 'common', 'cfr', 'fernflower', 'procyon'
-      preferred = "fernflower"
+      preferred = "fernflower",
     },
-    autobuild = false
+    autobuild = false,
   },
   enter_event = {},
   color_event = {},
