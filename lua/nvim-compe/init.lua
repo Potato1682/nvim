@@ -35,7 +35,6 @@ require("nvim-autopairs.completion.compe").setup {
 }
 
 local npairs = require "nvim-autopairs"
-local indent = require "nvim-treesitter.indent"
 
 _G.MUtils = {}
 
@@ -72,23 +71,7 @@ function _G.MUtils.tab_complete()
     if vim.fn.call("vsnip#jumpable", { 1 }) == 1 then
       return npairs.esc("<Plug>(vsnip-jump-next)")
     else
-      local line = vim.fn.getline "."
-
-      if line == "" then
-        local indent_number = indent.get_indent(vim.api.nvim_win_get_cursor(0)[1])
-
-        if indent_number == 0 then
-          indent_number = 2 * (vim.bo.expandtab and 1 or 2)
-        end
-
-        if not vim.bo.expandtab then
-          return npairs.esc(string.rep("<Tab>", indent_number))
-        end
-
-        return string.rep(" ", indent_number)
-      else
-        return npairs.esc "<Tab>"
-      end
+      return require("utils.indent").smart_indent()
     end
   end
 end

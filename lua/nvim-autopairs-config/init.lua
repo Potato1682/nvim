@@ -1,9 +1,8 @@
 local npairs = require "nvim-autopairs"
 local Rule = require "nvim-autopairs.rule"
-local endwise = require("nvim-autopairs.ts-rule").endwise
+local indent = require "utils.indent"
 
 npairs.add_rules {
-  endwise("then$", "end", "lua", "if_statement"),
   Rule(" ", " "):with_pair(function(options)
     local pair = options.line:sub(options.col, options.col + 1)
 
@@ -48,11 +47,13 @@ function _G.MPairs.check_bs()
     -- If true, the cursor do not move up after deleting line
     if vim.fn.line "." == vim.fn.line "$" then
       vim.api.nvim_input "<esc>ddA"
-      _G.MUtils.tab_complete()
+
+      indent.smart_indent()
 
       return ""
     end
-    _G.MUtils.tab_complete()
+
+    indent.smart_indent()
 
     vim.api.nvim_input "<esc>ddkA"
   elseif column == #spaces then
