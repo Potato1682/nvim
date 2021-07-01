@@ -10,7 +10,7 @@ require("telescope").setup {
     selection_strategy = "reset",
     sorting_strategy = "descending",
     layout_strategy = "horizontal",
-    layout_defaults = { horizontal = { mirror = false }, vertical = { mirror = false } },
+    layout_config = { horizontal = { mirror = false }, vertical = { mirror = false } },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
@@ -47,7 +47,7 @@ require("telescope").setup {
   },
   extensions = {
     media_files = { filetypes = { "png", "webp", "jpg", "jpeg" }, find_cmd = "rg" },
-    fzy_native = { override_generic_sorter = false, override_file_sorter = true },
+    fzy_native = { override_generic_sorter = true, override_file_sorter = true },
   },
 }
 
