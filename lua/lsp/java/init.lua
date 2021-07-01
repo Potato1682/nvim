@@ -3,7 +3,7 @@ if vim.fn.has "mac" == 1 then
 elseif vim.fn.has "unix" == 1 then
   JAVA_LS_EXECUTABLE = "java-linux-ls"
 else
-  print "Java LS: Unsupported system"
+  print "[jdtls] Unsupported system"
 end
 
 local bundles = {
@@ -44,6 +44,9 @@ extendedClientCapabilities.resolveAdditionalTextEditsSupport = true
 
 if vim.bo.filetype == "java" then
   require("jdtls").start_or_attach {
+    before_init = function()
+      print "[jdtls] Starting, please wait..."
+    end,
     cmd = { vim.fn.stdpath "config" .. "/bin/" .. JAVA_LS_EXECUTABLE },
     on_attach = on_attach,
     capabilities = capabilities,
