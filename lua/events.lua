@@ -55,7 +55,7 @@ function M.setup()
       { "BufWritePost", "<buffer>", "FormatWrite" },
     },
     lsp = {
-      { "CursorHold,CursorHoldI", "*", "silent! lua vim.lsp.buf.hover()" },
+      { "CursorMoved,CursorMovedI", "*", "silent! lua vim.lsp.buf.hover()" },
     },
     mkdir = {
       { "BufWritePre", "*", "lua require'utils'.file_mkdirp()" }
@@ -64,6 +64,9 @@ function M.setup()
       { "FocusLost", "*", "noautocmd silent! wa" },
       { "VimEnter", "*", "lua require'events'.on_enter()" },
       { "ColorScheme", "*", "lua require'events'.on_color()" },
+    },
+    spell = {
+      { "BufLeave,WinLeave", "*", "setlocal nospell" }
     },
     yank = {
       { "TextYankPost", [[* silent! lua vim.highlight.on_yank({ higroup="IncSearch", timeout=400 })]] },
