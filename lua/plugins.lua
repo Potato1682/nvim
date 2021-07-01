@@ -156,6 +156,7 @@ local function init()
     as = "lspstatus",
   }
   use "ray-x/lsp_signature.nvim"
+  use "rmagatti/goto-preview"
   use {
     "kosayoda/nvim-lightbulb",
 
@@ -186,7 +187,10 @@ local function init()
     "simrat39/symbols-outline.nvim",
 
     as = "symbols-outline",
-    cmd = "SymbolsOutline",
+    cmd = {
+      "SymbolsOutline",
+      "SymbolsOutlineOpen"
+    },
   }
 
   use {
