@@ -39,7 +39,7 @@ local function path_exists(path)
 end
 
 local function get_runtime_files_in_path(runtimepath)
-  if runtimepath:match("/site/pack/.-/opt") then
+  if runtimepath:match "/site/pack/.-/opt" then
     return {}
   end
 

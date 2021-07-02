@@ -66,7 +66,7 @@ My neovim settings
 - Automatic license file generation
 - Redmine integration
 - Custom color highlighting
-- Spell check
+- Spell-check
 - Right mouse drag gestures
 - Discord Rich Presence support
 - Under cursor increment and decrement
