@@ -6,13 +6,6 @@ require("telescope").setup {
     selection_caret = " ❯ ",
     entry_prefix = "  ",
     initial_mode = "insert",
-    layout_config = {
-      horizontal = { mirror = false },
-      vertical = { mirror = false },
-      prompt_position = "top",
-      width = 0.75,
-      height = 1,
-    },
     file_sorter = require("telescope.sorters").get_fuzzy_file,
     file_ignore_patterns = {},
     generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
