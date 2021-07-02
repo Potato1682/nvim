@@ -14,7 +14,24 @@ require("lspconfig").vuels.setup {
   on_attach = lsp_config.common_on_attach,
   capabilities = capabilities,
   vetur = {
-    completion = { autoImport = true, useScaffoldSnippets = true },
-    format = { defualtFormatter = { js = "eslint", ts = "eslint" } },
+    completion = {
+      autoImport = true,
+      useScaffoldSnippets = true,
+    },
+    experimental = {
+      templateInterPolationService = true,
+    },
+    format = {
+      defualtFormatter = {
+        js = "eslint",
+        ts = "eslint",
+      },
+      options = {
+        tabSize = vim.opt.tabstop,
+        useTabs = not vim.opt.expandtab,
+      },
+      scriptInitialIndent = O.vue.initial_indent.script,
+      styleInitialIndent = O.vue.initial_indent.style,
+    },
   },
 }

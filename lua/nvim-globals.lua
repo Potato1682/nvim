@@ -68,6 +68,12 @@ O = {
     },
     autobuild = false,
   },
+  vue = {
+    initial_indent = {
+      script = false,
+      style = false
+    }
+  },
   enter_event = {},
   color_event = {},
 }
