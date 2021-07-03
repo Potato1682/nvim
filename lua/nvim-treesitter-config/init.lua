@@ -3,7 +3,10 @@ require("nvim-treesitter.configs").setup {
   highlight = { enable = true },
   indent = { enable = true },
   autotag = { enable = true },
-  rainbow = { enable = true },
+  rainbow = {
+    enable = true,
+    disable = { "vue", "html" }
+  },
   context_commentstring = { enable = true, enable_autocmd = true },
   node_movement = {
     keymaps = {
