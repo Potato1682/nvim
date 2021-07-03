@@ -21,11 +21,11 @@ function jdtls_ui.pick_one_async(items, _, _, cb)
 end
 
 local function keymap(key, action)
-  vim.cmd("nnoremap <silent> <buffer> <leader>" .. key .. " " .. action)
+  vim.api.nvim_buf_set_keymap(0, "n", "<leader>" .. key, action, { silent = true, noremap = true })
 end
 
 local function vkeymap(key, action)
-  vim.cmd("vnoremap <silent> <buffer> <leader>" .. key .. " " .. action)
+  vim.api.nvim_buf_set_keymap(0, "v", "<leader>" .. key, action, { silent = true, noremap = true })
 end
 
 keymap("la", ":lua require'jdtls'.code_action()<cr>")
