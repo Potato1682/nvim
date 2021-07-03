@@ -17,7 +17,16 @@ function _G.MJson.colon_complete()
   local is_cursor_on_eol = #line == cursor_position
 
   if not is_cursor_on_eol then
-    feedkeys ":"
+    if cursor_position == 1 then
+      cursor_position = 2
+    end
+
+    local string_table = vim.split(line, "")
+
+    local before = table.concat(vim.list_slice(string_table, 1, cursor_position - 1), "")
+    local after = table.concat(vim.list_slice(string_table, cursor_position, vim.fn.col "$" - 1), "")
+
+    vim.api.nvim_set_current_line(before .. ":" .. after)
 
     return
   end
