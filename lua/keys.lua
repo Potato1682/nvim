@@ -60,3 +60,7 @@ keymap("n", "$", "<cmd>lua require'hop'.hint_words()<cr>", {})
 if O.toggle.enabled then
   keymap("n", "<C-s>", "<cmd>lua require'utils.toggle'.toggle()<cr>", { noremap = true })
 end
+
+keymap("n", "Q", "<Nop>", { noremap = true })
+keymap("n", "ZZ", "<Nop>", { noremap = true })
+keymap("n", "ZQ", "<Nop>", { noremap = true })
