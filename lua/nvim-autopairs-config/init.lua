@@ -53,9 +53,9 @@ function _G.MPairs.check_bs()
       return ""
     end
 
-    indent.smart_indent()
-
     vim.api.nvim_input "<esc>ddkA"
+
+    indent.smart_indent()
   elseif column == #spaces then
     if previous_line == nil then
       _G.MPairs.move_and_delete(tostring(line - 1))

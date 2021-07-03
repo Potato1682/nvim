@@ -8,6 +8,10 @@ function M.smart_indent()
   if line == "" then
     local indent_number = indent.get_indent(vim.api.nvim_win_get_cursor(0)[1])
 
+    if indent_number == -1 then
+      return npairs.esc "<esc>S"
+    end
+
     if indent_number == 0 then
       indent_number = 2 * (vim.bo.expandtab and 1 or 2)
     end
