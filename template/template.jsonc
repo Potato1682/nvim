@@ -1,0 +1,3 @@
+{
+<%= repeat(" ", &tabstop - 1) %> <+CURSOR+>
+}
