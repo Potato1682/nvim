@@ -1,0 +1,566 @@
+# Design
+
+[[plugins]]
+repo = "kyazdani42/nvim-web-devicons"
+on_lua = "nvim-web-devicons"
+
+# Dashboard
+
+[[plugins]]
+repo = "glepnir/dashboard-nvim"
+on_event = "VimEnter"
+
+# Keys
+
+[[plugins]]
+repo = "folke/which-key.nvim"
+on_event = "VimEnter"
+hook_post_source = """
+    lua require("nvim-which-key")
+"""
+
+# Motion
+
+[[plugins]]
+repo = "PHSix/faster.nvim"
+on_map = [
+    "<Plug>(faster",
+]
+
+[[plugins]]
+repo = "phaazon/hop.nvim"
+on_lua = "hop"
+
+# Format
+
+[[plugins]]
+repo = "mhartington/formatter.nvim"
+on_cmd = [
+    "Format",
+    "FormatWrite"
+]
+hook_post_source = """
+    lua require("nvim-formatter")
+"""
+
+[[plugins]]
+repo = "junegunn/vim-easy-align"
+on_map = "<Plug>(EasyAlign)"
+
+# LSP
+
+[[plugins]]
+repo = "neovim/nvim-lspconfig"
+on_lua = "lspconfig"
+hook_post_source = """
+    lua require("lsp")
+"""
+
+[[plugins]]
+repo = "kabouzeid/nvim-lspinstall"
+on_cmd = "LspInstall"
+on_lua = "lspinstall"
+hook_post_source = """
+    lua require("nvim-lspinstall")
+"""
+
+[[plugins]]
+repo = "lspcontainers/lspcontainers.nvim"
+on_lua = "lspcontainers"
+
+[[plugins]]
+repo = "nvim-lua/lsp-status.nvim"
+on_lua = "lsp-status"
+
+[[plugins]]
+repo = "ray-x/lsp_signature.nvim"
+normalized_name = "lsp-signature"
+on_lua = "lsp_signature"
+
+[[plugins]]
+repo = "rmagatti/goto-preview"
+on_lua = "goto-preview"
+
+[[plugins]]
+repo = "kosayoda/nvim-lightbulb"
+on_event = "VimEnter"
+hook_post_source = """
+    lua require("nvim-lightbulb-config")
+"""
+
+[[plugins]]
+repo = "folke/trouble.nvim"
+on_cmd = [
+    "Trouble",
+    "TroubleToggle"
+]
+on_lua = "trouble"
+hook_post_source = """
+    lua require("trouble").setup()
+"""
+
+[[plugins]]
+repo = "simrat39/symbols-outline.nvim"
+on_cmd = [
+    "SymbolsOutline",
+    "SymbolsOutlineOpen"
+]
+
+[[plugins]]
+repo = "ahmedkhalf/lsp-rooter.nvim"
+on_source = "lspconfig"
+hook_post_source = """
+    lua require("lsp-rooter").setup()
+"""
+
+# Building
+
+[[plugins]]
+repo = "johnsyweb/vim-makeshift"
+on_path = ".*"
+
+# Testing
+
+[[plugins]]
+repo = "rcarriga/vim-ultest"
+on_source = "vim-test"
+hook_source = """
+    lua require("nvim-ultest")
+"""
+
+# Debug (DAP)
+
+[[plugins]]
+repo = "mfussenegger/nvim-dap"
+on_lua = "dap"
+
+[[plugins]]
+repo = "theHamsta/nvim-dap-virtual-text"
+on_source = "dap"
+
+[[plugins]]
+repo = "rcarriga/nvim-dap-ui"
+on_lua = "dapui"
+
+# Install vscode-cpptools using vimspector
+[[plugins]]
+repo = "puremourning/vimspector"
+build = """
+    python3 install_gadget.py --enable-c
+"""
+
+# Completions
+
+[[plugins]]
+repo = "hrsh7th/nvim-compe"
+on_event = "InsertEnter"
+hook_post_source = """
+    lua require('nvim-compe')
+"""
+
+[[plugins]]
+repo = "hrsh7th/vim-vsnip"
+on_source = "compe"
+hook_source = """
+    let g:vsnip_snippet_dir = stdpath("config") . "/snippets"
+"""
+
+[[plugins]]
+repo = "hrsh7th/vim-vsnip-integ"
+on_source = "vsnip"
+
+[[plugins]]
+repo = "tzachar/compe-tabnine"
+on_source = "compe"
+build = """
+    ./install.sh
+"""
+
+# Editor
+
+[[plugins]]
+repo = "lukas-reineke/indent-blankline.nvim"
+on_path = ".*"
+hook_post_source = """
+    lua require("nvim-indentline")
+"""
+
+[[plugins]]
+repo = "windwp/nvim-autopairs"
+on_i = 1
+hook_post_source = """
+    lua require("nvim-autopairs-config")
+"""
+
+[[plugins]]
+repo = "monaqa/dial.nvim"
+on_path = ".*"
+
+[[plugins]]
+repo = "bfredl/nvim-miniyank"
+on_map = "<Plug>(miniyank"
+
+[[plugins]]
+repo = "AndrewRadev/splitjoin.vim"
+on_map = [
+    "gS",
+    "gJ"
+]
+
+[[plugins]]
+repo = "arecarn/vim-fold-cycle"
+on_map = [
+    "<BS>",
+    "<CR>"
+]
+
+[[plugins]]
+repo = "RRethy/vim-hexokinase"
+on_path = ".*"
+hook_source = """
+    lua require("nvim-hexokinase")
+"""
+build = """
+    make hexokinase
+"""
+
+[[plugins]]
+repo = "folke/zen-mode.nvim"
+on_cmd = [
+    "ZenMode"
+]
+hook_post_source = """
+    lua require("nvim-zen-mode")
+"""
+
+[[plugins]]
+repo = "notomo/gesture.nvim"
+on_if = "&mouse == 'a'"
+hook_post_source = """
+    lua require("nvim-mouse-gesture")
+"""
+
+# Comment
+
+[[plugins]]
+repo = "b3nj5m1n/kommentary"
+on_path = ".*"
+hook_post_source = """
+    lua require("nvim-comment")
+"""
+
+[[plugins]]
+repo = "JoosepAlviste/nvim-ts-context-commentstring"
+on_source = "kommentary"
+
+[[plugins]]
+repo = "dstein64/nvim-scrollview"
+hook_post_source = """
+    let g:scrollview_nvim_14040_workaround = 1
+    let g:scrollview_hide_on_intersect     = 1
+"""
+
+# Command
+
+[[plugins]]
+repo = "nacro90/numb.nvim"
+on_event = "CmdlineEnter"
+hook_post_source = """
+    lua require("numb").setup()
+"""
+
+# Highlighting
+
+[[plugins]]
+repo = "nvim-treesitter/nvim-treesitter"
+on_path = ".*"
+on_lua = "nvim-treesitter"
+hook_post_source = """
+    lua require("nvim-treesitter-config")
+"""
+hook_post_update = """
+    TSUpdate
+"""
+
+[[plugins]]
+repo = "windwp/nvim-ts-autotag"
+on_source = "treesitter"
+
+[[plugins]]
+repo = "RRethy/nvim-treesitter-textsubjects"
+on_source = "treesitter"
+
+[[plugins]]
+repo = "theHamsta/crazy-node-movement"
+on_source = "treesitter"
+
+[[plugins]]
+repo = "haringsrob/nvim_context_vt"
+on_source = "treesitter"
+
+[[plugins]]
+repo = "mizlan/iswap.nvim"
+on_cmd = "ISwap"
+on_source = "treesitter"
+hook_post_source = """
+    lua require("nvim-swap")
+"""
+
+# Search
+
+[[plugins]]
+repo = "nvim-telescope/telescope.nvim"
+on_cmd = "Telescope"
+on_lua = "telescope"
+hook_post_source = """
+    lua require("nvim-telescope")
+"""
+
+# Files
+
+[[plugins]]
+repo = "kyazdani42/nvim-tree.lua"
+on_cmd = [
+    "NvimTreeToggle",
+    "NvimTreeOpen"
+]
+hook_source = """
+    lua require("nvim-explorer")
+"""
+depends = "nonicons"
+
+[[plugins]]
+repo = "editorconfig/editorconfig-vim"
+on_path = ".*"
+
+# Git
+
+[[plugins]]
+repo = "lewis6991/gitsigns.nvim"
+on_path = ".*"
+hook_post_source = """
+    lua require("nvim-gitsigns")
+"""
+
+[[plugins]]
+repo = "TimUntersberger/neogit"
+on_cmd = "Neogit"
+hook_post_source = """
+    lua require("nvim-neogit")
+"""
+
+[[plugins]]
+repo = "sindrets/diffview.nvim"
+on_source = "neogit"
+hook_post_source = """
+    lua require("diffview").setup {}
+"""
+
+[[plugins]]
+repo = "samoshkin/vim-mergetool"
+on_cmd = [
+    "MergetoolToggle",
+    "MergetoolStart"
+]
+hook_post_source = """
+    let g:mergetool_layout = "mr"
+    let g:mergetool_prefer_revision = "local"
+"""
+
+# Containers
+
+[[plugins]]
+repo = "kkvh/vim-docker-tools"
+on_cmd = [
+    "DockerToolsOpen",
+    "DockerToolsToggle",
+    "DockerToolsSetHost"
+]
+
+# Documents
+
+[[plugins]]
+repo = "kkoomen/vim-doge"
+on_map = "<leader>*"
+hook_post_update = """
+    call doge#install()
+"""
+
+# Database
+
+[[plugins]]
+repo = "kristijanhusak/vim-dadbod-completion"
+on_source = "compe"
+
+[[plugins]]
+repo = "kristijanhusak/vim-dadbod-ui"
+on_cmd = [
+    "DBUI",
+    "DBUIToggle"
+]
+
+# Rest Client
+
+[[plugins]]
+repo = "NTBBloodbath/rest.nvim"
+on_map = [
+    "<Plug>RestNvim",
+    "<Plug>RestNvimPreview"
+]
+
+# Terminal
+
+[[plugins]]
+repo = "akinsho/nvim-toggleterm.lua"
+on_cmd = [
+    "ToggleTerm",
+    "ToggleTermOpenAll"
+]
+hook_post_source = """
+    lua require("toggleterm").setup({})
+"""
+
+# Todos
+
+[[plugins]]
+repo = "folke/todo-comments.nvim"
+on_cmd = [
+    "TodoTrouble"
+]
+on_source = "trouble.nvim"
+hook_post_source = """
+    lua require("todo-comments").setup()
+"""
+
+# Spell
+
+[[plugins]]
+repo = "lewis6991/spellsitter.nvim"
+on_source = "nvim-treesitter"
+hook_post_source = """
+    lua require("nvim-spell")
+"""
+
+# Undos
+
+[[plugins]]
+repo = "mbbill/undotree"
+on_cmd = [
+    "UndotreeToggle",
+    "UndotreeShow"
+]
+hook_source = """
+    let g:undotree_SetFocusWhenToggle = 1
+"""
+
+# GUI
+
+[[plugins]]
+repo = "thinca/vim-fontzoom"
+gui = 1
+
+# Template files
+
+[[plugins]]
+repo = "thinca/vim-template"
+hook_post_source = """
+    lua require("nvim-template")
+"""
+
+# Discord
+
+[[plugins]]
+repo = "andweeb/presence.nvim"
+hook_post_source = """
+    lua require("presence"):setup()
+"""
+
+# Lua
+
+[[plugins]]
+repo = "tjdevries/nlua.nvim"
+on_lua = "nlua"
+
+[[plugins]]
+repo = "nvim-lua/plenary.nvim"
+on_lua = "plenary"
+
+[[plugins]]
+repo = "RishabhRD/popfix"
+on_lua = "popfix"
+
+# Java
+
+[[plugins]]
+repo = "mfussenegger/nvim-jdtls"
+on_lua = "jdtls"
+
+[[plugins]]
+repo = "krisajenkins/vim-java-sql"
+on_ft = "java"
+
+# Python
+
+[[plugins]]
+repo = "mfussenegger/nvim-dap-python"
+on_source = "dap"
+on_lua = "dap-python"
+on_ft = "python"
+
+# Markdown
+
+[[plugins]]
+repo = "iamcco/markdown-preview.nvim"
+on_ft = [
+    "markdown",
+    "pandoc.markdown",
+    "rmd"
+]
+build = """
+    sh -c "cd app && yarn install"
+"""
+
+# Tailwind CSS
+
+[[plugins]]
+repo = "steelsojka/headwind.nvim"
+on_ft = [
+    "html",
+    "pug",
+    "vue",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescriptreact",
+    "typescript.tsx",
+    "ejs"
+]
+hook_post_source = """
+    lua require("headwind").setup()
+"""
+
+# Typescript
+
+[[plugins]]
+repo = "jose-elias-alvarez/null-ls.nvim"
+on_ft = [
+    "javascript",
+    "javascriptreact",
+    "javascript.jsx",
+    "typescript",
+    "typescriptreact",
+    "typescript.tsx"
+]
+hook_post_source = """
+    lua require("null-ls").setup({})
+"""
+
+[[plugins]]
+repo = "jose-elias-alvarez/nvim-lsp-ts-utils"
+on_source = "null-ls"
+
+# Rust
+
+[[plugins]]
+repo = "simrat39/rust-tools.nvim"
+on_ft = "rust"
+

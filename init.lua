@@ -1,19 +1,18 @@
 require "nvim-globals"
 require "settings"
 
-vim.cmd [[ command! PackerInstall packadd packer.nvim | lua require"plugins".install() ]]
-vim.cmd [[ command! PackerUpdate packadd packer.nvim | lua require"plugins".update() ]]
-vim.cmd [[ command! PackerSync packadd packer.nvim | lua require"plugins".sync() ]]
-vim.cmd [[ command! PackerClean packadd packer.nvim | lua require"plugins".clean() ]]
-vim.cmd [[ command! PackerCompile packadd packer.nvim | lua require"plugins".compile() ]]
-
 if require "first-load"() then
+  require "plugins"
+
   return
 end
 
+require "nvim-dashboard"
+
 require "plugins"
 
-vim.cmd("colorscheme " .. O.colorscheme)
+require "nvim-bufferline"
+require "nvim-galaxyline"
 
 require "keys"
 require "providers"
@@ -22,8 +21,6 @@ require "events"
 require "nvim-undotree"
 
 require "nvim-dap"
-
-require "nvim-lspinstall"
 
 require "lsp"
 require "lsp.c-cpp"
@@ -55,5 +52,3 @@ require "lsp.php"
 require "lsp.terraform"
 require "lsp.svelte"
 require "lsp.virtual-text"
-
-require "colorscheme"

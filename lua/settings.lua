@@ -1,6 +1,6 @@
 vim.opt.termguicolors = true
 vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamed,unnamedplus"
+vim.opt.clipboard = "unnamedplus"
 
 vim.opt.updatetime = 100
 vim.opt.redrawtime = 1500
@@ -75,6 +75,7 @@ vim.opt.sh = O.shell
 vim.opt.belloff = "all"
 vim.opt.errorbells = false
 
+vim.opt.foldlevel = 4
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 

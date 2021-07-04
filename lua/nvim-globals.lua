@@ -29,6 +29,9 @@ O = {
     auto_close = false,
   },
   redmine = { site = "", api_key = "" },
+  wakatime = {
+    enabled = false
+  },
   python = {
     -- @usage can be 'unittest', 'pytest'
     test_type = "pytest",

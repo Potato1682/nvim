@@ -22,4 +22,11 @@ require("nvim-treesitter.configs").setup {
     allow_switch_parents = true,
     allow_next_parent = true,
   },
+  textsubjects = {
+    enable = true,
+    keymaps = {
+      ['.'] = 'textsubjects-smart',
+      [';'] = 'textsubjects-big'
+    }
+  }
 }

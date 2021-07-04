@@ -2,6 +2,10 @@ local npairs = require "nvim-autopairs"
 local Rule = require "nvim-autopairs.rule"
 local indent = require "utils.indent"
 
+npairs.setup {
+  enable_check_bracket_line = false,
+}
+
 npairs.add_rules {
   Rule(" ", " "):with_pair(function(options)
     local pair = options.line:sub(options.col, options.col + 1)

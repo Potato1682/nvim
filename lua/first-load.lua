@@ -1,32 +1,32 @@
-local dir = vim.fn.stdpath "data" .. "/site/pack/packer/opt/"
+local dein_directory = vim.fn.stdpath("data") .. "/dein"
+local dein_repository = dein_directory .. "/repos/github.com/Shougo/dein.vim"
 
 local function download()
-  print("  > mkdir -p " .. dir)
-  vim.fn.mkdir(dir, "p")
+  print("  > mkdir -p " .. dein_repository)
+  vim.fn.mkdir(dein_repository, "p")
 
-  local command = string.format("git clone https://github.com/wbthomason/packer.nvim %s", dir .. "packer.nvim")
+  local command = string.format("git clone https://github.com/Shougo/dein.vim %s", dein_repository)
 
   print("  > " .. command)
   vim.fn.system(command)
 end
 
 return function()
-  if vim.fn.glob(dir .. "packer.nvim") == "" then
-    if vim.fn.confirm("Install packer.nvim?", "&Yes\n&Cancel") ~= 1 then
-      return
+
+  if not vim.o.runtimepath:match("/dein.vim") then
+    if vim.fn.isdirectory(dein_repository) ~= 1 then
+      if vim.fn.confirm("[fitst-load] Install dein?", "&Yes\n&Cancel") ~= 1 then
+        return
+      end
+
+      print "( 1 / 2 ) Download dein"
+      download()
+
+      print "( 2 / 2 ) Enable dein"
+      print("  : &runtimepath += " .. dein_repository)
+
+      return true
     end
-
-    print "( 1 / 2 ) Download packer.nvim"
-    download()
-
-    print "( 2 / 2 ) Install plugins"
-    print "  : packadd packer.nvim "
-    print [[ >> require"plugins".sync() ]]
-    vim.cmd [[ PackerSync ]]
-
-    print "Restart to use nvim. Enjoy!"
-
-    return true
   end
 
   return false

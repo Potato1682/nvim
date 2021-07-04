@@ -55,12 +55,39 @@ vim.cmd [[
   nnoremap <silent> <C-Right> :vertical resize +2<CR>
 ]]
 
+-- Hop
 keymap("n", "$", "<cmd>lua require'hop'.hint_words()<cr>", {})
+
+-- Easy align
+keymap("n", "ga", "<Plug>(EasyAlign)", {})
+keymap("x", "ga", "<Plug>(EasyAlign)", {})
+
+-- Miniyank
+keymap("", "p", "<Plug>(miniyank-autoput)", {})
+keymap("", "P", "<Plug>(miniyank-autoPut)", {})
 
 if O.toggle.enabled then
   keymap("n", "<C-s>", "<cmd>lua require'utils.toggle'.toggle()<cr>", { noremap = true })
 end
 
+-- Command buffer
+keymap(
+  "n",
+  "q:",
+  "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight)<CR>",
+  { noremap = true }
+)
+
+keymap(
+  "c",
+  "<C-f>",
+  "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight, { line = vim.fn.getcmdline(), column = vim.fn.getcmdpos() })<CR><C-c>",
+  { noremap = true }
+)
+
 keymap("n", "Q", "<Nop>", { noremap = true })
 keymap("n", "ZZ", "<Nop>", { noremap = true })
 keymap("n", "ZQ", "<Nop>", { noremap = true })
+
+keymap("n", "j", "<Plug>(faster_move_j)", { silent = true })
+keymap("n", "k", "<Plug>(faster_move_k)", { silent = true })

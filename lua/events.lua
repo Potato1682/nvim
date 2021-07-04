@@ -82,9 +82,6 @@ function M.setup()
     yank = {
       { "TextYankPost", [[* silent! lua vim.highlight.on_yank({ higroup="IncSearch", timeout=400 })]] },
     },
-    plugins = {
-      { "BufWritePost", "plugins.lua", "PackerCompile" },
-    },
   }
 
   M.nvim_create_augroups(definitions)

@@ -1,0 +1,120 @@
+[[plugins]]
+repo = "Shougo/dein.vim"
+
+# Design
+
+[[plugins]]
+repo = "sainnhe/edge"
+hook_add = """
+  autocmd VimEnter * nested lua require("colorscheme")
+"""
+
+[[plugins]]
+repo = "ryanoasis/vim-devicons"
+
+[[plugins]]
+repo = "yamatsum/nvim-nonicons"
+depends = "nvim-web-devicons"
+
+[[plugins]]
+repo = "jbyuki/contextmenu.nvim"
+
+[[plugins]]
+repo = "akinsho/nvim-bufferline.lua"
+depends = [
+    "nvim-nonicons",
+    "contextmenu.nvim"
+]
+
+[[plugins]]
+repo = "glepnir/galaxyline.nvim"
+depends = [
+    "vim-devicons",
+    "nvim-nonicons"
+]
+
+# LSP
+
+[[plugins]]
+repo = "RRethy/vim-illuminate"
+
+[[plugins]]
+repo = "RishabhRD/nvim-lsputils"
+
+# Testing
+
+[[plugins]]
+repo = "vim-test/vim-test"
+hook_post_source = """
+    let test#strategy = "neomake"
+"""
+
+# Building
+
+[[plugins]]
+repo = "neomake/neomake"
+hook_post_source = """
+    nnoremap <F5> <cmd>NeomakeProject<cr>
+"""
+
+# Completions
+
+[[plugins]]
+repo = "rafamadriz/friendly-snippets"
+on_source = "vim-vsnip"
+
+# Editor
+
+[[plugins]]
+repo = "tjdevries/colorbuddy.nvim"
+
+[[plugins]]
+repo = "machakann/vim-sandwich"
+
+[[plugins]]
+repo = "windwp/nvim-autospace"
+
+# Search
+
+[[plugins]]
+repo = "kevinhwang91/nvim-hlslens"
+
+[[plugins]]
+repo = "windwp/nvim-spectre"
+hook_post_source = """
+    lua require("spectre").setup()
+"""
+
+[[plugins]]
+repo = "nvim-telescope/telescope-media-files.nvim"
+
+[[plugins]]
+repo = "nvim-telescope/telescope-fzy-native.nvim"
+
+[[plugins]]
+repo = "nvim-telescope/telescope-project.nvim"
+
+[[plugins]]
+repo = "nvim-telescope/telescope-dap.nvim"
+
+# Database
+
+[[plugins]]
+repo = "tpope/vim-dadbod"
+
+# Wakatime
+
+[[plugins]]
+repo = "wakatime/vim-wakatime"
+if = "luaeval('O.wakatime.enabled')"
+
+# Redmine
+
+[[plugins]]
+repo = "toritori0318/vim-redmine"
+
+# Lua
+
+[[plugins]]
+repo = "nvim-lua/popup.nvim"
+
