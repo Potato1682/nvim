@@ -41,7 +41,7 @@ function M.setup()
       { "BufEnter", "*", "imap <silent> <bs> <cmd>call v:lua.MPairs.check_bs()<cr>" },
     },
     cursor = {
-      { "BufRead", "*", [[ if line("'\"") > 0 && line("'\"") <= line("$") | execute "normal g`\"" | endif ]] },
+      { "BufReadPost", "*", "lua require'utils.resume'.resume()" },
       { "WinEnter,BufEnter", "*", [[ if luaeval("O.cursorline") | setlocal cursorline | endif ]] },
       { "WinLeave,BufLeave", "*", [[ if luaeval("O.cursorline") | setlocal nocursorline | endif ]] },
       { "WinEnter,BufEnter", "*", [[ if luaeval("O.cursorcolumn") | setlocal cursorcolumn | endif ]] },
