@@ -448,14 +448,6 @@ hook_source = """
 repo = "thinca/vim-fontzoom"
 gui = 1
 
-# Template files
-
-[[plugins]]
-repo = "thinca/vim-template"
-hook_post_source = """
-    lua require("nvim-template")
-"""
-
 # Discord
 
 [[plugins]]

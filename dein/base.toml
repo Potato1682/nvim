@@ -108,6 +108,14 @@ repo = "nvim-telescope/telescope-dap.nvim"
 [[plugins]]
 repo = "tpope/vim-dadbod"
 
+# Template files
+
+[[plugins]]
+repo = "thinca/vim-template"
+hook_post_source = """
+    lua require("nvim-template")
+"""
+
 # Wakatime
 
 [[plugins]]
