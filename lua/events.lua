@@ -85,6 +85,19 @@ function M.setup()
   }
 
   M.nvim_create_augroups(definitions)
+
+  if O.relative_number then
+    M.nvim_create_augroups {
+      relativenumber = {
+        { "BufEnter,FocusGained,InsertLeave,WinEnter", "*", "if &number && mode() != 'i' | set relativenumber | endif" },
+        {
+          "BufLeave,FocusLost,InsertEnter,WinLeave",
+          "*",
+          "if &number | set norelativenumber | endif",
+        },
+      },
+    }
+  end
 end
 
 O.enter_event = O.enter_event or {}
