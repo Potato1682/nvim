@@ -8,8 +8,8 @@ set("dein#install_max_processes", 64)
 set("dein#install_message_type", "none")
 set("dein#enable_name_conversion", 1)
 
-if vim.fn.filereadable(vim.fn.stdpath("data") .. "/dein/token") == 1 then
-  set("dein#install_github_api_token", vim.fn.readfile(vim.fn.stdpath("data") .. "/dein/token")[1])
+if vim.fn.filereadable(vim.fn.stdpath "data" .. "/dein/token") == 1 then
+  set("dein#install_github_api_token", vim.fn.readfile(vim.fn.stdpath "data" .. "/dein/token")[1])
 end
 
 local dein_directory = vim.fn.stdpath "data" .. "/dein"
@@ -36,7 +36,7 @@ if vim.fn["dein#check_install"] ~= 0 then
   vim.fn["dein#remote_plugins"]()
 end
 
-if vim.fn.filereadable(vim.fn.stdpath("data") .. "/dein/token") == 1 then
+if vim.fn.filereadable(vim.fn.stdpath "data" .. "/dein/token") == 1 then
   vim.fn["dein#check_update"](true)
   vim.fn["dein#remote_plugins"]()
 end

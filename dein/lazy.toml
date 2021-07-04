@@ -168,15 +168,8 @@ build = """
 # Editor
 
 [[plugins]]
-repo = "lukas-reineke/indent-blankline.nvim"
-on_path = ".*"
-hook_post_source = """
-    lua require("nvim-indentline")
-"""
-
-[[plugins]]
 repo = "windwp/nvim-autopairs"
-on_i = 1
+on_event = "InsertEnter"
 hook_post_source = """
     lua require("nvim-autopairs-config")
 """

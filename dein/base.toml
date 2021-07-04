@@ -72,6 +72,12 @@ on_source = "vim-vsnip"
 # Editor
 
 [[plugins]]
+repo = "lukas-reineke/indent-blankline.nvim"
+hook_post_source = """
+    lua require("nvim-indentline")
+"""
+
+[[plugins]]
 repo = "tjdevries/colorbuddy.nvim"
 
 [[plugins]]
