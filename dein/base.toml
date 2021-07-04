@@ -6,7 +6,7 @@ repo = "Shougo/dein.vim"
 [[plugins]]
 repo = "sainnhe/edge"
 hook_add = """
-  autocmd VimEnter * nested lua require("colorscheme")
+    autocmd VimEnter * nested lua require("colorscheme")
 """
 
 [[plugins]]
@@ -104,11 +104,15 @@ hook_post_update = """
     TSUpdate markdown
 """
 depends = [
-  "ts-autotag",
-  "treesitter-textsubjects",
-  "crazy-node-movement",
-  "context-vt"
+    "ts-rainbow",
+    "ts-autotag",
+    "treesitter-textsubjects",
+    "crazy-node-movement",
+    "context-vt"
 ]
+
+[[plugins]]
+repo = "p00f/nvim-ts-rainbow"
 
 [[plugins]]
 repo = "windwp/nvim-ts-autotag"
