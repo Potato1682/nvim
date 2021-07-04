@@ -32,8 +32,6 @@ require "lsp.virtual-text"
 
 require "nvim-dap.js-ts"
 require "lsp.js-ts"
-require "nvim-dap.python"
-require "lsp.python"
 require "lsp.vim"
 require "lsp.html"
 require "lsp.emmet"
