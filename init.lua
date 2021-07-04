@@ -17,6 +17,7 @@ require "plugins"
 require "nvim-bufferline"
 require "nvim-galaxyline"
 require "nvim-treesitter-config"
+require "nvim-indentline"
 
 require "keys"
 require "providers"
