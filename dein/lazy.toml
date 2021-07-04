@@ -450,6 +450,16 @@ build = """
     sh -c "cd app && yarn install"
 """
 
+[[plugins]]
+repo = "jghauser/follow-md-links.nvim"
+on_ft = [
+    "markdown",
+    "pandoc.markdown"
+]
+hook_post_source = """
+    lua require("follow-md-links")
+"""
+
 # Tailwind CSS
 
 [[plugins]]

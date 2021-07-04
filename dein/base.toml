@@ -101,6 +101,7 @@ repo = "windwp/nvim-autospace"
 repo = "nvim-treesitter/nvim-treesitter"
 hook_post_update = """
     TSUpdate
+    TSUpdate markdown
 """
 depends = [
   "ts-autotag",

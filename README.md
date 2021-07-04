@@ -8,69 +8,69 @@ My neovim settings
 
 ## Requires
 
-- **Neovim nightly build**
-- Pipenv
-- Git
-- GCC
-- Go
-- Node.js and NPM
-- Yarn
-- `jq`
-- Java >= 11
-- Docker Engine
-- Ruby and [Bundler](https://bundler.io)
-- [nonicons](https://github.com/yamatsum/nonicons) patched font
+-   **Neovim nightly build**
+-   Pipenv
+-   Git
+-   GCC
+-   Go
+-   Node.js and NPM
+-   Yarn
+-   `jq`
+-   Java >= 11
+-   Docker Engine
+-   Ruby and [Bundler](https://bundler.io)
+-   [nonicons](https://github.com/yamatsum/nonicons) patched font
 
 ## Features
 
-- Plugin Manager
-- Automatic plugin manager setup
-- Beautiful color schemes
-- Treesitter-based code highlighting
-- Super useful bufferline
-- Super functional statusline
-- Supercharged file explorer
-- Fuzzy search with floating window
-- Nerd fonts support
-- **L**anguage **S**erver **P**rotocol support
-  - Code folding
-  - Renaming
-  - Completion
-  - Database support
-  - Diagnostics
-    - Diagnostics report will shown on statusline, bufferline, editor and explorer
-  - Show lightbulb when code action is available
-  - Show signature and document on hover
-  - Automatic formatting
-- Rainbow brackets
-- Toggle comments
-- Show git status on editor
-- Wakatime support
-- Document generation
-- Indent line
-- Automatic pair insert
-- Git integrations
-- Leader key menu
-- **D**ebug **A**dapter **P**rotocol support
-- Automatic root setting
-- Increase number on editor
-- Show current context on bracket ending
-- Online collaboration
-- Zen mode
-- Colorbuddy support
-- Show TODO List
-- Global settings
-- Errors List
-- Markdown preview
-- [Template generation](docs/TEMPLATE-FILE.md)
-- Automatic license file generation
-- Redmine integration
-- Custom color highlighting
-- Spell-check
-- Right mouse drag gestures
-- Discord Rich Presence support
-- Under cursor increment and decrement
-- Editorconfig support
+-   Plugin Manager
+-   Automatic plugin manager setup
+-   Beautiful color schemes
+-   Treesitter-based code highlighting
+-   Super useful bufferline
+-   Super functional statusline
+-   Supercharged file explorer
+-   Fuzzy search with floating window
+-   Nerd fonts support
+-   **L**anguage **S**erver **P**rotocol support
+    -   Code folding
+    -   Renaming
+    -   Completion
+    -   Database support
+    -   Diagnostics
+        -   Diagnostics report will shown on statusline, bufferline, editor and explorer
+    -   Show lightbulb when code action is available
+    -   Show signature and document on hover
+    -   Automatic formatting
+-   Rainbow brackets
+-   Toggle comments
+-   Show git status on editor
+-   Wakatime support
+-   Document generation
+-   Indent line
+-   Automatic pair insert
+-   Git integrations
+-   Leader key menu
+-   **D**ebug **A**dapter **P**rotocol support
+-   Automatic root setting
+-   Increase number on editor
+-   Show current context on bracket ending
+-   Online collaboration
+-   Zen mode
+-   Colorbuddy support
+-   Show TODO List
+-   Global settings
+-   Errors List
+-   Markdown preview
+-   [Template generation](docs/TEMPLATE-FILE.md)
+-   Automatic license file generation
+-   Redmine integration
+-   Custom color highlighting
+-   Spell-check
+-   Right mouse drag gestures
+-   Discord Rich Presence support
+-   Under cursor increment and decrement
+-   Editorconfig support
 
 ## Trouble Shooting
 
@@ -99,8 +99,8 @@ unqualified-search-registries = ["docker.io"]
 If it doesn't work, you may not installed OCI runtime. ( code 126 )  
 These are runtime binaries:
 
-- For cgroups v1 : `runc`
-- For cgroups v2 : `crun`
+-   For cgroups v1 : `runc`
+-   For cgroups v2 : `crun`
 
 ### Discord Rich Presence is not working
 
