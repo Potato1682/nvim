@@ -41,6 +41,12 @@ repo = "RRethy/vim-illuminate"
 [[plugins]]
 repo = "RishabhRD/nvim-lsputils"
 
+[[plugins]]
+repo = "neovim/nvim-lspconfig"
+
+[[plugins]]
+repo = "lspcontainers/lspcontainers.nvim"
+
 # Testing
 
 [[plugins]]

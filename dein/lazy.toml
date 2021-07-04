@@ -50,23 +50,12 @@ on_map = "<Plug>(EasyAlign)"
 # LSP
 
 [[plugins]]
-repo = "neovim/nvim-lspconfig"
-on_lua = "lspconfig"
-hook_post_source = """
-    lua require("lsp")
-"""
-
-[[plugins]]
 repo = "kabouzeid/nvim-lspinstall"
 on_cmd = "LspInstall"
 on_lua = "lspinstall"
 hook_post_source = """
     lua require("nvim-lspinstall")
 """
-
-[[plugins]]
-repo = "lspcontainers/lspcontainers.nvim"
-on_lua = "lspcontainers"
 
 [[plugins]]
 repo = "nvim-lua/lsp-status.nvim"
@@ -473,6 +462,15 @@ hook_post_source = """
 repo = "andweeb/presence.nvim"
 hook_post_source = """
     lua require("presence"):setup()
+"""
+
+# Profiler
+
+[[plugins]]
+repo = "dstein64/vim-startuptime"
+on_cmd = "StartupTime"
+hook_source = """
+    let g:startuptime_tries = 10
 """
 
 # Lua
