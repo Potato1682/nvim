@@ -1,6 +1,22 @@
-_G.MYaml = {}
+local lsp_config = require "lsp"
+local container = require "lspcontainers"
 
-vim.cmd [[ TSBufEnable indent ]]
+local capabilities = vim.lsp.protocol.make_client_capabilities()
+
+capabilities.window = capabilities.window or {}
+capabilities.window.workDoneProgress = true
+
+require("lspconfig").yamlls.setup {
+  before_init = function(params)
+    params.processId = vim.NIL
+  end,
+  cmd = container.command "yamlls",
+  on_attach = lsp_config.common_on_attach,
+  root_dir = vim.loop.cwd,
+  capabilities = capabilities,
+}
+
+_G.MYaml = {}
 
 function _G.MYaml.colon_complete()
   local line = vim.fn.getline "."
