@@ -12,6 +12,7 @@ require("lspconfig").html.setup {
     params.processId = vim.NIL
   end,
   cmd = container.command "html",
-  capabilities = capabilities,
   on_attach = lsp_config.common_on_attach,
+  root_dir = vim.loop.cwd,
+  capabilities = capabilities,
 }
