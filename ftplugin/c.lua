@@ -15,3 +15,6 @@ require("lspconfig").clangd.setup {
   capabilities = capabilities,
   on_attach = lsp_config.common_on_attach,
 }
+
+require "nvim-dap.c-cpp-rust"
+

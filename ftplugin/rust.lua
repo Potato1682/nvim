@@ -11,3 +11,5 @@ require("lspconfig").rust_analyzer.setup {
   on_attach = lsp_config.common_on_attach,
   capabilities = capabilities,
 }
+
+require "nvim-dap.c-cpp-rust"
