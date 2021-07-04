@@ -38,14 +38,6 @@ vim.g.indent_blankline_context_patterns = {
 }
 vim.g.indent_blankline_space_char = "·"
 
-vim.cmd [[ hi IndentBlanklineContextChar guifg=#3d8cf0 guibg=NONE gui=nocombine ]]
-vim.cmd [[ hi IndentRainbow1 guifg=#be5046 guibg=NONE gui=nocombine ]]
-vim.cmd [[ hi IndentRainbow2 guifg=#e5c07b guibg=NONE gui=nocombine ]]
-vim.cmd [[ hi IndentRainbow3 guifg=#98c379 guibg=NONE gui=nocombine ]]
-vim.cmd [[ hi IndentRainbow4 guifg=#56b6c2 guibg=NONE gui=nocombine ]]
-vim.cmd [[ hi IndentRainbow5 guifg=#61afef guibg=NONE gui=nocombine ]]
-vim.cmd [[ hi IndentRainbow6 guifg=#c678dd guibg=NONE gui=nocombine ]]
-
 vim.g.indent_blankline_char_highlight_list = {
   "IndentRainbow1",
   "IndentRainbow2",
@@ -54,3 +46,11 @@ vim.g.indent_blankline_char_highlight_list = {
   "IndentRainbow5",
   "IndentRainbow6",
 }
+
+vim.cmd [[ hi! IndentBlanklineContextChar guifg=#3d8cf0 guibg=NONE gui=nocombine ]]
+vim.cmd [[ hi! IndentRainbow1 guifg=#be5046 guibg=NONE gui=nocombine ]]
+vim.cmd [[ hi! IndentRainbow2 guifg=#e5c07b guibg=NONE gui=nocombine ]]
+vim.cmd [[ hi! IndentRainbow3 guifg=#98c379 guibg=NONE gui=nocombine ]]
+vim.cmd [[ hi! IndentRainbow4 guifg=#56b6c2 guibg=NONE gui=nocombine ]]
+vim.cmd [[ hi! IndentRainbow5 guifg=#61afef guibg=NONE gui=nocombine ]]
+vim.cmd [[ hi! IndentRainbow6 guifg=#c678dd guibg=NONE gui=nocombine ]]

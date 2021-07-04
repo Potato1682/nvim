@@ -11,7 +11,10 @@ capabilities.window = capabilities.window or {}
 capabilities.window.workDoneProgress = true
 
 require("lspconfig").clangd.setup {
-  cmd = { bin, "--background-index" },
+  cmd = { bin, "--background-index", "--cross-file-rename" },
   capabilities = capabilities,
   on_attach = lsp_config.common_on_attach,
 }
+
+require "nvim-dap.c-cpp-rust"
+
