@@ -80,6 +80,32 @@ repo = "machakann/vim-sandwich"
 [[plugins]]
 repo = "windwp/nvim-autospace"
 
+# Highlighting
+
+[[plugins]]
+repo = "nvim-treesitter/nvim-treesitter"
+hook_post_update = """
+    TSUpdate
+"""
+depends = [
+  "ts-autotag",
+  "treesitter-textsubjects",
+  "crazy-node-movement",
+  "context-vt"
+]
+
+[[plugins]]
+repo = "windwp/nvim-ts-autotag"
+
+[[plugins]]
+repo = "RRethy/nvim-treesitter-textsubjects"
+
+[[plugins]]
+repo = "theHamsta/crazy-node-movement"
+
+[[plugins]]
+repo = "haringsrob/nvim_context_vt"
+
 # Search
 
 [[plugins]]

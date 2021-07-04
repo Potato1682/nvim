@@ -258,34 +258,7 @@ hook_post_source = """
     lua require("numb").setup()
 """
 
-# Highlighting
-
-[[plugins]]
-repo = "nvim-treesitter/nvim-treesitter"
-on_path = ".*"
-on_lua = "nvim-treesitter"
-hook_post_source = """
-    lua require("nvim-treesitter-config")
-"""
-hook_post_update = """
-    TSUpdate
-"""
-
-[[plugins]]
-repo = "windwp/nvim-ts-autotag"
-on_source = "treesitter"
-
-[[plugins]]
-repo = "RRethy/nvim-treesitter-textsubjects"
-on_source = "treesitter"
-
-[[plugins]]
-repo = "theHamsta/crazy-node-movement"
-on_source = "treesitter"
-
-[[plugins]]
-repo = "haringsrob/nvim_context_vt"
-on_source = "treesitter"
+# Treesitter
 
 [[plugins]]
 repo = "mizlan/iswap.nvim"
