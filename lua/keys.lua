@@ -21,7 +21,7 @@ keymap("n", "<Leader>f", ":Telescope find_files<CR>", { noremap = true, silent =
 keymap("n", "<Leader>;", ":Dashboard<CR>", { noremap = true, silent = true })
 
 -- close buffer
-keymap("n", "<leader>q", ":lua require'utils.buffer'.delete_buffer()<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>q", ":lua require'nvim-utils.buffer'.delete_buffer()<CR>", { noremap = true, silent = true })
 
 -- generate documents
 keymap("n", "<leader>*", ":DogeGenerate<CR>", { noremap = true, silent = true })
@@ -67,16 +67,11 @@ keymap("", "p", "<Plug>(miniyank-autoput)", {})
 keymap("", "P", "<Plug>(miniyank-autoPut)", {})
 
 if O.toggle.enabled then
-  keymap("n", "<C-s>", "<cmd>lua require'utils.toggle'.toggle()<cr>", { noremap = true })
+  keymap("n", "<C-s>", "<cmd>lua require'nvim-utils.toggle'.toggle()<cr>", { noremap = true })
 end
 
 -- Command buffer
-keymap(
-  "n",
-  "q:",
-  "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight)<CR>",
-  { noremap = true }
-)
+keymap("n", "q:", "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight)<CR>", { noremap = true })
 
 keymap(
   "c",

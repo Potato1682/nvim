@@ -284,7 +284,7 @@ end
 local unique_name = "textDocument-rename"
 
 function lsp_config.rename()
-  local active = require("utils").is_lsp_active()
+  local active = require("nvim-utils").is_lsp_active()
 
   if not active then
     return

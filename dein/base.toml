@@ -149,6 +149,11 @@ repo = "nvim-telescope/telescope-project.nvim"
 [[plugins]]
 repo = "nvim-telescope/telescope-dap.nvim"
 
+# Containers
+
+[[plugins]]
+repo = "jamestthompson3/nvim-remote-containers"
+
 # Database
 
 [[plugins]]

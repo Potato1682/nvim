@@ -1,6 +1,6 @@
 local npairs = require "nvim-autopairs"
 local Rule = require "nvim-autopairs.rule"
-local indent = require "utils.indent"
+local indent = require "nvim-utils.indent"
 
 npairs.setup {
   enable_check_bracket_line = false,

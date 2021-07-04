@@ -30,7 +30,7 @@ require("lspconfig").jsonls.setup {
   },
 }
 
-local utils = require "utils.indent"
+local utils = require "nvim-utils.indent"
 
 _G.MJson = {}
 

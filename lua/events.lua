@@ -41,7 +41,7 @@ function M.setup()
       { "BufEnter", "*", "imap <silent> <bs> <cmd>call v:lua.MPairs.check_bs()<cr>" },
     },
     cursor = {
-      { "BufReadPost", "*", "lua require'utils.resume'.resume()" },
+      { "BufReadPost", "*", "lua require'nvim-utils.resume'.resume()" },
       { "WinEnter,BufEnter", "*", [[ if luaeval("O.cursorline") | setlocal cursorline | endif ]] },
       { "WinLeave,BufLeave", "*", [[ if luaeval("O.cursorline") | setlocal nocursorline | endif ]] },
       { "WinEnter,BufEnter", "*", [[ if luaeval("O.cursorcolumn") | setlocal cursorcolumn | endif ]] },
@@ -72,7 +72,7 @@ function M.setup()
       { "CursorMoved,CursorMovedI", "*", "silent! lua vim.lsp.buf.hover()" },
     },
     mkdir = {
-      { "BufWritePre", "*", "lua require'utils'.file_mkdirp()" },
+      { "BufWritePre", "*", "lua require'nvim-utils'.file_mkdirp()" },
     },
     wins = {
       { "FocusLost", "*", "noautocmd silent! wa" },

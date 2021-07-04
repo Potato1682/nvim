@@ -31,7 +31,7 @@ require("compe").setup {
 
 require("nvim-autopairs.completion.compe").setup {
   map_cr = false,
-  map_complete = true
+  map_complete = true,
 }
 
 local npairs = require "nvim-autopairs"
@@ -44,16 +44,16 @@ function _G.MUtils.enter_confirm()
   if vim.fn.pumvisible() ~= 0 then
     if vim.fn.complete_info()["selected"] ~= -1 then
       if vim.fn.call("vsnip#available", { 1 }) == 1 then
-        return npairs.esc("<Plug>(vsnip-expand-or-jump)")
+        return npairs.esc "<Plug>(vsnip-expand-or-jump)"
       end
 
-      return vim.fn["compe#confirm"](npairs.esc("<cr>"))
+      return vim.fn["compe#confirm"](npairs.esc "<cr>")
     else
       vim.defer_fn(function()
         require("nvim-autospace").format(-1)
       end, 20)
 
-      return npairs.esc("<cr>")
+      return npairs.esc "<cr>"
     end
   else
     vim.defer_fn(function()
@@ -69,9 +69,9 @@ function _G.MUtils.tab_complete()
     return npairs.esc "<C-n>"
   else
     if vim.fn.call("vsnip#jumpable", { 1 }) == 1 then
-      return npairs.esc("<Plug>(vsnip-jump-next)")
+      return npairs.esc "<Plug>(vsnip-jump-next)"
     else
-      return require("utils.indent").smart_indent()
+      return require("nvim-utils.indent").smart_indent()
     end
   end
 end
@@ -81,7 +81,7 @@ function _G.MUtils.s_tab_complete()
     return npairs.esc "<C-p>"
   else
     if vim.fn.call("vsnip#jumpable", { -1 }) == 1 then
-      return npairs.esc("<Plug>(vsnip-jump-prev)")
+      return npairs.esc "<Plug>(vsnip-jump-prev)"
     else
       return npairs.esc "<C-h>"
     end

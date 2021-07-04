@@ -3,7 +3,7 @@ require("bufferline").setup {
     view = "multiwindow",
     tab_size = 24,
     close_command = function(bufnum)
-      require("utils.buffer").delete_buffer(bufnum)
+      require("nvim-utils.buffer").delete_buffer(bufnum)
     end,
     right_mouse_command = function(bufnum)
       vim.api.nvim_input "<ESC>"
@@ -34,7 +34,7 @@ require("bufferline").setup {
           vim.cmd [[ enew ]]
         end,
         function()
-          require("utils.buffer").delete_buffer(bufnum)
+          require("nvim-utils.buffer").delete_buffer(bufnum)
         end,
         function()
           vim.cmd [[ bwipe ]]
@@ -150,7 +150,11 @@ require("bufferline").setup {
       { filetype = "NvimTree", text = O.japanese and "エクスプローラー" or "Explorer", text_align = "center" },
       { filetype = "dbui", text = O.japanese and "データベース" or "DBUI", text_align = "center" },
       { filetype = "Outline", text = O.japanese and "シンボル" or "Symbols", text_align = "center" },
-      { filetype = "UltestSummary", text = O.japanese and "テスト エクスプローラー" or "Test Explorer", text_align = "center" }
+      {
+        filetype = "UltestSummary",
+        text = O.japanese and "テスト エクスプローラー" or "Test Explorer",
+        text_align = "center",
+      },
     },
   },
   highlights = {

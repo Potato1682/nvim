@@ -36,7 +36,7 @@ keymap("lc", ":lua require'jdtls'.extract_constant()<cr>")
 vkeymap("lC", ":lua require'jdtls'.extract_constant(true)<cr>")
 vkeymap("lm", ":lua require'jdtls'.extract_method(true)<cr>")
 
-local utils = require "utils"
+local utils = require "nvim-utils"
 
 utils.define_command("JShell", "lua require'jdtls'.jshell()", { buffer = true })
 utils.define_command("UpdateProject", "lua require'jdtls'.update_project_config()", { buffer = true })
