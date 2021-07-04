@@ -1,4 +1,4 @@
-if vim.fn.glob(vim.fn.stdpath "data" .. "/lspinstall/jdtls/eclipse.jdt.ls/launch") == "" then
+if vim.fn.glob(vim.fn.stdpath "data" .. "/lspinstall/jdtls/*") == "" then
   require("lspinstall").install_server "jdtls"
 end
 
