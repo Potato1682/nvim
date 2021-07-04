@@ -164,6 +164,14 @@ repo = "lewis6991/spellsitter.nvim"
 [[plugins]]
 repo = "thinca/vim-template"
 
+# Sudo
+
+[[plugins]]
+repo = "lambdalisue/suda.vim"
+hook_add = """
+    lua require("nvim-suda")
+"""
+
 # Wakatime
 
 [[plugins]]
