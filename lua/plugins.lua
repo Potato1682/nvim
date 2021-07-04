@@ -36,11 +36,6 @@ if vim.fn["dein#check_install"] ~= 0 then
   vim.fn["dein#remote_plugins"]()
 end
 
-if vim.fn.filereadable(vim.fn.stdpath "data" .. "/dein/token") == 1 then
-  vim.fn["dein#check_update"](true)
-  vim.fn["dein#remote_plugins"]()
-end
-
 local unused_plugins = vim.fn["dein#check_clean"]()
 
 if vim.fn.len(unused_plugins) > 0 then

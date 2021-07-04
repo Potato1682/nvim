@@ -120,14 +120,6 @@ hook_source = """
 # Debug (DAP)
 
 [[plugins]]
-repo = "mfussenegger/nvim-dap"
-on_lua = "dap"
-
-[[plugins]]
-repo = "theHamsta/nvim-dap-virtual-text"
-on_source = "dap"
-
-[[plugins]]
 repo = "rcarriga/nvim-dap-ui"
 on_lua = "dapui"
 
@@ -387,15 +379,6 @@ hook_post_source = """
     lua require("todo-comments").setup()
 """
 
-# Spell
-
-[[plugins]]
-repo = "lewis6991/spellsitter.nvim"
-on_source = "nvim-treesitter"
-hook_post_source = """
-    lua require("nvim-spell")
-"""
-
 # Undos
 
 [[plugins]]
@@ -454,14 +437,6 @@ on_lua = "jdtls"
 [[plugins]]
 repo = "krisajenkins/vim-java-sql"
 on_ft = "java"
-
-# Python
-
-[[plugins]]
-repo = "mfussenegger/nvim-dap-python"
-on_source = "dap"
-on_lua = "dap-python"
-on_ft = "python"
 
 # Markdown
 

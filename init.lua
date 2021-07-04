@@ -18,6 +18,8 @@ require "nvim-bufferline"
 require "nvim-galaxyline"
 require "nvim-treesitter-config"
 require "nvim-indentline"
+require "nvim-spell"
+require "nvim-template"
 
 require "keys"
 require "providers"

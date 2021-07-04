@@ -55,6 +55,15 @@ hook_post_source = """
     let test#strategy = "neomake"
 """
 
+# Debugging (DAP)
+
+[[plugins]]
+repo = "mfussenegger/nvim-dap"
+
+[[plugins]]
+repo = "theHamsta/nvim-dap-virtual-text"
+on_source = "dap"
+
 # Building
 
 [[plugins]]
@@ -140,13 +149,15 @@ repo = "nvim-telescope/telescope-dap.nvim"
 [[plugins]]
 repo = "tpope/vim-dadbod"
 
+# Spell
+
+[[plugins]]
+repo = "lewis6991/spellsitter.nvim"
+
 # Template files
 
 [[plugins]]
 repo = "thinca/vim-template"
-hook_post_source = """
-    lua require("nvim-template")
-"""
 
 # Wakatime
 
@@ -163,4 +174,9 @@ repo = "toritori0318/vim-redmine"
 
 [[plugins]]
 repo = "nvim-lua/popup.nvim"
+
+# Python
+
+[[plugins]]
+repo = "mfussenegger/nvim-dap-python"
 
