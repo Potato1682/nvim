@@ -34,10 +34,9 @@ on_lua = "hop"
 # Format
 
 [[plugins]]
-repo = "mhartington/formatter.nvim"
+repo = "sbdchd/neoformat"
 on_cmd = [
-    "Format",
-    "FormatWrite"
+    "Neoformat"
 ]
 hook_post_source = """
     lua require("nvim-formatter")

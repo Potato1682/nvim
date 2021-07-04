@@ -19,12 +19,10 @@ require("lspconfig").tsserver.setup {
 
     ts_utils.setup {
       enable_import_on_completion = true,
-      enable_formatting = true,
-      formatter = "eslint_d",
+      enable_formatting = false,
       eslint_bin = "eslint_d",
       eslint_enable_diagnostics = true,
     }
-
 
     ts_utils.setup_client(client)
 

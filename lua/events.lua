@@ -65,8 +65,8 @@ function M.setup()
       { "BufWritePre", "*.bak", "setlocal noundofile" },
     },
     format = {
-      { "BufWritePost", "<buffer>", "lua vim.lsp.buf.formatting()" },
-      { "BufWritePost", "<buffer>", "FormatWrite" },
+      { "BufWritePost", "*", "lua vim.lsp.buf.formatting()" },
+      { "BufWritePre", "*", "undojoin | Neoformat" },
     },
     lsp = {
       { "CursorMoved,CursorMovedI", "*", "silent! lua vim.lsp.buf.hover()" },

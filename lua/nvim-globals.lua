@@ -32,9 +32,23 @@ O = {
   wakatime = {
     enabled = false
   },
+  lua = {
+    formatter = {
+      enabled = true,
+      -- @usage can be 'stylua', 'luaformatter', 'lua-fmt', 'lua-format'
+      -- 'stylua' is preinstalled
+      use = "stylua",
+    }
+  },
   python = {
     -- @usage can be 'unittest', 'pytest'
     test_type = "pytest",
+    formatter = {
+      enabled = true,
+      -- @usage can be 'yapf', 'autopep8', 'black', 'pydevf', 'isort', 'docformatter', 'pyment'
+      -- You need to install selected formatter
+      use = "yapf",
+    },
   },
   java = {
     format = {
