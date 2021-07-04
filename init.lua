@@ -32,7 +32,6 @@ require "lsp.virtual-text"
 
 require "lsp.c-cpp"
 require "nvim-dap.lua"
-require "lsp.bash"
 require "nvim-dap.js-ts"
 require "lsp.js-ts"
 require "nvim-dap.python"
