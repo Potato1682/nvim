@@ -6,7 +6,9 @@ My neovim settings
 
 #### Sample source code by [Peyang](https://github.com/peyang-Celeron)
 
-## Requires
+[Project board](https://github.com/Potato1682/nvim/projects/1)
+
+## Requirements
 
 -   **Neovim nightly build**
 -   Pipenv
@@ -52,6 +54,10 @@ My neovim settings
 -   Git integrations
 -   Leader key menu
 -   **D**ebug **A**dapter **P**rotocol support
+    -   Toggle Breakpoint
+    -   Search Breakpoint
+    -   Debug Control
+    -   Automatic DAP Installation
 -   Automatic root setting
 -   Increase number on editor
 -   Show current context on bracket ending
@@ -104,6 +110,6 @@ These are runtime binaries:
 
 ### Discord Rich Presence is not working
 
-nvim using [presence.nvim](https://github.com/andweeb/presence.nvim) to show Rich Presence.  
+nvim is using [presence.nvim](https://github.com/andweeb/presence.nvim) to show Rich Presence.  
 If there is a Failed to get Discord IPC socket error, your particular OS may not yet be supported, check [Projects card](https://github.com/andweeb/presence.nvim/projects/1#column-14183588).
 Or if you're using Flatpak'ed discord, [this link](https://github.com/flathub/com.discordapp.Discord/wiki/Rich-Precense-(discord-rpc) might useful.
