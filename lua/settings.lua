@@ -65,6 +65,7 @@ vim.opt.ruler = true
 vim.opt.showtabline = 2
 vim.opt.signcolumn = "yes:3"
 vim.opt.virtualedit = "onemore"
+vim.opt.formatoptions = vim.opt.formatoptions._value .. "mM"
 
 vim.opt.backup = false
 vim.opt.swapfile = false
