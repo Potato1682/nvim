@@ -42,10 +42,8 @@ function M.setup()
     },
     cursor = {
       { "BufReadPost", "*", "lua require'nvim-utils.resume'.resume()" },
-      { "WinEnter,BufEnter", "*", [[ if luaeval("O.cursorline") | setlocal cursorline | endif ]] },
-      { "WinLeave,BufLeave", "*", [[ if luaeval("O.cursorline") | setlocal nocursorline | endif ]] },
-      { "WinEnter,BufEnter", "*", [[ if luaeval("O.cursorcolumn") | setlocal cursorcolumn | endif ]] },
-      { "WinLeave,BufLeave", "*", [[ if luaeval("O.cursorcolumn") | setlocal nocursorcolumn | endif ]] },
+      { "WinEnter,BufEnter", "*", "lua require'nvim-utils.windows'.win_enter()" },
+      { "WinLeave,BufLeave", "*", "lua require'nvim-utils.windows'.win_leave()" },
     },
     dashboard = {
       {
@@ -55,9 +53,6 @@ function M.setup()
       },
       { "FileType", "dashboard", "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2" },
       { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<cr>" },
-    },
-    lens = {
-      { "BufWinEnter,WinEnter", "*", "silent! call win#lens()" },
     },
     bufs = {
       { "BufWritePre", "*.tmp", "setlocal noundofile" },

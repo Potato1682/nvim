@@ -79,3 +79,4 @@ vim.opt.foldlevel = 4
 vim.opt.foldmethod = "expr"
 vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 
+vim.opt_global.spell = false
