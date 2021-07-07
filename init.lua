@@ -1,9 +1,6 @@
 require "nvim-globals"
 require "settings"
 
-vim.cmd [[ silent! colorschme edge ]]
-vim.cmd [[ filetype plugin indent on ]]
-
 if require "first-load"() then
   require "plugins"
 
