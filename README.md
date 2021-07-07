@@ -21,7 +21,7 @@ My neovim settings
 - Java >= 11
 - Docker Engine
 - Ruby and [Bundler](https://bundler.io)
-- [nonicons](https://github.com/yamatsum/nonicons) patched font
+- [nonicons](https://github.com/yamatsum/nonicons) patched fonts
 
 ## Features
 

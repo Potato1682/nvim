@@ -1,6 +1,7 @@
 local npairs = require "nvim-autopairs"
 local Rule = require "nvim-autopairs.rule"
 local indent = require "nvim-utils.indent"
+local endwise = require("nvim-autopairs.ts-rule").endwise
 
 npairs.setup {
   enable_check_bracket_line = false,
@@ -21,6 +22,9 @@ npairs.add_rules {
     end)
     :use_key ")",
   Rule('"""', '"""', "toml"),
+  endwise("then$", "end", "lua", "if_statement"),
+  endwise("do$", "end", "lua", "for_statement"),
+  endwise("\\)$", "end", "lua", "function_definition"),
 }
 
 -- move up current line and delete old line.

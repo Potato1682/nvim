@@ -459,6 +459,15 @@ hook_post_source = """
     lua require("follow-md-links")
 """
 
+[[plugins]]
+repo = "dkarter/bullets.vim"
+on_ft = [
+    "markdown",
+    "text",
+    "gitcommit",
+    "scratch"
+]
+
 # Tailwind CSS
 
 [[plugins]]
