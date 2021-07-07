@@ -30,7 +30,7 @@ O = {
   },
   redmine = { site = "", api_key = "" },
   wakatime = {
-    enabled = false
+    enabled = false,
   },
   lua = {
     formatter = {
@@ -38,7 +38,7 @@ O = {
       -- @usage can be 'stylua', 'luaformatter', 'lua-fmt', 'lua-format'
       -- 'stylua' is preinstalled
       use = "stylua",
-    }
+    },
   },
   python = {
     -- @usage can be 'unittest', 'pytest'
@@ -86,8 +86,8 @@ O = {
   vue = {
     initial_indent = {
       script = false,
-      style = false
-    }
+      style = false,
+    },
   },
   enter_event = {},
   color_event = {},

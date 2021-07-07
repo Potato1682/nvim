@@ -15,7 +15,7 @@ require("lspconfig").tsserver.setup {
     client.resolved_capabilities.document_formatting = false
     lsp_config.common_on_attach(client)
 
-    local ts_utils = require("nvim-lsp-ts-utils")
+    local ts_utils = require "nvim-lsp-ts-utils"
 
     ts_utils.setup {
       enable_import_on_completion = true,
