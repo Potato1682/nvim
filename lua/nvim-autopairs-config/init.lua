@@ -20,6 +20,7 @@ npairs.add_rules {
       return true
     end)
     :use_key ")",
+  Rule('"""', '"""', "toml"),
 }
 
 -- move up current line and delete old line.
