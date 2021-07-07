@@ -323,6 +323,13 @@ on_cmd = [
     "DockerToolsSetHost"
 ]
 
+[[plugins]]
+repo = "jamestthompson3/nvim-remote-containers"
+on_cmd = [
+    "AttachToContainer",
+    "BuildImage"
+]
+
 # Documents
 
 [[plugins]]
