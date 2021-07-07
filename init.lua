@@ -17,6 +17,7 @@ require "nvim-treesitter-config"
 require "nvim-indentline"
 require "nvim-spell"
 require "nvim-template"
+require "nvim-lspinstall"
 
 require "keys"
 require "providers"

@@ -49,14 +49,6 @@ on_map = "<Plug>(EasyAlign)"
 # LSP
 
 [[plugins]]
-repo = "kabouzeid/nvim-lspinstall"
-on_cmd = "LspInstall"
-on_lua = "lspinstall"
-hook_post_source = """
-    lua require("nvim-lspinstall")
-"""
-
-[[plugins]]
 repo = "nvim-lua/lsp-status.nvim"
 on_lua = "lsp-status"
 

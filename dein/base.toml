@@ -36,16 +36,19 @@ depends = [
 # LSP
 
 [[plugins]]
-repo = "RRethy/vim-illuminate"
+repo = "neovim/nvim-lspconfig"
+
+[[plugins]]
+repo = "lspcontainers/lspcontainers.nvim"
+
+[[plugins]]
+repo = "kabouzeid/nvim-lspinstall"
 
 [[plugins]]
 repo = "RishabhRD/nvim-lsputils"
 
 [[plugins]]
-repo = "neovim/nvim-lspconfig"
-
-[[plugins]]
-repo = "lspcontainers/lspcontainers.nvim"
+repo = "RRethy/vim-illuminate"
 
 # Testing
 
