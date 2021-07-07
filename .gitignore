@@ -1,4 +1,3 @@
-packer_compiled.vim
 providers/python3/
 providers/python2/
 !providers/python3/Pipfile
