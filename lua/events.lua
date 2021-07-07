@@ -69,6 +69,11 @@ function M.setup()
     mkdir = {
       { "BufWritePre", "*", "lua require'nvim-utils'.file_mkdirp()" },
     },
+    spaces = {
+      { "InsertEnter", "*", "lua require'nvim-utils.spaces'.highlight_trailing_spaces()" },
+      { "InsertLeave", "*", "lua require'nvim-utils.spaces'.highlight_insert_trailing_spaces()" },
+      { "BufWritePre", "*", "lua require'nvim-utils.spaces'.strip_trailing_spaces()" },
+    },
     wins = {
       { "FocusLost", "*", "noautocmd silent! wa" },
       { "VimEnter", "*", "lua require'events'.on_enter()" },
@@ -124,6 +129,7 @@ function M.on_color()
   vim.cmd "hi BlueSign ctermbg=235 guibg=#2b2d3a"
   vim.cmd "hi YellowSign ctermbg=235 guibg=#2b2d3a"
   vim.cmd "hi RedSign ctermbg=235 guibg=#2b2d3a"
+  vim.cmd "hi ExtraWhitespace ctermfg=246 guifg=#7e8294 ctermbg=203 guibg=#ec7279 cterm=NONE gui=NONE guisp=NONE"
   vim.cmd "hi jsonBoolean ctermfg=107 guifg=#a0c980"
   vim.cmd "hi link NvimTreeLspDiagnosticsError RedSign"
   vim.cmd "hi link NvimTreeLspDiagnosticsWarning YellowSign"

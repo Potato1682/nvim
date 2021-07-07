@@ -67,6 +67,9 @@ vim.opt.signcolumn = "yes:3"
 vim.opt.virtualedit = "onemore"
 vim.opt.formatoptions = vim.opt.formatoptions._value .. "mM"
 
+vim.opt.list = true
+vim.opt.listchars = "tab:▏ ,trail:•,eol:↲,precedes:,extends:,nbsp:•"
+
 vim.opt.backup = false
 vim.opt.swapfile = false
 vim.opt.writebackup = false

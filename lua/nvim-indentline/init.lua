@@ -12,6 +12,7 @@ vim.g.indent_blankline_char = "▏"
 vim.g.indent_blankline_use_treesitter = true
 vim.g.indent_blankline_show_trailing_blankline_indent = false
 vim.g.indent_blankline_show_current_context = true
+vim.g.indent_blankline_show_end_of_line = false
 vim.g.indent_blankline_context_patterns = {
   "class",
   "return",
@@ -34,8 +35,8 @@ vim.g.indent_blankline_context_patterns = {
   "import_statement",
   "operation_type",
 }
-vim.g.indent_blankline_space_char = "·"
 
+vim.g.indent_blankline_space_char = "·"
 vim.g.indent_blankline_char_highlight_list = {
   "IndentRainbow1",
   "IndentRainbow2",
