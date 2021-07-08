@@ -90,13 +90,16 @@ hook_post_source = """
 """
 
 [[plugins]]
-repo = "tjdevries/colorbuddy.nvim"
+repo = "windwp/nvim-autospace"
+
+[[plugins]]
+repo = "andymass/vim-matchup"
 
 [[plugins]]
 repo = "machakann/vim-sandwich"
 
 [[plugins]]
-repo = "windwp/nvim-autospace"
+repo = "tjdevries/colorbuddy.nvim"
 
 # Highlighting
 

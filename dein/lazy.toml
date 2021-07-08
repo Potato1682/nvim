@@ -220,6 +220,7 @@ on_source = "kommentary"
 
 [[plugins]]
 repo = "dstein64/nvim-scrollview"
+on_event = "VimEnter"
 hook_post_source = """
     let g:scrollview_nvim_14040_workaround = 1
     let g:scrollview_hide_on_intersect     = 1
@@ -275,7 +276,7 @@ on_path = ".*"
 
 [[plugins]]
 repo = "lewis6991/gitsigns.nvim"
-on_path = ".*"
+on_event = "BufReadPost"
 hook_post_source = """
     lua require("nvim-gitsigns")
 """
@@ -425,6 +426,10 @@ on_lua = "plenary"
 [[plugins]]
 repo = "RishabhRD/popfix"
 on_lua = "popfix"
+
+[[plugins]]
+repo = "jbyuki/one-small-step-for-vimkind"
+on_lua = "osv"
 
 # Java
 
