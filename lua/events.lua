@@ -69,6 +69,9 @@ function M.setup()
     mkdir = {
       { "BufWritePre", "*", "lua require'nvim-utils'.file_mkdirp()" },
     },
+    ime = {
+      { "InsertLeave", "*", "lua require'nvim-utils.ime'.ime_disable()" },
+    },
     spaces = {
       { "BufRead,BufNew", "*", "lua require'nvim-utils.spaces'.highlight_japanese_spaces()" },
       { "InsertEnter", "*", "lua require'nvim-utils.spaces'.highlight_trailing_spaces()" },
