@@ -1,5 +1,6 @@
 require "nvim-globals"
 require "settings"
+require "events"
 
 if require "first-load"() then
   require "plugins"
@@ -23,7 +24,6 @@ require "nvim-utils.japanese"
 require "keys"
 require "providers"
 require "commands"
-require "events"
 require "nvim-undotree"
 
 require "lsp"

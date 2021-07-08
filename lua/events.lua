@@ -30,7 +30,43 @@ function M.nvim_create_augroups(definitions)
   end
 end
 
+function M.cursorhold_timer()
+  if vim.fn.mode() == "n" then
+    vim.fn.timer_stop(vim.g.cursorhold_timer_id)
+
+    vim.g.cursorhold_timer_id = vim.fn.timer_start(1500, "CursorHold_Callback")
+  end
+end
+
+function M.cursorhold_insert_timer()
+  vim.fn.timer_stop(vim.g.cursorhold_timer_id)
+
+  vim.g.cursorhold_timer_id = vim.fn.timer_start(1500, "CursorHoldI_Callback")
+end
+
 function M.setup()
+  if vim.g.loaded_events then
+    return
+  end
+
+  vim.g.cursorhold_timer_id = -1
+
+  -- CursorHold fixes
+  if vim.opt.eventignore._value == nil or vim.opt.eventignore._value == "" then
+    vim.opt.eventignore = "CursorHold,CursorHoldI"
+  else
+    vim.opt.eventignore = vim.opt.eventignore._value .. ",CursorHold,CursorHoldI"
+  end
+
+  vim.cmd("source " .. vim.fn.stdpath "config" .. "/vim/cursor-hold.vim")
+
+  M.nvim_create_augroups {
+    cursorhold_fix = {
+      { "CursorMoved", "*", "lua require'events'.cursorhold_timer()" },
+      { "CursorMovedI", "*", "lua require'events'.cursorhold_insert_timer()" },
+    },
+  }
+
   local definitions = {
     comment = {
       { "BufEnter", "*", "setlocal formatoptions-=r" },
@@ -64,7 +100,7 @@ function M.setup()
       { "BufWritePre", "*", "undojoin | Neoformat" },
     },
     lsp = {
-      { "CursorMoved,CursorMovedI", "*", "silent! lua vim.lsp.buf.hover()" },
+      { "CursorHold,CursorHoldI", "*", "silent! lua vim.lsp.buf.hover()" },
     },
     mkdir = {
       { "BufWritePre", "*", "lua require'nvim-utils'.file_mkdirp()" },
@@ -102,6 +138,8 @@ function M.setup()
       },
     }
   end
+
+  vim.g.loaded_events = true
 end
 
 O.enter_event = O.enter_event or {}
