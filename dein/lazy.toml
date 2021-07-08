@@ -256,6 +256,12 @@ hook_post_source = """
     lua require("nvim-zen-mode")
 """
 
+# Indent
+
+[[plugins]]
+repo = "tpope/vim-sleuth"
+on_event = "BufReadPre"
+
 # Comment
 
 [[plugins]]
