@@ -66,6 +66,8 @@ vim.opt.showtabline = 2
 vim.opt.signcolumn = "yes:3"
 vim.opt.virtualedit = "onemore"
 vim.opt.formatoptions = vim.opt.formatoptions._value .. "mM"
+vim.opt.matchpairs = vim.opt.matchpairs._value
+  .. ",「:」,（:）,【:】,『:』,［:］,｛:｝,《:》,〈:〉,‘:’,“:”"
 
 vim.opt.list = true
 vim.opt.listchars = "tab:▏ ,trail:•,eol:↲,precedes:,extends:,nbsp:•"
