@@ -253,7 +253,7 @@ hook_post_source = """
 
 [[plugins]]
 repo = "b3nj5m1n/kommentary"
-on_path = ".*"
+on_map = "gc"
 hook_post_source = """
     lua require("nvim-comment")
 """
