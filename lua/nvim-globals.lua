@@ -14,7 +14,7 @@ O = {
     sidescrolloff = 16,
   },
   colorscheme = "edge",
-  edge_better_performance = false, -- If true, edge shows some logs on startup
+  edge_better_performance = true, -- If true, edge shows some logs on startup
   -- @usage can be 'aura', 'neon'
   colorscheme_style = "neon",
   wrap_lines = false,
