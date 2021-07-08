@@ -99,6 +99,9 @@ function M.setup()
       { "BufWritePost", "*", "lua vim.lsp.buf.formatting()" },
       { "BufWritePre", "*", "undojoin | Neoformat" },
     },
+    history = {
+      { "CmdlineEnter", ":", "lua require'nvim-utils.cmd-history'.clean()" },
+    },
     lsp = {
       { "CursorHold,CursorHoldI", "*", "silent! lua vim.lsp.buf.hover()" },
     },

@@ -32,6 +32,8 @@ O = {
   wakatime = {
     enabled = false,
   },
+  -- Add ignored commands in history
+  ignore_commands = {},
   lua = {
     formatter = {
       enabled = true,
