@@ -41,4 +41,3 @@ local unused_plugins = vim.fn["dein#check_clean"]()
 if vim.fn.len(unused_plugins) > 0 then
   vim.fn.map(unused_plugins, "delete(v:val, 'rf')")
 end
-

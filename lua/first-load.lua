@@ -1,4 +1,4 @@
-local dein_directory = vim.fn.stdpath("data") .. "/dein"
+local dein_directory = vim.fn.stdpath "data" .. "/dein"
 local dein_repository = dein_directory .. "/repos/github.com/Shougo/dein.vim"
 
 local function download()
@@ -12,8 +12,7 @@ local function download()
 end
 
 return function()
-
-  if not vim.o.runtimepath:match("/dein.vim") then
+  if not vim.o.runtimepath:match "/dein.vim" then
     if vim.fn.isdirectory(dein_repository) ~= 1 then
       if vim.fn.confirm("[fitst-load] Install dein?", "&Yes\n&Cancel") ~= 1 then
         return
