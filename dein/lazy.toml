@@ -231,6 +231,13 @@ on_map = [
 ]
 
 [[plugins]]
+repo = "lambdalisue/readablefold.vim"
+on_event = "BufReadPre"
+hook_post_source = """
+    let g:readablefold#foldspace_char = ""
+"""
+
+[[plugins]]
 repo = "RRethy/vim-hexokinase"
 on_event = "BufReadPre"
 hook_source = """
