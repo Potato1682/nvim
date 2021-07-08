@@ -14,7 +14,7 @@ repo = "ryanoasis/vim-devicons"
 
 [[plugins]]
 repo = "yamatsum/nvim-nonicons"
-depends = "nvim-web-devicons"
+depends = "web-devicons"
 
 [[plugins]]
 repo = "jbyuki/contextmenu.nvim"
