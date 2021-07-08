@@ -45,6 +45,9 @@ repo = "lspcontainers/lspcontainers.nvim"
 repo = "kabouzeid/nvim-lspinstall"
 
 [[plugins]]
+repo = "nvim-lua/lsp-status.nvim"
+
+[[plugins]]
 repo = "RishabhRD/nvim-lsputils"
 
 [[plugins]]

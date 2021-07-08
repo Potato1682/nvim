@@ -49,10 +49,6 @@ on_map = "<Plug>(EasyAlign)"
 # LSP
 
 [[plugins]]
-repo = "nvim-lua/lsp-status.nvim"
-on_lua = "lsp-status"
-
-[[plugins]]
 repo = "ray-x/lsp_signature.nvim"
 normalized_name = "lsp-signature"
 on_lua = "lsp_signature"
