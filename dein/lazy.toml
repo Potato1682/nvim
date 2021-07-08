@@ -70,7 +70,6 @@ on_cmd = [
     "Trouble",
     "TroubleToggle"
 ]
-on_lua = "trouble"
 hook_post_source = """
     lua require("trouble").setup()
 """
@@ -93,22 +92,60 @@ hook_post_source = """
 
 [[plugins]]
 repo = "johnsyweb/vim-makeshift"
-on_path = ".*"
+on_source = "neomake"
+
+[[plugins]]
+repo = "neomake/neomake"
+on_source = "ultest"
+on_cmd = [
+    "Neomake",
+    "NeomakeProject"
+]
+hook_post_source = """
+    nnoremap <F5> <cmd>NeomakeProject<cr>
+"""
 
 # Testing
 
 [[plugins]]
+repo = "vim-test/vim-test"
+on_source = "ultest"
+hook_post_source = """
+    let test#strategy = "neomake"
+"""
+
+[[plugins]]
 repo = "rcarriga/vim-ultest"
-on_source = "vim-test"
+on_cmd = [
+    "Ultest",
+    "UltestNearest",
+    "UltestDebug",
+    "UltestDebugNearest",
+    "UltestAttach",
+    "UltestSummary",
+    "UltestSummaryOpen"
+]
 hook_source = """
     lua require("nvim-ultest")
 """
 
-# Debug (DAP)
+# Debugging (DAP)
+
+[[plugins]]
+repo = "mfussenegger/nvim-dap"
+on_lua = "dap"
+hook_post_source = """
+    lua require("nvim-dap")
+    lua require("nvim-dap.js-ts")
+"""
+
+[[plugins]]
+repo = "theHamsta/nvim-dap-virtual-text"
+on_source = "dap"
 
 [[plugins]]
 repo = "rcarriga/nvim-dap-ui"
-on_lua = "dapui"
+on_source = "dap"
 
 # Install vscode-cpptools using vimspector
 [[plugins]]
@@ -138,6 +175,10 @@ repo = "hrsh7th/vim-vsnip-integ"
 on_source = "vsnip"
 
 [[plugins]]
+repo = "rafamadriz/friendly-snippets"
+on_source = "vsnip"
+
+[[plugins]]
 repo = "tzachar/compe-tabnine"
 on_source = "compe"
 build = """
@@ -154,8 +195,22 @@ hook_post_source = """
 """
 
 [[plugins]]
+repo = "windwp/nvim-autospace"
+on_event = "InsertEnter"
+
+[[plugins]]
 repo = "monaqa/dial.nvim"
-on_path = ".*"
+on_map = [
+    "<C-a>",
+    "<C-x>"
+]
+
+[[plugins]]
+repo = "lukas-reineke/indent-blankline.nvim"
+on_event = "BufReadPre"
+hook_post_source = """
+    lua require("nvim-indentline")
+"""
 
 [[plugins]]
 repo = "bfredl/nvim-miniyank"
@@ -177,7 +232,7 @@ on_map = [
 
 [[plugins]]
 repo = "RRethy/vim-hexokinase"
-on_path = ".*"
+on_event = "BufReadPre"
 hook_source = """
     lua require("nvim-hexokinase")
 """
@@ -192,13 +247,6 @@ on_cmd = [
 ]
 hook_post_source = """
     lua require("nvim-zen-mode")
-"""
-
-[[plugins]]
-repo = "notomo/gesture.nvim"
-on_if = "&mouse == 'a'"
-hook_post_source = """
-    lua require("nvim-mouse-gesture")
 """
 
 # Comment
@@ -266,13 +314,13 @@ depends = "nonicons"
 
 [[plugins]]
 repo = "editorconfig/editorconfig-vim"
-on_path = ".*"
+on_event = "BufReadPre"
 
 # Git
 
 [[plugins]]
 repo = "lewis6991/gitsigns.nvim"
-on_event = "BufReadPost"
+on_event = "BufReadPre"
 hook_post_source = """
     lua require("nvim-gitsigns")
 """
@@ -331,6 +379,13 @@ hook_post_update = """
 # Database
 
 [[plugins]]
+repo = "tpope/vim-dadbod"
+on_source = [
+    "dadbod-completion",
+    "dadbod-ui"
+]
+
+[[plugins]]
 repo = "kristijanhusak/vim-dadbod-completion"
 on_source = "compe"
 
@@ -338,7 +393,10 @@ on_source = "compe"
 repo = "kristijanhusak/vim-dadbod-ui"
 on_cmd = [
     "DBUI",
-    "DBUIToggle"
+    "DBUIToggle",
+    "DBUIAddConnection",
+    "DBUIFindBuffer",
+    "DBUIRenameBuffer",
 ]
 
 # Rest Client
@@ -512,4 +570,10 @@ on_source = "null-ls"
 [[plugins]]
 repo = "simrat39/rust-tools.nvim"
 on_ft = "rust"
+
+# Python
+
+[[plugins]]
+repo = "mfussenegger/nvim-dap-python"
+on_lua = "python"
 

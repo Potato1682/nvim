@@ -40,60 +40,25 @@ repo = "neovim/nvim-lspconfig"
 
 [[plugins]]
 repo = "lspcontainers/lspcontainers.nvim"
+depends = "lspconfig"
 
 [[plugins]]
 repo = "kabouzeid/nvim-lspinstall"
+depends = "lspconfig"
 
 [[plugins]]
 repo = "nvim-lua/lsp-status.nvim"
+depends = "lspconfig"
 
 [[plugins]]
 repo = "RishabhRD/nvim-lsputils"
+depends = "lspconfig"
 
 [[plugins]]
 repo = "RRethy/vim-illuminate"
-
-# Testing
-
-[[plugins]]
-repo = "vim-test/vim-test"
-hook_post_source = """
-    let test#strategy = "neomake"
-"""
-
-# Debugging (DAP)
-
-[[plugins]]
-repo = "mfussenegger/nvim-dap"
-
-[[plugins]]
-repo = "theHamsta/nvim-dap-virtual-text"
-on_source = "dap"
-
-# Building
-
-[[plugins]]
-repo = "neomake/neomake"
-hook_post_source = """
-    nnoremap <F5> <cmd>NeomakeProject<cr>
-"""
-
-# Completions
-
-[[plugins]]
-repo = "rafamadriz/friendly-snippets"
-on_source = "vim-vsnip"
+depends = "lspconfig"
 
 # Editor
-
-[[plugins]]
-repo = "lukas-reineke/indent-blankline.nvim"
-hook_post_source = """
-    lua require("nvim-indentline")
-"""
-
-[[plugins]]
-repo = "windwp/nvim-autospace"
 
 [[plugins]]
 repo = "andymass/vim-matchup"
@@ -158,11 +123,6 @@ repo = "nvim-telescope/telescope-project.nvim"
 [[plugins]]
 repo = "nvim-telescope/telescope-dap.nvim"
 
-# Database
-
-[[plugins]]
-repo = "tpope/vim-dadbod"
-
 # Spell
 
 [[plugins]]
@@ -196,9 +156,4 @@ repo = "toritori0318/vim-redmine"
 
 [[plugins]]
 repo = "nvim-lua/popup.nvim"
-
-# Python
-
-[[plugins]]
-repo = "mfussenegger/nvim-dap-python"
 

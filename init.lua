@@ -26,12 +26,9 @@ require "commands"
 require "events"
 require "nvim-undotree"
 
-require "nvim-dap"
-
 require "lsp"
 require "lsp.virtual-text"
 
-require "nvim-dap.js-ts"
 require "lsp.js-ts"
 require "lsp.emmet"
 require "lsp.tailwindcss"

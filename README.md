@@ -73,7 +73,6 @@ My neovim settings
 - Redmine integration
 - Custom color highlighting
 - Spell-check
-- Right mouse drag gestures
 - Discord Rich Presence support
 - Under cursor increment and decrement
 - Editorconfig support
