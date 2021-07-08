@@ -19,6 +19,7 @@ require "nvim-spell"
 require "nvim-template"
 require "nvim-lspinstall"
 
+require "nvim-utils.japanese"
 require "keys"
 require "providers"
 require "commands"
