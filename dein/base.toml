@@ -95,9 +95,6 @@ repo = "windwp/nvim-ts-autotag"
 repo = "RRethy/nvim-treesitter-textsubjects"
 
 [[plugins]]
-repo = "theHamsta/crazy-node-movement"
-
-[[plugins]]
 repo = "haringsrob/nvim_context_vt"
 
 # Search
