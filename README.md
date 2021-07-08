@@ -10,16 +10,31 @@ My neovim settings
 
 ## Requirements
 
-- **Neovim nightly build**
-- Pipenv
+- Neovim 0.5+
+- Python2, Python3 and Pipenv
+  - Ubuntu: `python2`, `python3`, `pipenv`
+  - Arch: `python2`, `python`, `python-pipenv`
 - Git
-- GCC
+- **C Development Packages**
+
+  - GCC with C++ 11 support
+  - Boost
+  - CMake
+  - GNU Make
+  - Python Headers
+  - `libicu` Headers
+
+  - > Ubuntu: `build-essential`, `python2-dev`,`python3-dev`, `libicu-dev`, `libboost-all-dev`, `cmake`
+  - > Arch: `base-devel`, `boost`, `cmake`
+
 - Go
-- Node.js and NPM
-- Yarn
+- Node.js, NPM and Yarn
 - `jq`
-- Java >= 11
-- Docker Engine
+- Java >= 11 and Maven
+  - Ubuntu: `openjdk-11-jre`, `openjdk-11-jre-headleess`, `openjdk-11-dbg`, `maven`
+  - Arch: `jdk11-openjdk`, `jre11-openjdk-headress`, `maven`
+- **Rootless** Docker Engine
+- Ripgrep (`rg`)
 - Ruby and [Bundler](https://bundler.io)
 - [nonicons](https://github.com/yamatsum/nonicons) patched fonts
 

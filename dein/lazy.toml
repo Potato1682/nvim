@@ -286,11 +286,21 @@ hook_post_source = """
 # Command
 
 [[plugins]]
-repo = "nacro90/numb.nvim"
+repo = "gelguy/wilder.nvim"
 on_event = "CmdlineEnter"
 hook_post_source = """
-    lua require("numb").setup()
+    call wilder#set_option("num_workers", 8)
+    call wilder#enable_cmdline_enter()
+
+    set wildcharm=<Tab>
+
+    lua require("nvim-wilder")
 """
+
+[[plugins]]
+repo = "Potato1682/cpsm"
+on_source = "wilder"
+build = "./install.sh"
 
 # Treesitter
 
