@@ -39,4 +39,5 @@ require("nvim-treesitter.configs").setup {
       [";"] = "textsubjects-big",
     },
   },
+  matchup = { enable = true },
 }
