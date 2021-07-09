@@ -1,0 +1,22 @@
+## kommentary
+Toggle comment current line | gcc
+Range toggle comments | gc
+
+## easy-align
+Start easy align | ga
+
+## hop
+Hint words and jump | $
+
+## toggle
+Toggle true and false, 1 and 0 | <C-s>
+
+## leader
+Clear search highlight | <leader>h
+Open explorer | <leader>e
+Find files | <leader>f
+Open dashboard | <leader>;
+Close current buffer | <leader>q
+Generate code document | <leader>*
+Open projects menu | <leader>p
+

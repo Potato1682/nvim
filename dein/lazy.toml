@@ -256,6 +256,12 @@ hook_post_source = """
     lua require("nvim-zen-mode")
 """
 
+# Cheat sheet
+
+[[plugins]]
+repo = "sudormrfbin/cheatsheet.nvim"
+on_cmd = "Cheatsheet"
+
 # Indent
 
 [[plugins]]
