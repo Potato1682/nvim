@@ -422,6 +422,10 @@ on_cmd = [
     "DBUIRenameBuffer",
 ]
 
+[[plugins]]
+repo = "jsborjesson/vim-uppercase-sql"
+on_ft = "sql"
+
 # Rest Client
 
 [[plugins]]
@@ -599,6 +603,22 @@ on_ft = "rust"
 [[plugins]]
 repo = "mfussenegger/nvim-dap-python"
 on_lua = "python"
+
+# Log
+
+[[plugins]]
+repo = "MTDL9/vim-log-highlighting"
+on_ft = "log"
+
+# CSV and TSV
+
+[[plugins]]
+repo = "mechatroner/rainbow_csv"
+on_ft = [
+    "csv",
+    "csv_pipe",
+    "tsv"
+]
 
 # Colors
 
