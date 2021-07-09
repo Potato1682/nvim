@@ -156,19 +156,15 @@ hook_post_source = """
 """
 
 [[plugins]]
-repo = "hrsh7th/vim-vsnip"
+repo = "L3MON4D3/LuaSnip"
 on_source = "compe"
 hook_source = """
-    let g:vsnip_snippet_dir = stdpath("config") . "/snippets"
+    lua require("nvim-luasnip")
 """
 
 [[plugins]]
-repo = "hrsh7th/vim-vsnip-integ"
-on_source = "vsnip"
-
-[[plugins]]
 repo = "rafamadriz/friendly-snippets"
-on_source = "vsnip"
+on_source = "LuaSnip"
 
 [[plugins]]
 repo = "tzachar/compe-tabnine"
