@@ -12,11 +12,12 @@ require "nvim-dashboard"
 
 require "plugins"
 
+require "colorscheme"
+
 require "nvim-bufferline"
 require "nvim-galaxyline"
 require "nvim-treesitter-config"
 require "nvim-indentline"
-require "nvim-spell"
 require "nvim-template"
 require "nvim-lspinstall"
 
