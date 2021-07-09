@@ -7,8 +7,13 @@ end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-capabilities.window = capabilities.window or {}
-capabilities.window.workDoneProgress = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits",
+  },
+}
 
 require("lspconfig").clangd.setup {
   cmd = { bin, "--background-index", "--cross-file-rename" },
@@ -17,4 +22,3 @@ require("lspconfig").clangd.setup {
 }
 
 require "nvim-dap.c-cpp-rust"
-

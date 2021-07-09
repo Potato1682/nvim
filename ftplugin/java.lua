@@ -2,13 +2,6 @@ if vim.fn.glob(vim.fn.stdpath "data" .. "/lspinstall/jdtls/*") == "" then
   require("lspinstall").install_server "jdtls"
 end
 
--- treesitter fixes
-vim.cmd [[ TSBufEnable highlight ]]
-vim.cmd [[ TSBufEnable rainbow ]]
-vim.cmd [[ TSBufEnable indent ]]
-vim.cmd [[ TSBufEnable autotag ]]
-vim.cmd [[ TSBufEnable context_commentstring ]]
-
 require "nvim-dap.java"
 require "lsp.java"
 

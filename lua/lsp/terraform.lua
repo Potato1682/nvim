@@ -5,8 +5,13 @@ local lsp = require "lspconfig"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
-capabilities.window = capabilities.window or {}
-capabilities.window.workDoneProgress = true
+capabilities.textDocument.completion.completionItem.resolveSupport = {
+  properties = {
+    "documentation",
+    "detail",
+    "additionalTextEdits",
+  },
+}
 
 lsp.terraformls.setup {
   cmd = container.command "terraformls",
