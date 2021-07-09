@@ -7,9 +7,7 @@ vim.cmd [[ TSBufEnable highlight ]]
 vim.cmd [[ TSBufEnable rainbow ]]
 vim.cmd [[ TSBufEnable indent ]]
 vim.cmd [[ TSBufEnable autotag ]]
-vim.cmd [[ TSBufEnable rainbow ]]
 vim.cmd [[ TSBufEnable context_commentstring ]]
-vim.cmd [[ TSBufEnable textobjects.swap ]]
 
 require "nvim-dap.java"
 require "lsp.java"
@@ -42,4 +40,4 @@ utils.define_command("JShell", "lua require'jdtls'.jshell()", { buffer = true })
 utils.define_command("UpdateProject", "lua require'jdtls'.update_project_config()", { buffer = true })
 utils.define_command("JdtBytecode", "lua require'jdtls'.javap()", { buffer = true })
 utils.define_command("JdtJol", "lua require'jdtls'.jol()", { buffer = true })
-utils.define_command("Format", "lua vim.lsp.buf.formatting()", { buffer = true })
+utils.define_command("Neoformat", "lua vim.lsp.buf.formatting()", { buffer = true })
