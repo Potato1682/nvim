@@ -26,6 +26,7 @@ function M.win_enter()
 
   vim.opt.spell = true
   vim.opt.spelllang = "en,cjk"
+  require "nvim-spell"
   require("spellsitter").mod_spell_opt()
 end
 
