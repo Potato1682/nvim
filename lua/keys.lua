@@ -26,6 +26,11 @@ keymap("n", "<leader>q", ":lua require'nvim-utils.buffer'.delete_buffer()<CR>", 
 -- generate documents
 keymap("n", "<leader>*", ":DogeGenerate<CR>", { noremap = true, silent = true })
 
+-- split
+keymap("n", "s", "", { noremap = true })
+keymap("n", "ss", "<cmd>split<cr>", { noremap = true })
+keymap("n", "sv", "<cmd>vsplit<cr>", { noremap = true })
+
 -- open projects
 keymap("n", "<leader>p", ":lua require'telescope'.extensions.project.project {}<CR>", { noremap = true, silent = true })
 

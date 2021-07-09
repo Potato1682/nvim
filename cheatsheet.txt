@@ -23,3 +23,7 @@ Close current buffer | <leader>q
 Generate code document | <leader>*
 Open projects menu | <leader>p
 
+## split
+Split horizontally | ss
+Split vertically | vs
+
