@@ -42,8 +42,12 @@ call wilder#set_option("renderer", wilder#renderer_mux({
   \ ":": wilder#popupmenu_renderer({
   \   "highlighter": s:highlighters,
   \   "winblend": 17,
+  \   "ellipsis": "…",
   \   "left": [
-  \     wilder#popupmenu_devicons(),
+  \     wilder#popupmenu_devicons({
+  \       "get_icon": wilder#devicons_get_icon_from_nvim_web_devicons(),
+  \       "get_hl": wilder#devicons_get_hl_from_nvim_web_devicons(),
+  \     }),
   \   ],
   \   "right": [
   \     " ",
@@ -52,6 +56,12 @@ call wilder#set_option("renderer", wilder#renderer_mux({
   \ }),
   \ "/": wilder#wildmenu_renderer({
   \   "highlighter": s:highlighters,
-  \   "mode": "statusline"
+  \   "mode": "statusline",
+  \   "left": [
+  \     wilder#wildmenu_previous_arrow({ "previous": " ", "hl": "Blue" })
+  \   ],
+  \   "right": [
+  \     wilder#wildmenu_next_arrow({ "next": " ", "previous": " ", "hl": "Blue" })
+  \   ]
   \ }),
 \ }))

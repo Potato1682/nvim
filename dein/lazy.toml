@@ -600,3 +600,9 @@ on_ft = "rust"
 repo = "mfussenegger/nvim-dap-python"
 on_lua = "python"
 
+# Colors
+
+[[plugins]]
+repo = "powerman/vim-plugin-AnsiEsc"
+on_event = "BufReadPre"
+
