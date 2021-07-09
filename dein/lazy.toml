@@ -1,9 +1,3 @@
-# Design
-
-[[plugins]]
-repo = "kyazdani42/nvim-web-devicons"
-on_lua = "nvim-web-devicons"
-
 # Dashboard
 
 [[plugins]]
@@ -316,7 +310,7 @@ hook_post_source = """
 [[plugins]]
 repo = "Potato1682/cpsm"
 on_source = "wilder"
-build = "./install.sh"
+build = "sh -c 'PY3=ON ./install.sh'"
 
 # Treesitter
 
@@ -441,6 +435,15 @@ on_cmd = [
 [[plugins]]
 repo = "jsborjesson/vim-uppercase-sql"
 on_ft = "sql"
+
+# Spell
+
+[[plugins]]
+repo = "lewis6991/spellsitter.nvim"
+on_event = "VimEnter"
+hook_post_source = """
+    lua require("nvim-spell")
+"""
 
 # Rest Client
 

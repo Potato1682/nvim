@@ -5,12 +5,9 @@ repo = "Shougo/dein.vim"
 
 [[plugins]]
 repo = "sainnhe/edge"
-hook_add = """
-    autocmd VimEnter * nested lua require("colorscheme")
-"""
 
 [[plugins]]
-repo = "ryanoasis/vim-devicons"
+repo = "kyazdani42/nvim-web-devicons"
 
 [[plugins]]
 repo = "yamatsum/nvim-nonicons"
@@ -75,14 +72,14 @@ repo = "tjdevries/colorbuddy.nvim"
 repo = "nvim-treesitter/nvim-treesitter"
 hook_post_update = """
     TSUpdate
-    TSUpdate markdown
 """
 depends = [
     "ts-rainbow",
     "ts-autotag",
     "treesitter-textsubjects",
     "crazy-node-movement",
-    "context-vt"
+    "context-vt",
+    "spellsitter"
 ]
 
 [[plugins]]
@@ -119,11 +116,6 @@ repo = "nvim-telescope/telescope-project.nvim"
 
 [[plugins]]
 repo = "nvim-telescope/telescope-dap.nvim"
-
-# Spell
-
-[[plugins]]
-repo = "lewis6991/spellsitter.nvim"
 
 # Template files
 
