@@ -32,7 +32,7 @@ if vim.fn["dein#load_state"](dein_directory) == 1 then
   vim.fn["dein#save_state"]()
 end
 
-if vim.fn.has("vim_starting") ~= 0 and vim.fn["dein#check_install"] ~= 0 then
+if vim.fn.has "vim_starting" ~= 0 and vim.fn["dein#check_install"] ~= 0 then
   vim.fn["dein#install"]()
   vim.fn["dein#remote_plugins"]()
 end

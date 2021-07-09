@@ -2,13 +2,15 @@ require "nvim-globals"
 require "settings"
 require "events"
 
+require "nvim-dashboard"
+
 if require "first-load"() then
   require "plugins"
 
+  vim.fn["dein#remote_plugins"]()
+
   return
 end
-
-require "nvim-dashboard"
 
 require "plugins"
 

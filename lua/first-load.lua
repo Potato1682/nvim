@@ -17,7 +17,7 @@ local function download()
   local command = string.format("git clone https://github.com/Shougo/dein.vim %s", dein_repository)
 
   print("  > " .. command)
-  os.execute(command)
+  vim.fn.system(command)
 end
 
 return function()
