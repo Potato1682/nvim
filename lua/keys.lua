@@ -88,6 +88,9 @@ keymap(
   { noremap = true }
 )
 
+keymap("n", "<leader>lp", "<cmd>AnyJump<cr>", { noremap = true })
+keymap("x", "<leader>lp", "<cmd>AnyJumpVisual<cr>", { noremap = true })
+
 keymap("n", "Q", "<Nop>", { noremap = true })
 keymap("n", "ZZ", "<Nop>", { noremap = true })
 keymap("n", "ZQ", "<Nop>", { noremap = true })

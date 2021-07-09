@@ -69,6 +69,15 @@ hook_post_source = """
 """
 
 [[plugins]]
+repo = "ahmedkhalf/lsp-rooter.nvim"
+on_source = "lspconfig"
+hook_post_source = """
+    lua require("lsp-rooter").setup()
+"""
+
+# Symbols
+
+[[plugins]]
 repo = "simrat39/symbols-outline.nvim"
 on_cmd = [
     "SymbolsOutline",
@@ -76,11 +85,12 @@ on_cmd = [
 ]
 
 [[plugins]]
-repo = "ahmedkhalf/lsp-rooter.nvim"
-on_source = "lspconfig"
-hook_post_source = """
-    lua require("lsp-rooter").setup()
-"""
+repo = "pechorin/any-jump.vim"
+on_cmd = [
+    "AnyJump",
+    "AnyJumpVisual",
+    "AnyJumpLastResults"
+]
 
 # Building
 
