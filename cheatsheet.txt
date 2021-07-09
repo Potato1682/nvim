@@ -8,6 +8,9 @@ Start easy align | ga
 ## hop
 Hint words and jump | $
 
+## window
+Choose windows | -
+
 ## toggle
 Toggle true and false, 1 and 0 | <C-s>
 

@@ -58,6 +58,9 @@ vim.cmd [[
 -- Hop
 keymap("n", "$", "<cmd>lua require'hop'.hint_words()<cr>", {})
 
+-- Choose windows
+keymap("n", "-", "<Plug>(choosewin)", {})
+
 -- Easy align
 keymap("n", "ga", "<Plug>(EasyAlign)", {})
 keymap("x", "ga", "<Plug>(EasyAlign)", {})
