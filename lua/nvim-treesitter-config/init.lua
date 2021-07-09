@@ -17,7 +17,10 @@ require("nvim-treesitter.configs").setup {
     enable = true,
     disable = { "vue", "html" },
   },
-  context_commentstring = { enable = true, enable_autocmd = true },
+  context_commentstring = {
+    enable = true,
+    enable_autocmd = false,
+  },
   textsubjects = {
     enable = true,
     keymaps = {
