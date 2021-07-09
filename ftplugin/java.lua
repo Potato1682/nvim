@@ -19,13 +19,20 @@ local function vkeymap(key, action)
   vim.api.nvim_buf_set_keymap(0, "v", "<leader>" .. key, action, { silent = true, noremap = true })
 end
 
-keymap("la", ":lua require'jdtls'.code_action()<cr>")
-vkeymap("lA", ":lua require'jdtls'.code_action(true)<cr>")
-keymap("le", ":lua require'jdtls'.extract_variable()<cr>")
-vkeymap("lE", ":lua require'jdtls'.extract_variable(true)<cr>")
-keymap("lc", ":lua require'jdtls'.extract_constant()<cr>")
-vkeymap("lC", ":lua require'jdtls'.extract_constant(true)<cr>")
-vkeymap("lm", ":lua require'jdtls'.extract_method(true)<cr>")
+keymap("la", "<cmd>lua require'jdtls'.code_action()<cr>")
+vim.api.nvim_buf_set_keymap(
+  0,
+  "x",
+  "<leader>la",
+  "<cmd>lua require'jdtls'.range_code_action()<cr>",
+  { silent = true, noremap = true }
+)
+vkeymap("lA", "<cmd>lua require'jdtls'.code_action(true)<cr>")
+keymap("le", "<cmd>lua require'jdtls'.extract_variable()<cr>")
+vkeymap("lE", "<cmd>lua require'jdtls'.extract_variable(true)<cr>")
+keymap("lc", "<cmd>lua require'jdtls'.extract_constant()<cr>")
+vkeymap("lC", "<cmd>lua require'jdtls'.extract_constant(true)<cr>")
+vkeymap("lm", "<cmd>lua require'jdtls'.extract_method(true)<cr>")
 
 local utils = require "nvim-utils"
 

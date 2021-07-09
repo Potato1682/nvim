@@ -88,6 +88,9 @@ keymap(
   { noremap = true }
 )
 
+keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true })
+keymap("x", "<leader>la", "<cmd>lua vim.lsp.buf.range_code_action()<cr>", { noremap = true })
+
 keymap("n", "<leader>lp", "<cmd>AnyJump<cr>", { noremap = true })
 keymap("x", "<leader>lp", "<cmd>AnyJumpVisual<cr>", { noremap = true })
 

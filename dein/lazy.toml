@@ -91,6 +91,9 @@ on_cmd = [
     "AnyJumpVisual",
     "AnyJumpLastResults"
 ]
+hook_source = """
+    let g:any_jump_disable_default_keybindings = 1
+"""
 
 # Building
 
