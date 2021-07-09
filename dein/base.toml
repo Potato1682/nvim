@@ -130,6 +130,15 @@ hook_add = """
     lua require("nvim-suda")
 """
 
+# Backup
+
+[[plugins]]
+repo = "aiya000/aho-bakaup.vim"
+hook_add = """
+    let g:bakaup_backup_dir = expand(stdpath("data") . "/backup")
+    let g:bakaup_auto_backup = 1
+"""
+
 # Wakatime
 
 [[plugins]]
