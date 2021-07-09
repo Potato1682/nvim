@@ -63,5 +63,3 @@ vim.g.nvim_tree_icons = {
   folder = { default = "", open = "", empty = "", empty_open = "", symlink = "" },
   lsp = { hint = "", info = "", warning = "", error = "" },
 }
-
-vim.cmd [[ hi NvimTreeRootFolder guifg=bg ctermfg=bg ]]
