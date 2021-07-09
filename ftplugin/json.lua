@@ -1,9 +1,14 @@
 local lsp_config = require "lsp"
-local container = require "lspcontainers"
+local bin = vim.fn.stdpath "data" .. "/lspinstall/vscode-servers/node_modules/.bin/vscode-json-language-server"
 local schemas = require "lsp.json.schemas"
+
+if vim.fn.filereadable(bin) == 0 then
+  require("lspinstall").install_server "vscode-servers"
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
     "documentation",
@@ -13,16 +18,13 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 require("lspconfig").jsonls.setup {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
   filetypes = { "json", "jsonc" },
-  cmd = container.command "jsonls",
+  cmd = { bin, "--stdio" },
   on_attach = lsp_config.common_on_attach,
   capabilities = capabilities,
   root_dir = vim.loop.cwd,
   commands = {
-    Format = {
+    Neoformat = {
       function()
         vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line "$", 0 })
       end,

@@ -1,5 +1,9 @@
 local lsp_config = require "lsp"
-local container = require "lspcontainers"
+local bin = vim.fn.stdpath "data" .. "/lspinstall/vscode-servers/node_modules/.bin/vscode-html-language-server"
+
+if vim.fn.filereadable(bin) == 0 then
+  require("lspinstall").install_server "vscode-servers"
+end
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 
@@ -13,10 +17,7 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
 }
 
 require("lspconfig").html.setup {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = container.command "html",
+  cmd = { bin, "--stdio" },
   on_attach = lsp_config.common_on_attach,
   root_dir = vim.loop.cwd,
   capabilities = capabilities,
