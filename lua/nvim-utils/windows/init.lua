@@ -19,7 +19,7 @@ function M.win_enter()
       vim.opt_local.filetype._value
     )
   then
-    vim.opt_local.spell = false
+    vim.opt.spell = false
 
     return
   end
