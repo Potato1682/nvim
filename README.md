@@ -10,8 +10,8 @@ My neovim settings
 
 ## Requirements
 
-- Neovim 0.5+
-- Python2, Python3 and Pipenv
+- [Neovim](https://neovim.io) 0.5+
+- [Python2](https://docs.python.org/2.7), [Python3](https://www.python.org) and [Pipenv](https://github.com/pypa/pipenv)
   - Ubuntu: `python2`, `python3`, `pipenv`
   - Arch: `python2`, `python`, `python-pipenv`
 - Git
@@ -27,15 +27,15 @@ My neovim settings
   - > Ubuntu: `build-essential`, `python2-dev`,`python3-dev`, `libicu-dev`, `libboost-all-dev`, `cmake`
   - > Arch: `base-devel`, `boost`, `cmake`
 
-- Go
-- Node.js, NPM and Yarn
-- `jq`
-- Java >= 11 and Maven
+- [Go](https://golang.org)
+- [Node.js](https://nodejs.org), [NPM](https://github.com/npm/cli) and [Yarn](https://yarnpkg.com)
+- [`jq`](https://github.com/stedolan/jq)
+- [Java](https://openjdk.java.net) >= 11 and [Maven](https://maven.apache.org)
   - Ubuntu: `openjdk-11-jre`, `openjdk-11-jre-headleess`, `openjdk-11-dbg`, `maven`
   - Arch: `jdk11-openjdk`, `jre11-openjdk-headress`, `maven`
-- **Rootless** Docker Engine
+- [**Rootless** Docker Engine](https://docs.docker.com/engine/security/rootless)
 - Ripgrep (`rg`)
-- Ruby and [Bundler](https://bundler.io)
+- [Ruby](https://www.ruby-lang.org) and [Bundler](https://bundler.io)
 - [nonicons](https://github.com/yamatsum/nonicons) patched fonts
 
 ## Features
@@ -43,7 +43,7 @@ My neovim settings
 - Plugin Manager
 - Automatic plugin manager setup
 - Beautiful color schemes
-- Treesitter-based code highlighting
+- [Treesitter](https://tree-sitter.github.io/tree-sitter)-based code highlighting
 - Super useful bufferline
 - Super functional statusline
 - Supercharged file explorer
@@ -84,13 +84,13 @@ My neovim settings
 - Errors List
 - Markdown preview
 - [Template generation](docs/TEMPLATE-FILE.md)
-- Automatic license file generation
-- Redmine integration
+- Automatic license generation
+- [Redmine](https://www.redmine.org) integration
 - Custom color highlighting
 - Spell-check
-- Discord Rich Presence support
+- [Discord](https://discord.com) Rich Presence support
 - Under cursor increment and decrement
-- Editorconfig support
+- [Editorconfig](https://editorconfig.org) support
 
 ## Trouble Shooting
 
