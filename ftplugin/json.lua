@@ -37,7 +37,7 @@ require("lspconfig").jsonls.setup {
   },
 }
 
-local utils = require "nvim-utils.indent"
+local modules = require "modules.indent"
 
 _G.MJson = {}
 
@@ -138,7 +138,7 @@ function _G.MJson.comma_cr()
   vim.fn.append(".", "")
   vim.fn.cursor(linenr + 1, vim.fn.col "$")
 
-  input(utils.smart_indent())
+  input(modules.smart_indent())
 end
 
 local keymap = vim.api.nvim_buf_set_keymap

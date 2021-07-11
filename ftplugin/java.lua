@@ -34,10 +34,10 @@ keymap("lc", "<cmd>lua require'jdtls'.extract_constant()<cr>")
 vkeymap("lC", "<cmd>lua require'jdtls'.extract_constant(true)<cr>")
 vkeymap("lm", "<cmd>lua require'jdtls'.extract_method(true)<cr>")
 
-local utils = require "nvim-utils"
+local modules = require "modules"
 
-utils.define_command("JShell", "lua require'jdtls'.jshell()", { buffer = true })
-utils.define_command("UpdateProject", "lua require'jdtls'.update_project_config()", { buffer = true })
-utils.define_command("JdtBytecode", "lua require'jdtls'.javap()", { buffer = true })
-utils.define_command("JdtJol", "lua require'jdtls'.jol()", { buffer = true })
-utils.define_command("Neoformat", "lua vim.lsp.buf.formatting()", { buffer = true })
+modules.define_command("JShell", "lua require'jdtls'.jshell()", { buffer = true })
+modules.define_command("UpdateProject", "lua require'jdtls'.update_project_config()", { buffer = true })
+modules.define_command("JdtBytecode", "lua require'jdtls'.javap()", { buffer = true })
+modules.define_command("JdtJol", "lua require'jdtls'.jol()", { buffer = true })
+modules.define_command("Neoformat", "lua vim.lsp.buf.formatting()", { buffer = true })

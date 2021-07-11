@@ -23,7 +23,7 @@ require "nvim-indentline"
 require "nvim-template"
 require "nvim-lspinstall"
 
-require "nvim-utils.japanese"
+require "modules.japanese"
 require "keys"
 require "providers"
 require "commands"

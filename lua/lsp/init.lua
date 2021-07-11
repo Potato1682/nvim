@@ -110,6 +110,8 @@ function lsp_config.common_on_attach(client, _)
   vim.cmd [[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]]
   require("illuminate").on_attach(client)
   require("lsp-status").on_attach(client)
+  require("virtualtypes").on_attach(client)
+  require("lsp-rooter").setup()
   require("lsp_signature").on_attach {
     bind = true,
     hint_prefix = "",
@@ -284,7 +286,7 @@ end
 local unique_name = "textDocument-rename"
 
 function lsp_config.rename()
-  local active = require("nvim-utils").is_lsp_active()
+  local active = require("modules").is_lsp_active()
 
   if not active then
     return

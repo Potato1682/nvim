@@ -77,9 +77,9 @@ function M.setup()
       { "BufEnter", "*", "imap <silent> <bs> <cmd>call v:lua.MPairs.check_bs()<cr>" },
     },
     cursor = {
-      { "BufReadPost", "*", "lua require'nvim-utils.resume'.resume()" },
-      { "WinEnter,BufEnter", "*", "lua require'nvim-utils.windows'.win_enter()" },
-      { "WinLeave,BufLeave", "*", "lua require'nvim-utils.windows'.win_leave()" },
+      { "BufReadPost", "*", "lua require'modules.resume'.resume()" },
+      { "WinEnter,BufEnter", "*", "lua require'modules.windows'.win_enter()" },
+      { "WinLeave,BufLeave", "*", "lua require'modules.windows'.win_leave()" },
     },
     dashboard = {
       {
@@ -100,22 +100,22 @@ function M.setup()
       { "BufWritePre", "*", "undojoin | Neoformat" },
     },
     history = {
-      { "CmdlineEnter", ":", "lua require'nvim-utils.cmd-history'.clean()" },
+      { "CmdlineEnter", ":", "lua require'modules.cmd-history'.clean()" },
     },
     lsp = {
       { "CursorHold,CursorHoldI", "*", "silent! lua vim.lsp.buf.hover()" },
     },
     mkdir = {
-      { "BufWritePre", "*", "lua require'nvim-utils'.file_mkdirp()" },
+      { "BufWritePre", "*", "lua require'modules'.file_mkdirp()" },
     },
     ime = {
-      { "InsertLeave", "*", "lua require'nvim-utils.ime'.ime_disable()" },
+      { "InsertLeave", "*", "lua require'modules.ime'.ime_disable()" },
     },
     spaces = {
-      { "BufRead,BufNew", "*", "lua require'nvim-utils.spaces'.highlight_japanese_spaces()" },
-      { "InsertEnter", "*", "lua require'nvim-utils.spaces'.highlight_trailing_spaces()" },
-      { "InsertLeave", "*", "lua require'nvim-utils.spaces'.highlight_insert_trailing_spaces()" },
-      { "BufWritePre", "*", "lua require'nvim-utils.spaces'.strip_trailing_spaces()" },
+      { "BufRead,BufNew", "*", "lua require'modules.spaces'.highlight_japanese_spaces()" },
+      { "InsertEnter", "*", "lua require'modules.spaces'.highlight_trailing_spaces()" },
+      { "InsertLeave", "*", "lua require'modules.spaces'.highlight_insert_trailing_spaces()" },
+      { "BufWritePre", "*", "lua require'modules.spaces'.strip_trailing_spaces()" },
     },
     wins = {
       { "FocusLost", "*", "noautocmd silent! wa" },

@@ -72,7 +72,7 @@ function _G.MUtils.tab_complete()
 
       return ""
     else
-      return require("nvim-utils.indent").smart_indent()
+      return require("modules.indent").smart_indent()
     end
   end
 end

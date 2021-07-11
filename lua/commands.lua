@@ -1,4 +1,4 @@
-local utils = require "nvim-utils"
+local modules = require "modules"
 
-utils.define_command("Reload", "lua require'nvim-utils.reload'.reload()", {})
-utils.define_command("Restart", "lua requie'nvim-utils.restart'.restart()", {})
+modules.define_command("Reload", "lua require'modules.reload'.reload()", {})
+modules.define_command("Restart", "lua require'modules.restart'.restart()", {})
