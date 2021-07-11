@@ -94,6 +94,9 @@ keymap("x", "<leader>la", "<cmd>lua vim.lsp.buf.range_code_action()<cr>", { nore
 keymap("n", "<leader>lp", "<cmd>AnyJump<cr>", { noremap = true })
 keymap("x", "<leader>lp", "<cmd>AnyJumpVisual<cr>", { noremap = true })
 
+keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", { noremap = true })
+keymap("n", "<leader>Sl", "<cmd>SessionLoad<cr>", { noremap = true })
+
 keymap("n", "Q", "<Nop>", { noremap = true })
 keymap("n", "ZZ", "<Nop>", { noremap = true })
 keymap("n", "ZQ", "<Nop>", { noremap = true })

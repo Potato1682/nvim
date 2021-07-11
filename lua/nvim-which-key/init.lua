@@ -253,14 +253,14 @@ local mappings = {
     f = { "<cmd>Telescope find_files<cr>", "Find File" },
     m = { "<cmd>Telescope marks<cr>", "Marks" },
     M = { "<cmd>Telescope man_pages<cr>", "Man Pages" },
-    r = { "<cmd>Telescope oldfiles<cr>", "Open Recent File" },
+    ["r"] = "Recent Files",
     R = { "<cmd>Telescope registers<cr>", "Registers" },
     t = { "<cmd>Telescope live_grep<cr>", "Text" },
   },
   S = {
     name = "+Session",
     s = { "<cmd>SessionSave<cr>", "Save Session" },
-    l = { "<cmd>SessionLoad<cr>", "Load Session" },
+    ["l"] = "Load Session",
   },
   t = {
     name = "+Test",

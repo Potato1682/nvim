@@ -44,6 +44,10 @@ function M.move_j()
       vim.opt_local.relativenumber = true
     end
 
+    if vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump" }, vim.opt_local.filetype._value) then
+      vim.opt_local.relativenumber = false
+    end
+
     if O.cursorline then
       vim.opt_local.cursorline = true
     end
@@ -96,6 +100,10 @@ function M.move_k()
   else
     if O.relative_number and vim.opt_local.buftype._value ~= "nofile" then
       vim.opt_local.relativenumber = true
+    end
+
+    if vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump" }, vim.opt_local.filetype._value) then
+      vim.opt_local.relativenumber = false
     end
 
     if O.cursorline then
