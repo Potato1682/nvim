@@ -43,7 +43,7 @@ local japanese_mappings = {
   ["T"] = { "<cmd>TodoTrouble<cr>", "TODO 一覧" },
   ["a"] = { "<cmd>UltestSummary<cr>", "テスト エクスプローラー" },
   ["r"] = { "<cmd>ToggleTerm<cr>", "端末" },
-  ["v"] = { "<cmd>SymbolsOutline<cr>", "シンボル リスト" },
+  ["v"] = { "<cmd>Vista!!<cr>", "シンボル リスト" },
   ["w"] = { "<cmd>lua require'dapui'.toggle()<cr>", "デバッグ インターフェース" },
   ["x"] = { "<cmd>TroubleToggle<cr>", "エラー一覧" },
   ["u"] = { "<cmd>UndotreeToggle<cr>", "ナビゲーター" },
@@ -51,12 +51,14 @@ local japanese_mappings = {
   ["m"] = { "<Plug>MarkdownPreviewToggle", "Markdownのプレビューを切り替え" },
   c = {
     name = "+コンテナ",
+
     c = { "<cmd>DockerToolsToggle<cr>", "Docker ツール" },
     a = { "<cmd>AttachToContainer<cr>", "接続" },
     b = { "<cmd>BuildImage<cr>", "イメージをビルド" },
   },
   d = {
     name = "+診断",
+
     t = { "<cmd>TroubleToggle<cr>", "エラー一覧" },
     w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "ワークスペース" },
     d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "ドキュメント内" },
@@ -66,6 +68,7 @@ local japanese_mappings = {
   },
   D = {
     name = "+デバッグ",
+
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "ブレークポイントを切り替え" },
     B = { "<cmd>Telescope dap list_breakpoints<cr>", "ブレークポイント一覧" },
     c = { "<cmd>lua require'dap'.continue()<cr>", "コンティニュー" },
@@ -81,6 +84,7 @@ local japanese_mappings = {
   },
   g = {
     name = "+Git",
+
     j = { "<cmd>Gitsigns next_hunk<cr>", "次のHunk" },
     k = { "<cmd>Gitsigns prev_hunk<cr>", "前のHunk" },
     p = { "<cmd>Gitsigns preview_hunk<cr>", "Hunkをプレビュー" },
@@ -95,6 +99,7 @@ local japanese_mappings = {
     g = { "<cmd>Neogit<cr>", "Git ウィンドウ" },
     m = {
       name = "+マージ",
+
       t = { "<Plug>(MergetoolToggle)", "マージ ツール" },
       g = { "<cmd>diffget<cr>", "リモートの変更を受け入れる" },
       p = { "<cmd>diffput<cr>", "ローカルの変更を適用" },
@@ -102,6 +107,7 @@ local japanese_mappings = {
   },
   l = {
     name = "+LSP",
+
     a = "コード アクション",
     A = {
       "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr><cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>",
@@ -122,6 +128,7 @@ local japanese_mappings = {
   },
   s = {
     name = "+検索",
+
     a = { "<cmd>lua require('spectre').open_file_search()<cr>", "ファイル内を置換" },
     b = { "<cmd>Telescope git_branches<cr>", "ブランチをチェックアウト" },
     c = { "<cmd>Telescope colorscheme<cr>", "カラースキーム" },
@@ -136,6 +143,7 @@ local japanese_mappings = {
   },
   S = {
     name = "+セッション",
+
     s = { "<cmd>SessionSave<cr>", "セッションを保存" },
     l = { "<cmd>SessionLoad<cr>", "セッションを開く" },
   },
@@ -153,6 +161,7 @@ local japanese_mappings = {
   -- extras
   z = {
     name = "+Zen Mode",
+
     z = { "<cmd>ZenMode<cr>", "Zen モードを切り替え" },
   },
 }
@@ -167,7 +176,7 @@ local mappings = {
   ["T"] = { "<cmd>TodoTrouble<cr>", "Open TODOs" },
   ["a"] = { "<cmd>UltestSummary<cr>", "Test Explorer" },
   ["r"] = { "<cmd>ToggleTerm<cr>", "Terminal" },
-  ["v"] = { "<cmd>SymbolsOutline<cr>", "Symbol List" },
+  ["v"] = { "<cmd>Vista!!<cr>", "Symbol List" },
   ["w"] = { "<cmd>lua require'dapui'.toggle()<cr>", "Debug UI" },
   ["x"] = { "<cmd>TroubleToggle<cr>", "Error List" },
   ["u"] = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
@@ -175,12 +184,14 @@ local mappings = {
   ["m"] = { "<Plug>MarkdownPreviewToggle", "Toggle markdown preview" },
   c = {
     name = "+Containers",
+
     c = { "<cmd>DockerToolsToggle<cr>", "Docker Tools" },
     a = { "<cmd>AttachToContainer<cr>", "Connect" },
     b = { "<cmd>BuildImage<cr>", "Build Image" },
   },
   d = {
     name = "+Diagnostics",
+
     t = { "<cmd>TroubleToggle<cr>", "Error List" },
     w = { "<cmd>TroubleToggle lsp_workspace_diagnostics<cr>", "workspace" },
     d = { "<cmd>TroubleToggle lsp_document_diagnostics<cr>", "document" },
@@ -190,6 +201,7 @@ local mappings = {
   },
   D = {
     name = "+Debug",
+
     b = { "<cmd>lua require'dap'.toggle_breakpoint()<cr>", "Toggle Breakpoint" },
     B = { "<cmd>Telescope dap list_breakpoints<cr>", "Breakpoints" },
     c = { "<cmd>lua require'dap'.continue()<cr>", "Continue" },
@@ -205,6 +217,7 @@ local mappings = {
   },
   g = {
     name = "+Git",
+
     j = { "<cmd>Gitsigns next_hunk<cr>", "Next Hunk" },
     k = { "<cmd>Gitsigns prev_hunk<cr>", "Prev Hunk" },
     p = { "<cmd>Gitsigns preview_hunk<cr>", "Preview Hunk" },
@@ -219,6 +232,7 @@ local mappings = {
     g = { "<cmd>Neogit<cr>", "Git Window" },
     m = {
       name = "+Merge",
+
       t = { "<Plug>(MergetoolToggle)", "Merge Tool" },
       g = { "<cmd>diffget<cr>", "Get diff" },
       p = { "<cmd>diffput<cr>", "Put diff" },
@@ -226,6 +240,7 @@ local mappings = {
   },
   l = {
     name = "+LSP",
+
     a = "Code Action",
     A = {
       "<cmd>lua vim.lsp.diagnostic.show_line_diagnostics()<cr>",
@@ -247,6 +262,7 @@ local mappings = {
   },
   s = {
     name = "+Search",
+
     a = { "<cmd>lua require('spectre').open_file_search()<cr>", "Replace file" },
     b = { "<cmd>Telescope git_branches<cr>", "Checkout branch" },
     c = { "<cmd>Telescope colorscheme<cr>", "Colorscheme" },

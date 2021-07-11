@@ -69,11 +69,13 @@ on_lua = "virtualtypes"
 # Symbols
 
 [[plugins]]
-repo = "simrat39/symbols-outline.nvim"
+repo = "liuchengxu/vista.vim"
 on_cmd = [
-    "SymbolsOutline",
-    "SymbolsOutlineOpen"
+    "Vista"
 ]
+hook_source = """
+    lua require("nvim-vista")
+"""
 
 [[plugins]]
 repo = "pechorin/any-jump.vim"
