@@ -55,6 +55,11 @@ depends = "lspconfig"
 repo = "RRethy/vim-illuminate"
 depends = "lspconfig"
 
+[[plugins]]
+repo = "ahmedkhalf/lsp-rooter.nvim"
+on_source = "lspconfig"
+depends = "lspconfig"
+
 # Editor
 
 [[plugins]]

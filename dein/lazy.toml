@@ -69,11 +69,8 @@ hook_post_source = """
 """
 
 [[plugins]]
-repo = "ahmedkhalf/lsp-rooter.nvim"
-on_source = "lspconfig"
-hook_post_source = """
-    lua require("lsp-rooter").setup()
-"""
+repo = "jubnzv/virtual-types.nvim"
+on_lua = "virtualtypes"
 
 # Symbols
 
