@@ -1,6 +1,10 @@
-# nvim
-
-My neovim settings
+<h1 align="center">nvim</h1>
+<p align="center">
+  <a href="https://github.com/Potato1682/nvim/blob/main/init.lua">
+    <img alt="Lua" src="https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white">
+  </a>
+</p>
+<p align="center">My neovim settings</p>
 
 ![image](https://user-images.githubusercontent.com/48394190/120484401-ff21c200-c3ed-11eb-9036-cf03a0aa1335.png)
 
