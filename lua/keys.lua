@@ -98,8 +98,8 @@ keymap("n", "Q", "<Nop>", { noremap = true })
 keymap("n", "ZZ", "<Nop>", { noremap = true })
 keymap("n", "ZQ", "<Nop>", { noremap = true })
 
-keymap("n", "j", "<Plug>(faster_move_j)", { silent = true })
-keymap("n", "k", "<Plug>(faster_move_k)", { silent = true })
+keymap("n", "j", "<cmd>lua require'modules.movement'.move_j()<cr>", { silent = true })
+keymap("n", "k", "<cmd>lua require'modules.movement'.move_k()<cr>", { silent = true })
 
 keymap("n", "w", "<cmd>call v:lua.MJp.eol_movement('w', v:count1)<cr>", { silent = true })
 keymap("n", "b", "<cmd>call v:lua.MJp.eol_movement('b', v:count1)<cr>", { silent = true })

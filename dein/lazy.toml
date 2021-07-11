@@ -16,12 +16,6 @@ hook_post_source = """
 # Motion
 
 [[plugins]]
-repo = "PHSix/faster.nvim"
-on_map = [
-    "<Plug>(faster",
-]
-
-[[plugins]]
 repo = "phaazon/hop.nvim"
 on_lua = "hop"
 
