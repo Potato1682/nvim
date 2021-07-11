@@ -1,3 +1,9 @@
+if vim.g.loaded_python_ftplugin then
+  return
+end
+
+vim.g.loaded_python_ftplugin = true
+
 local container = require "lspcontainers"
 local lsp_config = require "lsp"
 

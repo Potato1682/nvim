@@ -1,3 +1,9 @@
+if vim.g.loaded_svelte_ftplugin then
+  return
+end
+
+vim.g.loaded_svelte_ftplugin = true
+
 local lsp_config = require "lsp"
 local container = require "lspcontainers"
 

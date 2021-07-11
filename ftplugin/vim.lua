@@ -1,3 +1,9 @@
+if vim.g.loaded_vim_ftplugin then
+  return
+end
+
+vim.g.loaded_vim_ftplugin = true
+
 local lsp_config = require "lsp"
 local bin = vim.fn.stdpath "data" .. "/lspinstall/vim/node_modules/.bin/vim-language-server"
 

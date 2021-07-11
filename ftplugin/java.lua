@@ -1,3 +1,9 @@
+if vim.g.loaded_java_ftplugin then
+  return
+end
+
+vim.g.loaded_java_ftplugin = true
+
 if vim.fn.glob(vim.fn.stdpath "data" .. "/lspinstall/jdtls/*") == "" then
   require("lspinstall").install_server "jdtls"
 end

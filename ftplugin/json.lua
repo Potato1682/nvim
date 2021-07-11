@@ -1,3 +1,14 @@
+local keymap = vim.api.nvim_buf_set_keymap
+
+keymap(0, "i", ":", "<cmd>call v:lua.MJson.colon_complete()<cr>", { noremap = true, silent = true })
+keymap(0, "i", "<cr>", "<cmd>call v:lua.MJson.comma_cr()<cr>", { noremap = true })
+
+if vim.g.loaded_json_ftplugin then
+  return
+end
+
+vim.g.loaded_json_ftplugin = true
+
 local lsp_config = require "lsp"
 local bin = vim.fn.stdpath "data" .. "/lspinstall/vscode-servers/node_modules/.bin/vscode-json-language-server"
 local schemas = require "lsp.json.schemas"
@@ -140,8 +151,3 @@ function _G.MJson.comma_cr()
 
   input(modules.smart_indent())
 end
-
-local keymap = vim.api.nvim_buf_set_keymap
-
-keymap(0, "i", ":", "<cmd>call v:lua.MJson.colon_complete()<cr>", { noremap = true, silent = true })
-keymap(0, "i", "<cr>", "<cmd>call v:lua.MJson.comma_cr()<cr>", { noremap = true })

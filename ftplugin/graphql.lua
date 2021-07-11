@@ -1,3 +1,9 @@
+if vim.g.loaded_graphql_ftplugin then
+  return
+end
+
+vim.g.loaded_graphql_ftplugin = true
+
 local bin = vim.fn.stdpath "data" .. "/lspinstall/graphql/node_modules/.bin/graphql-lsp"
 
 if vim.fn.filereadable(bin) == 0 then

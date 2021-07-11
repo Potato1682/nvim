@@ -39,12 +39,24 @@ local status = require "lsp-status"
 
 status.register_progress()
 status.config {
-  indicator_errors = "",
-  indicator_warnings = "",
-  indicator_info = "",
-  indicator_hint = "",
-  indicator_ok = "",
-  status_symbol = "",
+  diagnostics = false,
+  status_symbol = "  ",
+  select_symbol = function(cursor_pos, symbol)
+    if symbol.valueRange then
+      local value_range = {
+        ["start"] = {
+          character = 0,
+          line = vim.fn.byte2line(symbol.valueRange[1]),
+        },
+        ["end"] = {
+          character = 0,
+          line = vim.fn.byte2line(symbol.valueRange[2]),
+        },
+      }
+
+      return require("lsp-status.util").in_range(cursor_pos, value_range)
+    end
+  end,
   kind_labels = {
     Text = " ",
     Method = " ",
@@ -105,12 +117,19 @@ vim.lsp.protocol.CompletionItemKind = {
 local lsp_config = {}
 local pos = {}
 
-function lsp_config.common_on_attach(client, _)
+function lsp_config.common_on_attach(client, bufnr)
+  require("events").nvim_create_augroups {
+    lsp = {
+      { "CursorHold,CursorHoldI", "<buffer>", "silent! lua vim.lsp.buf.hover()" },
+      { "CursorMoved,CursorMovedI", "<buffer>", "lua require'lsp-status'.update_current_function()" },
+    },
+  }
+
   -- fix 'command not found' error
   vim.cmd [[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]]
-  require("illuminate").on_attach(client)
-  require("lsp-status").on_attach(client)
-  require("virtualtypes").on_attach(client)
+  require("illuminate").on_attach(client, bufnr)
+  require("lsp-status").on_attach(client, bufnr)
+  require("virtualtypes").on_attach(client, bufnr)
   require("lsp-rooter").setup()
   require("lsp_signature").on_attach {
     bind = true,

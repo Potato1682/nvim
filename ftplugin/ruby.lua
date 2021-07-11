@@ -1,3 +1,9 @@
+if vim.g.loaded_ruby_ftplugin then
+  return
+end
+
+vim.g.loaded_ruby_ftplugin = true
+
 local lsp_config = require "lsp"
 local bin = vim.fn.stdpath "data" .. "/lspinstall/ruby/solargraph/bin/solargraph"
 

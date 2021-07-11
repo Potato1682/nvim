@@ -80,7 +80,7 @@ gls.left[3] = {
 gls.left[4] = {
   GitBranch = {
     provider = "GitBranch",
-    condition = condition.hide_in_width or condition.check_git_workspace,
+    condition = condition.hide_in_width and condition.check_git_workspace,
     separator = "   ",
     highlight = { colors.grey, colors.bg },
     separator_highlight = { colors.dark_grey, colors.bg },
@@ -90,7 +90,7 @@ gls.left[4] = {
 gls.left[5] = {
   DiffAdd = {
     provider = "DiffAdd",
-    condition = condition.hide_in_width or condition.check_git_workspace,
+    condition = condition.hide_in_width and condition.check_git_workspace,
     icon = icons.get "diff-added" .. " ",
     highlight = { "#a0c980", colors.bg },
   },
@@ -99,7 +99,7 @@ gls.left[5] = {
 gls.left[6] = {
   DiffModified = {
     provider = "DiffModified",
-    condition = condition.hide_in_width or condition.check_git_workspace,
+    condition = condition.hide_in_width and condition.check_git_workspace,
     icon = icons.get "diff-modified" .. " ",
     highlight = { "#6cb6eb", colors.bg },
   },
@@ -107,7 +107,7 @@ gls.left[6] = {
 gls.left[7] = {
   DiffRemove = {
     provider = "DiffRemove",
-    condition = condition.hide_in_width or condition.check_git_workspace,
+    condition = condition.hide_in_width and condition.check_git_workspace,
     icon = icons.get "diff-removed" .. " ",
     highlight = { "#ec7239", colors.bg },
   },
@@ -128,17 +128,80 @@ gls.left[9] = {
     provider = function()
       return require("lsp-status").status()
     end,
-    condition = condition.hide_in_width or condition.check_active_lsp,
+    condition = condition.hide_in_width and condition.check_active_lsp,
     separator = " ",
-    highlight = { "NONE", colors.bg },
+    highlight = { colors.blue, colors.bg },
     separator_highlight = { "NONE", colors.bg },
   },
 }
 
 gls.left[10] = {
+  DiagnosticError = {
+    provider = "DiagnosticError",
+    icon = icons.get "x-circle" .. " ",
+    highlight = { "#db4b4b", colors.bg },
+  },
+}
+
+gls.left[11] = {
+  DiagnosticWarn = {
+    provider = "DiagnosticWarn",
+    icon = icons.get "alert" .. " ",
+    highlight = { "#e0af68", colors.bg },
+  },
+}
+
+gls.left[12] = {
+  DiagnosticInfo = {
+    provider = "DiagnosticInfo",
+    icon = icons.get "info" .. " ",
+    highlight = { "#0db9d7", colors.bg },
+  },
+}
+
+gls.left[13] = {
+  DiagnosticsHint = {
+    provider = "DiagnosticHint",
+    icon = icons.get "light-bulb" .. " ",
+    highlight = { "#a0c980", colors.bg },
+  },
+}
+
+gls.left[14] = {
+  LspFine = {
+    provider = function()
+      return icons.get "check"
+    end,
+    condition = condition.hide_in_width and function()
+      if vim.tbl_isempty(vim.lsp.buf_get_clients(0)) then
+        return false
+      end
+
+      local levels = {
+        errors = "Error",
+        warnings = "Warning",
+        info = "Information",
+        hints = "Hint",
+      }
+
+      for _, level in pairs(levels) do
+        if vim.lsp.diagnostic.get_count(vim.api.nvim_get_current_buf(), level) > 0 then
+          return false
+        end
+      end
+
+      return true
+    end,
+    separator = " ",
+    highlight = { "#a0c980", colors.bg },
+    separator_highlight = { "NONE", colors.bg },
+  },
+}
+
+gls.left[15] = {
   LspClient = {
     provider = "GetLspClient",
-    condition = condition.hide_in_width or function()
+    condition = condition.hide_in_width and function()
       local tbl = { ["dashboard"] = true, [""] = true }
 
       if tbl[vim.opt.filetype] then
@@ -148,13 +211,12 @@ gls.left[10] = {
       return true
     end,
     separator = " ",
-    icon = "  ",
-    highlight = { colors.magenta, colors.bg, "bold" },
+    highlight = { colors.magenta, colors.bg },
     separator_highlight = { "NONE", colors.bg },
   },
 }
 
-gls.left[11] = {
+gls.left[16] = {
   LightBulb = {
     provider = function()
       return require("nvim-lightbulb").get_status_text()

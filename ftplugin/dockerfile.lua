@@ -1,3 +1,9 @@
+if vim.g.loaded_dockerfile_ftplugin then
+  return
+end
+
+vim.g.loaded_dockerfile_ftplugin = true
+
 local lsp_config = require "lsp"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

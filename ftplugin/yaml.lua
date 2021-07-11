@@ -1,3 +1,16 @@
+vim.api.nvim_buf_set_keymap(
+  0,
+  "i",
+  ":",
+  "<cmd>call v:lua.MYaml.colon_complete()<cr>",
+  { noremap = true, silent = true }
+)
+if vim.g.loaded_yaml_ftplugin then
+  return
+end
+
+vim.g.loaded_yaml_ftplugin = true
+
 local lsp_config = require "lsp"
 local container = require "lspcontainers"
 
@@ -84,11 +97,3 @@ function _G.MYaml.colon_complete()
 
   vim.fn.cursor(vim.fn.line ".", vim.fn.col "$")
 end
-
-vim.api.nvim_buf_set_keymap(
-  0,
-  "i",
-  ":",
-  "<cmd>call v:lua.MYaml.colon_complete()<cr>",
-  { noremap = true, silent = true }
-)

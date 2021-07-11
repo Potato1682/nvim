@@ -1,3 +1,9 @@
+if vim.g.loaded_html_ftplugin then
+  return
+end
+
+vim.g.loaded_html_ftplugin = true
+
 local lsp_config = require "lsp"
 local bin = vim.fn.stdpath "data" .. "/lspinstall/vscode-servers/node_modules/.bin/vscode-html-language-server"
 

@@ -1,3 +1,9 @@
+if vim.g.loaded_cs_ftplugin then
+  return
+end
+
+vim.g.loaded_cs_ftplugin = true
+
 local lsp_config = require "lsp"
 local mono = vim.fn.stdpath "data" .. "/lspinstall/csharp/omnisharp/bin/mono"
 local bin = vim.fn.stdpath "data" .. "/lspinstall/csharp/omnisharp/omnisharp/OmniSharp.exe"

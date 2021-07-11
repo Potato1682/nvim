@@ -1,3 +1,9 @@
+if vim.g.loaded_go_ftplugin then
+  return
+end
+
+vim.g.loaded_go_ftplugin = true
+
 local container = require "lspcontainers"
 
 local capabilities = vim.lsp.protocol.make_client_capabilities()

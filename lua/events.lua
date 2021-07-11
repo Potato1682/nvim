@@ -102,9 +102,6 @@ function M.setup()
     history = {
       { "CmdlineEnter", ":", "lua require'modules.cmd-history'.clean()" },
     },
-    lsp = {
-      { "CursorHold,CursorHoldI", "*", "silent! lua vim.lsp.buf.hover()" },
-    },
     mkdir = {
       { "BufWritePre", "*", "lua require'modules'.file_mkdirp()" },
     },

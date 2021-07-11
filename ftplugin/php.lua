@@ -1,3 +1,9 @@
+if vim.g.loaded_php_ftplugin then
+  return
+end
+
+vim.g.loaded_php_ftplugin = true
+
 local lsp_config = require "lsp"
 local bin = vim.fn.stdpath "data" .. "/lspinstall/php/node_modules/.bin/intelephense"
 

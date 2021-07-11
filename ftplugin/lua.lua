@@ -1,3 +1,9 @@
+if vim.g.loaded_lua_ftplugin then
+  return
+end
+
+vim.g.loaded_lua_ftplugin = true
+
 local bin = require("lspcontainers").command "sumneko_lua"
 local lsp_config = require "lsp"
 
