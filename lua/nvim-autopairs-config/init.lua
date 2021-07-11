@@ -50,21 +50,27 @@ function _G.MPairs.check_bs()
     return ""
   end
 
-  -- Delete current line if the line are spaces
-  if vim.fn.getline("."):match "^%s+$" ~= nil then
+  local matched = vim.fn.getline("."):match "^%s+$"
+
+  -- Delete current line if the line is spaces
+  if matched ~= nil then
+    if indent.get_indents() ~= #matched then
+      vim.api.nvim_feedkeys(npairs.autopairs_bs(vim.api.nvim_get_current_buf()), "n", true)
+
+      return ""
+    end
+
     -- Check if the cursor is on last line
     -- If true, the cursor do not move up after deleting line
     if vim.fn.line "." == vim.fn.line "$" then
       vim.api.nvim_input "<esc>ddA"
 
-      indent.smart_indent()
-
-      return ""
+      return indent.smart_indent()
     end
 
     vim.api.nvim_input "<esc>ddkA"
 
-    indent.smart_indent()
+    return indent.smart_indent()
   elseif column == #spaces then
     if previous_line == nil then
       _G.MPairs.move_and_delete(tostring(line - 1))

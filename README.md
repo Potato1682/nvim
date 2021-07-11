@@ -40,6 +40,7 @@
 - [**Rootless** Docker Engine](https://docs.docker.com/engine/security/rootless)
 - Ripgrep (`rg`)
 - [Ruby](https://www.ruby-lang.org) and [Bundler](https://bundler.io)
+- `lolcat` - **_Important_**
 - [nonicons](https://github.com/yamatsum/nonicons) patched fonts
 
 ## Features

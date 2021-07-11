@@ -1,22 +1,19 @@
 vim.g.dashboard_default_executive = "telescope"
-vim.g.dashboard_custom_header = {
-  "                                          iiii",
-  "                                         i::::i",
-  "                                          iiii",
-  "",
-  "nnnn  nnnnnnnn vvvvvvv           vvvvvvviiiiiii    mmmmmmm    mmmmmmm",
-  "n:::nn::::::::nnv:::::v         v:::::v i:::::i  mm:::::::m  m:::::::mm",
-  "n::::::::::::::nnv:::::v       v:::::v   i::::i m::::::::::mm::::::::::m",
-  "nn:::::::::::::::nv:::::v     v:::::v    i::::i m::::::::::::::::::::::m",
-  "  n:::::nnnn:::::n v:::::v   v:::::v     i::::i m:::::mmm::::::mmm:::::m",
-  "  n::::n    n::::n  v:::::v v:::::v      i::::i m::::m   m::::m   m::::m",
-  "  n::::n    n::::n   v:::::v:::::v       i::::i m::::m   m::::m   m::::m",
-  "  n::::n    n::::n    v:::::::::v        i::::i m::::m   m::::m   m::::m",
-  "  n::::n    n::::n     v:::::::v        i::::::im::::m   m::::m   m::::m",
-  "  n::::n    n::::n      v:::::v         i::::::im::::m   m::::m   m::::m",
-  "  n::::n    n::::n       v:::v          i::::::im::::m   m::::m   m::::m",
-  "  nnnnnn    nnnnnn        vvv           iiiiiiiimmmmmm   mmmmmm   mmmmmm",
-}
+vim.g.dashboard_preview_command = "cat"
+
+local headers_dir = vim.fn.stdpath "config" .. "/lua/nvim-dashboard/headers/"
+local rnd = math.random()
+
+if rnd < 0.075 then
+  vim.g.dashboard_preview_file = headers_dir .. "hotoke.cat"
+  vim.g.dashboard_preview_file_height = 27
+  vim.g.dashboard_preview_pipeline = "lolcat"
+else
+  vim.g.dashboard_preview_file = headers_dir .. "nvim.cat"
+  vim.g.dashboard_preview_file_height = 16
+end
+
+vim.g.dashboard_preview_file_width = 80
 
 vim.g.dashboard_custom_section = {
   a = {
