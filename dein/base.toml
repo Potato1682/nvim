@@ -19,16 +19,13 @@ repo = "jbyuki/contextmenu.nvim"
 [[plugins]]
 repo = "akinsho/nvim-bufferline.lua"
 depends = [
-    "nvim-nonicons",
+    "nonicons",
     "contextmenu.nvim"
 ]
 
 [[plugins]]
 repo = "glepnir/galaxyline.nvim"
-depends = [
-    "vim-devicons",
-    "nvim-nonicons"
-]
+depends = "nonicons"
 
 # LSP
 
@@ -57,7 +54,6 @@ depends = "lspconfig"
 
 [[plugins]]
 repo = "ahmedkhalf/lsp-rooter.nvim"
-on_source = "lspconfig"
 depends = "lspconfig"
 
 # Editor
@@ -86,6 +82,7 @@ depends = [
     "context-vt",
     "spellsitter"
 ]
+merged = 0
 
 [[plugins]]
 repo = "p00f/nvim-ts-rainbow"
@@ -154,6 +151,7 @@ if = "luaeval('O.wakatime.enabled')"
 
 [[plugins]]
 repo = "toritori0318/vim-redmine"
+if = "luaeval('O.redmine.enabled')"
 
 # Lua
 

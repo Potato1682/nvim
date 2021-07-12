@@ -28,7 +28,11 @@ O = {
     disable_netrw = false,
     auto_close = false,
   },
-  redmine = { site = "", api_key = "" },
+  redmine = {
+    enabled = false,
+    site = "",
+    api_key = "",
+  },
   wakatime = {
     enabled = false,
   },
