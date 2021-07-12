@@ -1,26 +1,26 @@
 name: luacheck
 
 on:
-    push:
-        branches: ["main"]
-        paths-ignore:
-            - ".github/**"
-            - "*.md"
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - ".github/**"
+      - "*.md"
 
 jobs:
-    luacheck:
-        name: Luacheck
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
+  luacheck:
+    name: Luacheck
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-            - name: Install luacheck
-              run: |
-                  sudo apt-get update
-                  sudo add-apt-repository universe
-                  sudo apt install luarocks -y
-                  sudo luarocks install luacheck
+      - name: Install luacheck
+        run: |
+          sudo apt-get update
+          sudo add-apt-repository universe
+          sudo apt install luarocks -y
+          sudo luarocks install luacheck
 
-            - name: Run Luacheck
-              run: luacheck .
+      - name: Run Luacheck
+        run: luacheck .

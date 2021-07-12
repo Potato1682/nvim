@@ -1,35 +1,35 @@
 name: stylua
 
 on:
-    push:
-        branches: ["main"]
-        paths-ignore:
-            - ".github/**"
-            - "*.md"
+  push:
+    branches: ["main"]
+    paths-ignore:
+      - ".github/**"
+      - "*.md"
 
 jobs:
-    stylua:
-        runs-on: ubuntu-latest
-        steps:
-            - name: Checkout
-              uses: actions/checkout@v2
+  stylua:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
 
-            - name: Format with stylua
-              uses: JohnnyMorganz/stylua-action@1.0.0
-              with:
-                  token: ${{ secrets.GITHUB_TOKEN }}
-                  args: --config-path=stylua.toml lua/
+      - name: Format with stylua
+        uses: JohnnyMorganz/stylua-action@1.0.0
+        with:
+          token: ${{ secrets.GITHUB_TOKEN }}
+          args: --config-path=.stylua.toml --check .
 
-            - name: Commit files
-              run: |
-                  git config --local user.email "action@github.com"
-                  git config --local user.name "GitHub Actions"
-                  if ! [[ -z $(git status -s) ]]; then
-                    git commit -m "Format lua" lua/*
-                  fi
+      - name: Commit files
+        run: |
+          git config --local user.email "action@github.com"
+          git config --local user.name "GitHub Actions"
+          if ! [[ -z $(git status -s) ]]; then
+            git commit -m "Format lua" lua/*
+          fi
 
-            - name: Push changes
-              uses: ad-m/github-push-action@master
-              with:
-                  github_token: ${{ secrets.GITHUB_TOKEN }}
-                  branch: ${{ github.ref }}
+      - name: Push changes
+        uses: ad-m/github-push-action@master
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          branch: ${{ github.ref }}
