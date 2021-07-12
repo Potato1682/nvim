@@ -1,7 +1,9 @@
+local bin
+
 if vim.fn.has "mac" == 1 then
-  JAVA_LS_EXECUTABLE = "java-mac-ls"
+  bin = "java-mac-ls"
 elseif vim.fn.has "unix" == 1 then
-  JAVA_LS_EXECUTABLE = "java-linux-ls"
+  bin = "java-linux-ls"
 else
   print "[jdtls] Unsupported system"
 end
@@ -47,7 +49,7 @@ if vim.bo.filetype == "java" then
     before_init = function()
       print "[jdtls] Starting, please wait..."
     end,
-    cmd = { vim.fn.stdpath "config" .. "/bin/" .. JAVA_LS_EXECUTABLE },
+    cmd = { vim.fn.stdpath "config" .. "/bin/" .. bin },
     on_attach = on_attach,
     capabilities = capabilities,
     root_dir = require("jdtls.setup").find_root { "build.gradle", "pom.xml", ".git" },

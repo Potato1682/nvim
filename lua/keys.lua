@@ -32,7 +32,12 @@ keymap("n", "ss", "<cmd>split<cr>", { noremap = true })
 keymap("n", "sv", "<cmd>vsplit<cr>", { noremap = true })
 
 -- open projects
-keymap("n", "<leader>p", ":lua require'telescope'.extensions.project.project {}<CR>", { noremap = true, silent = true })
+keymap(
+  "n",
+  "<leader>p",
+  "<cmd>lua require'telescope'.extensions.project.project {}<cr>",
+  { noremap = true, silent = true }
+)
 
 -- Better window movement
 keymap("n", "<C-h>", "<C-w>h", { silent = true })
@@ -45,8 +50,8 @@ keymap("v", "<", "<gv", { noremap = true, silent = true })
 keymap("v", ">", ">gv", { noremap = true, silent = true })
 
 -- Tab switch buffer
-keymap("n", "<Tab>", ":bnext<CR>", { noremap = true, silent = true })
-keymap("n", "<S-Tab>", ":bprevious<CR>", { noremap = true, silent = true })
+keymap("n", "<Tab>", "<cmd>bnext<cr>", { noremap = true, silent = true })
+keymap("n", "<S-Tab>", "<cmd>bprevious<cr>", { noremap = true, silent = true })
 
 -- Move selected line / block of text in visual line
 keymap("x", "K", ":move '<-2<CR>gv-gv'", { noremap = true, silent = true })
@@ -80,13 +85,6 @@ end
 
 -- Command buffer
 keymap("n", "q:", "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight)<CR>", { noremap = true })
-
-keymap(
-  "c",
-  "<C-f>",
-  "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight, { line = vim.fn.getcmdline(), column = vim.fn.getcmdpos() })<CR><C-c>",
-  { noremap = true }
-)
 
 keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true })
 keymap("x", "<leader>la", "<cmd>lua vim.lsp.buf.range_code_action()<cr>", { noremap = true })

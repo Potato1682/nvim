@@ -18,7 +18,7 @@ end
 local function get_next_buffer(buffer)
   local next = vim.fn.bufnr "#"
 
-  for i = 0, vim.fn.bufnr "$" - 1 do
+  for i = 0, (vim.fn.bufnr "$" - 1) do
     next = (buffer + i) % vim.fn.bufnr "$" + 1
 
     if vim.fn.buflisted(next) == 1 then

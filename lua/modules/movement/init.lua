@@ -29,7 +29,7 @@ function M.move_j()
   relative_j_time = tonumber(fn.reltimestr(fn.reltime()))
   press_fre = press_fre + 1
 
-  local command = ""
+  local command
 
   if step ~= 1 then
     vim.opt_local.relativenumber = false
@@ -85,7 +85,7 @@ function M.move_k()
   relative_k_time = tonumber(fn.reltimestr(fn.reltime()))
   press_fre = press_fre + 1
 
-  local command = ""
+  local command
 
   if step ~= 1 then
     vim.opt_local.relativenumber = false

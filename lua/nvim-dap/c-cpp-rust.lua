@@ -37,10 +37,10 @@ M.start_c_debugger = function(args, mi_mode, mi_debugger_path)
 end
 
 vim.cmd [[
-    command! -complete=file -nargs=* DebugC lua require "nvim-dap.c-cpp-rust-debug".start_c_debugger({<f-args>}, "gdb")
+  command! -complete=file -nargs=* DebugC lua require"nvim-dap.c-cpp-rust-debug".start_c_debugger({<f-args>}, "gdb")
 ]]
 vim.cmd [[
-    command! -complete=file -nargs=* DebugRust lua require"nvim-dap.c-cpp-rust-debug".start_c_debugger({<f-args>}, "gdb", "rust-gdb")
+  command! -complete=file -nargs=* DebugRust lua require"nvim-dap.c-cpp-rust-debug".start_c_debugger({<f-args>}, "gdb", "rust-gdb")
 ]]
 
 -- Export module to use this by the commands' function call

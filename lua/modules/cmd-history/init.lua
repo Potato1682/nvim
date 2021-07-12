@@ -42,7 +42,7 @@ local function copy(obj, seen)
 end
 
 function M.clean()
-  vim.tbl_filter(function(i, v)
+  vim.tbl_filter(function(_, v)
     vim.fn.histdel(":", v)
   end, copy(ignore_commands))
 end

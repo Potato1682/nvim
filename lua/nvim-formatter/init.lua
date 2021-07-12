@@ -7,22 +7,26 @@ if vim.fn.filereadable(lua_bin) == 0 then
     "stylua",
     format_install_dir .. "lua",
     [[
-    os=$(uname -s | tr "[:upper:]" "[:lower:]")
-    
-    case $os in
-      linux)
-        platform="linux"
-        ;;
-      darwin)
-        platform="mac"
-        ;;
-    esac
-
-    curl -Lo stylua.zip $(curl -s "https://api.github.com/repos/JohnnyMorganz/StyLua/releases/latest" | jq . | grep -E "https?://.*\.zip" | cut -d\" -f4 | grep "$platform")
-    unzip stylua.zip
-    rm stylua.zip
-    chmod +x stylua
-  ]]
+      os=$(uname -s | tr "[:upper:]" "[:lower:]")
+      case $os in
+        linux)
+          platform="linux"
+          ;;
+        darwin)
+          platform="mac"
+          ;;
+      esac
+      curl - Lo stylua.zip $(\
+        curl - s "https://api.github.com/repos/JohnnyMorganz/StyLua/releases/latest" \
+        | jq . \
+        | grep - E "https?://.*\.zip" \
+        | cut - d\" -f4 \
+        | grep "$platform" \
+      )
+      unzip stylua.zip
+      rm stylua.zip
+      chmod +x stylua
+    ]]
   )
 end
 

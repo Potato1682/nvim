@@ -85,7 +85,27 @@ function M.setup()
       {
         "FileType",
         "dashboard",
-        "setlocal nocursorline noswapfile synmaxcol& signcolumn=no norelativenumber nocursorcolumn nospell nolist nonumber bufhidden=wipe colorcolumn= foldcolumn=0 matchpairs= ",
+        "setlocal" .. table.concat(
+          vim.split(
+            [[
+              nocursorline
+              noswapfile
+              synmaxcol&
+              signcolumn=no
+              norelativenumber
+              nocursorcolumn
+              nospell
+              nolist
+              nonumber
+              bufhidden=wipe
+              colorcolumn=
+              foldcolumn=0
+              matchpairs=
+            ]],
+            "\n"
+          ),
+          " "
+        ),
       },
       { "FileType", "dashboard", "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2" },
       { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<cr>" },
@@ -129,7 +149,11 @@ function M.setup()
   if O.relative_number then
     M.nvim_create_augroups {
       relativenumber = {
-        { "BufEnter,FocusGained,InsertLeave,WinEnter", "*", "if &number && mode() != 'i' | set relativenumber | endif" },
+        {
+          "BufEnter,FocusGained,InsertLeave,WinEnter",
+          "*",
+          "if &number && mode() != 'i' | set relativenumber | endif",
+        },
         {
           "BufLeave,FocusLost,InsertEnter,WinLeave",
           "*",
