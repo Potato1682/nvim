@@ -1,8 +1,3 @@
-cmap <expr> <Tab> wilder#in_context() ? wilder#next() : "\<Tab>"
-cmap <expr> <S-Tab> wilder#in_context() ? wilder#previous() : "\<S-Tab>"
-
-call wilder#set_option("modes", ["/", "?", ":"])
-
 call wilder#set_option("pipeline", [
   \ wilder#branch(
   \   [
