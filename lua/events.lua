@@ -34,14 +34,14 @@ function M.cursorhold_timer()
   if vim.fn.mode() == "n" then
     vim.fn.timer_stop(vim.g.cursorhold_timer_id)
 
-    vim.g.cursorhold_timer_id = vim.fn.timer_start(1500, "CursorHold_Callback")
+    vim.g.cursorhold_timer_id = vim.fn.timer_start(1100, "CursorHold_Callback")
   end
 end
 
 function M.cursorhold_insert_timer()
   vim.fn.timer_stop(vim.g.cursorhold_timer_id)
 
-  vim.g.cursorhold_timer_id = vim.fn.timer_start(1500, "CursorHoldI_Callback")
+  vim.g.cursorhold_timer_id = vim.fn.timer_start(1100, "CursorHoldI_Callback")
 end
 
 function M.setup()

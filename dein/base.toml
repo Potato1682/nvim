@@ -14,14 +14,8 @@ repo = "yamatsum/nvim-nonicons"
 depends = "web-devicons"
 
 [[plugins]]
-repo = "jbyuki/contextmenu.nvim"
-
-[[plugins]]
 repo = "akinsho/nvim-bufferline.lua"
-depends = [
-    "nonicons",
-    "contextmenu.nvim"
-]
+depends = "nonicons"
 
 [[plugins]]
 repo = "glepnir/galaxyline.nvim"
@@ -52,10 +46,6 @@ depends = "lspconfig"
 repo = "RRethy/vim-illuminate"
 depends = "lspconfig"
 
-[[plugins]]
-repo = "ahmedkhalf/lsp-rooter.nvim"
-depends = "lspconfig"
-
 # Editor
 
 [[plugins]]
@@ -63,9 +53,6 @@ repo = "andymass/vim-matchup"
 
 [[plugins]]
 repo = "machakann/vim-sandwich"
-
-[[plugins]]
-repo = "tjdevries/colorbuddy.nvim"
 
 # Highlighting
 

@@ -1,3 +1,9 @@
+# Design
+
+[[plugins]]
+repo = "jbyuki/contextmenu.nvim"
+on_lua = "contextmenu"
+
 # Dashboard
 
 [[plugins]]
@@ -47,7 +53,7 @@ on_lua = "goto-preview"
 
 [[plugins]]
 repo = "kosayoda/nvim-lightbulb"
-on_event = "VimEnter"
+on_event = "BufEnter"
 hook_post_source = """
     lua require("nvim-lightbulb-config")
 """
@@ -65,6 +71,10 @@ hook_post_source = """
 [[plugins]]
 repo = "jubnzv/virtual-types.nvim"
 on_lua = "virtualtypes"
+
+[[plugins]]
+repo = "ahmedkhalf/lsp-rooter.nvim"
+on_lua = "lsp-rooter"
 
 # Symbols
 
