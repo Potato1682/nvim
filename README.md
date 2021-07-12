@@ -1,5 +1,8 @@
 <h1 align="center">nvim</h1>
 <p align="center">
+  <a href="https://neovim.io">
+    <img src="https://img.shields.io/badge/neovim-%2357A143.svg?&style=for-the-badge&logo=neovim&logoColor=white">
+  </a>
   <a href="https://github.com/Potato1682/nvim/blob/main/init.lua">
     <img alt="Lua" src="https://img.shields.io/badge/lua-%232C2D72.svg?style=for-the-badge&logo=lua&logoColor=white">
   </a>
@@ -83,7 +86,6 @@
 - Show current context on bracket ending
 - Online collaboration
 - Zen mode
-- Colorbuddy support
 - Show TODO List
 - Global settings
 - Errors List
