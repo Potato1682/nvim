@@ -83,9 +83,6 @@ if O.toggle.enabled then
   keymap("n", "<C-s>", "<cmd>lua require'modules.toggle'.toggle()<cr>", { noremap = true })
 end
 
--- Command buffer
-keymap("n", "q:", "<Cmd>lua require'cmdbuf'.split_open(vim.o.cmdwinheight)<CR>", { noremap = true })
-
 keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true })
 keymap("x", "<leader>la", "<cmd>lua vim.lsp.buf.range_code_action()<cr>", { noremap = true })
 
