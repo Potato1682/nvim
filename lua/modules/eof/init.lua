@@ -36,12 +36,12 @@ end
 
 function M.check(_)
   if vim.opt_local.buftype._value == "nofile" then
-    return
+    return false
   end
 
   local filetype = vim.opt_local.filetype._value
 
-  for _, pattern in ipairs { "dashboard", "NvimTree", "neogit", "git.*", "undotree", "dapui.*", "vista.*", "dbui", "toggleterm", "telescope.*" } do
+  for _, pattern in ipairs { "dashboard", "NvimTree", "neogit", "git.*", "undotree", "dapui.*", "vista.*", "dbui", "toggleterm" } do
     if filetype:match(pattern) then
       return false
     end
