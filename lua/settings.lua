@@ -49,6 +49,8 @@ vim.opt.splitbelow = true
 vim.opt.splitright = true
 vim.opt.switchbuf = "useopen"
 
+vim.opt.ruler = false
+
 vim.opt.smartindent = true
 vim.opt.expandtab = true
 vim.opt.shiftround = true
