@@ -17,7 +17,7 @@ O = {
   edge_better_performance = true, -- If true, edge shows some logs on startup
   -- @usage can be 'aura', 'neon'
   colorscheme_style = "neon",
-  wrap_lines = false,
+  wrap_lines = true,
   cursorline = true,
   cursorcolumn = false,
   number = true,
