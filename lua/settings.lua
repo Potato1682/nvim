@@ -61,8 +61,7 @@ vim.opt.terse = true
 
 vim.opt.pumheight = 10
 vim.opt.pumblend = 17
---
--- vim.opt.winblend = 17
+vim.opt.winblend = 17
 vim.opt.winfixheight = true
 vim.opt.winfixwidth = true
 vim.opt.winaltkeys = "no"

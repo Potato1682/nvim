@@ -40,7 +40,11 @@ function M.move_j()
       command = "normal! " .. step .. "gj"
     end
   else
-    if O.relative_number and vim.opt_local.buftype._value ~= "nofile" then
+    if
+      O.relative_number
+      and vim.opt_local.buftype._value ~= "nofile"
+      and (pcall(require, "zen-mode") and not require("zen-mode.view").is_open())
+    then
       vim.opt_local.relativenumber = true
     end
 
@@ -98,7 +102,11 @@ function M.move_k()
       command = "normal! " .. step .. "gk"
     end
   else
-    if O.relative_number and vim.opt_local.buftype._value ~= "nofile" then
+    if
+      O.relative_number
+      and vim.opt_local.buftype._value ~= "nofile"
+      and (pcall(require, "zen-mode") and not require("zen-mode.view").is_open())
+    then
       vim.opt_local.relativenumber = true
     end
 

@@ -76,6 +76,10 @@ on_lua = "virtualtypes"
 repo = "ahmedkhalf/lsp-rooter.nvim"
 on_lua = "lsp-rooter"
 
+[[plugins]]
+repo = "pierreglaser/folding-nvim"
+on_lua = "folding"
+
 # Symbols
 
 [[plugins]]
@@ -259,6 +263,10 @@ on_cmd = [
 hook_post_source = """
     lua require("nvim-zen-mode")
 """
+
+[[plugins]]
+repo = "folke/twilight.nvim"
+on_source = "zen-mode"
 
 # Window
 
