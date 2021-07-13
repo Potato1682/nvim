@@ -67,6 +67,7 @@ depends = [
     "treesitter-textsubjects",
     "crazy-node-movement",
     "context-vt",
+    "nvim-ts-highlightparams",
     "spellsitter"
 ]
 merged = 0
@@ -82,6 +83,9 @@ repo = "RRethy/nvim-treesitter-textsubjects"
 
 [[plugins]]
 repo = "haringsrob/nvim_context_vt"
+
+[[plugins]]
+repo = "rohit-px2/nvim-ts-highlightparams"
 
 # Search
 
