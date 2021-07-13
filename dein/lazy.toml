@@ -401,6 +401,16 @@ hook_post_source = """
     let g:mergetool_prefer_revision = "local"
 """
 
+# GitHub
+
+[[plugins]]
+repo = "pwntester/octo.nvim"
+on_cmd = "Octo"
+if = "executable('gh')"
+hook_post_source = """
+    lua require("nvim-github")
+"""
+
 # Containers
 
 [[plugins]]
