@@ -7,7 +7,13 @@ function M.highlight_japanese_spaces()
 end
 
 function M.highlight_trailing_spaces()
-  if vim.tbl_contains({ "markdown", "pandoc.markdown" }, vim.opt.filetype._value) then
+  if vim.opt_local.buftype._value == "nofile" then
+    return
+  end
+
+  if
+    vim.tbl_contains({ "markdown", "pandoc.markdown", "dashboard", "toggleterm", "neogit" }, vim.opt.filetype._value)
+  then
     return
   end
 
@@ -15,7 +21,13 @@ function M.highlight_trailing_spaces()
 end
 
 function M.highlight_insert_trailing_spaces()
-  if vim.tbl_contains({ "markdown", "pandoc.markdown" }, vim.opt.filetype._value) then
+  if vim.opt_local.buftype._value == "nofile" then
+    return
+  end
+
+  if
+    vim.tbl_contains({ "markdown", "pandoc.markdown", "dashboard", "toggleterm", "neogit" }, vim.opt.filetype._value)
+  then
     return
   end
 
@@ -23,7 +35,13 @@ function M.highlight_insert_trailing_spaces()
 end
 
 function M.strip_trailing_spaces()
-  if vim.tbl_contains({ "markdown", "pandoc.markdown" }, vim.opt.filetype._value) then
+  if vim.opt_local.buftype._value == "nofile" then
+    return
+  end
+
+  if
+    vim.tbl_contains({ "markdown", "pandoc.markdown", "dashboard", "toggleterm", "neogit" }, vim.opt.filetype._value)
+  then
     return
   end
 
