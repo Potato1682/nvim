@@ -138,9 +138,12 @@ function M.setup()
       { "FocusLost", "*", "noautocmd silent! wa" },
       { "VimEnter", "*", "lua require'events'.on_enter()" },
       { "ColorScheme", "*", "lua require'events'.on_color()" },
+      { "VimResized", "*", "tabdo wincmd =" },
+      { "VimLeave", "*", "wshada!" },
+      { "FocusGained", "*", "checktime" },
     },
     yank = {
-      { "TextYankPost", [[* silent! lua vim.highlight.on_yank({ higroup="IncSearch", timeout=400 })]] },
+      { "TextYankPost", "*", [[silent! lua vim.highlight.on_yank { higroup="IncSearch", timeout=400 }]] },
     },
   }
 
