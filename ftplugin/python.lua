@@ -24,6 +24,16 @@ require("lspconfig").pyright.setup {
   cmd = container.command "pyright",
   on_attach = lsp_config.common_on_attach,
   capabilities = capabilities,
+  settings = {
+    python = {
+      analysis = {
+        autoSearchPaths = true,
+        diagnosticMode = "workspace",
+        useLibraryCodeForTypes = true,
+      },
+      venvPath = "./.venv/",
+    },
+  },
 }
 
 local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/python/"
