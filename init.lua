@@ -24,6 +24,7 @@ require "nvim-template"
 require "nvim-lspinstall"
 
 require "modules.japanese"
+require "modules.eof"
 require "keys"
 require "providers"
 require "commands"
