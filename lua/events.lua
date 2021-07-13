@@ -200,6 +200,7 @@ function M.on_color()
   vim.cmd "hi RedSign ctermbg=235 guibg=#2b2d3a"
   vim.cmd "hi! ExtraWhitespace ctermfg=246 guifg=#7e8294 ctermbg=52 guibg=#b30000 cterm=NONE gui=NONE guisp=NONE"
   vim.cmd "hi jsonBoolean ctermfg=107 guifg=#a0c980"
+  vim.cmd "hi link TSParameter YellowItalic"
   vim.cmd "hi link NvimTreeLspDiagnosticsError RedSign"
   vim.cmd "hi link NvimTreeLspDiagnosticsWarning YellowSign"
   vim.cmd "hi link NvimTreeLspDiagnosticsInformation BlueSign"

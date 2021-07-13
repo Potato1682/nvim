@@ -37,7 +37,7 @@ end
 function M.check(_)
   local filetype = vim.opt_local.filetype._value
 
-  for _, pattern in ipairs { "dashboard", "nvimtree", "neogit", "git.*", "undotree", "dapui.*", "vista.*", "dbui" } do
+  for _, pattern in ipairs { "dashboard", "NvimTree", "neogit", "git.*", "undotree", "dapui.*", "vista.*", "dbui" } do
     if filetype:match(pattern) then
       return false
     end
