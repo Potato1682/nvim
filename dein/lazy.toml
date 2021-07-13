@@ -649,7 +649,7 @@ on_ft = "rust"
 
 [[plugins]]
 repo = "mfussenegger/nvim-dap-python"
-on_lua = "python"
+on_lua = "dap-python"
 
 # Log
 
