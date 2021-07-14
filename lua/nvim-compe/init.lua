@@ -44,16 +44,8 @@ local t = npairs.esc
 _G.MUtils = {}
 
 function _G.MUtils.enter_confirm()
-  if vim.fn.pumvisible() ~= 0 then
-    if vim.fn.complete_info()["selected"] ~= -1 then
-      return vim.fn["compe#confirm"] { keys = "<cr>", select = true }
-    else
-      vim.defer_fn(function()
-        require("nvim-autospace").format(-1)
-      end, 20)
-
-      return t "<cr>"
-    end
+  if vim.fn.pumvisible() ~= 0 and vim.fn.complete_info()["selected"] ~= -1 then
+    return vim.fn["compe#confirm"] { keys = npairs.esc "<cr>", select = true }
   else
     vim.defer_fn(function()
       require("nvim-autospace").format(-1)
