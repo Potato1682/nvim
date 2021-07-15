@@ -23,6 +23,10 @@ require "nvim-indentline"
 require "nvim-template"
 require "nvim-lspinstall"
 
+if vim.fn.executable "ctags" or vim.fn.executable "gtags" then
+  require "nvim-tags"
+end
+
 require "modules.japanese"
 require "modules.eof"
 require "keys"

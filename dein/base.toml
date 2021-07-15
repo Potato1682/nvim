@@ -87,16 +87,16 @@ repo = "haringsrob/nvim_context_vt"
 [[plugins]]
 repo = "rohit-px2/nvim-ts-highlightparams"
 
+# Tags
+
+[[plugins]]
+repo = "jsfaint/gen_tags.vim"
+if = "executable('ctags') || executable('gtags')"
+
 # Search
 
 [[plugins]]
 repo = "kevinhwang91/nvim-hlslens"
-
-[[plugins]]
-repo = "windwp/nvim-spectre"
-hook_post_source = """
-    lua require("spectre").setup()
-"""
 
 [[plugins]]
 repo = "nvim-telescope/telescope-media-files.nvim"
