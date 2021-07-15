@@ -59,10 +59,10 @@ keymap("x", "J", ":move '>+1<CR>gv-gv'", { noremap = true, silent = true })
 
 -- Resize with arrow keys
 vim.cmd [[
-  nnoremap <silent> <C-Up>    :resize -2<CR>
-  nnoremap <silent> <C-Down>  :resize +2<CR>
-  nnoremap <silent> <C-Left>  :vertical resize -2<CR>
-  nnoremap <silent> <C-Right> :vertical resize +2<CR>
+  nnoremap <silent> <Up>    :resize -2<CR>
+  nnoremap <silent> <Down>  :resize +2<CR>
+  nnoremap <silent> <Left>  :vertical resize -2<CR>
+  nnoremap <silent> <Right> :vertical resize +2<CR>
 ]]
 
 -- Hop
@@ -86,8 +86,8 @@ end
 keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true })
 keymap("x", "<leader>la", "<cmd>lua vim.lsp.buf.range_code_action()<cr>", { noremap = true })
 
-keymap("n", "<leader>lp", "<cmd>AnyJump<cr>", { noremap = true })
-keymap("x", "<leader>lp", "<cmd>AnyJumpVisual<cr>", { noremap = true })
+keymap("n", "gR", "<cmd>AnyJump<cr>", { noremap = true })
+keymap("x", "gR", "<cmd>AnyJumpVisual<cr>", { noremap = true })
 
 keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", { noremap = true })
 keymap("n", "<leader>Sl", "<cmd>SessionLoad<cr>", { noremap = true })

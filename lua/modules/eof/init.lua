@@ -35,7 +35,7 @@ local function eol_at_eof(bufnr)
 end
 
 function M.check(_)
-  if vim.opt_local.buftype._value == "nofile" then
+  if vim.opt_local.buftype._value == "nofile" or vim.opt_local.buftype:get() == "prompt" then
     return false
   end
 

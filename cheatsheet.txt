@@ -27,3 +27,16 @@ Open projects menu | <leader>p
 Split horizontally | ss
 Split vertically | vs
 
+## LSP
+Preview definition | gd
+Jump definition | gD
+Preview implementation | gi
+Jump implementation | gI
+Rename | gr
+Reference Finder | gR
+Line diagnostics | gla
+Next diagnostic | [a
+Previous diagnostic | ]a
+Hover | K
+Signature Help | <C-k>
+
