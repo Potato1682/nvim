@@ -98,6 +98,7 @@
 - [Discord](https://discord.com) Rich Presence support
 - Under cursor increment and decrement
 - [Editorconfig](https://editorconfig.org) support
+- Line Notes
 
 ## Trouble Shooting
 

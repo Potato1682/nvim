@@ -311,6 +311,13 @@ hook_post_source = """
     let g:scrollview_hide_on_intersect     = 1
 """
 
+[[plugins]]
+repo = "kristijanhusak/line-notes.nvim"
+on_map = "gl"
+hook_post_source = """
+    lua require("nvim-line-notes")
+"""
+
 # Command
 
 [[plugins]]
