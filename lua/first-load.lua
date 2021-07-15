@@ -4,7 +4,7 @@ local dein_repository = dein_directory .. "/repos/github.com/Shougo/dein.vim"
 local function create_directories()
   local data_path = vim.fn.stdpath "data"
 
-  for _, directory in ipairs { "undos", "swap", "session", "backup", "tags" } do
+  for _, directory in ipairs { "undos", "swap", "session", "backup", "tags", "databases" } do
     print("  > mkdir -p " .. data_path .. "/" .. directory)
     vim.fn.mkdir(data_path .. "/" .. directory, "p")
   end

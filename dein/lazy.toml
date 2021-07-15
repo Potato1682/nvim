@@ -464,6 +464,10 @@ on_cmd = [
 repo = "jsborjesson/vim-uppercase-sql"
 on_ft = "sql"
 
+[[plugins]]
+repo = "tami5/sql.nvim"
+on_lua = "sql"
+
 # Spell
 
 [[plugins]]

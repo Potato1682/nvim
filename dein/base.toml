@@ -110,6 +110,9 @@ repo = "nvim-telescope/telescope-project.nvim"
 [[plugins]]
 repo = "nvim-telescope/telescope-dap.nvim"
 
+[[plugins]]
+repo = "nvim-telescope/telescope-smart-history.nvim"
+
 # Template files
 
 [[plugins]]

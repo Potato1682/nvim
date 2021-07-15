@@ -16,8 +16,13 @@ require("telescope").setup {
     file_previewer = require("telescope.previewers").vim_buffer_cat.new,
     grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
     qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+
+    history = {
+      path = vim.fn.stdpath "data" .. "/databases/telescope_history.sqlite3",
+      limit = 100,
+    },
+
     mappings = {
       i = {
         ["<C-j>"] = actions.move_selection_next,
@@ -39,6 +44,7 @@ require("telescope").setup {
   },
 }
 
+require("telescope").load_extension "smart_history"
 require("telescope").load_extension "media_files"
 require("telescope").load_extension "project"
 require("telescope").load_extension "fzy_native"
