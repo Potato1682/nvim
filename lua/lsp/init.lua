@@ -129,7 +129,6 @@ function lsp_config.common_on_attach(client, bufnr)
   vim.cmd [[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]]
   require("illuminate").on_attach(client, bufnr)
   require("lsp-status").on_attach(client, bufnr)
-  require("folding").on_attach()
   require("lsp-rooter").setup()
   require("lsp_signature").on_attach {
     bind = true,

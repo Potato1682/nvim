@@ -76,10 +76,6 @@ on_lua = "virtualtypes"
 repo = "ahmedkhalf/lsp-rooter.nvim"
 on_lua = "lsp-rooter"
 
-[[plugins]]
-repo = "pierreglaser/folding-nvim"
-on_lua = "folding"
-
 # Symbols
 
 [[plugins]]
@@ -336,6 +332,15 @@ hook_post_source = """
 repo = "Potato1682/cpsm"
 on_source = "wilder"
 build = "sh -c 'PY3=ON ./install.sh'"
+
+[[plugins]]
+repo = "thinca/vim-ambicmd"
+on_event = "CmdlineEnter"
+hook_post_source = """
+    cnoremap <expr> <Space> ambicmd#expand("\\<Space>")
+    cnoremap <expr> <cr>    ambicmd#expand("\\<cr>")
+    cnoremap <expr> <C-f>    ambicmd#expand("\\<Right>")
+"""
 
 # Treesitter
 
