@@ -1,10 +1,12 @@
 local M = {}
 
-local npairs = require "nvim-autopairs"
+local function t(str)
+  return vim.api.nvim_replace_termcodes(str, true, true, true)
+end
 
 function M.repeat_indent(indent_number)
   if not vim.bo.expandtab then
-    return npairs.esc(string.rep("<Tab>", indent_number))
+    return t(string.rep("<Tab>", indent_number))
   else
     return string.rep(" ", indent_number)
   end

@@ -30,17 +30,16 @@ if vim.fn.filereadable(lua_bin) == 0 then
   )
 end
 
-local prettier_bin = format_install_dir .. "prettier/node_modules/.bin/prettier"
+local prettier_bin
 
-if vim.fn.filereadable(prettier_bin) == 0 then
-  require("nvim-formatter.install").install(
-    "prettier",
-    format_install_dir .. "prettier",
-    [[
-    ! test -f package.json && npm init -y --scope=fmtinstall || true
-    npm i prettier@latest
-  ]]
-  )
+if vim.fn.executable "prettierd" then
+  prettier_bin = "prettierd"
+elseif vim.fn.executable "./node_modules/.bin/prettierd" then
+  prettier_bin = vim.fn.expand "./node_modules/.bin/prettierd"
+elseif vim.fn.executable "prettier" then
+  prettier_bin = "prettier"
+elseif vim.fn.executable "./node_modules/.bin/prettier" then
+  prettier_bin = "prettier"
 end
 
 --[[ require("formatter").setup {
