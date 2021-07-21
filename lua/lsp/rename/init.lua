@@ -9,17 +9,31 @@ local function apply_action_keys()
   local quit_key = "<esc>"
   local exec_key = "<cr>"
 
-  api.nvim_command("inoremap <buffer><nowait><silent>" .. exec_key .. " <cmd>lua require'lsp.rename'.do_rename()<cr>")
+  vim.api.nvim_buf_set_keymap(
+    0,
+    "i",
+    exec_key,
+    "<cmd>lua require'lsp.rename'.do_rename()<cr>",
+    { noremap = true, nowait = true, silent = true }
+  )
 
   if type(quit_key) == "table" then
     for _, k in ipairs(quit_key) do
-      api.nvim_command(
-        "inoremap <buffer><nowait><silent>" .. k .. " <cmd>lua require'lsp.rename'.close_rename_window()<cr>"
+      vim.api.nvim_buf_set_keymap(
+        0,
+        "i",
+        k,
+        "<cmd>lua require'lsp.rename'.close_rename_window()<cr>",
+        { noremap = true, nowait = true, silent = true }
       )
     end
   else
-    api.nvim_command(
-      "inoremap <buffer><nowait><silent>" .. quit_key .. " <cmd>lua require'lsp.rename'.close_rename_window()<cr>"
+    vim.api.nvim_buf_set_keymap(
+      0,
+      "i",
+      quit_key,
+      "<cmd>lua require'lsp.rename'.close_rename_window()<cr>",
+      { noremap = true, nowait = true, silent = true }
     )
   end
 
@@ -36,8 +50,9 @@ function M.close_rename_window()
   local has, winid = pcall(api.nvim_win_get_var, 0, unique_name)
 
   if has then
-    windows.a(winid)
+    windows.nvim_close_valid_window(winid)
     api.nvim_win_set_cursor(0, pos)
+
     pos = {}
   end
 end
@@ -86,13 +101,15 @@ function M.rename()
   local bufnr, winid = windows.create_window(content_opts, opts)
   local rename_prompt_prefix = api.nvim_create_namespace "rename_prompt_prefix"
 
-  api.nvim_win_set_option(winid, "scrolloff", 0)
-  api.nvim_win_set_option(winid, "sidescrolloff", 0)
-  api.nvim_buf_set_option(bufnr, "modifiable", true)
+  vim.wo[winid].scrolloff = 0
+  vim.wo[winid].sidescrolloff = 0
+
+  vim.bo[bufnr].modifiable = true
 
   local prompt_prefix = "❯ "
 
-  api.nvim_buf_set_option(bufnr, "buftype", "prompt")
+  vim.bo[bufnr].buftype = "prompt"
+
   vim.fn.prompt_setprompt(bufnr, prompt_prefix)
   api.nvim_buf_add_highlight(bufnr, rename_prompt_prefix, "Blue", 0, 0, #prompt_prefix)
 

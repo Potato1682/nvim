@@ -171,22 +171,23 @@ function M.create_window(content_opts, opts)
   local content = vim.lsp.util._trim(contents)
 
   if filetype then
-    api.nvim_buf_set_option(bufnr, "filetype", filetype)
+    vim.bo[bufnr].filetype = filetype
   end
 
   api.nvim_buf_set_lines(bufnr, 0, -1, true, content)
-  api.nvim_buf_set_option(bufnr, "modifiable", false)
-  api.nvim_buf_set_option(bufnr, "bufhidden", "wipe")
-  api.nvim_buf_set_option(bufnr, "buftype", "nofile")
+
+  vim.bo[bufnr].modifiable = false
+  vim.bo[bufnr].bufhidden = "wipe"
+  vim.bo[bufnr].buftype = "nofile"
 
   local winid = api.nvim_open_win(bufnr, enter, opts)
 
   if filetype == "markdown" then
-    api.nvim_win_set_option(winid, "conceallevel", 2)
+    vim.wo[winid].conceallevel = 2
   end
 
-  api.nvim_win_set_option(winid, "winblend", 13)
-  api.nvim_win_set_option(winid, "foldlevel", 100)
+  vim.wo[winid].winblend = 13
+  vim.wo[winid].foldlevel = 100
 
   return bufnr, winid
 end
