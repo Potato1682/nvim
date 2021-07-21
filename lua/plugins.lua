@@ -6,7 +6,6 @@ vim.g.loaded_getscriptPlugin = 1
 vim.g.loaded_gzip = 1
 vim.g.loaded_logipat = 1
 vim.g.loaded_logiPat = 1
-vim.g.loaded_matchparen = 1
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwFileHandlers = 1
 vim.g.loaded_netrwPlugin = 1
