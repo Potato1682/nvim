@@ -99,6 +99,9 @@ keymap("n", "Q", "<Nop>", { noremap = true })
 keymap("n", "ZZ", "<Nop>", { noremap = true })
 keymap("n", "ZQ", "<Nop>", { noremap = true })
 
+keymap("n", "be", "<cmd>BufferLineSortByExtension<cr>", { noremap = true, silent = true })
+keymap("n", "bd", "<cmd>BufferLineSortByDirectory<cr>", { noremap = true, silent = true })
+
 keymap("n", "j", "<cmd>lua require'modules.movement'.move_j()<cr>", { silent = true })
 keymap("n", "k", "<cmd>lua require'modules.movement'.move_k()<cr>", { silent = true })
 

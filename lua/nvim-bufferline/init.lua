@@ -104,18 +104,12 @@ require("bufferline").setup {
 
       return s
     end,
-    custom_filter = function(buf_number)
-      if vim.bo[buf_number].filetype ~= "<i-dont-want-to-see-this>" then
-        return true
+    custom_filter = function(bufnr)
+      if vim.bo[bufnr].buftype == "terminal" then
+        return false
       end
 
-      if vim.fn.bufname(buf_number) ~= "<buffer-name-I-dont-want>" then
-        return true
-      end
-
-      if vim.fn.getcwd() == "<work-repo>" and vim.bo[buf_number].filetype ~= "wiki" then
-        return true
-      end
+      return true
     end,
     custom_areas = {
       right = function()
