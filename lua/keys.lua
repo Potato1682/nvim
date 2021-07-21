@@ -50,8 +50,8 @@ keymap("v", "<", "<gv", { noremap = true, silent = true })
 keymap("v", ">", ">gv", { noremap = true, silent = true })
 
 -- Tab switch buffer
-keymap("n", "<Tab>", "<cmd>bnext<cr>", { noremap = true, silent = true })
-keymap("n", "<S-Tab>", "<cmd>bprevious<cr>", { noremap = true, silent = true })
+keymap("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true })
+keymap("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true })
 
 -- Move selected line / block of text in visual line
 keymap("x", "K", ":move '<-2<CR>gv-gv'", { noremap = true, silent = true })
