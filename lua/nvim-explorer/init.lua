@@ -1,10 +1,8 @@
 vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache" }
-vim.g.nvim_tree_disable_netrw = 1
-vim.g.nvim_tree_hijack_netrw = 1
-vim.g.nvim_tree_hide_dotfiles = 0
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_lsp_diagnostics = 1
-vim.g.nvim_tree_auto_close = O.explorer.auto_close and 1 or 0
+vim.g.nvim_tree_auto_close = 1
+vim.g.nvim_tree_quit_on_open = O.explorer.auto_close and 1 or 0
 vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_group_empty = 1
@@ -40,8 +38,6 @@ vim.g.nvim_tree_bindings = {
   { key = "y", cb = tree_cb "copy_name" },
   { key = "Y", cb = tree_cb "copy_path" },
   { key = "gy", cb = tree_cb "copy_absolute_path" },
-  { key = "[c", cb = tree_cb "prev_git_item" },
-  { key = "]c", cb = tree_cb "next_git_item" },
   { key = "-", cb = tree_cb "dir_up" },
   { key = "q", cb = tree_cb "close" },
   { key = "g?", cb = tree_cb "toggle_help" },
