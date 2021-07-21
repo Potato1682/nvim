@@ -247,7 +247,7 @@ gls.right[3] = {
   IndentSize = {
     provider = function()
       if vim.opt.expandtab then
-        return vim.opt.sts._value .. " Spaces"
+        return vim.opt.tabstop._value .. " Spaces"
       else
         return vim.opt.sw._value .. " Tab Width"
       end
