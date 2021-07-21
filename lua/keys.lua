@@ -54,8 +54,11 @@ keymap("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = 
 keymap("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true })
 
 -- Move selected line / block of text in visual line
-keymap("x", "K", ":move '<-2<CR>gv-gv'", { noremap = true, silent = true })
-keymap("x", "J", ":move '>+1<CR>gv-gv'", { noremap = true, silent = true })
+keymap("x", "K", "<cmd>move '<-2<cr>gv-gv'", { noremap = true, silent = true })
+keymap("x", "J", "<cmd>move '>+1<cr>gv-gv'", { noremap = true, silent = true })
+
+keymap("c", "<C-j>", "<Up>", { noremap = true, silent = true })
+keymap("c", "<C-k>", "<Down>", { noremap = true, silent = true })
 
 -- Resize with arrow keys
 vim.cmd [[
