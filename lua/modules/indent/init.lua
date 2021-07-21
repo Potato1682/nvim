@@ -22,7 +22,7 @@ function M.get_indents(linenr)
   local indent_number = indent.get_indent(linenr)
 
   if indent_number == -1 then
-    if vim.opt.cindent._value then
+    if vim.opt.cindent:get() then
       local c_indent_number = vim.api.nvim_call_function("cindent", { linenr })
 
       return c_indent_number
@@ -35,7 +35,7 @@ function M.get_indents(linenr)
         return M.get_indents(cursor - 1)
       end
 
-      return vim.opt.expandtab._value and vim.opt.shiftwidth._value or 1
+      return vim.opt.expandtab:get() and vim.opt.shiftwidth:get() or 1
     end
   end
 
@@ -49,7 +49,7 @@ function M.smart_indent()
     return M.repeat_indent(indents)
   end
 
-  return M.repeat_indent(vim.opt.expandtab._value and vim.opt.shiftwidth._value or 1)
+  return M.repeat_indent(vim.opt.expandtab:get() and vim.opt.shiftwidth:get() or 1)
 end
 
 return M

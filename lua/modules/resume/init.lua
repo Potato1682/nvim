@@ -2,8 +2,8 @@ local M = {}
 
 function M.resume()
   if
-    vim.tbl_contains({ "quickfix", "nofile", "help" }, vim.api.nvim_buf_get_option(0, "buftype"))
-    or vim.tbl_contains({ "gitcommit", "gitrebase", "svn", "hgcommit" }, vim.api.nvim_buf_get_option(0, "filetype"))
+    vim.tbl_contains({ "quickfix", "nofile", "help" }, vim.opt_local.buftype:get())
+    or vim.tbl_contains({ "gitcommit", "gitrebase", "svn", "hgcommit" }, vim.opt_local.buftype:get())
   then
     return
   end

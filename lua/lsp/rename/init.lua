@@ -36,7 +36,7 @@ function M.close_rename_window()
   local has, winid = pcall(api.nvim_win_get_var, 0, unique_name)
 
   if has then
-    windows.nvim_close_valid_window(winid)
+    windows.a(winid)
     api.nvim_win_set_cursor(0, pos)
     pos = {}
   end

@@ -11,14 +11,14 @@ function M.win_enter()
     vim.opt_local.cursorcolumn = true
   end
 
-  if vim.opt_local.buftype._value ~= "" then
+  if vim.opt_local.buftype:get() ~= "" then
     return
   end
 
   if
     vim.tbl_contains(
       { "man", "help", "nvimtree", "dashboard", "NeogitStatus", "terminal", "toggleterm", "docker-tools-container" },
-      vim.opt_local.filetype._value
+      vim.opt_local.filetype:get()
     )
   then
     vim.opt.spell = false
@@ -27,7 +27,8 @@ function M.win_enter()
   end
 
   vim.opt.spell = true
-  vim.opt.spelllang = "en,cjk"
+  vim.opt.spelllang = { "en", "cjk" }
+
   require "nvim-spell"
   require("spellsitter").mod_spell_opt()
 end
@@ -41,7 +42,7 @@ function M.win_leave()
     vim.opt_local.cursorcolumn = false
   end
 
-  if vim.opt_local.buftype._value ~= "" then
+  if vim.opt_local.buftype:get() ~= "" then
     return
   end
 
@@ -125,7 +126,7 @@ local function make_floating_popup_options(width, height, opts)
       new_option.row = -2
     end
 
-    if vim.fn.wincol() + width <= api.nvim_get_option "columns" then
+    if vim.fn.wincol() + width <= vim.opt.columns:get() then
       new_option.anchor = new_option.anchor .. "W"
 
       new_option.col = 0

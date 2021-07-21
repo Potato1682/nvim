@@ -41,7 +41,7 @@ end
 local dein_directory = vim.fn.stdpath "data" .. "/dein"
 local dein_repository = dein_directory .. "/repos/github.com/Shougo/dein.vim"
 
-vim.opt.runtimepath = dein_repository .. "," .. vim.opt.runtimepath._value
+vim.opt.runtimepath = vim.opt.runtimepath ^ dein_repository
 
 if vim.fn["dein#load_state"](dein_directory) == 1 then
   local dein_toml_directory = vim.fn.stdpath "config" .. "/dein"

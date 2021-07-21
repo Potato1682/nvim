@@ -21,11 +21,11 @@ function _G.MJp.eol_movement(command, count)
   local post = vim.fn.getpos "."
 
   if previous[2] ~= post[2] then
-    if command == "w" or (command == "e" and vim.opt.virtualedit._value == "onemore") then
+    if command == "w" or (command == "e" and vim.opt.virtualedit:get() == "onemore") then
       local character = vim.fn.matchstr(vim.fn.getline(previous[2]), ".$")
       local length = vim.fn.strlen(previous[2])
 
-      length = length + ((vim.opt.virtualedit._value == "onemore" and eol ~= 2) and 1 or (1 - vim.fn.strlen(character)))
+      length = length + ((vim.opt.virtualedit:get() == "onemore" and eol ~= 2) and 1 or (1 - vim.fn.strlen(character)))
 
       if previous[3] ~= length then
         previous[3] = length
@@ -43,7 +43,7 @@ end
 function _G.MJp.jp_movement(command, count)
   local fn = vim.fn
 
-  local onemore = vim.opt.virtualedit._value == "onemore"
+  local onemore = vim.opt.virtualedit:get() == "onemore"
 
   local separator = "[、。]"
   local separatorR = "[^、。]"
@@ -83,7 +83,7 @@ function _G.MJp.jp_movement(command, count)
     fn.setpos(".", last_position)
   end
 
-  local saved_virtualedit = vim.opt.virtualedit._value
+  local saved_virtualedit = vim.opt.virtualedit:get()
 
   local line_number
   local column
@@ -147,7 +147,7 @@ function _G.MJp.jp_movement(command, count)
 end
 
 function _G.MJp.jp_object(mode, command, count)
-  local saved_virtualedit = vim.opt.virtualedit._value
+  local saved_virtualedit = vim.opt.virtualedit:get()
 
   vim.cmd [[set virtualedit+=nemore]]
 

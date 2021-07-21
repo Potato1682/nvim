@@ -3,7 +3,7 @@ local M = {}
 local ns
 
 local function has_eol()
-  if not vim.opt_local.eol._value and (vim.opt_local.binary._value or not vim.opt_local.fixeol._value) then
+  if not vim.opt_local.eol:get() and (vim.opt_local.binary:get() or not vim.opt_local.fixeol:get()) then
     return false
   end
 
@@ -15,7 +15,7 @@ local function is_saved(bufnr)
     return false
   end
 
-  if vim.opt_local.buftype._value ~= "" then
+  if vim.opt_local.buftype:get() ~= "" then
     return false
   end
 
@@ -35,11 +35,11 @@ local function eol_at_eof(bufnr)
 end
 
 function M.check(_)
-  if vim.opt_local.buftype._value == "nofile" or vim.opt_local.buftype:get() == "prompt" then
+  if vim.opt_local.buftype:get() == "nofile" or vim.opt_local.buftype:get() == "prompt" then
     return false
   end
 
-  local filetype = vim.opt_local.filetype._value
+  local filetype = vim.opt_local.filetype:get()
 
   for _, pattern in ipairs { "dashboard", "NvimTree", "neogit", "git.*", "undotree", "dapui.*", "vista.*", "dbui", "toggleterm" } do
     if filetype:match(pattern) then

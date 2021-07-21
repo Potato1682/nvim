@@ -52,10 +52,10 @@ function M.setup()
   vim.g.cursorhold_timer_id = -1
 
   -- CursorHold fixes
-  if vim.opt.eventignore._value == nil or vim.opt.eventignore._value == "" then
+  if vim.opt.eventignore:get() == {} then
     vim.opt.eventignore = "CursorHold,CursorHoldI"
   else
-    vim.opt.eventignore = vim.opt.eventignore._value .. ",CursorHold,CursorHoldI"
+    vim.opt.eventignore = vim.opt.eventignore + { "CursorHold", "CursorHoldI" }
   end
 
   vim.cmd("source " .. vim.fn.stdpath "config" .. "/vim/cursor-hold.vim")

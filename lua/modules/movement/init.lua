@@ -40,7 +40,7 @@ function M.move_j()
       command = "normal! " .. step .. "gj"
     end
   else
-    if O.relative_number and vim.opt_local.buftype._value ~= "nofile" then
+    if O.relative_number and vim.opt_local.buftype:get() ~= "nofile" then
       if not pcall(require, "zen-mode") then
         vim.opt_local.relativenumber = true
       elseif not require("zen-mode.view").is_open() then
@@ -48,7 +48,7 @@ function M.move_j()
       end
     end
 
-    if vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump" }, vim.opt_local.filetype._value) then
+    if vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump" }, vim.opt_local.filetype:get()) then
       vim.opt_local.relativenumber = false
     end
 
@@ -102,7 +102,7 @@ function M.move_k()
       command = "normal! " .. step .. "gk"
     end
   else
-    if O.relative_number and vim.opt_local.buftype._value ~= "nofile" then
+    if O.relative_number and vim.opt_local.buftype:get() ~= "nofile" then
       if not pcall(require, "zen-mode") then
         vim.opt_local.relativenumber = true
       elseif not require("zen-mode.view").is_open() then
@@ -110,7 +110,7 @@ function M.move_k()
       end
     end
 
-    if vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump" }, vim.opt_local.filetype._value) then
+    if vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump" }, vim.opt_local.filetype:get()) then
       vim.opt_local.relativenumber = false
     end
 
