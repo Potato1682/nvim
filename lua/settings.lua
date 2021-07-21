@@ -29,12 +29,14 @@ vim.opt.infercase = true
 vim.opt.inccommand = "nosplit"
 if O.wrap_lines then
   vim.opt.wrap = true
-  vim.opt.linebreak = true
-  vim.opt.breakat = vim.opt.breakat._value .. [[、。・\ ]]
+  vim.opt.breakat = vim.opt.breakat + [[、。・\ ]]
   vim.opt.breakindent = true
-  vim.opt.breakindentopt = "shift:2,min:20"
+  vim.opt.breakindentopt = {
+    shift = 2,
+    min = 20,
+  }
   vim.opt.showbreak = "↳ "
-  vim.opt.cpoptions = vim.opt.cpoptions._value .. "n"
+  vim.opt.cpoptions = vim.opt.cpoptions + "n"
 else
   vim.opt.wrap = false
 end
@@ -42,7 +44,7 @@ end
 vim.opt.whichwrap = "b,s,<,>,[,],h,l"
 
 vim.opt.fileencoding = "UTF-8"
-vim.opt.fileformats = "unix,mac,dos"
+vim.opt.fileformats = { "unix", "mac", "dos" }
 
 vim.opt.hidden = true
 vim.opt.splitbelow = true
@@ -58,7 +60,7 @@ vim.opt.shiftwidth = 4
 vim.opt.tabstop = 4
 vim.opt.softtabstop = -1
 
-vim.opt.shortmess = vim.opt.shortmess._value .. "mcSW"
+vim.opt.shortmess = vim.opt.shortmess + "mcSW"
 vim.opt.terse = true
 
 vim.opt.pumheight = 10
@@ -81,9 +83,9 @@ vim.opt.cursorcolumn = O.cursorcolumn
 vim.opt.concealcursor = "nc"
 vim.opt.signcolumn = "yes:3"
 vim.opt.virtualedit = "onemore"
-vim.opt.formatoptions = vim.opt.formatoptions._value .. "1mMn"
-vim.opt.matchpairs = vim.opt.matchpairs._value
-  .. ",「:」,（:）,【:】,『:』,［:］,｛:｝,《:》,〈:〉,‘:’,“:”"
+vim.opt.formatoptions = vim.opt.formatoptions + "1mMn"
+vim.opt.matchpairs = vim.opt.matchpairs
+  + "「:」,（:）,【:】,『:』,［:］,｛:｝,《:》,〈:〉,‘:’,“:”"
 
 vim.opt.foldlevelstart = 4
 vim.opt.foldmethod = "expr"
@@ -92,9 +94,16 @@ vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
 vim.opt.jumpoptions = "stack"
 
 vim.opt.list = true
-vim.opt.listchars = "tab:▏ ,trail:•,eol:↲,precedes:,extends:,nbsp:•"
+vim.opt.listchars = {
+  tab = "▏ ",
+  trail = "•",
+  eol = "↲",
+  precedes = "",
+  extends = "",
+  nbsp = "•",
+}
 
-vim.opt.viewoptions = "cursor,folds,curdir,slash,unix"
+vim.opt.viewoptions = { "cursor", "folds", "curdir", "slash", "unix" }
 
 vim.opt.synmaxcol = 2500
 
