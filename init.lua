@@ -37,6 +37,5 @@ require "nvim-undotree"
 require "lsp"
 require "lsp.virtual-text"
 
-require "lsp.emmet"
 require "lsp.tailwindcss"
 require "lsp.terraform"
