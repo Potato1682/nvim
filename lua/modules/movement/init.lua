@@ -48,7 +48,9 @@ function M.move_j()
       end
     end
 
-    if vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump" }, vim.opt_local.filetype:get()) then
+    if
+      vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump", "netrw" }, vim.opt_local.filetype:get())
+    then
       vim.opt_local.relativenumber = false
     end
 
@@ -110,7 +112,9 @@ function M.move_k()
       end
     end
 
-    if vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump" }, vim.opt_local.filetype:get()) then
+    if
+      vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump", "netrw" }, vim.opt_local.filetype:get())
+    then
       vim.opt_local.relativenumber = false
     end
 

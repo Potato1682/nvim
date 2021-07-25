@@ -17,7 +17,17 @@ function M.win_enter()
 
   if
     vim.tbl_contains(
-      { "man", "help", "nvimtree", "dashboard", "NeogitStatus", "terminal", "toggleterm", "docker-tools-container" },
+      {
+        "man",
+        "help",
+        "nvimtree",
+        "dashboard",
+        "NeogitStatus",
+        "terminal",
+        "toggleterm",
+        "docker-tools-container",
+        "netrw",
+      },
       vim.opt_local.filetype:get()
     )
   then

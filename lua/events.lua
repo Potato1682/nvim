@@ -193,25 +193,6 @@ function M.on_color()
   for _, handler in pairs(O.color_event) do
     handler()
   end
-
-  vim.cmd "hi GreenSign ctermbg=235 guibg=#2b2d3a"
-  vim.cmd "hi BlueSign ctermbg=235 guibg=#2b2d3a"
-  vim.cmd "hi YellowSign ctermbg=235 guibg=#2b2d3a"
-  vim.cmd "hi RedSign ctermbg=235 guibg=#2b2d3a"
-  vim.cmd "hi! ExtraWhitespace ctermfg=246 guifg=#7e8294 ctermbg=52 guibg=#b30000 cterm=NONE gui=NONE guisp=NONE"
-  vim.cmd "hi jsonBoolean ctermfg=107 guifg=#a0c980"
-  vim.cmd "hi link TSParameter YellowItalic"
-  vim.cmd "hi link NvimTreeLspDiagnosticsError RedSign"
-  vim.cmd "hi link NvimTreeLspDiagnosticsWarning YellowSign"
-  vim.cmd "hi link NvimTreeLspDiagnosticsInformation BlueSign"
-  vim.cmd "hi link NvimTreeLspDiagnosticsHint GreenSign"
-  vim.cmd "hi! IndentBlanklineContextChar guifg=#3d8cf0 guibg=NONE gui=nocombine"
-  vim.cmd "hi! IndentRainbow1 guifg=#be5046 guibg=NONE gui=nocombine"
-  vim.cmd "hi! IndentRainbow2 guifg=#e5c07b guibg=NONE gui=nocombine"
-  vim.cmd "hi! IndentRainbow3 guifg=#98c379 guibg=NONE gui=nocombine"
-  vim.cmd "hi! IndentRainbow4 guifg=#56b6c2 guibg=NONE gui=nocombine"
-  vim.cmd "hi! IndentRainbow5 guifg=#61afef guibg=NONE gui=nocombine"
-  vim.cmd "hi! IndentRainbow6 guifg=#c678dd guibg=NONE gui=nocombine"
 end
 
 M.setup()
