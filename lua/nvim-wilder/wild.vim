@@ -1,4 +1,5 @@
 call wilder#set_option("pipeline", [
+  \ wilder#debounce(10),
   \ wilder#branch(
   \   [
   \     wilder#check({ _, x -> empty(x) }),
