@@ -2,10 +2,10 @@ local keymap = vim.api.nvim_set_keymap
 
 -- Set leader
 if O.leader == " " then
-  keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
-  vim.g.mapleader = " "
+	keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
+	vim.g.mapleader = " "
 else
-  vim.g.mapleader = O.leader
+	vim.g.mapleader = O.leader
 end
 
 -- no hl
@@ -33,10 +33,10 @@ keymap("n", "sv", "<cmd>vsplit<cr>", { noremap = true })
 
 -- open projects
 keymap(
-  "n",
-  "<leader>p",
-  "<cmd>lua require'telescope'.extensions.project.project {}<cr>",
-  { noremap = true, silent = true }
+	"n",
+	"<leader>p",
+	"<cmd>lua require'telescope'.extensions.project.project {}<cr>",
+	{ noremap = true, silent = true }
 )
 
 -- Better window movement
@@ -49,9 +49,12 @@ keymap("n", "<C-l>", "<C-w>l", { silent = true })
 keymap("v", "<", "<gv", { noremap = true, silent = true })
 keymap("v", ">", ">gv", { noremap = true, silent = true })
 
--- Tab switch buffer
+-- Buffers
 keymap("n", "<Tab>", "<cmd>BufferLineCycleNext<cr>", { noremap = true, silent = true })
 keymap("n", "<S-Tab>", "<cmd>BufferLineCyclePrev<cr>", { noremap = true, silent = true })
+keymap("n", "gb", "<cmd>BufferLinePick<cr>", { noremap = true, silent = true })
+keymap("n", "be", "<cmd>BufferLineSortByExtension<cr>", { noremap = true, silent = true })
+keymap("n", "bd", "<cmd>BufferLineSortByDirectory<cr>", { noremap = true, silent = true })
 
 -- Move selected line / block of text in visual line
 keymap("x", "K", "<cmd>move '<-2<cr>gv-gv'", { noremap = true, silent = true })
@@ -59,14 +62,6 @@ keymap("x", "J", "<cmd>move '>+1<cr>gv-gv'", { noremap = true, silent = true })
 
 keymap("c", "<C-j>", "<Up>", { noremap = true, silent = true })
 keymap("c", "<C-k>", "<Down>", { noremap = true, silent = true })
-
--- Resize with arrow keys
-vim.cmd [[
-  nnoremap <silent> <Up>    :resize -2<CR>
-  nnoremap <silent> <Down>  :resize +2<CR>
-  nnoremap <silent> <Left>  :vertical resize -2<CR>
-  nnoremap <silent> <Right> :vertical resize +2<CR>
-]]
 
 -- Hop
 keymap("n", "$", "<cmd>lua require'hop'.hint_words()<cr>", {})
@@ -83,7 +78,7 @@ keymap("", "p", "<Plug>(miniyank-autoput)", {})
 keymap("", "P", "<Plug>(miniyank-autoPut)", {})
 
 if O.toggle.enabled then
-  keymap("n", "<C-s>", "<cmd>lua require'modules.toggle'.toggle()<cr>", { noremap = true })
+	keymap("n", "<C-s>", "<cmd>lua require'modules.toggle'.toggle()<cr>", { noremap = true })
 end
 
 keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true })
@@ -99,15 +94,9 @@ keymap("n", "Q", "<Nop>", { noremap = true })
 keymap("n", "ZZ", "<Nop>", { noremap = true })
 keymap("n", "ZQ", "<Nop>", { noremap = true })
 
-keymap("n", "be", "<cmd>BufferLineSortByExtension<cr>", { noremap = true, silent = true })
-keymap("n", "bd", "<cmd>BufferLineSortByDirectory<cr>", { noremap = true, silent = true })
-
 keymap("n", "j", "<cmd>lua require'modules.movement'.move_j()<cr>", { silent = true })
 keymap("n", "k", "<cmd>lua require'modules.movement'.move_k()<cr>", { silent = true })
 
-keymap("n", "w", "<cmd>call v:lua.MJp.eol_movement('w', v:count1)<cr>", { silent = true })
-keymap("n", "b", "<cmd>call v:lua.MJp.eol_movement('b', v:count1)<cr>", { silent = true })
-keymap("n", "e", "<cmd>call v:lua.MJp.eol_movement('e', v:count1)<cr>", { silent = true })
 keymap("n", "W", "<cmd>call v:lua.MJp.jp_movement('nW', v:count1)<cr><esc>", { silent = true })
 keymap("o", "W", "<cmd>call v:lua.MJp.jp_movement('oW', v:count1)<cr>", { silent = true })
 keymap("x", "W", "<cmd>call v:lua.MJp.jp_movement('xW', v:count1)<cr>", { silent = true })
