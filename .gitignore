@@ -4,3 +4,4 @@ providers/python2/
 !providers/python3/Pipfile.lock
 !providers/python2/Pipfile
 !providers/python2/Pipfile.lock
+.luacheckcache
