@@ -4,6 +4,9 @@ repo = "Shougo/dein.vim"
 # Design
 
 [[plugins]]
+repo = "rktjmp/lush.nvim"
+
+[[plugins]]
 repo = "kyazdani42/nvim-web-devicons"
 
 [[plugins]]
