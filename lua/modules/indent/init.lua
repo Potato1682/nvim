@@ -5,14 +5,16 @@ local function t(str)
 end
 
 function M.repeat_indent(indent_number)
+  local inum = indent_number
+
   if indent_number == 0 then
-    indent_number = vim.opt_local.expandtab:get() and vim.opt_local.tabstop:get() or 1
+    inum = vim.opt_local.expandtab:get() and vim.opt_local.tabstop:get() or 1
   end
 
   if not vim.bo.expandtab then
-    return t(string.rep("<Tab>", indent_number))
+    return t(string.rep("<Tab>", inum))
   else
-    return string.rep(" ", indent_number)
+    return string.rep(" ", inum)
   end
 end
 
