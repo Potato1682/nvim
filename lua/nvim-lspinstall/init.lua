@@ -3,7 +3,7 @@ local config = require("lspconfig").jdtls.document_config
 require("lspconfig/configs").jdtls = nil
 
 require("lspinstall/servers").jdtls = vim.tbl_extend("error", config, {
-	install_script = [[
+  install_script = [[
     rm -rf eclipse.jdt.ls
     git clone https://github.com/dgileadi/vscode-java-decompiler --depth 1 --recursive java-decompiler
     git clone https://github.com/eclipse/eclipse.jdt.ls.git --depth 1 --recursive
@@ -15,15 +15,15 @@ require("lspinstall/servers").jdtls = vim.tbl_extend("error", config, {
 })
 
 require("lspinstall/servers").eslintd = vim.tbl_extend("error", {}, {
-	install_script = [[
+  install_script = [[
     npm install -g eslint_d@latest
   ]],
 })
 
-local clangd_config = require("lspinstall/util").extract_config("clangd")
+local clangd_config = require("lspinstall/util").extract_config "clangd"
 
 require("lspinstall/servers").cpp = vim.tbl_extend("error", clangd_config, {
-	install_script = [[
+  install_script = [[
     os=$(uname -s | tr "[:upper:]" "[:lower:]")
 
     case $os in
@@ -48,7 +48,7 @@ require("lspinstall/servers").cpp = vim.tbl_extend("error", clangd_config, {
 })
 
 require("lspinstall/servers")["vscode-servers"] = vim.tbl_extend("error", {}, {
-	install_script = [[
+  install_script = [[
     ! test -f package.json && npm init -y --scope=lspinstall || true
     npm install vscode-langservers-extracted@latest
   ]],
