@@ -64,7 +64,7 @@
   - Database support
   - Diagnostics
     - Diagnostics report will shown on statusline, bufferline, editor and explorer
-  - Show lightbulb when code action is available
+  - Show light bulb when code action is available
   - Show signature and document on hover
   - Automatic formatting
 - Rainbow brackets
@@ -101,6 +101,14 @@
 - Line Notes
 
 ## Trouble Shooting
+
+## Can't use Merge Tool
+
+You need to add this settings to your git configuration:
+```ini
+[merge]
+conflictStyle = diff3
+```
 
 ### Can't install java test runner with node-sass error
 
