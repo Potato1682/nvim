@@ -8,9 +8,6 @@ keymap("<S-Tab>", "wilder#in_context() ? wilder#previous() : '\\<S-Tab>'")
 keymap("<C-j>", "wilder#in_context() ? wilder#next() : '\\<Tab>'")
 keymap("<C-k>", "wilder#in_context() ? wilder#next() : '\\<Tab>'")
 
-keymap("<Down>", "wilder#can_accept_completion() ? wilder#accept_completion() : '\\<Down>'")
-keymap("<Up>", "wilder#can_reject_completion() ? wilder#reject_completion() : '\\<Up>'")
-
 local set = vim.fn["wilder#set_option"]
 
 set("modes", {
