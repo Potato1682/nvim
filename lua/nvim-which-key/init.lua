@@ -1,13 +1,18 @@
-require("which-key").setup {
+local icons = require("nvim-nonicons")
+
+require("which-key").setup({
   plugins = {
     marks = true, -- shows a list of your marks on ' and `
     registers = true, -- shows your registers on " in NORMAL or <C-r> in INSERT mode
-    spelling = { enabled = true, suggestions = 20 },
+    spelling = {
+      enabled = true,
+      suggestions = 20,
+    },
   },
   icons = {
-    breadcrumb = "»", -- symbol used in the command line area that shows your active key combo
-    separator = "➜", -- symbol used between a key and it's label
-    group = "+", -- symbol prepended to a group
+    breadcrumb = icons.get("chevron-right"), -- symbol used in the command line area that shows your active key combo
+    separator = icons.get("arrow-right"), -- symbol used between a key and it's label
+    group = "", -- symbol prepended to a group
   },
   window = {
     border = "single",
@@ -20,8 +25,8 @@ require("which-key").setup {
   key_labels = { ["<space>"] = "SPC", ["<tab>"] = "TAB" },
   hidden = { "<silent>", "<cmd>", "<Cmd>", "<CR>", "call", "lua", "^:", "^ " }, -- hide mapping boilerplate
   show_help = true,
-  triggers = { "<leader>" },
-}
+  triggers = { "<leader>", "z" },
+})
 
 local options = {
   mode = "n", -- NORMAL mode
