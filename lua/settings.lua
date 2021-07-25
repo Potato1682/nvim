@@ -26,23 +26,23 @@ vim.opt.ignorecase = true
 vim.opt.smartcase = true
 vim.opt.infercase = true
 
-vim.opt.inccommand = "nosplit"
+vim.opt.inccommand = ""
 
 vim.opt.textwidth = O.textwidth
 vim.opt.colorcolumn = "+1"
 
 if O.wrap_lines then
-  vim.opt.wrap = true
-  vim.opt.breakat = vim.opt.breakat + [[、。・\ ]]
-  vim.opt.breakindent = true
-  vim.opt.breakindentopt = {
-    shift = 2,
-    min = 20,
-  }
-  vim.opt.showbreak = "↳ "
-  vim.opt.cpoptions = vim.opt.cpoptions + "n"
+	vim.opt.wrap = true
+	vim.opt.breakat = vim.opt.breakat + [[、。・\ ]]
+	vim.opt.breakindent = true
+	vim.opt.breakindentopt = {
+		shift = 2,
+		min = 20,
+	}
+	vim.opt.showbreak = "↳ "
+	vim.opt.cpoptions = vim.opt.cpoptions + "n"
 else
-  vim.opt.wrap = false
+	vim.opt.wrap = false
 end
 
 vim.opt.whichwrap = "b,s,<,>,[,],h,l"
@@ -89,7 +89,7 @@ vim.opt.signcolumn = "yes:3"
 vim.opt.virtualedit = "onemore"
 vim.opt.formatoptions = vim.opt.formatoptions + "1mMn"
 vim.opt.matchpairs = vim.opt.matchpairs
-  + "「:」,（:）,【:】,『:』,［:］,｛:｝,《:》,〈:〉,‘:’,“:”"
+	+ "「:」,（:）,【:】,『:』,［:］,｛:｝,《:》,〈:〉,‘:’,“:”"
 
 vim.opt.foldlevelstart = 4
 vim.opt.foldmethod = "expr"
@@ -99,12 +99,12 @@ vim.opt.jumpoptions = "stack"
 
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = "▏ ",
-  trail = "•",
-  eol = "↲",
-  precedes = "",
-  extends = "",
-  nbsp = "•",
+	tab = "▏ ",
+	trail = "•",
+	eol = "↲",
+	precedes = "",
+	extends = "",
+	nbsp = "•",
 }
 
 vim.opt.viewoptions = { "cursor", "folds", "curdir", "slash", "unix" }
