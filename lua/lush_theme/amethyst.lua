@@ -104,6 +104,7 @@ local theme = lush(function()
     MatchParen { bg = Normal.bg.li(15), gui = "underline" }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
     ModeMsg { fg = Normal.fg.da(50), gui = "italic" }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea { fg = Normal.fg.li(40), bg = Normal.bg.da(10) }, -- Area for messages and cmdline
+    FloatBorder { fg = MsgArea.bg, bg = MsgArea.bg },
     MsgSeparator { bg = Normal.bg.da(15) }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg { ModeMsg }, -- |more-prompt|
     NonText { fg = Normal.fg.da(60) }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
