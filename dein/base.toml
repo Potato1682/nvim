@@ -152,3 +152,7 @@ if = "luaeval('O.redmine.enabled')"
 [[plugins]]
 repo = "nvim-lua/popup.nvim"
 
+[[plugins]]
+repo = "romgrk/fzy-lua-native"
+build = "make"
+
