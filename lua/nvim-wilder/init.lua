@@ -1,5 +1,5 @@
 local function keymap(key, action)
-	vim.api.nvim_set_keymap("c", key, action, { expr = true })
+  vim.api.nvim_set_keymap("c", key, action, { expr = true })
 end
 
 keymap("<Tab>", "wilder#in_context() ? wilder#next() : '\\<Tab>'")
@@ -14,10 +14,10 @@ keymap("<Up>", "wilder#can_reject_completion() ? wilder#reject_completion() : '\
 local set = vim.fn["wilder#set_option"]
 
 set("modes", {
-	"/",
-	"?",
-	":",
-	"substitute",
+  "/",
+  "?",
+  ":",
+  "substitute",
 })
 
-vim.cmd("source " .. vim.fn.stdpath("config") .. "/lua/nvim-wilder/wild.vim")
+vim.cmd("source " .. vim.fn.stdpath "config" .. "/lua/nvim-wilder/wild.vim")
