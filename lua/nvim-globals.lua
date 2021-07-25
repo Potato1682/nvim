@@ -13,7 +13,7 @@ O = {
     scrolloff = 4,
     sidescrolloff = 16,
   },
-  colorscheme = "edge",
+  colorscheme = "amethyst",
   edge_better_performance = true, -- If true, edge shows some logs on startup
   -- @usage can be 'aura', 'neon'
   colorscheme_style = "neon",
