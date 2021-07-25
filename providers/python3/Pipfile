@@ -5,6 +5,7 @@ name = "pypi"
 
 [packages]
 neovim = "*"
+pyre2 = "*"
 
 [dev-packages]
 

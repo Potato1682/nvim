@@ -23,6 +23,7 @@ call wilder#set_option("pipeline", [
   \     "pattern": wilder#python_fuzzy_pattern({
   \       "start_at_boundary": 0,
   \     }),
+  \     "engine": "re2",
   \     "sorter": wilder#python_lexical_sorter(),
   \   }),
   \ ),
