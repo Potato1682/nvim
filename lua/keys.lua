@@ -2,10 +2,10 @@ local keymap = vim.api.nvim_set_keymap
 
 -- Set leader
 if O.leader == " " then
-	keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
-	vim.g.mapleader = " "
+  keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
+  vim.g.mapleader = " "
 else
-	vim.g.mapleader = O.leader
+  vim.g.mapleader = O.leader
 end
 
 -- no hl
@@ -33,10 +33,10 @@ keymap("n", "sv", "<cmd>vsplit<cr>", { noremap = true })
 
 -- open projects
 keymap(
-	"n",
-	"<leader>p",
-	"<cmd>lua require'telescope'.extensions.project.project {}<cr>",
-	{ noremap = true, silent = true }
+  "n",
+  "<leader>p",
+  "<cmd>lua require'telescope'.extensions.project.project {}<cr>",
+  { noremap = true, silent = true }
 )
 
 -- Better window movement
@@ -75,7 +75,7 @@ keymap("", "p", "<Plug>(miniyank-autoput)", {})
 keymap("", "P", "<Plug>(miniyank-autoPut)", {})
 
 if O.toggle.enabled then
-	keymap("n", "<C-s>", "<cmd>lua require'modules.toggle'.toggle()<cr>", { noremap = true })
+  keymap("n", "<C-s>", "<cmd>lua require'modules.toggle'.toggle()<cr>", { noremap = true })
 end
 
 keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true })
