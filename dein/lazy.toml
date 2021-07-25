@@ -329,7 +329,7 @@ hook_post_source = """
 """
 
 [[plugins]]
-repo = "Potato1682/cpsm"
+repo = "nixprime/cpsm"
 on_source = "wilder"
 build = "sh -c 'PY3=ON ./install.sh'"
 
