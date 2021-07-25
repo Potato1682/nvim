@@ -17,6 +17,10 @@ files["lua/modules/buffer/init.lua"].ignore = {
   "311"
 }
 
+files["lua/lush_theme/amethyst.lua"].ignore = {
+  "113"
+}
+
 globals = {
   "O",
   "vim"
