@@ -58,6 +58,7 @@ repo = "machakann/vim-sandwich"
 
 [[plugins]]
 repo = "nvim-treesitter/nvim-treesitter"
+rev = "0.5-compat"
 hook_post_update = """
     TSUpdate
 """
