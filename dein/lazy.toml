@@ -689,6 +689,12 @@ on_ft = [
 repo = "lilydjwg/vim-systemd-syntax"
 on_ft = "systemd"
 
+# Sway and i3
+
+[[plugins]]
+repo = "mboughaba/i3config.vim"
+on_ft = "i3config"
+
 # Colors
 
 [[plugins]]
