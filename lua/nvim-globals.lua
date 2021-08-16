@@ -1,6 +1,7 @@
 O = {
   author = "", -- REQUIRED
   leader = " ",
+  localleader = ",",
   japanese = false,
   toggle = {
     enabled = true,

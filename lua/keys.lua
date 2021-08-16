@@ -2,11 +2,13 @@ local keymap = vim.api.nvim_set_keymap
 
 -- Set leader
 if O.leader == " " then
-  keymap("n", "<Space>", "<NOP>", { noremap = true, silent = true })
+  keymap("n", "<Space>", "", { noremap = true, silent = true })
   vim.g.mapleader = " "
 else
   vim.g.mapleader = O.leader
 end
+
+vim.g.maplocalleader = O.localleader
 
 -- no hl
 keymap("n", "<Leader>h", ":let @/=''<CR>", { noremap = true, silent = true })
