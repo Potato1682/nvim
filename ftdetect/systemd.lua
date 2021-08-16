@@ -14,7 +14,6 @@ local commands = {
     { "BufNewFile,BufRead", "*.link", "setfiletype systemd" },
     { "BufNewFile,BufRead", "*.netdev", "setfiletype systemd" },
     { "BufNewFile,BufRead", "*.network", "setfiletype systemd" },
-    { "BufNewFile,BufRead", "/etc/systemd/*.conf", "setfiletype config" },
   },
 }
 
