@@ -667,6 +667,10 @@ on_ft = "rust"
 repo = "mfussenegger/nvim-dap-python"
 on_lua = "dap-python"
 
+[[plugins]]
+repo = "raimon49/requirements.txt.vim"
+on_ft = "requirements"
+
 # Log
 
 [[plugins]]
