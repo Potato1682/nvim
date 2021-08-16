@@ -510,6 +510,15 @@ hook_post_source = """
     lua require("toggleterm").setup({})
 """
 
+# Package management
+
+[[plugins]]
+repo = "vuki656/package-info.nvim"
+on_ft = "json"
+hook_post_source = """
+    lua require("nvim-package-info")
+"""
+
 # Todos
 
 [[plugins]]
