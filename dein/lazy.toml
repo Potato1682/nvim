@@ -683,6 +683,12 @@ on_ft = [
     "tsv"
 ]
 
+# Systemd
+
+[[plugins]]
+repo = "lilydjwg/vim-systemd-syntax"
+on_ft = "systemd"
+
 # Colors
 
 [[plugins]]
