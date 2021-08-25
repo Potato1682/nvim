@@ -11,22 +11,22 @@ end
 vim.g.maplocalleader = O.localleader
 
 -- no hl
-keymap("n", "<Leader>h", ":let @/=''<CR>", { noremap = true, silent = true })
+keymap("n", "<Leader>h", "<cmd>let @/=''<cr>", { noremap = true, silent = true })
 
 -- explorer
-keymap("n", "<Leader>e", ":NvimTreeToggle<CR>", { noremap = true, silent = true })
+keymap("n", "<Leader>e", "<cmd>NvimTreeToggle<cr>", { noremap = true, silent = true })
 
 -- telescope
-keymap("n", "<Leader>f", ":Telescope find_files<CR>", { noremap = true, silent = true })
+keymap("n", "<Leader>f", "<cmd>Telescope find_files<cr>", { noremap = true, silent = true })
 
 -- dashboard
-keymap("n", "<Leader>;", ":Dashboard<CR>", { noremap = true, silent = true })
+keymap("n", "<Leader>;", "<cmd>Dashboard<cr>", { noremap = true, silent = true })
 
 -- close buffer
-keymap("n", "<leader>q", ":lua require'modules.buffer'.delete_buffer()<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>q", "<cmd>lua require'modules.buffer'.delete_buffer()<cr>", { noremap = true, silent = true })
 
 -- generate documents
-keymap("n", "<leader>*", ":DogeGenerate<CR>", { noremap = true, silent = true })
+keymap("n", "<leader>*", "<cmd>DogeGenerate<cr>", { noremap = true, silent = true })
 
 -- split
 keymap("n", "s", "", { noremap = true })
@@ -79,9 +79,6 @@ keymap("", "P", "<Plug>(miniyank-autoPut)", {})
 if O.toggle.enabled then
   keymap("n", "<C-s>", "<cmd>lua require'modules.toggle'.toggle()<cr>", { noremap = true })
 end
-
-keymap("n", "<leader>la", "<cmd>lua vim.lsp.buf.code_action()<cr>", { noremap = true })
-keymap("x", "<leader>la", "<cmd>lua vim.lsp.buf.range_code_action()<cr>", { noremap = true })
 
 keymap("n", "gR", "<cmd>AnyJump<cr>", { noremap = true })
 keymap("x", "gR", "<cmd>AnyJumpVisual<cr>", { noremap = true })
