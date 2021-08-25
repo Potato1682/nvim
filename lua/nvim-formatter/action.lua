@@ -22,8 +22,6 @@ function M.format(range, line1, line2, bang, bufnr)
   if not lsp_formatted then
     if range then
       vim.cmd(line1 .. "," .. line2 .. "Neoformat")
-    elseif bang then
-      vim.cmd [[ Neoformat! ]]
     else
       vim.cmd [[ Neoformat ]]
     end
