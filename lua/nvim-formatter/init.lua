@@ -166,6 +166,7 @@ end
 vim.g.neoformat_basic_format_retab = 1
 vim.g.neoformat_basic_format_trim = 1
 vim.g.neoformat_only_msg_on_error = 1
+vim.g.neoformat_try_formatprg = 1
 
 local prettier_config = {
   exe = prettier_bin,
@@ -193,10 +194,8 @@ vim.g.neoformat_less_prettier = prettier_config
 
 vim.g.neoformat_lua_stylua = {
   exe = lua_bin,
-  args = {
-    "-",
-  },
-  stdin = 1,
+  args = {},
+  replace = 1
 }
 
 vim.g.neoformat_markdown_prettier = prettier_config
