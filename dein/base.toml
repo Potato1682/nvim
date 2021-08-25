@@ -143,6 +143,11 @@ hook_add = """
     let g:bakaup_auto_backup = 1
 """
 
+# Clipboard
+
+[[plugins]]
+repo = "kevinhwang91/nvim-hclipboard"
+
 # Projects
 
 [[plugins]]

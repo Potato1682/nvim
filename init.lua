@@ -43,6 +43,7 @@ require "keys"
 require "providers"
 require "commands"
 require "nvim-undotree"
+require "nvim-clipboard"
 require "nvim-projects"
 
 require "lsp"
