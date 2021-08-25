@@ -54,9 +54,21 @@ let s:highlighter = wilder#python_cpsm_highlighter({
 \   "highlight_mode": "detailed"
 \ })
 
+let s:scale = ['#ec6449', '#f3784c', '#f88e53', '#fba35e', '#fdb76b',
+\              '#fdca79', '#feda89', '#fee89a', '#fdf2a8', '#fbf8b0',
+\              '#f5faad', '#ebf7a6', '#ddf1a0', '#ccea9f', '#b7e2a1',
+\              '#a0d9a3', '#89cfa5', '#72c3a7', '#5cb3ac', '#4ba0b1']
+
+let s:gradient = map(copy(s:scale), { i, fg -> wilder#make_hl(
+\  "WilderPopupmenuAccent" . i, "Pmenu", [ {}, {}, { "foreground": fg, "bold": 0 }]
+\ )})
+
 call wilder#set_option("renderer", wilder#renderer_mux({
   \ ":": wilder#popupmenu_renderer({
-  \   "highlighter": s:highlighter,
+  \   "highlights": {
+  \     "gradient": s:gradient
+  \   },
+  \   "highlighter": wilder#highlighter_with_gradient([ s:highlighter ]),
   \   "winblend": 17,
   \   "ellipsis": "…",
   \   "left": [

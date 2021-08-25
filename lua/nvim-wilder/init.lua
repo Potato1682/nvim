@@ -2,19 +2,20 @@ local function keymap(key, action)
   vim.api.nvim_set_keymap("c", key, action, { expr = true })
 end
 
-keymap("<Tab>", "wilder#in_context() ? wilder#next() : '\\<Tab>'")
-keymap("<S-Tab>", "wilder#in_context() ? wilder#previous() : '\\<S-Tab>'")
+vim.fn["wilder#setup"] {
+  modes = {
+    "/",
+    "?",
+    ":",
+    "substitute"
+  },
+  next_key = "<Tab>",
+  previous_key = "<S-Tab>",
+  accept_key = "<Down>",
+  reject_key = "<Up>"
+}
 
 keymap("<C-j>", "wilder#in_context() ? wilder#next() : '\\<Tab>'")
 keymap("<C-k>", "wilder#in_context() ? wilder#next() : '\\<Tab>'")
-
-local set = vim.fn["wilder#set_option"]
-
-set("modes", {
-  "/",
-  "?",
-  ":",
-  "substitute",
-})
 
 vim.cmd("source " .. vim.fn.stdpath "config" .. "/lua/nvim-wilder/wild.vim")
