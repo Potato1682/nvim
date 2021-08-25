@@ -33,6 +33,8 @@ function M.move_j()
 
   if step ~= 1 then
     vim.opt_local.relativenumber = false
+    vim.opt_local.cursorline = false
+    vim.opt_local.cursorcolumn = false
 
     if step == 10 then
       command = "normal! " .. step .. "j"
