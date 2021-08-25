@@ -21,6 +21,7 @@ local colors = {
 }
 
 local icons = require "nvim-nonicons"
+local gps = require "nvim-gps"
 
 gls.left[1] = {
   ViMode = {
@@ -125,11 +126,13 @@ gls.left[8] = {
 }
 
 gls.left[9] = {
-  Diagnostics = {
+  Breadcrumb = {
     provider = function()
-      return require("lsp-status").status()
+      return gps.get_location()
     end,
-    condition = condition.hide_in_width and condition.check_active_lsp,
+    condition = function()
+      return gps.is_available()
+    end,
     separator = " ",
     highlight = { colors.blue, colors.bg },
     separator_highlight = { "NONE", colors.bg },

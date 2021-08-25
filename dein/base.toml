@@ -35,10 +35,6 @@ repo = "kabouzeid/nvim-lspinstall"
 depends = "lspconfig"
 
 [[plugins]]
-repo = "nvim-lua/lsp-status.nvim"
-depends = "lspconfig"
-
-[[plugins]]
 repo = "RishabhRD/nvim-lsputils"
 depends = "lspconfig"
 
@@ -69,7 +65,8 @@ depends = [
     "treesitter-textobjects",
     "crazy-node-movement",
     "context-vt",
-    "nvim-ts-highlightparams",
+    "ts-highlightparams",
+    "gps",
     "spellsitter"
 ]
 merged = 0
@@ -92,6 +89,9 @@ repo = "haringsrob/nvim_context_vt"
 
 [[plugins]]
 repo = "rohit-px2/nvim-ts-highlightparams"
+
+[[plugins]]
+repo = "SmiteshP/nvim-gps"
 
 # Tags
 

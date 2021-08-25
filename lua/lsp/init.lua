@@ -18,57 +18,6 @@ vim.cmd "command! -nargs=0 LspVirtualTextToggle lua require'lsp.virtual-text'.to
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { focusable = false })
 
-local status = require "lsp-status"
-
-status.register_progress()
-status.config {
-  diagnostics = false,
-  status_symbol = "  ",
-  select_symbol = function(cursor_pos, symbol)
-    if symbol.valueRange then
-      local value_range = {
-        ["start"] = {
-          character = 0,
-          line = vim.fn.byte2line(symbol.valueRange[1]),
-        },
-        ["end"] = {
-          character = 0,
-          line = vim.fn.byte2line(symbol.valueRange[2]),
-        },
-      }
-
-      return require("lsp-status.util").in_range(cursor_pos, value_range)
-    end
-  end,
-  kind_labels = {
-    Text = " ",
-    Method = " ",
-    Function = " ",
-    Constructor = " ",
-    Field = " ",
-    Variable = "[]",
-    Class = " ",
-    Interface = " ",
-    Module = "{} ",
-    Property = " ",
-    Unit = " ",
-    Value = " ",
-    Enum = " ",
-    Keyword = " ",
-    Snippet = " ",
-    Color = " ",
-    File = " ",
-    Reference = " ",
-    Folder = " ",
-    EnumMember = " ",
-    Constant = " ",
-    Struct = " ",
-    Event = " ",
-    Operator = " ",
-    TypeParameter = " ",
-  },
-}
-
 vim.lsp.protocol.CompletionItemKind = {
   " (Text)",
   " (Method)",
@@ -246,7 +195,6 @@ function lsp_config.common_on_attach(client, bufnr)
   -- fix 'command not found' error
   vim.cmd [[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]]
   require("illuminate").on_attach(client, bufnr)
-  require("lsp-status").on_attach(client, bufnr)
   require("lsp_signature").on_attach {
     bind = true,
     hint_prefix = "",

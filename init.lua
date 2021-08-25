@@ -46,6 +46,7 @@ require "nvim-undotree"
 require "nvim-clipboard"
 require "nvim-projects"
 require "nvim-jupyter"
+require "nvim-breadcrumb"
 
 require "lsp"
 require "lsp.virtual-text"
