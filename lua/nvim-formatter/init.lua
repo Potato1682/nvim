@@ -16,11 +16,11 @@ if vim.fn.filereadable(lua_bin) == 0 then
           platform="mac"
           ;;
       esac
-      curl - Lo stylua.zip $(\
-        curl - s "https://api.github.com/repos/JohnnyMorganz/StyLua/releases/latest" \
+      curl -Lo stylua.zip $(\
+        curl -s "https://api.github.com/repos/JohnnyMorganz/StyLua/releases/latest" \
         | jq . \
-        | grep - E "https?://.*\.zip" \
-        | cut - d\" -f4 \
+        | grep -E "https?://.*\.zip" \
+        | cut -d\" -f4 \
         | grep "$platform" \
       )
       unzip stylua.zip

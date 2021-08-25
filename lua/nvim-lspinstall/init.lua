@@ -34,13 +34,15 @@ require("lspinstall/servers").cpp = vim.tbl_extend("error", clangd_config, {
         platform="mac"
         ;;
     esac
-    curl - Lo clangd.zip $(\
-      curl - s "https://api.github.com/repos/clangd/clangd/releases/latest" \
+
+    curl -Lo clangd.zip $(\
+      curl -s "https://api.github.com/repos/clangd/clangd/releases/latest" \
       | jq . \
-      | grep - E "https?://.*\.zip"
-      | cut - d\" -f4 \
+      | grep -E "https?://.*\.zip"
+      | cut -d\" -f4 \
       | grep "clangd-$platform" \
     )
+
     unzip clangd.zip
     rm clangd.zip
     mv clangd_* clangd
