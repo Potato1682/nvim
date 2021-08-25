@@ -159,6 +159,9 @@ function lsp_config.common_on_attach(client, bufnr)
 
   if cap.find_references then
     command("LspReferences", "lua vim.lsp.buf.references()", { buffer = true })
+
+    buf_keymap("n", "<a-n>", "<cmd>lua require'illuminate'.next_reference({ wrap = true })", { noremap = true })
+    buf_keymap("n", "<a-p>", "<cmd>lua require'illuminate'.next_reference({ wrap = true, reverse = true })", { noremap = true })
   end
 
   if cap.document_symbol then
