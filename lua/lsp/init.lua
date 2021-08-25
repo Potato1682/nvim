@@ -217,13 +217,13 @@ function lsp_config.common_on_attach(client, bufnr)
   command("LspDiagNext", "lua vim.lsp.diagnostic.goto_next()", { buffer = true })
   command("LspDiagnosticPrev", "lua vim.lsp.diagnostic.goto_prev()", { buffer = true })
   command("LspDiagPrev", "lua vim.lsp.diagnostic.goto_prev()", { buffer = true })
-  command("LspDiagnosticsLine", "lua vim.lsp.diagnostic.show_line_diagnostics()", {})
+  command("LspDiagnosticsLine", "lua vim.lsp.diagnostic.show_line_diagnostics()", { buffer = true })
   command("LspDiagLine", "lua vim.lsp.diagnostic.show_line_diagnostics()", { buffer = true })
   buf_keymap("n", "gla", "<cmd>LspDiagnosticsLine<cr>")
   buf_keymap("n", "[a", "<cmd>LspDiagnosticPrev<cr>")
   buf_keymap("n", "]a", "<cmd>LspDiagnosticNext<cr>")
 
-  command("LspLog", "execute '<mods> pedit +$' v:lua.vim.lsp.get_log_path()")
+  command("LspLog", "execute '<mods> pedit +$' v:lua.vim.lsp.get_log_path()", {})
 
   if cap.hover then
     command("LspHover", "lua vim.lsp.buf.hover()", { buffer = true })
