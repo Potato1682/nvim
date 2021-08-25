@@ -1,4 +1,5 @@
 local actions = require "telescope.actions"
+
 require("telescope").setup {
   defaults = {
     find_command = { "rg", "--no-heading", "--with-filename", "--line-number", "--column", "--smart-case" },
@@ -6,9 +7,7 @@ require("telescope").setup {
     selection_caret = " ❯ ",
     entry_prefix = "  ",
     initial_mode = "insert",
-    file_sorter = require("telescope.sorters").get_fuzzy_file,
     file_ignore_patterns = {},
-    generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
     shorten = true,
     winblend = 0,
     border = {},
@@ -46,6 +45,6 @@ require("telescope").setup {
 
 require("telescope").load_extension "smart_history"
 require("telescope").load_extension "media_files"
-require("telescope").load_extension "project"
+require("telescope").load_extension "projects"
 require("telescope").load_extension "fzy_native"
 require("telescope").load_extension "dap"

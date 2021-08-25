@@ -37,7 +37,7 @@ keymap("n", "sv", "<cmd>vsplit<cr>", { noremap = true })
 keymap(
   "n",
   "<leader>p",
-  "<cmd>lua require'telescope'.extensions.project.project {}<cr>",
+  "<cmd>lua require'telescope'.extensions.projects.projects {}<cr>",
   { noremap = true, silent = true }
 )
 

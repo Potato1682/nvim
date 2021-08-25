@@ -106,9 +106,6 @@ repo = "nvim-telescope/telescope-media-files.nvim"
 repo = "nvim-telescope/telescope-fzy-native.nvim"
 
 [[plugins]]
-repo = "nvim-telescope/telescope-project.nvim"
-
-[[plugins]]
 repo = "nvim-telescope/telescope-dap.nvim"
 
 [[plugins]]
@@ -135,6 +132,11 @@ hook_add = """
     let g:bakaup_backup_dir = expand(stdpath("data") . "/backup")
     let g:bakaup_auto_backup = 1
 """
+
+# Projects
+
+[[plugins]]
+repo = "ahmedkhalf/project.nvim"
 
 # Wakatime
 

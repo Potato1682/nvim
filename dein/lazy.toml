@@ -72,10 +72,6 @@ hook_post_source = """
 repo = "jubnzv/virtual-types.nvim"
 on_lua = "virtualtypes"
 
-[[plugins]]
-repo = "ahmedkhalf/lsp-rooter.nvim"
-on_lua = "lsp-rooter"
-
 # Symbols
 
 [[plugins]]
