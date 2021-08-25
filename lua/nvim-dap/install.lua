@@ -3,9 +3,10 @@ local function install(name, dir, script)
 
   local function onExit(_, code)
     if code ~= 0 then
-      error("[dapinstall] Couldn't install " .. name .. " server!")
+      vim.notify("Could not install " .. name .. " server!", "error", { title = "dapinstall" })
     end
-    print("[dapinstall] Successfully installed " .. name .. " server!")
+
+    vim.notify("Successfully installed " .. name .. " server!", "success", { title = "dapinstall" })
   end
 
   vim.cmd "new"

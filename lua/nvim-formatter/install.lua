@@ -3,9 +3,10 @@ local function install(name, dir, script)
 
   local function onExit(_, code)
     if code ~= 0 then
-      error("[fmtinstall] Couldn't install " .. name .. "!")
+      vim.notify("Could not install " .. name .. "!", "error", { title = "fmtinstall" })
     end
-    print("[fmtinstall] Successfully installed " .. name .. "!")
+
+    vim.notify("Successfully installed " .. name .. "!", "success", { title = "fmtinstall" })
   end
 
   vim.cmd "new"
