@@ -52,7 +52,7 @@ local japanese_mappings = {
   ["w"] = { "<cmd>lua require'dapui'.toggle()<cr>", "デバッグ インターフェース" },
   ["x"] = { "<cmd>TroubleToggle<cr>", "エラー一覧" },
   ["u"] = { "<cmd>UndotreeToggle<cr>", "ナビゲーター" },
-  ["y"] = { "<cmd>DBUIToggle<cr>", "データベース エクスプローラー" },
+  ["j"] = { "<cmd>DBUIToggle<cr>", "データベース エクスプローラー" },
   ["m"] = { "<Plug>MarkdownPreviewToggle", "Markdownのプレビューを切り替え" },
   c = {
     name = "+コンテナ",
@@ -153,6 +153,12 @@ local japanese_mappings = {
     t = { "<cmd>UltestSummary<cr>", "テスト エクスプローラー" },
     s = { "<cmd>UltestStop<cr>", "動作中のテストを停止" },
   },
+  y = {
+    name = "+Treesitter",
+
+    s = "@parameter.innerをスワップ",
+    S = "@parameter.outerをスワップ",
+  },
 
   -- extras
   z = {
@@ -176,7 +182,7 @@ local mappings = {
   ["w"] = { "<cmd>lua require'dapui'.toggle()<cr>", "Debug UI" },
   ["x"] = { "<cmd>TroubleToggle<cr>", "Error List" },
   ["u"] = { "<cmd>UndotreeToggle<cr>", "Undo Tree" },
-  ["y"] = { "<cmd>DBUIToggle<cr>", "Database UI" },
+  ["j"] = { "<cmd>DBUIToggle<cr>", "Database UI" },
   ["m"] = { "<Plug>MarkdownPreviewToggle", "Toggle markdown preview" },
   c = {
     name = "+Containers",
@@ -276,6 +282,12 @@ local mappings = {
     D = { "<cmd>UltestDebugNearest<cr>", "Debug Nearest Position" },
     t = { "<cmd>UltestSummary<cr>", "Test Explorer" },
     s = { "<cmd>UltestStop<cr>", "Stop Running Test Jobs" },
+  },
+  y = {
+    name = "+Treesitter",
+
+    s = "swap @parameter.inner",
+    S = "swap @parameter.outer",
   },
 
   -- extras

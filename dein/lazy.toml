@@ -338,16 +338,6 @@ hook_post_source = """
     cnoremap <expr> <C-f>    ambicmd#expand("\\<Right>")
 """
 
-# Treesitter
-
-[[plugins]]
-repo = "mizlan/iswap.nvim"
-on_cmd = "ISwap"
-on_source = "treesitter"
-hook_post_source = """
-    lua require("nvim-swap")
-"""
-
 # Search
 
 [[plugins]]

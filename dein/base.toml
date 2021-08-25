@@ -66,12 +66,17 @@ depends = [
     "ts-rainbow",
     "ts-autotag",
     "treesitter-textsubjects",
+    "treesitter-textobjects",
     "crazy-node-movement",
     "context-vt",
     "nvim-ts-highlightparams",
     "spellsitter"
 ]
 merged = 0
+
+[[plugins]]
+repo = "nvim-treesitter/nvim-treesitter-textobjects"
+rev = "0.5-compat"
 
 [[plugins]]
 repo = "p00f/nvim-ts-rainbow"

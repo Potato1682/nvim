@@ -28,6 +28,17 @@ require("nvim-treesitter.configs").setup {
       [";"] = "textsubjects-big",
     },
   },
+  textobjects = {
+    swap = {
+      enable = true,
+      swap_next = {
+        ["<leader>ys"] = "@parameter.inner",
+      },
+      swap_previous = {
+        ["<leader>yS"] = "@parameter.outer",
+      }
+    }
+  },
   matchup = { enable = true },
 }
 
