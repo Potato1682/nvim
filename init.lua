@@ -34,7 +34,7 @@ if vim.fn.executable "ctags" or vim.fn.executable "gtags" then
 end
 
 if vim.fn.has "gui" then
-  require "gui".init()
+  require("gui").init()
 end
 
 require "modules.japanese"
