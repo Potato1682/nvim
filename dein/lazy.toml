@@ -549,7 +549,7 @@ hook_post_source = """
 repo = "dstein64/vim-startuptime"
 on_cmd = "StartupTime"
 hook_source = """
-    let g:startuptime_tries = 10
+    let g:startuptime_tries = 20
 """
 
 # Lua
