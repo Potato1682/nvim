@@ -1,4 +1,3 @@
-" Fold expressions {{{1
 function! StackedMarkdownFolds()
   let thisline = getline(v:lnum)
   let prevline = getline(v:lnum - 1)
@@ -37,7 +36,6 @@ function! NestedMarkdownFolds()
   endif
 endfunction
 
-" Helpers {{{1
 function! s:SID()
   return matchstr(expand('<sfile>'), '<SNR>\d\+_')
 endfunction
@@ -130,18 +128,20 @@ function! s:FoldText()
   return indent.spaces_1.title.spaces_2.linecount
 endfunction
 
-" API {{{1
 function! ToggleMarkdownFoldexpr()
   if &l:foldexpr ==# 'StackedMarkdownFolds()'
     setlocal foldexpr=NestedMarkdownFolds()
+
+    lua vim.notify("Current markdown fold expression is nested", "info", { title = "markdown" })
   else
     setlocal foldexpr=StackedMarkdownFolds()
+
+    lua vim.notify("Current markdown fold expression is stacked", "info", { title = "markdown" })
   endif
 endfunction
 
-command! -buffer FoldToggle call ToggleMarkdownFoldexpr()
+command! -buffer MarkdownFoldModeToggle call ToggleMarkdownFoldexpr()
 
-" Setup {{{1
 if !exists('g:markdown_fold_style')
   let g:markdown_fold_style = 'stacked'
 endif
@@ -161,11 +161,9 @@ let &l:foldexpr =
   \ ? 'NestedMarkdownFolds()'
   \ : 'StackedMarkdownFolds()'
 
-" Teardown {{{1
 if !exists("b:undo_ftplugin") | let b:undo_ftplugin = '' | endif
 
 let b:undo_ftplugin .= '
   \ | setlocal foldmethod< foldtext< foldexpr<
   \ | delcommand FoldToggle
   \ '
-" vim:set fdm=marker:
