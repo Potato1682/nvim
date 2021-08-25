@@ -9,7 +9,7 @@ local commands = {
     { "BufNewFile,BufRead", "*.swayconfig", "setfiletype i3config" },
     { "BufNewFile,BufRead", "*.sway.config", "setfiletype i3config" },
     { "BufNewFile,BufRead", "sway.config", "setfiletype i3config" },
-  }
+  },
 }
 
 require("events").nvim_create_augroups(commands)

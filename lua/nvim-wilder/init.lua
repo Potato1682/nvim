@@ -7,12 +7,12 @@ vim.fn["wilder#setup"] {
     "/",
     "?",
     ":",
-    "substitute"
+    "substitute",
   },
   next_key = "<Tab>",
   previous_key = "<S-Tab>",
   accept_key = "<Down>",
-  reject_key = "<Up>"
+  reject_key = "<Up>",
 }
 
 keymap("<C-j>", "wilder#in_context() ? wilder#next() : '\\<Tab>'")

@@ -7,7 +7,7 @@ local commands = {
     { "BufNewFile,BufRead", "requires/tests.txt", "setfiletype requirements" },
     { "BufNewFile,BufRead", "requirements.in", "setfiletype requirements" },
     { "BufNewFile,BufRead", "*.pip", "setfiletype requirements" },
-  }
+  },
 }
 
 require("events").nvim_create_augroups(commands)

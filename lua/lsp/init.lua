@@ -120,11 +120,7 @@ function lsp_config.common_on_attach(client, bufnr)
   end
 
   if cap.goto_definition then
-    command(
-      "LspPreviewDefinition",
-      "lua require'goto-preview'.goto_preview_definition()",
-      { buffer = true }
-    )
+    command("LspPreviewDefinition", "lua require'goto-preview'.goto_preview_definition()", { buffer = true })
     buf_keymap("n", "gd", "<cmd>LspPreviewDefinition<cr>")
 
     command("LspDefinition", "lua vim.lsp.buf.definition()", { buffer = true })
@@ -136,11 +132,7 @@ function lsp_config.common_on_attach(client, bufnr)
   end
 
   if cap.implementation then
-    command(
-      "LspPreviewImplementation",
-      "lua require'goto-preview'.goto_preview_implementation()",
-      { buffer = true }
-    )
+    command("LspPreviewImplementation", "lua require'goto-preview'.goto_preview_implementation()", { buffer = true })
     buf_keymap("n", "gi", "<cmd>LspPreviewImplementation<cr>")
 
     command("LspImplementation", "lua vim.lsp.buf.implementation()", { buffer = true })
@@ -148,11 +140,19 @@ function lsp_config.common_on_attach(client, bufnr)
   end
 
   if cap.code_action then
-    command("LspCodeAction", "lua require'lsp.code_action'.code_action(<range> ~= 0, <line1>, <line2>)", { buffer = true })
+    command(
+      "LspCodeAction",
+      "lua require'lsp.code_action'.code_action(<range> ~= 0, <line1>, <line2>)",
+      { buffer = true }
+    )
   end
 
   if cap.rename then
-    command("LspRename", "lua require'lsp.rename'.rename(<f-args>)", { buffer = true, nargs = "?", complete = "custom,v:lua.require'lsp.completion'.rename" })
+    command(
+      "LspRename",
+      "lua require'lsp.rename'.rename(<f-args>)",
+      { buffer = true, nargs = "?", complete = "custom,v:lua.require'lsp.completion'.rename" }
+    )
     buf_keymap("n", "gr", "<cmd>LspRename<cr>")
   end
 
@@ -160,7 +160,12 @@ function lsp_config.common_on_attach(client, bufnr)
     command("LspReferences", "lua vim.lsp.buf.references()", { buffer = true })
 
     buf_keymap("n", "<a-n>", "<cmd>lua require'illuminate'.next_reference({ wrap = true })", { noremap = true })
-    buf_keymap("n", "<a-p>", "<cmd>lua require'illuminate'.next_reference({ wrap = true, reverse = true })", { noremap = true })
+    buf_keymap(
+      "n",
+      "<a-p>",
+      "<cmd>lua require'illuminate'.next_reference({ wrap = true, reverse = true })",
+      { noremap = true }
+    )
   end
 
   if cap.document_symbol then
@@ -168,7 +173,11 @@ function lsp_config.common_on_attach(client, bufnr)
   end
 
   if cap.workspace_symbol then
-    command("LspWorkspaceSymbol", "lua vim.lsp.buf.workspace_symbol(<f-args>)", { buffer = true, nargs = "?", complete = "custom,v:lua.require'lsp.completion'.workspace_symbol" })
+    command(
+      "LspWorkspaceSymbol",
+      "lua vim.lsp.buf.workspace_symbol(<f-args>)",
+      { buffer = true, nargs = "?", complete = "custom,v:lua.require'lsp.completion'.workspace_symbol" }
+    )
   end
 
   if cap.call_hierarchy then
@@ -179,17 +188,29 @@ function lsp_config.common_on_attach(client, bufnr)
   if cap.code_lens then
     augroup {
       code_lens = {
-        { "CursorMoved,CursorMovedI", "<buffer>", "lua vim.lsp.codelens.refresh()" }
-      }
+        { "CursorMoved,CursorMovedI", "<buffer>", "lua vim.lsp.codelens.refresh()" },
+      },
     }
     command("LspCodeLensRun", "lua vim.lsp.codelens.run()", { buffer = true })
   end
 
-  command("LspWorkspaceFolders", "lua print(table.concat(vim.lsp.buf.list_workspace_folders(), '\\n'))", { buffer = true })
+  command(
+    "LspWorkspaceFolders",
+    "lua print(table.concat(vim.lsp.buf.list_workspace_folders(), '\\n'))",
+    { buffer = true }
+  )
 
   if cap.workspace_folder_properties.supported then
-    command("LspAddWorkspaceFolder", "lua vim.lsp.buf.add_workspace_folder(<q-args> ~= '' and vim.fn.fnamemodify(<q-args>, ':p'))", { buffer = true, nargs = "?", complete = "dir" })
-    command("LspRemoveWorkspaceFolder", "lua vim.lsp.buf.remove_workspace_folder(<f-args>)", { buffer = true, nargs = "?", complete = "custom,v:lua.vim.lsp.buf.list_workspace_folders" })
+    command(
+      "LspAddWorkspaceFolder",
+      "lua vim.lsp.buf.add_workspace_folder(<q-args> ~= '' and vim.fn.fnamemodify(<q-args>, ':p'))",
+      { buffer = true, nargs = "?", complete = "dir" }
+    )
+    command(
+      "LspRemoveWorkspaceFolder",
+      "lua vim.lsp.buf.remove_workspace_folder(<f-args>)",
+      { buffer = true, nargs = "?", complete = "custom,v:lua.vim.lsp.buf.list_workspace_folders" }
+    )
   end
 
   command("LspDiagnosticsNext", "lua vim.lsp.diagnostic.goto_next()", { buffer = true })
@@ -211,7 +232,7 @@ function lsp_config.common_on_attach(client, bufnr)
     augroup {
       lsphover = {
         { "CursorHold,CursorHoldI", "<buffer>", "silent! lua vim.lsp.buf.hover()" },
-      }
+      },
     }
   end
 
