@@ -116,6 +116,11 @@ repo = "nvim-telescope/telescope-dap.nvim"
 [[plugins]]
 repo = "nvim-telescope/telescope-smart-history.nvim"
 
+# Notify (vim.notify)
+
+[[plugins]]
+repo = "rcarriga/nvim-notify"
+
 # Template files
 
 [[plugins]]
