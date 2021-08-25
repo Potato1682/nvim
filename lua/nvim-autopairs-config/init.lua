@@ -18,7 +18,7 @@ npairs.add_rules {
     :with_pair(function(_)
       return false
     end)
-    :with_move(function(_)
+    :with_move(function(options)
       return options.prev_char:match ".%)" ~= nil
     end)
     :use_key ")",
@@ -26,7 +26,7 @@ npairs.add_rules {
     :with_pair(function(_)
       return false
     end)
-    :with_move(function(_)
+    :with_move(function(options)
       return options.prev_char:match ".%}" ~= nil
     end)
     :use_key "}",
@@ -35,7 +35,7 @@ npairs.add_rules {
     :with_pair(function(_)
       return false
     end)
-    :with_move(function(_)
+    :with_move(function(options)
       return options.prev_char:match ".%]" ~= nil
     end)
     :use_key "}",
