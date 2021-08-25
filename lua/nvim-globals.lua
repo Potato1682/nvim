@@ -14,6 +14,10 @@ O = {
     scrolloff = 4,
     sidescrolloff = 16,
   },
+  cursor = {
+    vfx = "pixeldust", -- Neovide only
+  },
+  font = "JetBrains Mono NF",
   textwidth = 120,
   colorscheme = "amethyst",
   edge_better_performance = true, -- If true, edge shows some logs on startup
@@ -39,7 +43,7 @@ O = {
     enabled = false,
   },
   yadm = {
-    enabled = vim.fn.executable("yadm") == 1
+    enabled = vim.fn.executable "yadm" == 1,
   },
   -- Add ignored commands in history
   ignore_commands = {},
