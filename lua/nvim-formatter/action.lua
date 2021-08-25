@@ -4,7 +4,7 @@ function M.format(range, line1, line2, bang, bufnr)
   local lsp_formatted = false
 
   for _, client in ipairs(vim.lsp.buf_get_clients(bufnr or 0)) do
-    local cap = client.capabilities
+    local cap = client.resolved_capabilities
 
     if cap.range_formatting or cap.formatting then
       if range then
