@@ -60,6 +60,7 @@ local japanese_mappings = {
     c = { "<cmd>DockerToolsToggle<cr>", "Docker ツール" },
     a = { "<cmd>AttachToContainer<cr>", "接続" },
     b = { "<cmd>BuildImage<cr>", "イメージをビルド" },
+    s = { "<cmd>StartImage<cr>", "devcontainers.jsonからイメージを起動" },
   },
   d = {
     name = "+診断",
@@ -190,6 +191,7 @@ local mappings = {
     c = { "<cmd>DockerToolsToggle<cr>", "Docker Tools" },
     a = { "<cmd>AttachToContainer<cr>", "Connect" },
     b = { "<cmd>BuildImage<cr>", "Build Image" },
+    s = { "<cmd>StartImage<cr>", "Start Image from devcontainers.json" },
   },
   d = {
     name = "+Diagnostics",
