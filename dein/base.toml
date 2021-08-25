@@ -165,6 +165,11 @@ if = "luaeval('O.wakatime.enabled')"
 repo = "toritori0318/vim-redmine"
 if = "luaeval('O.redmine.enabled')"
 
+# Jupyter
+
+[[plugins]]
+repo = "ahmedkhalf/jupyter-nvim"
+
 # Lua
 
 [[plugins]]
