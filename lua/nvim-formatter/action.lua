@@ -23,7 +23,7 @@ function M.format(range, line1, line2, bang, bufnr)
     if range then
       vim.cmd(line1 .. "," .. line2 .. "Neoformat")
     else
-      vim.cmd [[ Neoformat ]]
+      vim.cmd [[ undojoin | Neoformat ]]
     end
   end
 end
