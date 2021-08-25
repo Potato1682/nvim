@@ -250,6 +250,10 @@ local theme = lush(function()
     VistaProtected { Green },
     VistaPrivate { Purple },
 
+    -- sindrets/diffview.nvim
+    DiffviewFilePanelTitle { Green },
+    DiffviewFilePanelCounter { Blue },
+
     -- netrw
     netrwDir { Green },
     netrwClassify { Green },
