@@ -5,11 +5,12 @@ local endwise = require("nvim-autopairs.ts-rule").endwise
 
 npairs.setup {
   enable_check_bracket_line = false,
+  fast_wrap = {},
 }
 
 npairs.add_rules {
   Rule(" ", " "):with_pair(function(options)
-    local pair = options.line:sub(options.col, options.col + 1)
+    local pair = options.line:sub(options.col - 1, options.col)
 
     return vim.tbl_contains({ "()", "{}", "[]" }, pair)
   end),
@@ -18,14 +19,35 @@ npairs.add_rules {
       return false
     end)
     :with_move(function(_)
-      return true
+      return options.prev_char:match ".%)" ~= nil
     end)
     :use_key ")",
+  Rule("{ ", " }")
+    :with_pair(function(_)
+      return false
+    end)
+    :with_move(function(_)
+      return options.prev_char:match ".%}" ~= nil
+    end)
+    :use_key "}",
   Rule('"""', '"""', "toml"),
-  endwise("then$", "end", "lua", "if_statement"),
-  endwise("do$", "end", "lua", "for_statement"),
-  endwise("\\)$", "end", "lua", "function_definition"),
+  Rule("[ ", " ]")
+    :with_pair(function(_)
+      return false
+    end)
+    :with_move(function(_)
+      return options.prev_char:match ".%]" ~= nil
+    end)
+    :use_key "}",
+  Rule(
+    "%(.*%)%s*%=>$",
+    " {  }",
+    { "typescript", "typescriptreact", "javascript", "javascriptreact", "typescript.tsx", "javascript.jsx" }
+  ):use_regex(true):set_end_pair_length(2),
 }
+
+npairs.add_rules(require "nvim-autopairs.rules.endwise-lua")
+npairs.add_rules(require "nvim-autopairs.rules.endwise-ruby")
 
 -- move up current line and delete old line.
 -- this function is used by backspace smart indent feature.
