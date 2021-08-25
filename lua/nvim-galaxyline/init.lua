@@ -228,6 +228,18 @@ gls.left[16] = {
 }
 
 gls.right[1] = {
+  CurrentContainer = {
+    provider = function()
+      return icons.get "container" .. " " .. vim.g.currentContainer
+    end,
+    condition = function()
+      return not not vim.g.currentContainer
+    end,
+    highlight = { "#d38aea", colors.bg }
+  }
+}
+
+gls.right[2] = {
   LineColumnIcon = {
     provider = function()
       return " "
@@ -236,7 +248,7 @@ gls.right[1] = {
   },
 }
 
-gls.right[2] = {
+gls.right[3] = {
   LineColumn = {
     provider = "LineColumn",
     icon = " ",
@@ -244,7 +256,7 @@ gls.right[2] = {
   },
 }
 
-gls.right[3] = {
+gls.right[4] = {
   IndentSize = {
     provider = function()
       if vim.opt_local.expandtab:get() then
@@ -258,7 +270,7 @@ gls.right[3] = {
   },
 }
 
-gls.right[4] = {
+gls.right[5] = {
   FileEncode = {
     provider = "FileEncode",
     separator = " ",
@@ -268,7 +280,7 @@ gls.right[4] = {
   },
 }
 
-gls.right[5] = {
+gls.right[6] = {
   FileFormat = {
     provider = "FileFormat",
     condition = condition.hide_in_width,
@@ -278,7 +290,7 @@ gls.right[5] = {
   },
 }
 
-gls.right[6] = {
+gls.right[7] = {
   FileIcon = {
     provider = "FileIcon",
     condition = condition.hide_in_width or condition.buffer_not_empty,
@@ -288,7 +300,7 @@ gls.right[6] = {
   },
 }
 
-gls.right[7] = {
+gls.right[8] = {
   FileSize = {
     provider = "FileSize",
     condition = condition.hide_in_width,
