@@ -1,5 +1,7 @@
 if O.japanese then
   require("presence"):setup {
+    auto_update = true,
+    buttons = true,
     editing_text = "%s を編集中",
     file_explorer_text = "%s を確認中",
     git_commit_text = "変更をコミット中",
@@ -9,5 +11,8 @@ if O.japanese then
     line_number_text = "行 %s | ファイル %s",
   }
 else
-  require("presence"):setup()
+  require("presence"):setup {
+    auto_update = true,
+    buttons = true,
+  }
 end
