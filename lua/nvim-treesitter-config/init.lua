@@ -29,6 +29,30 @@ require("nvim-treesitter.configs").setup {
     },
   },
   textobjects = {
+    select = {
+      enable = true,
+      lookahead = true,
+      keymaps = {
+        ["if"] = "@function.inner",
+        ["af"] = "@function.outer",
+        ["ia"] = "@parameter.inner",
+        ["aa"] = "@parameter.outer",
+        ["ic"] = "@class.inner",
+        ["ac"] = "@class.outer",
+        ["iC"] = "@comment.inner",
+        ["aC"] = "@comment.outer",
+        ["ii"] = "@conditional.inner",
+        ["ai"] = "@conditional.outer",
+        ["il"] = "@loop.inner",
+        ["al"] = "@loop.outer",
+        ["iF"] = {
+          python = "(function_definition) @function",
+          cpp = "(function_definition) @function",
+          c = "(function_definition) @function",
+          java = "(method_declaration) @function",
+        },
+      },
+    },
     swap = {
       enable = true,
       swap_next = {
@@ -36,7 +60,27 @@ require("nvim-treesitter.configs").setup {
       },
       swap_previous = {
         ["<leader>yS"] = "@parameter.outer",
-      }
+      },
+    },
+    move = {
+      enable = true,
+      set_jumps = true,
+      goto_next_start = {
+        ["]m"] = "@function.outer",
+        ["]]"] = "@class.outer",
+      },
+      goto_next_end = {
+        ["]M"] = "@function.outer",
+        ["]["] = "@class.outer",
+      },
+      goto_previous_start = {
+        ["[m"] = "@function.outer",
+        ["[["] = "@class.outer",
+      },
+      goto_previous_end = {
+        ["[M"] = "@function.outer",
+        ["[]"] = "@class.outer",
+      },
     }
   },
   matchup = { enable = true },
