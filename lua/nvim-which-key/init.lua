@@ -84,7 +84,7 @@ local japanese_mappings = {
     f = { "<cmd>lua require'dapui'.float_element()", "フィールドを確認" },
     o = { "<cmd>lua require'dap'.step_over()<cr>", "ステップ オーバー" },
     O = { "<cmd>lua require'dap'.step_out()<cr>", "ステップ アウト" },
-    r = { "<cmd>lua require'dap'.repl_open()<cr>", "Replを開く" },
+    r = { "<cmd>lua require'dap.repl'.open()<cr>", "Replを開く" },
     s = { "<cmd>lua require'dap'.run()<cr>", "開始" },
   },
   g = {
@@ -208,7 +208,7 @@ local mappings = {
     f = { "<cmd>lua require'dapui'.float_element()<cr>", "Current Elements" },
     o = { "<cmd>lua require'dap'.step_over()<cr>", "Step Over" },
     O = { "<cmd>lua require'dap'.step_out()<cr>", "Step Out" },
-    r = { "<cmd>lua require'dap'.repl_open()<cr>", "Open Repl" },
+    r = { "<cmd>lua require'dap.repl'.open()<cr>", "Open Repl" },
     s = { "<cmd>lua require'dap'.run()<cr>", "Start" },
   },
   g = {

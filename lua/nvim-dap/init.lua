@@ -4,7 +4,7 @@ vim.fn.sign_define("DapBreakpoint", { text = "🛑", texthl = "", linehl = "", n
 
 dap.defaults.fallback.terminal_win_cmd = "50vsplit new"
 
-vim.cmd [[ au FileType dap-repl lua require("dap.ext.autocompl").attach() ]]
+require"events".nvim_create_autocmd { "FileType", "dap-repl", "lua require'dap.ext.autocompl'.attach()" }
 
 vim.g.dap_virtual_text = true
 
