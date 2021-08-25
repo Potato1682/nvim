@@ -11,6 +11,18 @@ function M.define_command(name, action, option)
     option_string = option_string .. " -buffer"
   end
 
+  if option.nargs then
+    if type(option.nargs) == "number" then
+      option_string = option_string .. " -nargs=" .. tostring(option.nargs)
+    else
+      option_string = option_string .. " -nargs=" .. option.nargs
+    end
+  end
+
+  if option.complete then
+    option_string = option_string .. " -complete=" .. option.complete
+  end
+
   vim.cmd("command!" .. option_string .. " " .. name .. " " .. action)
 end
 
