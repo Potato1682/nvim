@@ -1,13 +1,14 @@
 vim.g.nvim_tree_ignore = { ".git", "node_modules", ".cache" }
+vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_indent_markers = 1
 vim.g.nvim_tree_lsp_diagnostics = 1
 vim.g.nvim_tree_auto_close = 1
 vim.g.nvim_tree_quit_on_open = O.explorer.auto_close and 1 or 0
-vim.g.nvim_tree_gitignore = 1
 vim.g.nvim_tree_git_hl = 1
 vim.g.nvim_tree_group_empty = 1
 vim.g.nvim_tree_auto_ignore_ft = { "dashboard" }
 vim.g.nvim_tree_update_cwd = 1
+vim.g.nvim_tree_respect_buf_cwd = 1
 
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
