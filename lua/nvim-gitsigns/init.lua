@@ -6,6 +6,10 @@ require("gitsigns").setup {
     topdelete = { hl = "GitSignsDelete", text = "", numhl = "GitSignsDeleteNr", linehl = "GitSignsDeleteLn" },
     changedelete = { hl = "GitSignsChange", text = "▎", numhl = "GitSignsChangeNr", linehl = "GitSignsChangeLn" },
   },
+  signcolumn = true,
+  numhl = false,
+  linehl = false,
+  word_diff = false,
   keymaps = {
     noremap = true,
     buffer = true,
@@ -26,8 +30,30 @@ require("gitsigns").setup {
     ["o ih"] = ":<C-U>lua require'gitsigns.actions'.select_hunk()<cr>",
     ["x ih"] = ":<C-U>lua require'gitsigns.actions'.select_hunk()<cr>",
   },
+  preview_config = {
+    border = "none",
+    relative = "cursor",
+    row = 0,
+    col = 1,
+  },
+  watch_index = {
+    interval = 1000,
+    follow_files = true,
+  },
+  use_internal_diff = true,
+  attach_to_untracked = true,
   current_line_blame = true,
-  current_line_blame_delay = 400,
+  current_line_blame_opts = {
+    virt_text = true,
+    virt_text_pos = "right_align",
+    delay = 400,
+  },
+  current_line_blame_formatter_opts = {
+    relative_time = true,
+  },
+  yadm = {
+    enable = O.yadm.enabled,
+  },
 }
 
 vim.cmd [[ hi link GitSignsCurrentLineBlame Comment ]]

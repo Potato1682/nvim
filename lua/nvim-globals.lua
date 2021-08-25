@@ -38,6 +38,9 @@ O = {
   wakatime = {
     enabled = false,
   },
+  yadm = {
+    enabled = vim.fn.executable("yadm") == 1
+  },
   -- Add ignored commands in history
   ignore_commands = {},
   lua = {
