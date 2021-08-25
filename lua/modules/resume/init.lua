@@ -1,10 +1,15 @@
 local M = {}
 
-function M.resume()
-  if
-    vim.tbl_contains({ "quickfix", "nofile", "help" }, vim.opt_local.buftype:get())
-    or vim.tbl_contains({ "gitcommit", "gitrebase", "svn", "hgcommit" }, vim.opt_local.buftype:get())
-  then
+local function check_buf()
+  return vim.tbl_contains({ "quickfix", "nofile", "help" }, vim.opt_local.buftype:get())
+end
+
+local function check_ft()
+  return vim.tbl_contains({ "gitcommit", "gitrebase", "svn", "hgcommit" }, vim.opt_local.filetype:get())
+end
+
+local function resume()
+  if check_buf() then
     return
   end
 
@@ -21,6 +26,32 @@ function M.resume()
   if vim.fn.foldclosed "." ~= -1 then
     vim.cmd [[normal! zvzz]]
   end
+end
+
+function M.resume_buf()
+  if vim.fn.line "." > 1 or check_buf() then
+    return
+  end
+
+  resume()
+end
+
+function M.resume_ft()
+  if check_buf() then
+    return
+  end
+
+  if check_ft() then
+    vim.cmd "normal! gg"
+
+    return
+  end
+
+  if vim.fn.line "." > 1 then
+    return
+  end
+
+  resume()
 end
 
 return M

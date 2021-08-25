@@ -77,7 +77,6 @@ function M.setup()
       { "BufEnter", "*", "imap <silent> <bs> <cmd>call v:lua.MPairs.check_bs()<cr>" },
     },
     cursor = {
-      { "BufReadPost", "*", "lua require'modules.resume'.resume()" },
       { "WinEnter,BufEnter", "*", "lua require'modules.windows'.win_enter()" },
       { "WinLeave,BufLeave", "*", "lua require'modules.windows'.win_leave()" },
     },
@@ -126,6 +125,10 @@ function M.setup()
     },
     ime = {
       { "InsertLeave", "*", "lua require'modules.ime'.ime_disable()" },
+    },
+    resume = {
+      { "BufReadPost", "*", "lua require'modules.resume'.resume_buf()" },
+      { "FileType", "*", "lua require'modules.resume'.resume_ft()" },
     },
     spaces = {
       { "BufRead,BufNew", "*", "lua require'modules.spaces'.highlight_japanese_spaces()" },
