@@ -12,7 +12,10 @@ require("nvim-treesitter.configs").setup {
   ensure_installed = "maintained",
   highlight = { enable = true },
   indent = { enable = true },
-  autotag = { enable = true },
+  autotag = {
+    enable = true,
+    filetypes = { "html", "xml", "xaml" }
+  },
   rainbow = {
     enable = true,
     disable = { "vue", "html" },
