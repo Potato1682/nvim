@@ -142,7 +142,7 @@ function M.setup()
       { "FocusGained", "*", "checktime" },
     },
     yank = {
-      { "TextYankPost", "*", [[silent! lua vim.highlight.on_yank { higroup="IncSearch", timeout=400 }]] },
+      { "TextYankPost", "*", [[silent! lua vim.highlight.on_yank { higroup = "IncSearch", timeout = 400 }]] },
     },
   }
 
