@@ -105,7 +105,6 @@ function lsp_config.common_on_attach(client, bufnr)
   augroup {
     lsp = {
       { "CursorMoved,CursorMovedI", "<buffer>", "lua require'lsp-status'.update_current_function()" },
-      { "CursorMoved,CursorMovedI", "<buffer>", "lua vim.lsp.codelens.refresh()" }
     },
   }
 
@@ -178,6 +177,11 @@ function lsp_config.common_on_attach(client, bufnr)
   end
 
   if cap.code_lens then
+    augroup {
+      code_lens = {
+        { "CursorMoved,CursorMovedI", "<buffer>", "lua vim.lsp.codelens.refresh()" }
+      }
+    }
     command("LspCodeLensRun", "lua vim.lsp.codelens.run()", { buffer = true })
   end
 
@@ -222,7 +226,6 @@ function lsp_config.common_on_attach(client, bufnr)
   vim.cmd [[ command! -nargs=0 -bang IlluminationDisable call illuminate#disable_illumination(<bang>0) ]]
   require("illuminate").on_attach(client, bufnr)
   require("lsp-status").on_attach(client, bufnr)
-  require("lsp-rooter").setup()
   require("lsp_signature").on_attach {
     bind = true,
     hint_prefix = "",
