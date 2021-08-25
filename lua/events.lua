@@ -116,7 +116,7 @@ function M.setup()
       { "BufWritePre", "*.bak", "setlocal noundofile" },
     },
     format = {
-      { "BufWritePost", "*", "lua vim.lsp.buf.formatting_sync()" },
+      { "BufWritePost", "*", "Format!" },
     },
     history = {
       { "CmdlineEnter", ":", "lua require'modules.cmd-history'.clean()" },
