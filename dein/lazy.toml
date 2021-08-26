@@ -44,7 +44,7 @@ on_map = "<Plug>(EasyAlign)"
 
 [[plugins]]
 repo = "ray-x/lsp_signature.nvim"
-on_event = "LspAttachBuffers"
+on_lua = "lsp_signature"
 normalized_name = "lsp-signature"
 depends = "lspconfig"
 
@@ -55,7 +55,7 @@ depends = "lspconfig"
 
 [[plugins]]
 repo = "kosayoda/nvim-lightbulb"
-on_event = "LspAttachBuffers"
+on_event = "BufEnter"
 hook_post_source = """
     lua require("nvim-lightbulb-config")
 """
@@ -81,17 +81,6 @@ on_cmd = [
 ]
 hook_source = """
     lua require("nvim-vista")
-"""
-
-[[plugins]]
-repo = "pechorin/any-jump.vim"
-on_cmd = [
-    "AnyJump",
-    "AnyJumpVisual",
-    "AnyJumpLastResults"
-]
-hook_source = """
-    let g:any_jump_disable_default_keybindings = 1
 """
 
 # Building

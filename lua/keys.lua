@@ -92,9 +92,6 @@ if O.toggle.enabled then
   keymap("n", "<C-s>", "<cmd>lua require'modules.toggle'.toggle()<cr>", { noremap = true })
 end
 
-keymap("n", "gR", "<cmd>AnyJump<cr>", { noremap = true })
-keymap("x", "gR", "<cmd>AnyJumpVisual<cr>", { noremap = true })
-
 keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", { noremap = true })
 keymap("n", "<leader>Sl", "<cmd>SessionLoad<cr>", { noremap = true })
 

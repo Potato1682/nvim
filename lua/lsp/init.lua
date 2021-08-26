@@ -7,8 +7,6 @@ vim.lsp.handlers["textDocument/implementation"] = require("lsputil.locations").i
 vim.lsp.handlers["textDocument/documentSymbol"] = require("lsputil.symbols").document_handler
 vim.lsp.handlers["workspace/symbol"] = require("lsputil.symbols").workspace_handler
 
-local keymap = vim.api.nvim_set_keymap
-
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { focusable = false })
 
 vim.lsp.protocol.CompletionItemKind = {
@@ -40,7 +38,7 @@ vim.lsp.protocol.CompletionItemKind = {
 }
 
 local installer = require "nvim-lsp-installer"
-local server = require "nvim-lsp-installer.server"
+local lsp = require "nvim-lsp-installer.server"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local util = require "lspconfig.util"
 
@@ -53,16 +51,8 @@ capabilities.textDocument.completion.completionItem.resolveSupport = {
   },
 }
 
-local M = {}
-
-function M.common_on_attach(client, bufnr)
+local function common_on_attach(client, bufnr)
   local augroup = require("events").nvim_create_augroups
-
-  augroup {
-    lsp = {
-      { "CursorMoved,CursorMovedI", "<buffer>", "lua require'lsp-status'.update_current_function()" },
-    },
-  }
 
   local function buf_keymap(mode, key, action)
     vim.api.nvim_buf_set_keymap(bufnr, mode, key, action, { noremap = true, silent = true })
@@ -74,7 +64,7 @@ function M.common_on_attach(client, bufnr)
   if cap.declaration then
     command("LspDeclaration", "lua vim.lps.buf.declaration()", { buffer = true })
 
-    buf_keymap("n", "gC", ":lua vim.lsp.buf.declaration()<cr>", { noremap = true, silent = true })
+    buf_keymap("n", "gC", ":lua vim.lsp.buf.declaration()<cr>")
   end
 
   if cap.goto_definition then
@@ -121,14 +111,9 @@ function M.common_on_attach(client, bufnr)
   if cap.find_references then
     command("LspReferences", "lua vim.lsp.buf.references()", { buffer = true })
 
-    buf_keymap("n", "<a-n>", "<cmd>lua require'illuminate'.next_reference({ wrap = true })<cr>", { noremap = true })
-    buf_keymap(
-      "n",
-      "<a-p>",
-      "<cmd>lua require'illuminate'.next_reference({ wrap = true, reverse = true })<cr>",
-      { noremap = true }
-    )
-    buf_keymap("n", "gr", "<cmd>lua vim.lsp.buf.references()<cr>", { noremap = true })
+    buf_keymap("n", "<a-n>", "<cmd>lua require'illuminate'.next_reference({ wrap = true })<cr>")
+    buf_keymap("n", "<a-p>", "<cmd>lua require'illuminate'.next_reference({ wrap = true, reverse = true })<cr>")
+    buf_keymap("n", "gR", "<cmd>Lspreferences<cr>")
   end
 
   if cap.document_symbol then
@@ -226,9 +211,9 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   { signs = false, virtual_text = { spacing = 0 }, update_in_insert = true }
 )
 
-local tsserver_root = server.get_server_root_path "tsserver"
+local tsserver_root = lsp.get_server_root_path "tsserver"
 
-installer.register(server.Server:new {
+installer.register(lsp.Server:new {
   name = "tsserver",
   root_dir = tsserver_root,
   installer = require("nvim-lsp-installer.installers.npm").packages {
@@ -248,11 +233,11 @@ installer.register(server.Server:new {
   },
 })
 
-installer.register(server.Server:new {
+installer.register(lsp.Server:new {
   name = "jdtls",
-  root_dir = server.get_server_root_path "jdtls",
+  root_dir = lsp.get_server_root_path "jdtls",
   installer = require("nvim-lsp-installer.installers.zx").file(vim.fn.stdpath "config" .. "lua/lsp/java/install.mjs"),
-  default_options = vim.tbl_deep_extend("error", {}),
+  default_options = {},
 })
 
 installer.on_server_ready(function(server)
@@ -445,8 +430,6 @@ installer.on_server_ready(function(server)
       require("lsp").common_on_attach(client, bufnr)
     end
 
-    local capabilities = vim.lsp.protocol.make_client_capabilities()
-
     capabilities.workspace = capabilities.workspace or {}
     capabilities.workspace.configuration = true
 
@@ -470,7 +453,7 @@ installer.on_server_ready(function(server)
       before_init = function()
         vim.notify("Starting eclipse.jdt.ls, this take a while...", "info", { title = "jdtls" })
       end,
-      cmd = { vim.fn.stdpath "config" .. "/bin/" .. bin },
+      cmd = { vim.fn.stdpath "config" .. "/bin/" .. jdtls_bin },
       on_attach = on_attach,
       capabilities = capabilities,
       root_dir = require("jdtls.setup").find_root { "build.gradle", "pom.xml", ".git" },
@@ -557,5 +540,3 @@ installer.on_server_ready(function(server)
 
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
-
-return M
