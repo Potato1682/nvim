@@ -4,29 +4,6 @@ end
 
 vim.g.loaded_ruby_ftplugin = true
 
-local lsp_config = require "lsp"
-local bin = vim.fn.stdpath "data" .. "/lspinstall/ruby/solargraph/bin/solargraph"
-
-if vim.fn.filereadable(bin) == 0 then
-  require("lspinstall").install_server "ruby"
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
-}
-
-require("lspconfig").solargraph.setup {
-  cmd = { bin, "stdio" },
-  on_attach = lsp_config.common_on_attach,
-  capabilities = capabilities,
-}
-
 local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/ruby/"
 
 if vim.fn.glob(debug_install_dir) == "" then
@@ -34,13 +11,15 @@ if vim.fn.glob(debug_install_dir) == "" then
     "ruby debug",
     debug_install_dir,
     [[
-    bundle init
-    echo >> Gemfile <<< '
-    source "rubygems"
-    gem "readapt"
-    '
-    bundle
-  ]]
+      bundle init
+
+      echo >> Gemfile <<< '
+      source "rubygems"
+      gem "readapt"
+      '
+
+      bundle
+    ]]
   )
 end
 

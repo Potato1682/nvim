@@ -4,29 +4,6 @@ end
 
 vim.g.loaded_php_ftplugin = true
 
-local lsp_config = require "lsp"
-local container = require "lspcontainers"
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
-}
-
-require("lspconfig").intelephense.setup {
-  before = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = { container.command "intelephense" },
-  on_attach = lsp_config.common_on_attach,
-  capabilities = capabilities,
-  root_dir = lsp_config.util.root_pattern("composer.json", ".git", vim.fn.getcwd()),
-}
-
 local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/php/php-debug/"
 
 if vim.fn.glob(debug_install_dir) == "" then

@@ -58,3 +58,5 @@ vim.g.nvim_tree_icons = {
   folder = { default = "", open = "", empty = "", empty_open = "", symlink = "" },
   lsp = { hint = "", info = "", warning = "", error = "" },
 }
+
+require"nvim-lsp-installer.adapters.nvim-tree".connect()

@@ -1,30 +1,65 @@
-if vim.g.loaded_html_ftplugin then
+if vim.b.loaded_html_ftplugin then
   return
 end
 
-vim.g.loaded_html_ftplugin = true
+vim.b.loaded_html_ftplugin = true
 
-local lsp_config = require "lsp"
-local bin = vim.fn.stdpath "data" .. "/lspinstall/vscode-servers/node_modules/.bin/vscode-html-language-server"
+local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/javascript/"
 
-if vim.fn.filereadable(bin) == 0 then
-  require("lspinstall").install_server "vscode-servers"
+if vim.fn.glob(debug_install_dir .. "chrome-debug") == "" then
+  require("nvim-dap.install").install(
+    "debug in chrome",
+    debug_install_dir,
+    [[
+      git clone https://github.com/microsoft/vscode-chrome-debug chrome-debug && cd chrome-debug
+      npm i
+      npm run build
+    ]]
+  )
 end
 
-local capabilities = vim.lsp.protocol.make_client_capabilities()
+if vim.fn.glob(debug_install_dir .. "firefox-debug") == "" then
+  require("nvim-dap.install").install(
+    "debug in firefox",
+    debug_install_dir,
+    [[
+      git clone https://github.com/firefox-devtools/vscode-firefox-debug firefox-debug && cd firefox-debug
+      npm i
+      npm run build
+    ]]
+  )
+end
 
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
+local dap = require "dap"
+
+dap.adapters.chrome = {
+  type = "executable",
+  command = "node",
+  args = { debug_install_dir .. "chrome-debug/out/src/chromeDebug.js" },
 }
 
-require("lspconfig").html.setup {
-  cmd = { bin, "--stdio" },
-  on_attach = lsp_config.common_on_attach,
-  root_dir = vim.loop.cwd,
-  capabilities = capabilities,
+dap.adapters.firefox = {
+  type = "executable",
+  command = "node",
+  args = { debug_install_dir .. "firefox-debug/dist/adapter.bundle.js" },
+}
+
+dap.configurations.html = {
+  {
+    type = "chrome",
+    request = "attach",
+    program = "${file}",
+    cwd = vim.loop.cwd(),
+    sourceMaps = true,
+    protocol = "inspector",
+    port = 9222,
+    webRoot = "${workspaceFolder}",
+  },
+  {
+    type = "firefox",
+    request = "launch",
+    file = "${file}",
+    cwd = vim.loop.cwd(),
+    port = 9222,
+  },
 }

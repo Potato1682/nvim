@@ -27,7 +27,6 @@ require "nvim-galaxyline"
 require "nvim-treesitter-config"
 require "nvim-indentline"
 require "nvim-template"
-require "nvim-lspinstall"
 
 if vim.fn.executable "ctags" or vim.fn.executable "gtags" then
   require "nvim-tags"
@@ -50,6 +49,3 @@ require "nvim-breadcrumb"
 
 require "lsp"
 require "lsp.virtual-text"
-
-require "lsp.tailwindcss"
-require "lsp.terraform"

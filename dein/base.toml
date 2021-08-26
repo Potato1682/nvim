@@ -31,15 +31,11 @@ repo = "lspcontainers/lspcontainers.nvim"
 depends = "lspconfig"
 
 [[plugins]]
-repo = "kabouzeid/nvim-lspinstall"
+repo = "williamboman/nvim-lsp-installer"
 depends = "lspconfig"
 
 [[plugins]]
 repo = "RishabhRD/nvim-lsputils"
-depends = "lspconfig"
-
-[[plugins]]
-repo = "RRethy/vim-illuminate"
 depends = "lspconfig"
 
 # Editor
@@ -49,6 +45,9 @@ repo = "andymass/vim-matchup"
 
 [[plugins]]
 repo = "machakann/vim-sandwich"
+
+[[plugins]]
+repo = "RRethy/vim-illuminate"
 
 # Highlighting
 

@@ -55,6 +55,11 @@ O = {
       use = "stylua",
     },
   },
+  typescript = {
+    on_save = {
+      organize_imports = true
+    }
+  },
   python = {
     -- @usage can be 'unittest', 'pytest'
     test_type = "pytest",

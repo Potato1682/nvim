@@ -9,47 +9,6 @@ end
 
 vim.g.loaded_json_ftplugin = true
 
-local lsp_config = require "lsp"
-local bin = vim.fn.stdpath "data" .. "/lspinstall/vscode-servers/node_modules/.bin/vscode-json-language-server"
-local schemas = require "lsp.json.schemas"
-
-if vim.fn.filereadable(bin) == 0 then
-  require("lspinstall").install_server "vscode-servers"
-end
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities.textDocument.completion.completionItem.snippetSupport = true
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
-}
-
-require("lspconfig").jsonls.setup {
-  filetypes = { "json", "jsonc" },
-  cmd = { bin, "--stdio" },
-  on_attach = lsp_config.common_on_attach,
-  capabilities = capabilities,
-  root_dir = vim.loop.cwd,
-  commands = {
-    Neoformat = {
-      function()
-        vim.lsp.buf.range_formatting({}, { 0, 0 }, { vim.fn.line "$", 0 })
-      end,
-    },
-  },
-  settings = {
-    json = {
-      schemas = schemas.schemas,
-    },
-  },
-}
-
-local modules = require "modules.indent"
-
 _G.MJson = {}
 
 local function feedkeys(key)
@@ -57,6 +16,7 @@ local function feedkeys(key)
 end
 
 local input = vim.api.nvim_input
+local modules = require "modules.indent"
 
 function _G.MJson.colon_complete()
   local line = vim.fn.getline "."

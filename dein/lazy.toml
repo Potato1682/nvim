@@ -44,19 +44,22 @@ on_map = "<Plug>(EasyAlign)"
 
 [[plugins]]
 repo = "ray-x/lsp_signature.nvim"
+on_event = "LspAttachBuffers"
 normalized_name = "lsp-signature"
-on_lua = "lsp_signature"
+depends = "lspconfig"
 
 [[plugins]]
 repo = "rmagatti/goto-preview"
 on_lua = "goto-preview"
+depends = "lspconfig"
 
 [[plugins]]
 repo = "kosayoda/nvim-lightbulb"
-on_event = "BufEnter"
+on_event = "LspAttachBuffers"
 hook_post_source = """
     lua require("nvim-lightbulb-config")
 """
+depends = "lspconfig"
 
 [[plugins]]
 repo = "folke/trouble.nvim"
@@ -67,10 +70,7 @@ on_cmd = [
 hook_post_source = """
     lua require("trouble").setup()
 """
-
-[[plugins]]
-repo = "jubnzv/virtual-types.nvim"
-on_lua = "virtualtypes"
+depends = "lspconfig"
 
 # Symbols
 
@@ -638,26 +638,6 @@ on_ft = [
 hook_post_source = """
     lua require("headwind").setup()
 """
-
-# Typescript
-
-[[plugins]]
-repo = "jose-elias-alvarez/null-ls.nvim"
-on_ft = [
-    "javascript",
-    "javascriptreact",
-    "javascript.jsx",
-    "typescript",
-    "typescriptreact",
-    "typescript.tsx"
-]
-hook_post_source = """
-    lua require("null-ls").setup({})
-"""
-
-[[plugins]]
-repo = "jose-elias-alvarez/nvim-lsp-ts-utils"
-on_source = "null-ls"
 
 # Rust
 

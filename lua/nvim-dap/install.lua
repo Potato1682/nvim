@@ -6,7 +6,7 @@ local function install(name, dir, script)
       vim.notify("Could not install " .. name .. " server!", "error", { title = "dapinstall" })
     end
 
-    vim.notify("Successfully installed " .. name .. " server!", "success", { title = "dapinstall" })
+    vim.notify("Successfully installed " .. name .. " server!", "info", { title = "dapinstall" })
   end
 
   vim.cmd "new"

@@ -4,46 +4,32 @@ end
 
 vim.g.loaded_go_ftplugin = true
 
-local container = require "lspcontainers"
-
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-capabilities.textDocument.completion.completionItem.resolveSupport = {
-  properties = {
-    "documentation",
-    "detail",
-    "additionalTextEdits",
-  },
-}
-
-require("lspconfig").gopls.setup {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-  cmd = container.command "gopls",
-  capabilities = capabilities,
-}
-
 _G.MGo = {}
 
 -- Code from https://github.com/golang/tools/blob/master/gopls/doc/vim.md#neovim-imports
 function _G.MGo.goimports(timeout_ms)
   local context = { source = { organizeImports = true } }
+
   vim.validate { context = { context, "t", true } }
 
   local params = vim.lsp.util.make_range_params()
+
   params.context = context
 
   -- See the implementation of the textDocument/codeAction callback
   -- (lua/vim/lsp/handler.lua) for how to do this properly.
   local result = vim.lsp.buf_request_sync(0, "textDocument/codeAction", params, timeout_ms)
+
   if not result or next(result) == nil then
     return
   end
+
   local actions = result[1].result
+
   if not actions then
     return
   end
+
   local action = actions[1]
 
   -- textDocument/codeAction can return either Command[] or CodeAction[]. If it
@@ -61,7 +47,7 @@ function _G.MGo.goimports(timeout_ms)
   end
 end
 
-vim.cmd [[autocmd BufWritePre *.go call v:lua.MGo.goimports(1000)]]
+require"events".nvim_create_autocmd { "BufWritePre", "*.go", "call v:lua.MGo.goimports(1000)" }
 
 local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/go"
 
@@ -88,6 +74,7 @@ dap.adapters.go = {
   command = "node",
   args = { vim.fn.stdpath "data" .. "/dapinstall/go/vscode-go/dist/debugAdapter.js" },
 }
+
 dap.configurations.go = {
   {
     type = "go",
