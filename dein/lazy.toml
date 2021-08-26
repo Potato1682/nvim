@@ -484,6 +484,15 @@ on_map = [
     "<Plug>RestNvimPreview"
 ]
 
+# Text manipulation
+
+[[plugins]]
+repo = "t9md/vim-textmanip"
+on_map = "<Plug>(textmanip"
+hook_post_source = """
+    lua require("nvim-textmanip")
+"""
+
 # Terminal
 
 [[plugins]]
