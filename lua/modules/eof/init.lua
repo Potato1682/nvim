@@ -35,7 +35,7 @@ local function eol_at_eof(bufnr)
 end
 
 function M.check(_)
-  if vim.opt_local.buftype:get() == "nofile" or vim.opt_local.buftype:get() == "prompt" then
+  if vim.tbl_contains({ "nofile", "terminal", "prompt" }, vim.opt_local.buftype:get()) then
     return false
   end
 
