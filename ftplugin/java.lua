@@ -5,11 +5,11 @@ end
 vim.g.loaded_java_ftplugin = true
 
 if vim.fn.glob(vim.fn.stdpath "data" .. "/lsp_servers/jdtls/*") == "" then
-  require("lsp_servers").install_server "jdtls"
+  require("nvim-lsp-installer").install("jdtls")
 end
 
 require "nvim-dap.java"
-require "lsp.java"
+require "lsp"
 
 local jdtls_ui = require "jdtls.ui"
 

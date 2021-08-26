@@ -27,10 +27,6 @@ depends = "nonicons"
 repo = "neovim/nvim-lspconfig"
 
 [[plugins]]
-repo = "lspcontainers/lspcontainers.nvim"
-depends = "lspconfig"
-
-[[plugins]]
 repo = "williamboman/nvim-lsp-installer"
 depends = "lspconfig"
 

@@ -39,7 +39,6 @@ vim.lsp.protocol.CompletionItemKind = {
   " (TypeParameter)",
 }
 
-local containers = require "lspcontainers"
 local installer = require "nvim-lsp-installer"
 local server = require "nvim-lsp-installer.server"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -227,69 +226,6 @@ vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
   { signs = false, virtual_text = { spacing = 0 }, update_in_insert = true }
 )
 
-local function register_container(name, root_dir, opts)
-  installer.register(server.Server:new {
-    name = name,
-    root_dir = server.get_server_root_path(name),
-    installer = function(server, callback)
-      if vim.fn.executable "docker" then
-        callback(true, nil)
-      else
-        callback(false, "docker must be installed.")
-      end
-    end,
-    default_options = vim.tbl_deep_extend("error", {
-      cmd = containers.command(name),
-      root_dir = root_dir,
-    }, opts),
-  })
-
-  local ok, server = installer.get_server(name)
-
-  if ok then
-    if not server:is_installed() then
-      server:install()
-    end
-  end
-end
-
-register_container("clangd", util.root_pattern("compile_commands.json", "compile_flags.txt", ".git", vim.loop.cwd()), {
-  init_options = {
-    clangdFileStatus = true,
-  },
-})
-
-register_container("gopls", util.root_pattern("go.mod", ".git"), {
-  before_init = function(params)
-    params.processId = vim.NIL
-  end,
-})
-
-register_container("sumneko_lua", util.root_pattern(".git", vim.loop.cwd()), {
-  settings = {
-    Lua = {
-      runtime = {
-        version = "LuaJIT",
-      },
-      completion = {
-        callSnippet = "Both",
-      },
-      diagnostics = {
-        globals = { "vim" },
-      },
-      hint = {
-        enable = true,
-      },
-      workspace = {
-        maxPreload = 10000,
-      },
-      telemetry = {
-        enable = false,
-      },
-    },
-  },
-})
-
 local tsserver_root = server.get_server_root_path "tsserver"
 
 installer.register(server.Server:new {
@@ -438,13 +374,44 @@ installer.on_server_ready(function(server)
     table.insert(runtime_path, "lua/?.lua")
     table.insert(runtime_path, "lua/?/init.lua")
 
-    opts.settings.Lua.runtime.path = runtime_path
-
     local libraries = { [vim.fn.expand "$VIMRUNTIME/lua"] = true, [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true }
 
     libraries = vim.tbl_extend("error", libraries, vim.api.nvim_get_runtime_file("", true))
 
-    opts.settings.Lua.workspace.library = libraries
+    opts.filetypes = { "lua" }
+
+    opts.root_dir = util.root_pattern(".git", vim.loop.cwd())
+
+    opts.settings = {
+      Lua = {
+        runtime = {
+          version = "LuaJIT",
+          path = runtime_path,
+        },
+        completion = {
+          callSnippet = "Both",
+        },
+        diagnostics = {
+          globals = { "vim" },
+        },
+        hint = {
+          enable = true,
+        },
+        workspace = {
+          maxPreload = 10000,
+          library = libraries,
+        },
+        telemetry = {
+          enable = false,
+        },
+      },
+    }
+  end
+
+  if server.name == "clangd" then
+    opts.init_options = {
+      clangdFileStatus = true,
+    }
   end
 
   if server.name == "jdtls" then

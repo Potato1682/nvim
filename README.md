@@ -26,13 +26,20 @@
 
   - GCC with C++ 11 support
   - Boost
+  - Ninja
   - CMake
   - GNU Make
   - Python Headers
   - `libicu` Headers
 
-  - > Ubuntu: `build-essential`, `python2-dev`,`python3-dev`, `libicu-dev`, `libboost-all-dev`, `cmake`
+  - > Ubuntu: `build-essential`, `python2-dev`,`python3-dev`, `libicu-dev`, `libboost-all-dev`, `cmake`, `ninja`
+    ```sh
+      $ sudo apt install -y build-essential python2-dev python3-dev libicu-dev libboost-all-dev cmake ninja
+    ```
   - > Arch: `base-devel`, `boost`, `cmake`
+    ```sh
+      $ sudo pacman -S base-devel boost cmake ninja --needed --noconfirm
+    ```
 
 - [Go](https://golang.org)
 - [Node.js](https://nodejs.org), [NPM](https://github.com/npm/cli) and [Yarn](https://yarnpkg.com)
