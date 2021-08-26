@@ -62,6 +62,18 @@ local japanese_mappings = {
     b = { "<cmd>BuildImage<cr>", "イメージをビルド" },
     s = { "<cmd>StartImage<cr>", "devcontainers.jsonからイメージを起動" },
   },
+  C = {
+    name = "+変換",
+
+    c = {
+      name = "+色",
+
+      c = { "<Plug>ColorConvertCycle", "変換を切り替え" },
+      h = { "<Plug>ColorConvertHEX", "HEXに変換"},
+      r = { "<Plug>ColorConvertRGB", "RGBに変換"},
+      s = { "<Plug>ColorConvertHSL", "HSLに変換"}
+    }
+  },
   d = {
     name = "+診断",
 
@@ -192,6 +204,18 @@ local mappings = {
     a = { "<cmd>AttachToContainer<cr>", "Connect" },
     b = { "<cmd>BuildImage<cr>", "Build Image" },
     s = { "<cmd>StartImage<cr>", "Start Image from devcontainers.json" },
+  },
+  C = {
+    name = "+Convert",
+
+    c = {
+      name = "+Colors",
+
+      c = { "<Plug>ColorConvertCycle", "Cycle color conversion" },
+      h = { "<Plug>ColorConvertHEX", "Convert to HEX"},
+      r = { "<Plug>ColorConvertRGB", "Convert to RGB"},
+      s = { "<Plug>ColorConvertHSL", "Convert to HSL"}
+    }
   },
   d = {
     name = "+Diagnostics",

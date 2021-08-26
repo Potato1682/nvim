@@ -697,6 +697,15 @@ on_ft = "i3config"
 # Colors
 
 [[plugins]]
+repo = "NTBBloodbath/color-converter.nvim"
+on_map = [
+    "<Plug>ColorConvertCycle",
+    "<Plug>ColorConvertHEX",
+    "<Plug>ColorConvertRGB",
+    "<Plug>ColorConvertHSL"
+]
+
+[[plugins]]
 repo = "powerman/vim-plugin-AnsiEsc"
 on_event = "BufReadPre"
 hook_source = """
