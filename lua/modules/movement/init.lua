@@ -36,6 +36,8 @@ function M.move_j()
     vim.opt_local.cursorline = false
     vim.opt_local.cursorcolumn = false
 
+    vim.opt.eventignore = vim.opt.eventignore + { "CursorMoved" }
+
     if step == 10 then
       command = "normal! " .. step .. "j"
     else
@@ -49,6 +51,8 @@ function M.move_j()
         vim.opt_local.relativenumber = true
       end
     end
+
+    vim.opt.eventignore = vim.opt.eventignore - { "CursorMoved" }
 
     if
       vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump", "netrw" }, vim.opt_local.filetype:get())
@@ -100,6 +104,8 @@ function M.move_k()
     vim.opt_local.cursorline = false
     vim.opt_local.cursorcolumn = false
 
+    vim.opt.eventignore = vim.opt.eventignore + { "CursorMoved" }
+
     if step == 10 then
       command = "normal! " .. step .. "k"
     else
@@ -113,6 +119,8 @@ function M.move_k()
         vim.opt_local.relativenumber = true
       end
     end
+
+    vim.opt.eventignore = vim.opt.eventignore - { "CursorMoved" }
 
     if
       vim.tbl_contains({ "nvimtree", "dashboard", "neogitstatus", "any-jump", "netrw" }, vim.opt_local.filetype:get())
