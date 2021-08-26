@@ -16,5 +16,5 @@ require("nvim-gps").setup {
     ["python"] = true,
     ["rust"] = true,
   },
-  separator = " " .. icons.get "chevron-left" .. " ",
+  separator = " " .. icons.get "chevron-right" .. " ",
 }
