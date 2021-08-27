@@ -13,7 +13,7 @@ vim.lsp.protocol.CompletionItemKind = {
   " (Text)",
   " (Method)",
   " (Function)",
-  " (Constructor)",
+  " (Constructor)",
   " (Field)",
   "[] (Variable)",
   " (Class)",
@@ -42,6 +42,16 @@ local lsp = require "nvim-lsp-installer.server"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local util = require "lspconfig.util"
 
+capabilities.workspace.configuration = true
+capabilities.window.workDoneProgress = true
+capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
@@ -429,21 +439,6 @@ installer.on_server_ready(function(server)
       require("jdtls").setup_dap { hotcoderplace = "auto" }
       require("lsp").common_on_attach(client, bufnr)
     end
-
-    capabilities.workspace = capabilities.workspace or {}
-    capabilities.workspace.configuration = true
-
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.completion.completionItem.resolveSupport = {
-      properties = {
-        "documentation",
-        "detail",
-        "additionalTextEdits",
-      },
-    }
-
-    capabilities.window = capabilities.window or {}
-    capabilities.window.workDoneProgress = true
 
     local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 
