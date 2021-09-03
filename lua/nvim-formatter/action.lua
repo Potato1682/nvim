@@ -20,10 +20,25 @@ function M.format(range, line1, line2, bang, bufnr)
   end
 
   if not lsp_formatted then
+    if vim.fn.exists(":Neoformat") ~= 2 then
+      if vim.opt.verbose:get() ~= 0 then
+        vim.notify("Formatter plugin unavailable", "error", { title = "formatter" })
+      end
+
+      return
+    end
+
     if range then
       vim.cmd(line1 .. "," .. line2 .. "Neoformat")
     else
-      vim.cmd [[ undojoin | Neoformat ]]
+      vim.cmd [[
+        try
+          undojoin | Neoformat
+        catch /^Vim\%((\a\+)\)\=:E790/
+        finally
+          silent Neoformat
+        endtry
+      ]]
     end
   end
 end
