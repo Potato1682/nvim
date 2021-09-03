@@ -70,7 +70,7 @@ function M.setup()
     },
     backspace = {
       { "BufEnter", "*", "silent! iunmap <buffer> <BS>" },
-      { "BufEnter", "*", "imap <silent> <bs> <cmd>call v:lua.MPairs.check_bs()<cr>" },
+      { "BufEnter", "*", "if luaeval('not not _G.MPairs') | imap <silent> <bs> <cmd>call v:lua.MPairs.check_bs()<cr> | endif" },
     },
     cursor = {
       { "WinEnter,BufEnter", "*", "lua require'modules.windows'.win_enter()" },
