@@ -1,6 +1,6 @@
 vim.opt.termguicolors = true
 vim.opt.mouse = "a"
-vim.opt.clipboard = "unnamedplus"
+vim.opt.clipboard = { "unnamedplus" }
 
 vim.opt.shada = "!,'300,<50,@100,s10,h"
 
