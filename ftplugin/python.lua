@@ -18,7 +18,11 @@ if vim.fn.glob(debug_install_dir) == "" then
   )
 end
 
-local dap = require "dap-python"
+local ok, dap_python = pcall(require, "dap-python")
 
-dap.setup(debug_install_dir .. "debugpy/bin/python")
-dap.test_runner = O.python.test_type
+if not ok then
+  return
+end
+
+dap_python.setup(debug_install_dir .. "debugpy/bin/python")
+dap_python.test_runner = O.python.test_type
