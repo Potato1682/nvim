@@ -4,6 +4,10 @@ end
 
 vim.g.loaded_lua_ftplugin = true
 
+if not pcall(require, "dap") then
+  return
+end
+
 local dap = require "dap"
 
 dap.configurations.lua = {
