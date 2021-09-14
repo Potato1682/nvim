@@ -196,14 +196,23 @@ local function common_on_attach(client, bufnr)
   -- fix 'command not found' error
   command("IlluminationDisable", "call illuminate#disable_illumination(<bang>0)", { nargs = 0, bang = true })
   require("illuminate").on_attach(client, bufnr)
-  require("lsp_signature").on_attach {
+  require("lsp_signature").on_attach({
     bind = true,
     hint_prefix = "",
     hi_parameter = "Blue",
     handler_opts = {
       border = "none",
     },
-  }
+    fix_pos = function(signatures, lspclient)
+   if signatures[1].activeParameter >= 0 and #signatures[1].parameters == 1 then
+     return false
+   end
+   if lspclient.name == 'sumneko_lua' then
+     return true
+   end
+   return false
+    end
+  }, bufnr)
 end
 
 vim.lsp.handlers["textDocument/publishDiagnostics"] = vim.lsp.with(
