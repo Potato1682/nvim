@@ -9,6 +9,8 @@ vim.g.nvim_tree_group_empty = 1
 vim.g.nvim_tree_auto_ignore_ft = { "dashboard" }
 vim.g.nvim_tree_update_cwd = 1
 vim.g.nvim_tree_respect_buf_cwd = 1
+vim.g.nvim_tree_tab_open = 1
+vim.g.nvim_tree_auto_resize = 1
 
 local tree_cb = require("nvim-tree.config").nvim_tree_callback
 
