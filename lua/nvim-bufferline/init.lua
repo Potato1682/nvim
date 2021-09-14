@@ -1,3 +1,5 @@
+local icons = require "nvim-nonicons"
+
 require("bufferline").setup {
   options = {
     view = "multiwindow",
@@ -9,24 +11,24 @@ require("bufferline").setup {
       vim.api.nvim_input "<ESC>"
 
       local choises = {
-        " New Buffer        ",
-        " Close             ",
-        " Close All         ",
+        icons.get "plus-circle" .. " New Buffer        ",
+        icons.get "x-circle" .. " Close             ",
+        icons.get "x-circle-fill" .. " Close All         ",
         "",
-        "/Copy Path         ",
-        " Copy Relative Path",
+        icons.get "clippy" .. " Copy Path         ",
+        icons.get "clippy" .. " Copy Relative Path",
         "",
-        " Split Vertically  ",
-        " Split Horizontally",
-        " Move Right        ",
-        " Move Left         ",
+        icons.get "tmux" .. " Split Vertically  ",
+        icons.get "tmux" .. " Split Horizontally",
+        icons.get "arrow-right" .. " Move Right        ",
+        icons.get "arrow-left" .. " Move Left         ",
         "  Pick Buffers ...  ",
         "  Sort By .extension",
         "  Sort By directory/",
         "  Sort By /directory",
         "",
-        " Select Next Buffer",
-        " Select Prev Buffer",
+        icons.get "chevron-right" .. " Select Next Buffer",
+        icons.get "chevron-left" .. " Select Prev Buffer",
       }
 
       local choise_callbacks = {
@@ -148,13 +150,58 @@ require("bufferline").setup {
     show_close_icon = false,
     separator_style = "thin",
     offsets = {
-      { filetype = "NvimTree", text = O.japanese and "エクスプローラー" or "Explorer", text_align = "center" },
-      { filetype = "dbui", text = O.japanese and "データベース" or "DBUI", text_align = "center" },
-      { filetype = "Outline", text = O.japanese and "シンボル" or "Symbols", text_align = "center" },
+      {
+        filetype = "NvimTree",
+        text = function()
+          return O.japanese and "エクスプローラー" or "Explorer" .. " - " .. vim.loop.cwd()
+        end,
+        highlight = "Blue",
+        text_align = "center",
+      },
+      {
+        filetype = "dbui",
+        text = O.japanese and "データベース" or "DBUI",
+        highlight = "Purple",
+        text_align = "center",
+      },
+      {
+        filetype = "Outline",
+        text = O.japanese and "シンボル" or "Symbols",
+        highlight = "Green",
+        text_align = "center",
+      },
       {
         filetype = "UltestSummary",
         text = O.japanese and "テスト エクスプローラー" or "Test Explorer",
+        highlight = "Purple",
         text_align = "center",
+      },
+    },
+  },
+  groups = {
+    options = {
+      toggle_hidden_on_enter = true,
+    },
+    items = {
+      {
+        name = O.japanese and "テスト" or "Tests",
+        highlight = { gui = "underline", guisp = "Green" },
+        priority = 2,
+        icon = icons.get "beaker" .. " ",
+        matcher = function(buf)
+          return buf.filename:match "%_test" or buf.filename:match "%_spec"
+        end,
+      },
+      {
+        name = O.japanese and "ドキュメント" or "Docs",
+        highlight = { gui = "underline", guisp = "Blue" },
+        icon = icons.get "book" .. " ",
+        matcher = function(buf)
+          return buf.filename:match "%.md" or buf.filename:match "%.txt" or buf.filename:match "%.rst"
+        end,
+        separator = {
+          style = require("bufferline.groups").separator.tab,
+        },
       },
     },
   },
@@ -176,3 +223,9 @@ require("bufferline").setup {
     error_diagnostic_selected = { guifg = "#db4b4b", guisp = "#db4b4b" },
   },
 }
+
+function _G.__group_open()
+  require("bufferline").group_action(O.japanese and "テスト" or "Tests", function(buf)
+    vim.cmd("vsplit " .. buf.path)
+  end)
+end
