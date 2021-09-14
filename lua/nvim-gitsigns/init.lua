@@ -9,7 +9,7 @@ require("gitsigns").setup {
   signcolumn = true,
   numhl = false,
   linehl = false,
-  word_diff = false,
+  word_diff = true,
   keymaps = {
     noremap = true,
     buffer = true,
@@ -40,7 +40,10 @@ require("gitsigns").setup {
     interval = 1000,
     follow_files = true,
   },
-  use_internal_diff = true,
+  diff_opts = {
+    algorithm = "histogram",
+    internal = true,
+  },
   attach_to_untracked = true,
   current_line_blame = true,
   current_line_blame_opts = {
