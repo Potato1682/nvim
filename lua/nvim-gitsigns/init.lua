@@ -9,7 +9,7 @@ require("gitsigns").setup {
   signcolumn = true,
   numhl = false,
   linehl = false,
-  word_diff = true,
+  word_diff = false,
   keymaps = {
     noremap = true,
     buffer = true,
