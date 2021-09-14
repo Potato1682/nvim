@@ -123,10 +123,26 @@ require("bufferline").setup {
     custom_areas = {
       right = function()
         local result = {}
-        local error = vim.lsp.diagnostic.get_count(0, [[Error]])
-        local warning = vim.lsp.diagnostic.get_count(0, [[Warning]])
-        local info = vim.lsp.diagnostic.get_count(0, [[Information]])
-        local hint = vim.lsp.diagnostic.get_count(0, [[Hint]])
+        local error = 0
+        local warning = 0
+        local info = 0
+        local hint = 0
+
+        for _, diagnostics in pairs(vim.lsp.diagnostic.get_all()) do
+          for _, diagnostic in pairs(diagnostics) do
+            severity = diagnostic.severity
+
+            if severity == 1 then
+              error = error + 1
+            elseif severity == 2 then
+              warning = warning + 1
+            elseif severity == 3 then
+              info = info + 1
+            else
+              hint = hint + 1
+            end
+          end
+        end
 
         if error ~= 0 then
           result[1] = { text = "  " .. error, guifg = "#db4b4b" }
