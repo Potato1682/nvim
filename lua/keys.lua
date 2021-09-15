@@ -100,7 +100,9 @@ keymap("n", "ZZ", "", { noremap = true })
 keymap("n", "ZQ", "", { noremap = true })
 
 keymap("n", "j", "<cmd>lua require'modules.movement'.move_j()<cr>", { silent = true })
+keymap("v", "j", "<cmd>lua require'modules.movement'.move_j()<cr>", { silent = true })
 keymap("n", "k", "<cmd>lua require'modules.movement'.move_k()<cr>", { silent = true })
+keymap("v", "k", "<cmd>lua require'modules.movement'.move_k()<cr>", { silent = true })
 
 keymap("n", "W", "<cmd>call v:lua.MJp.jp_movement('nW', v:count1)<cr><esc>", { silent = true })
 keymap("o", "W", "<cmd>call v:lua.MJp.jp_movement('oW', v:count1)<cr>", { silent = true })
