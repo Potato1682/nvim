@@ -11,7 +11,7 @@ local function t(key)
 end
 
 local function feedkeys(key, mode)
-  return vim.api.nvim_feedkeys(vim.api.nvim_replace_termcodes(key, true, true, true), mode, true)
+  return vim.api.nvim_feedkeys(t(key), mode, true)
 end
 
 local function has_words_before()
