@@ -109,7 +109,7 @@
 
 ## Trouble Shooting
 
-## Can't use Merge Tool
+### Can't use Merge Tool
 
 You need to add this settings to your git configuration:
 ```ini
