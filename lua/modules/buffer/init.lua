@@ -101,7 +101,7 @@ function M.next()
   M.goto(next_buffer_index)
 end
 
-function M.previous(buffer)
+function M.previous()
   local active_buffers = get_active_buffers()
   local current_bufnr = vim.api.nvim_get_current_buf()
   local total_buffers = table.maxn(active_buffers)
