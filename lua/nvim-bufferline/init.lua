@@ -130,7 +130,7 @@ require("bufferline").setup {
 
         for _, diagnostics in pairs(vim.lsp.diagnostic.get_all()) do
           for _, diagnostic in pairs(diagnostics) do
-            severity = diagnostic.severity
+            local severity = diagnostic.severity
 
             if severity == 1 then
               error = error + 1
