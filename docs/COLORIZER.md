@@ -5,9 +5,9 @@ Those files are written in json format, you can write them as follows:
 ```json
 {
   "colour_table": {
-		"name1": "#ffffff",
-		"name2": "#000fff"
-	}
+    "name1": "#ffffff",
+    "name2": "#000fff"
+  }
 }
 ```
 
