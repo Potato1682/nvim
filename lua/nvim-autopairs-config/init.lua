@@ -5,7 +5,7 @@ local indent = require "modules.indent"
 npairs.setup {
   enable_check_bracket_line = false,
   fast_wrap = {},
-  map_bs = false
+  map_bs = false,
 }
 
 require("nvim-autopairs.completion.cmp").setup {
@@ -65,16 +65,18 @@ end
 
 -- replace autopairs' backspace function
 function _G.MPairs.check_bs()
-  local lc = vim.api.nvim_win_get_cursor(0)
-  local line = lc[1]
-  local column = lc[2]
+  local line, column = unpack(vim.api.nvim_win_get_cursor(0))
   local spaces = vim.fn.getline("."):match "^%s+"
   local previous_line = vim.fn.getline(tostring(line - 1))
 
-  if spaces == nil then
-    vim.api.nvim_feedkeys(npairs.autopairs_bs(vim.api.nvim_get_current_buf()), "n", true)
+  local function bs()
+    vim.api.nvim_feedkeys(npairs.autopairs_bs(), "n", true)
+  end
 
-    return ""
+  if spaces == nil then
+    bs()
+
+    return
   end
 
   local matched = vim.fn.getline("."):match "^%s+$"
@@ -82,33 +84,43 @@ function _G.MPairs.check_bs()
   -- Delete current line if the line is spaces
   if matched ~= nil then
     if indent.get_indents() ~= #matched then
-      vim.api.nvim_feedkeys(npairs.autopairs_bs(vim.api.nvim_get_current_buf()), "n", true)
+      bs()
 
-      return ""
+      return
     end
 
     -- Check if the cursor is on last line
     -- If true, the cursor do not move up after deleting line
     if vim.fn.line "." == vim.fn.line "$" then
-      vim.api.nvim_input "<esc>ddA"
+      vim.api.nvim_del_current_line()
 
-      return indent.smart_indent()
+      local new_line = vim.api.nvim_win_get_cursor(0)[1]
+
+      vim.api.nvim_win_set_cursor(0, { new_line, 9999 })
+
+      vim.api.nvim_input("<Tab>")
+
+      return
     end
 
-    vim.api.nvim_input "<esc>ddkA"
+    vim.api.nvim_del_current_line()
 
-    return indent.smart_indent()
+    local new_line = vim.api.nvim_win_get_cursor(0)[1]
+
+    vim.api.nvim_win_set_cursor(0, { new_line - 1, 9999 })
+
+      vim.api.nvim_input("<Tab>")
   elseif column == #spaces then
     if previous_line == nil then
       _G.MPairs.move_and_delete(tostring(line - 1))
     elseif string.match(previous_line, "^%s*$") ~= nil then
       _G.MPairs.move_and_delete(tostring(line - 1))
     else
-      vim.api.nvim_feedkeys(npairs.autopairs_bs(vim.api.nvim_get_current_buf()), "n", true)
+      bs()
     end
   else
-    vim.api.nvim_feedkeys(npairs.autopairs_bs(vim.api.nvim_get_current_buf()), "n", true)
+    bs()
   end
 
-  return ""
+  return
 end

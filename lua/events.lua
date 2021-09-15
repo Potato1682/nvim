@@ -69,8 +69,7 @@ function M.setup()
       { "BufEnter", "*", "setlocal formatoptions-=o" },
     },
     backspace = {
-      { "BufEnter", "*", "silent! iunmap <buffer> <BS>" },
-      { "BufEnter", "*", "if luaeval('not not _G.MPairs') | imap <silent> <bs> <cmd>call v:lua.MPairs.check_bs()<cr> | endif" },
+      { "BufEnter", "*", "if luaeval('not not _G.MPairs') | imap <silent> <BS> <cmd>call v:lua.MPairs.check_bs()<cr>| endif" },
     },
     cursor = {
       { "WinEnter,BufEnter", "*", "lua require'modules.windows'.win_enter()" },

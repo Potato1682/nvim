@@ -58,4 +58,16 @@ function M.smart_indent()
   return M.repeat_indent(vim.opt.expandtab:get() and vim.opt.shiftwidth:get() or 1)
 end
 
+function M.indent_empty_line(linenr)
+  if linenr == nil then
+    linenr = vim.api.nvim_win_get_cursor(0)[1]
+  end
+
+  if vim.fn.getline(tostring(linenr)):gsub(" ", "") ~= "" then
+    return ""
+  end
+
+  return M.smart_indent()
+end
+
 return M
