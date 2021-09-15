@@ -1,4 +1,5 @@
 local npairs = require "nvim-autopairs"
+local cond = require "nvim-autopairs.conds"
 local Rule = require "nvim-autopairs.rule"
 local indent = require "modules.indent"
 
@@ -49,6 +50,36 @@ npairs.add_rules {
     " {  }",
     { "typescript", "typescriptreact", "javascript", "javascriptreact", "typescript.tsx", "javascript.jsx" }
   ):use_regex(true):set_end_pair_length(2),
+  Rule("=", "")
+    :with_pair(cond.not_inside_quote())
+    :with_pair(function(options)
+      local last_char = options.line:sub(options.col - 1, options.col - 1)
+
+      return last_char:match("[%w%=%s]")
+    end)
+    :replace_endpair(function(options)
+      local previous_2char = options.line:sub(options.col - 2, options.col - 1)
+      local next_char = options.line:sub(options.col, options.col)
+
+      next_char = next_char == " " and "" or " "
+
+      if previous_2char:match("%w$") then
+        return "<bs> =" .. next_char
+      end
+
+      if previous_2char:match("%=$") then
+        return next_char
+      end
+
+      if previous_2char:match("=") then
+        return "<bs><bs>=" .. next_char
+      end
+
+      return ""
+    end)
+    :set_end_pair_length(0)
+    :with_move(cond.none())
+    :with_del(cond.none())
 }
 
 npairs.add_rules(require "nvim-autopairs.rules.endwise-lua")
