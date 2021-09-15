@@ -12,6 +12,8 @@ function _G.P(...)
   return ...
 end
 
+pcall(require, "impatient")
+
 require "nvim-globals"
 require "settings"
 require "commands"

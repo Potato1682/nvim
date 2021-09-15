@@ -56,6 +56,12 @@ local function init()
   -- Packer
   use { "wbthomason/packer.nvim", opt = true }
 
+  -- Performance optimization
+  use {
+    "lewis6991/impatient.nvim",
+    as = "impatient"
+  }
+
   -- Common dependencies
   use {
     { "nvim-lua/plenary.nvim", as = "plenary" },
