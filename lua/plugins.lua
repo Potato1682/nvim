@@ -1232,7 +1232,7 @@ local function init()
     "folke/lua-dev.nvim",
     as = "lua-dev",
 
-    module = "lua-dev"
+    module = "lua-dev",
   }
 
   -- Rust
