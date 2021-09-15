@@ -105,6 +105,9 @@ function M.setup()
       },
       { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<cr>" },
     },
+    auto_compile = {
+      { "BufWritePost", "plugins.lua", "source <afile> | PackerCompile" }
+    },
     bufs = {
       { "BufWritePre", "*.tmp", "setlocal noundofile" },
       { "BufWritePre", "*.log", "setlocal noundofile" },
