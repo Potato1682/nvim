@@ -117,3 +117,6 @@ keymap("o", "iW", "<cmd>call v:lua.MJp.jp_object('o', 'i', v:count1)<cr>", { sil
 keymap("x", "iW", "<cmd>call v:lua.MJp.jp_object('x', 'i', v:count1)<cr>", { silent = true })
 keymap("o", "aW", "<cmd>call v:lua.MJp.jp_object('o', 'a', v:count1)<cr>", { silent = true })
 keymap("x", "aW", "<cmd>call v:lua.MJp.jp_object('x', 'a', v:count1)<cr>", { silent = true })
+
+keymap("i", ";", "v:lua.require'modules.semi'.smart_semicolon(';')", { noremap = true, expr = true })
+keymap("i", "<C-h>", "v:lua.require'modules.semi'.undo()", { noremap = true, expr = true })
