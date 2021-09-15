@@ -95,9 +95,9 @@ end
 keymap("n", "<leader>sr", "<cmd>Telescope oldfiles<cr>", { noremap = true })
 keymap("n", "<leader>Sl", "<cmd>SessionLoad<cr>", { noremap = true })
 
-keymap("n", "Q", "<Nop>", { noremap = true })
-keymap("n", "ZZ", "<Nop>", { noremap = true })
-keymap("n", "ZQ", "<Nop>", { noremap = true })
+keymap("n", "Q", "", { noremap = true })
+keymap("n", "ZZ", "", { noremap = true })
+keymap("n", "ZQ", "", { noremap = true })
 
 keymap("n", "j", "<cmd>lua require'modules.movement'.move_j()<cr>", { silent = true })
 keymap("n", "k", "<cmd>lua require'modules.movement'.move_k()<cr>", { silent = true })
