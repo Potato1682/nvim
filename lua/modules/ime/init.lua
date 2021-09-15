@@ -56,7 +56,7 @@ function M.ime_disable()
   end
 
   if is_linux() then
-    local ok, _ = pcall(require, "fcitx")
+    local ok, fcitx = pcall(require, "fcitx")
 
     if not ok then
       if vim.fn.executable "fcitx-remote" == 1 then
@@ -67,8 +67,6 @@ function M.ime_disable()
 
       return
     end
-
-    local fcitx = ok
 
     fcitx.setCurrentInputMethod "keyboard-us"
   end

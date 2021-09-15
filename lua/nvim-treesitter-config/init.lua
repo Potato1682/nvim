@@ -88,5 +88,3 @@ require("nvim-treesitter.configs").setup {
   },
   matchup = { enable = true },
 }
-
-require("nvim-ts-highlightparams").setup()

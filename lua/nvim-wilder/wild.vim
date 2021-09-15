@@ -35,7 +35,7 @@ call wilder#set_option("pipeline", [
   \   wilder#cmdline_pipeline({
   \     "fuzzy": 2,
   \     "language": "python",
-  \     "fuzzy_filter": wilder#python_cpsm_filter(stdpath("data") . "/dein/repos/github.com/nixprime/cpsm/autoload"),
+  \     "fuzzy_filter": wilder#python_cpsm_filter(stdpath("data") . "/site/pack/packer/opt/cpsm/autoload"),
   \     "sorter": wilder#python_fuzzywuzzy_sorter(),
   \     "set_pcre2_pattern": 0,
   \   }),
@@ -50,7 +50,7 @@ call wilder#set_option("pipeline", [
 \ ])
 
 let s:highlighter = wilder#python_cpsm_highlighter({
-\   "cpsm_path": stdpath("data") . "/dein/repos/github.com/nixprime/cpsm/autoload",
+\   "cpsm_path": stdpath("data") . "/site/pack/packer/opt/cpsm/autoload",
 \   "highlight_mode": "detailed"
 \ })
 

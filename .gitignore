@@ -5,3 +5,4 @@ providers/python2/
 !providers/python2/Pipfile
 !providers/python2/Pipfile.lock
 .luacheckcache
+plugin/packer_compiled.lua

@@ -21,7 +21,6 @@ local colors = {
 }
 
 local icons = require "nvim-nonicons"
-local gps = require "nvim-gps"
 
 gls.left[1] = {
   ViMode = {
@@ -128,9 +127,15 @@ gls.left[8] = {
 gls.left[9] = {
   Breadcrumb = {
     provider = function()
-      return gps.get_location()
+      return require("nvim-gps").get_location()
     end,
     condition = function()
+      local ok, gps = pcall(require, "nvim-gps")
+
+      if not ok then
+        return false
+      end
+
       return gps.is_available()
     end,
     separator = " ",

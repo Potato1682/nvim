@@ -42,6 +42,16 @@ local lsp = require "nvim-lsp-installer.server"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
 local util = require "lspconfig.util"
 
+capabilities.workspace.configuration = true
+capabilities.window.workDoneProgress = true
+capabilities.textDocument.completion.completionItem.documentationFormat = { "markdown", "plaintext" }
+capabilities.textDocument.completion.completionItem.snippetSupport = true
+capabilities.textDocument.completion.completionItem.preselectSupport = true
+capabilities.textDocument.completion.completionItem.insertReplaceSupport = true
+capabilities.textDocument.completion.completionItem.labelDetailsSupport = true
+capabilities.textDocument.completion.completionItem.deprecatedSupport = true
+capabilities.textDocument.completion.completionItem.commitCharactersSupport = true
+capabilities.textDocument.completion.completionItem.tagSupport = { valueSet = { 1 } }
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 capabilities.textDocument.completion.completionItem.resolveSupport = {
   properties = {
@@ -363,43 +373,10 @@ installer.on_server_ready(function(server)
   end
 
   if server.name == "sumneko_lua" then
-    local runtime_path = vim.split(package.path, ";")
+    local lua_dev = require("lua-dev").setup {}
 
-    table.insert(runtime_path, "lua/?.lua")
-    table.insert(runtime_path, "lua/?/init.lua")
-
-    local libraries = { [vim.fn.expand "$VIMRUNTIME/lua"] = true, [vim.fn.expand "$VIMRUNTIME/lua/vim/lsp"] = true }
-
-    libraries = vim.tbl_extend("error", libraries, vim.api.nvim_get_runtime_file("", true))
-
-    opts.filetypes = { "lua" }
-
-    opts.root_dir = util.root_pattern(".git", vim.loop.cwd())
-
-    opts.settings = {
-      Lua = {
-        runtime = {
-          version = "LuaJIT",
-          path = runtime_path,
-        },
-        completion = {
-          callSnippet = "Both",
-        },
-        diagnostics = {
-          globals = { "vim" },
-        },
-        hint = {
-          enable = true,
-        },
-        workspace = {
-          maxPreload = 10000,
-          library = libraries,
-        },
-        telemetry = {
-          enable = false,
-        },
-      },
-    }
+    opts.on_new_config = lua_dev.on_new_config
+    opts.settings = lua_dev.settings
   end
 
   if server.name == "clangd" then
@@ -438,21 +415,6 @@ installer.on_server_ready(function(server)
       require("jdtls").setup_dap { hotcoderplace = "auto" }
       require("lsp").common_on_attach(client, bufnr)
     end
-
-    capabilities.workspace = capabilities.workspace or {}
-    capabilities.workspace.configuration = true
-
-    capabilities.textDocument.completion.completionItem.snippetSupport = true
-    capabilities.textDocument.completion.completionItem.resolveSupport = {
-      properties = {
-        "documentation",
-        "detail",
-        "additionalTextEdits",
-      },
-    }
-
-    capabilities.window = capabilities.window or {}
-    capabilities.window.workDoneProgress = true
 
     local extendedClientCapabilities = require("jdtls").extendedClientCapabilities
 

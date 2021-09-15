@@ -96,13 +96,14 @@ function M.setup()
               colorcolumn=
               foldcolumn=0
               matchpairs=
+              laststatus=0
+              showtabline=0
             ]],
             "\n"
           ),
           " "
         ),
       },
-      { "FileType", "dashboard", "set showtabline=0 | autocmd BufLeave <buffer> set showtabline=2" },
       { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<cr>" },
     },
     bufs = {

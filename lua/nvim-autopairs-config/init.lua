@@ -5,6 +5,12 @@ local indent = require "modules.indent"
 npairs.setup {
   enable_check_bracket_line = false,
   fast_wrap = {},
+  map_bs = false
+}
+
+require("nvim-autopairs.completion.cmp").setup {
+  map_cr = true,
+  map_complete = true,
 }
 
 npairs.add_rules {

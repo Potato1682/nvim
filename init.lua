@@ -1,4 +1,4 @@
-function _G.put(...)
+function _G.P(...)
   local objects = {}
 
   for i = 1, select("#", ...) do
@@ -7,24 +7,22 @@ function _G.put(...)
     table.insert(objects, vim.inspect(v))
   end
 
-  print(table.concat(objects, "\n --\n"))
+  print(table.concat(objects, "\n\n --\n\n"))
 
   return ...
 end
 
 require "nvim-globals"
 require "settings"
+require "commands"
 require "events"
-
-require "nvim-dashboard"
+require "keys"
 
 if require "first-load"() then
-  require "plugins"
-
-  vim.fn["dein#remote_plugins"]()
-
   return
 end
+
+require "providers"
 
 require "plugins"
 
@@ -36,12 +34,6 @@ end
 
 require "colorscheme"
 
-require "nvim-bufferline"
-require "nvim-galaxyline"
-require "nvim-treesitter-config"
-require "nvim-indentline"
-require "nvim-template"
-
 if vim.fn.executable "ctags" or vim.fn.executable "gtags" then
   require "nvim-tags"
 end
@@ -52,14 +44,3 @@ end
 
 require "modules.japanese"
 require "modules.eof"
-require "keys"
-require "providers"
-require "commands"
-require "nvim-undotree"
-require "nvim-clipboard"
-require "nvim-projects"
-require "nvim-jupyter"
-require "nvim-breadcrumb"
-
-require "lsp"
-require "lsp.virtual-text"
