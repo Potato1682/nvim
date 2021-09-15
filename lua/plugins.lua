@@ -1141,6 +1141,7 @@ local function init()
   -- Discord rich presence
   use {
     "andweeb/presence.nvim",
+    as = "presence",
 
     config = function()
       require "nvim-presence"
