@@ -38,7 +38,89 @@ local function switch_buffer(windows, buffer)
   vim.cmd(winnr .. " wincmd w")
 end
 
-function M.delete_buffer(bufexpr)
+local function is_valid_buffer(bufnr)
+  return vim.api.nvim_buf_is_valid(bufnr) and vim.api.nvim_buf_get_option(bufnr, "buflisted")
+end
+
+local function is_file_buffer(bufnr)
+  return is_valid_buffer(bufnr) and vim.api.nvim_buf_get_option(bufnr, "buftype") ~= "terminal"
+end
+
+local function get_active_buffers()
+  local buffers = vim.api.nvim_list_bufs()
+  local active_buffers = {}
+  local count = 0
+
+  for _, bufnr in pairs(buffers) do
+    if is_file_buffer(bufnr) then
+      count = count + 1
+      active_buffers[count] = bufnr
+    end
+  end
+
+  return active_buffers
+end
+
+local function open_buffer(bufnr)
+  vim.cmd(("buffer %d"):format(bufnr))
+end
+
+local function find_buffer(bufnr, buffer_table)
+  for index, table_bufnr in ipairs(buffer_table) do
+    if bufnr ==  table_bufnr then
+      return index
+    end
+  end
+end
+
+function M.goto(bufnr)
+  local active_buffers = get_active_buffers()
+  local selected_buffer = active_buffers[bufnr]
+
+  if selected_buffer then
+    open_buffer(bufnr)
+  end
+end
+
+function M.next()
+  local active_buffers = get_active_buffers()
+  local current_bufnr = vim.api.nvim_get_current_buf()
+  local total_buffers = table.maxn(active_buffers)
+  local buffer_index = find_buffer(current_bufnr, active_buffers)
+
+  if buffer_index == nil then
+    buffer_index = 0
+  end
+
+  local next_buffer_index = (buffer_index + 1) % (total_buffers + 1)
+
+  if next_buffer_index == 0 then
+    next_buffer_index = 1
+  end
+
+  M.goto(next_buffer_index)
+end
+
+function M.previous(buffer)
+  local active_buffers = get_active_buffers()
+  local current_bufnr = vim.api.nvim_get_current_buf()
+  local total_buffers = table.maxn(active_buffers)
+  local buffer_index = find_buffer(current_bufnr, active_buffers)
+
+  if buffer_index ==  nil then
+    buffer_index = 0
+  end
+
+  local previous_buffer_index = (buffer_index - 1) % (total_buffers + 1)
+
+  if previous_buffer_index == 0 then
+    previous_buffer_index = total_buffers
+  end
+
+  M.goto(previous_buffer_index)
+end
+
+function M.delete(bufexpr)
   local buflisted = vim.fn.getbufinfo {
     buflisted = 1,
   }
