@@ -98,7 +98,11 @@ function _G.MPairs.check_bs()
 
       vim.api.nvim_win_set_cursor(0, { new_line, 9999 })
 
-      vim.api.nvim_input("<Tab>")
+      vim.api.nvim_input "<Tab>"
+
+      vim.defer_fn(function()
+        vim.api.nvim_input("<C-e>")
+      end, 85)
 
       return
     end
@@ -109,7 +113,7 @@ function _G.MPairs.check_bs()
 
     vim.api.nvim_win_set_cursor(0, { new_line - 1, 9999 })
 
-      vim.api.nvim_input("<Tab>")
+    vim.api.nvim_input "<Tab>"
   elseif column == #spaces then
     if previous_line == nil then
       _G.MPairs.move_and_delete(tostring(line - 1))
