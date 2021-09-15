@@ -59,7 +59,7 @@ local function init()
   -- Performance optimization
   use {
     "lewis6991/impatient.nvim",
-    as = "impatient"
+    as = "impatient",
   }
 
   -- Common dependencies
@@ -352,6 +352,12 @@ local function init()
     config = function()
       require "nvim-clipboard"
     end,
+  }
+
+  -- Highlighted Paste
+  use {
+    "ayosec/hltermpaste.vim",
+    as = "hltermpaste"
   }
 
   -- Folding
