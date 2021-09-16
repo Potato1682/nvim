@@ -25,6 +25,7 @@ globals = {
   "O",
   "vim",
   "data_dir",
-  "config_dir"
+  "config_dir",
+  "CURRENT_VENV"
 }
 
