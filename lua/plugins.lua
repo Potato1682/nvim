@@ -531,6 +531,8 @@ local function init()
       require "lsp.virtual-text"
     end,
 
+    rocks = "lua-toml",
+
     requires = {
       {
         "williamboman/nvim-lsp-installer",

@@ -209,7 +209,27 @@ gls.left[14] = {
 
 gls.left[15] = {
   LspClient = {
-    provider = "GetLspClient",
+    provider = function()
+      local clients = {}
+
+      for _, client in pairs(vim.lsp.buf_get_clients()) do
+        if client.name == "pyright" then
+          if CURRENT_VENV ~= nil then
+            local venv_name = client.config.settings.python.venv_name or "venv"
+
+            if CURRENT_VENV ~= "venv" then
+              venv_name = CURRENT_VENV
+            end
+
+            clients[#clients + 1] = client.name .. "(" .. venv_name .. ")"
+          end
+        else
+          clients[#clients + 1] = client.name
+        end
+      end
+
+      return table.concat(clients, " ")
+    end,
     condition = condition.hide_in_width and function()
       local tbl = { ["dashboard"] = true, [""] = true }
 
@@ -220,6 +240,7 @@ gls.left[15] = {
       return true
     end,
     separator = " ",
+    icon = icons.get "gear" .. " ",
     highlight = { colors.magenta, colors.bg },
     separator_highlight = { "NONE", colors.bg },
   },

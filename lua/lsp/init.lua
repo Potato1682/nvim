@@ -259,6 +259,9 @@ installer.register(lsp.Server:new {
 })
 
 installer.on_server_ready(function(server)
+  local util = require "lspconfig.util"
+  local Path = require "plenary.path"
+
   local opts = {
     capabilities = capabilities,
     on_attach = common_on_attach,
@@ -307,6 +310,117 @@ installer.on_server_ready(function(server)
   end
 
   if server.name == "pyright" then
+    local function find_python_bin()
+      local fname = vim.fn.expand "%:p"
+
+      local root_files = {
+        "pyproject.toml",
+        "setup.py",
+        "setup.cfg",
+        "requirements.txt",
+        "Pipfile",
+        "pyrightconfig.json",
+      }
+      local root_dir = util.root_pattern(unpack(root_files))(fname)
+        or util.find_git_ancestor(fname)
+        or util.path.dirname(fname)
+
+      if root_dir == nil then
+        return
+      end
+
+      local poetry_file = Path:new(root_dir .. "/pyproject.toml")
+      local pipenv_file = Path:new(root_dir .. "/Pipfile")
+      local venv_dir = Path:new(root_dir .. "/.venv")
+
+      if vim.env.VIRTUAL_ENV ~= nil then
+        return "venv", vim.fn.exepath "python"
+      elseif poetry_file:is_file() then
+        if vim.fn.executable "poetry" ~= 1 then
+          return
+        end
+
+        local toml_ok, toml = pcall(require, "toml")
+
+        if not toml_ok then
+          vim.notify(
+            "lua-toml rocks not installed!\nlsp will disable poetry support for pyright.",
+            "warning",
+            { title = "lsp" }
+          )
+
+          return
+        end
+
+        local read_ok, data = pcall(Path.read, poetry_file)
+
+        if not read_ok then
+          vim.notify(
+            "Cannot read pyproject.toml!\nlsp will disable poetry support for pyright.",
+            "warning",
+            { title = "lsp" }
+          )
+
+          return
+        end
+
+        local parse_ok, pyproject = pcall(toml.parse, data)
+
+        if not parse_ok then
+          vim.notify(
+            "malformed toml format in pyproject.toml!\nlsp will disable poetry support for pyright.",
+            "warning",
+            { title = "lsp" }
+          )
+
+          return
+        end
+
+        if pyproject.tool == nil or pyproject.tool.poetry == nil then
+          return
+        end
+
+        local venv_path = vim.trim(vim.fn.system "poetry config virtualenvs.path")
+        local venv_directory = vim.trim(vim.fn.system "poetry env list")
+
+        if #vim.split(venv_directory, "\n") == 1 then
+          return "poetry", string.format("%s/%s/bin/python", venv_path, vim.split(venv_directory, " ")[1])
+        end
+      elseif pipenv_file:is_file() then
+        if vim.fn.executable "pipenv" ~= 1 then
+          return
+        end
+
+        local venv_directory = vim.trim(vim.fn.system "pipenv --venv")
+
+        if venv_directory:match "No virtualenv" ~= nil then
+          return
+        end
+
+        return "pipenv", venv_directory .. "/bin/python"
+      elseif venv_dir:is_dir() then
+        local venv_bin = Path:new(venv_dir:expand() .. "/bin/python")
+
+        if not venv_bin:exists() or vim.fn.executable(venv_bin:expand()) ~= 1 then
+          return
+        end
+
+        return "venv", venv_bin:expand()
+      end
+    end
+
+    local name, python_bin = find_python_bin()
+
+    if name ~= nil then
+      opts.settings = {
+        python = {
+          pythonPath = python_bin,
+        },
+      }
+
+      CURRENT_VENV = name
+    end
+
     opts.settings = {
       python = {
         analysis = {
@@ -400,10 +514,7 @@ installer.on_server_ready(function(server)
       ),
     }
 
-    vim.list_extend(
-      bundles,
-      vim.split(vim.fn.glob(data_dir .. "/dapinstall/java/java-test/server/*.jar"), "\n")
-    )
+    vim.list_extend(bundles, vim.split(vim.fn.glob(data_dir .. "/dapinstall/java/java-test/server/*.jar"), "\n"))
 
     vim.list_extend(
       bundles,
