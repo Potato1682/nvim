@@ -1,3 +1,4 @@
+local Path = require "plenary.path"
 local Job = require "plenary.job"
 
 local function install(name, dir, script)
