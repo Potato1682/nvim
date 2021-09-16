@@ -4,17 +4,17 @@ end
 
 vim.g.loaded_python_ftplugin = true
 
-local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/python/"
+local debug_install_dir = data_dir .. "/dapinstall/python/"
 
 if not vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir) or {}) then
   require("nvim-dap.install").install(
     "debugpy",
     debug_install_dir,
     [[
-    python -m venv debugpy
-    debugpy/bin/python -m pip install debugpy
-    debugpy/bin/python -m pip install pytest
-  ]]
+      python -m venv debugpy
+      debugpy/bin/python -m pip install debugpy
+      debugpy/bin/python -m pip install pytest
+    ]]
   )
 end
 

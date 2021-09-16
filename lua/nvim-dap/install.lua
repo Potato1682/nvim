@@ -30,7 +30,7 @@ local function install(name, dir, script)
     return
   end
 
-  local shell = vim.opt.shell:get()
+  local shell = vim.o.shell
 
   vim.opt.shell = "bash"
 
