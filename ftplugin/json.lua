@@ -11,10 +11,6 @@ vim.g.loaded_json_ftplugin = true
 
 _G.MJson = {}
 
-local function feedkeys(key)
-  vim.api.nvim_feedkeys(key, "n", true)
-end
-
 local input = vim.api.nvim_input
 local modules = require "modules.indent"
 
@@ -22,7 +18,7 @@ function _G.MJson.colon_complete()
   local line = vim.api.nvim_get_current_line()
   local linenr, col = unpack(vim.api.nvim_win_get_cursor(0))
 
-  local is_cursor_on_eol = #line == cursor_position
+  local is_cursor_on_eol = col == vim.fn.col "$"
 
   if not is_cursor_on_eol then
     if col == 1 then
