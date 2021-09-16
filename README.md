@@ -23,22 +23,20 @@
   - Arch: `python2`, `python`, `python-pipenv`
 - Git
 - **C Development Packages**
-
   - GCC with C++ 11 support
   - Boost
-  - Ninja
   - CMake
   - GNU Make
   - Python Headers
   - `libicu` Headers
 
-  - > Ubuntu: `build-essential`, `python2-dev`,`python3-dev`, `libicu-dev`, `libboost-all-dev`, `cmake`, `ninja`
+  - > Ubuntu: `build-essential`, `python2-dev`,`python3-dev`, `libicu-dev`, `libboost-all-dev`, `cmake`
     ```sh
-      $ sudo apt install -y build-essential python2-dev python3-dev libicu-dev libboost-all-dev cmake ninja
+      $ sudo apt install -y build-essential python2-dev python3-dev libicu-dev libboost-all-dev cmake
     ```
   - > Arch: `base-devel`, `boost`, `cmake`
     ```sh
-      $ sudo pacman -S base-devel boost cmake ninja --needed --noconfirm
+      $ sudo pacman -S base-devel boost cmake --needed --noconfirm
     ```
 
 - [Go](https://golang.org)
@@ -47,7 +45,6 @@
 - [Java](https://openjdk.java.net) >= 11 and [Maven](https://maven.apache.org)
   - Ubuntu: `openjdk-11-jre`, `openjdk-11-jre-headleess`, `openjdk-11-dbg`, `maven`
   - Arch: `jdk11-openjdk`, `jre11-openjdk-headress`, `maven`
-- [**Rootless** Docker Engine](https://docs.docker.com/engine/security/rootless)
 - Ripgrep (`rg`)
 - [Ruby](https://www.ruby-lang.org) and [Bundler](https://bundler.io)
 - `lolcat` - **_Important_**
