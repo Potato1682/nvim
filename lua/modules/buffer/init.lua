@@ -73,7 +73,7 @@ local function find_buffer(bufnr, buffer_table)
   end
 end
 
-function M.goto(bufnr)
+function M.goto_buffer(bufnr)
   local active_buffers = get_active_buffers()
   local selected_buffer = active_buffers[bufnr]
 
@@ -98,7 +98,7 @@ function M.next()
     next_buffer_index = 1
   end
 
-  M.goto(next_buffer_index)
+  M.goto_buffer(next_buffer_index)
 end
 
 function M.previous()
@@ -107,7 +107,7 @@ function M.previous()
   local total_buffers = table.maxn(active_buffers)
   local buffer_index = find_buffer(current_bufnr, active_buffers)
 
-  if buffer_index ==  nil then
+  if buffer_index == nil then
     buffer_index = 0
   end
 
@@ -117,7 +117,7 @@ function M.previous()
     previous_buffer_index = total_buffers
   end
 
-  M.goto(previous_buffer_index)
+  M.goto_buffer(previous_buffer_index)
 end
 
 function M.delete(bufexpr)

@@ -40,7 +40,6 @@ vim.lsp.protocol.CompletionItemKind = {
 local installer = require "nvim-lsp-installer"
 local lsp = require "nvim-lsp-installer.server"
 local capabilities = vim.lsp.protocol.make_client_capabilities()
-local util = require "lspconfig.util"
 
 capabilities.workspace.configuration = true
 capabilities.window.workDoneProgress = true
