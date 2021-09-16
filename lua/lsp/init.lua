@@ -310,6 +310,37 @@ installer.on_server_ready(function(server)
   end
 
   if server.name == "pyright" then
+    local a = require "plenary.async_lib"
+    local async, await = a.async, a.await
+
+    local defer_setup = async(function(fn)
+      local defer_opts = vim.deepcopy(opts)
+      local defer_server = vim.deepcopy(server)
+      local name, python_bin = await(fn)
+
+      if name ~= nil then
+        defer_opts.settings = {
+          python = {
+            pythonPath = python_bin,
+          },
+        }
+
+        CURRENT_VENV = name
+      end
+
+      defer_opts.settings = {
+        python = {
+          analysis = {
+            autoSearchPaths = true,
+            diagnosticMode = "workspace",
+            useLibraryCodeForTypes = true,
+          },
+        },
+      }
+
+      defer_server:setup(defer_opts)
+    end)
+
     local function find_python_bin()
       local fname = vim.fn.expand "%:p"
 
@@ -380,24 +411,28 @@ installer.on_server_ready(function(server)
           return
         end
 
-        local venv_path = vim.trim(vim.fn.system "poetry config virtualenvs.path")
-        local venv_directory = vim.trim(vim.fn.system "poetry env list")
+        defer_setup(async(function()
+          local venv_path = vim.trim(vim.fn.system "poetry config virtualenvs.path")
+          local venv_directory = vim.trim(vim.fn.system "poetry env list")
 
-        if #vim.split(venv_directory, "\n") == 1 then
-          return "poetry", string.format("%s/%s/bin/python", venv_path, vim.split(venv_directory, " ")[1])
-        end
+          if #vim.split(venv_directory, "\n") == 1 then
+            return "poetry", string.format("%s/%s/bin/python", venv_path, vim.split(venv_directory, " ")[1])
+          end
+        end))
       elseif pipenv_file:is_file() then
         if vim.fn.executable "pipenv" ~= 1 then
           return
         end
 
-        local venv_directory = vim.trim(vim.fn.system "pipenv --venv")
+        defer_setup(async(function()
+          local venv_directory = vim.trim(vim.fn.system "pipenv --venv")
 
-        if venv_directory:match "No virtualenv" ~= nil then
-          return
-        end
+          if venv_directory:match "No virtualenv" ~= nil then
+            return
+          end
 
-        return "pipenv", venv_directory .. "/bin/python"
+          return "pipenv", venv_directory .. "/bin/python"
+        end))
       elseif venv_dir:is_dir() then
         local venv_bin = Path:new(venv_dir:expand() .. "/bin/python")
 
@@ -410,6 +445,10 @@ installer.on_server_ready(function(server)
     end
 
     local name, python_bin = find_python_bin()
+
+    if name == "defer" then
+      return
+    end
 
     if name ~= nil then
       opts.settings = {
