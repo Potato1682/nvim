@@ -18,4 +18,4 @@ vim.fn["wilder#setup"] {
 keymap("<C-j>", "wilder#in_context() ? wilder#next() : '\\<Tab>'")
 keymap("<C-k>", "wilder#in_context() ? wilder#next() : '\\<Tab>'")
 
-vim.cmd("source " .. vim.fn.stdpath "config" .. "/lua/nvim-wilder/wild.vim")
+vim.cmd("source " .. config_dir .. "/lua/nvim-wilder/wild.vim")

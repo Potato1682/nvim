@@ -1,6 +1,6 @@
 vim.g.dashboard_default_executive = "telescope"
 
-local headers_dir = vim.fn.stdpath "config" .. "/lua/nvim-dashboard/headers/"
+local headers_dir = config_dir .. "/lua/nvim-dashboard/headers/"
 local rnd = math.random()
 
 if rnd < 0.075 then
@@ -54,7 +54,7 @@ vim.g.dashboard_custom_section = {
   },
   e = {
     description = { "  Settings                      " },
-    command = ":e " .. vim.fn.stdpath "config" .. "/lua/nvim-globals.lua",
+    command = ":e " .. config_dir .. "/lua/nvim-globals.lua",
   },
   f = {
     description = { "  Neovim Config Files           " },

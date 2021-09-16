@@ -4,8 +4,8 @@ local Path = require "plenary.path"
 
 local scandir = require("plenary.scandir").scan_dir
 
-M.lua_reload_directories = { vim.fn.stdpath "config" }
-M.vim_reload_directories = { vim.fn.stdpath "data" .. "/site/pack/*/start/*" }
+M.lua_reload_directories = { config_dir }
+M.vim_reload_directories = { data_dir .. "/site/pack/*/start/*" }
 
 M.vim_subdirectories = {
   "compiler",

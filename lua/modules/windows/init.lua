@@ -115,14 +115,14 @@ local function make_floating_popup_options(width, height, opts)
 
   if opts.row == nil and opts.col == nil then
     local lines_above = vim.fn.winline() - 1
-    local lines_below = vim.fn.winheight(0) - lines_above
+    local lines_below = vim.api.nvim_win_get_height(0) - lines_above
 
     new_option.anchor = ""
 
     local pum_pos = vim.fn.pum_getpos()
     local pum_vis = not vim.tbl_isempty(pum_pos)
 
-    if pum_vis and vim.fn.line "." >= pum_pos.row or not pum_vis and lines_above < lines_below then
+    if pum_vis and vim.api.nvim_win_get_cursor(0)[1] >= pum_pos.row or not pum_vis and lines_above < lines_below then
       new_option.anchor = "N"
       new_option.row = 1
     else

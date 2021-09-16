@@ -54,7 +54,7 @@ function M.setup()
   -- CursorHold fixes
   vim.opt.eventignore = vim.opt.eventignore + { "CursorHold", "CursorHoldI" }
 
-  vim.cmd("source " .. vim.fn.stdpath "config" .. "/vim/cursor-hold.vim")
+  vim.cmd("source " .. config_dir .. "/vim/cursor-hold.vim")
 
   M.nvim_create_augroups {
     cursorhold_fix = {

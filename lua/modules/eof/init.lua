@@ -28,7 +28,7 @@ end
 
 local function eol_at_eof(bufnr)
   if is_saved(bufnr) then
-    return #vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr), "b") ~= vim.fn.getbufinfo(bufnr)[1].linecount
+    return #vim.fn.readfile(vim.api.nvim_buf_get_name(bufnr), "b") ~= vim.api.nvim_buf_line_count(bufnr)
   else
     return has_eol()
   end
@@ -59,8 +59,8 @@ function M.redraw(bufnr)
   local hl = "SpecialKey"
 
   if not eol_at_eof(bufnr) then
-    text = "[EOF] "
-    hl = "Error"
+    text = "[EOF] " .. require("nvim-nonicons").get "x"
+    hl = "ErrorMsg"
   end
 
   vim.api.nvim_buf_set_virtual_text(bufnr, ns, vim.fn.getbufinfo(bufnr)[1].linecount - 1, { { text, hl } }, {})
@@ -69,13 +69,13 @@ end
 local function setup()
   ns = vim.api.nvim_create_namespace "eof"
 
-  M.redraw(vim.fn.bufnr())
+  M.redraw(vim.api.nvim_get_current_buf())
 
   local redraw_commands = string.format(
     "lua %s; if (vim.fn.getcmdwintype() == '' and (%s)) then %s end",
-    "require'modules.eof'.clean(vim.fn.bufnr())",
-    "require'modules.eof'.check(vim.fn.bufnr())",
-    "require'modules.eof'.redraw(vim.fn.bufnr())"
+    "require'modules.eof'.clean(vim.api.nvim_get_current_buf())",
+    "require'modules.eof'.check(vim.api.nvim_get_current_buf())",
+    "require'modules.eof'.redraw(vim.api.nvim_get_current_buf())"
   )
 
   require("events").nvim_create_augroups {

@@ -47,11 +47,11 @@ function _G.MGo.goimports(timeout_ms)
   end
 end
 
-require"events".nvim_create_autocmd { "BufWritePre", "*.go", "call v:lua.MGo.goimports(1000)" }
+require("events").nvim_create_autocmd { "BufWritePre", "*.go", "call v:lua.MGo.goimports(1000)" }
 
-local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/go"
+local debug_install_dir = data_dir .. "/dapinstall/go"
 
-if vim.fn.glob(debug_install_dir) == "" then
+if not vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir) or {}) then
   require("nvim-dap.install").install(
     "go debug",
     debug_install_dir,
@@ -72,7 +72,7 @@ local dap = require "dap"
 dap.adapters.go = {
   type = "executable",
   command = "node",
-  args = { vim.fn.stdpath "data" .. "/dapinstall/go/vscode-go/dist/debugAdapter.js" },
+  args = { data_dir .. "/dapinstall/go/vscode-go/dist/debugAdapter.js" },
 }
 
 dap.configurations.go = {

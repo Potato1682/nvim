@@ -1,7 +1,9 @@
-if vim.fn.has "persistent-undo" then
-  local target_path = vim.fn.stdpath "data" .. "/undos/"
+local Path = require "plenary.path"
 
-  vim.fn.mkdir(target_path, "p", 0700)
+if vim.fn.has "persistent-undo" then
+  local target_path = data_dir .. "/undos"
+
+  Path:new(target_path):mkdir({ mode = 0700, parents = true, exists_ok = true })
 
   vim.o.undodir = target_path
   vim.o.undofile = true

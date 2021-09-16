@@ -213,14 +213,14 @@ local function common_on_attach(client, bufnr)
       border = "none",
     },
     fix_pos = function(signatures, lspclient)
-   if signatures[1].activeParameter >= 0 and #signatures[1].parameters == 1 then
-     return false
-   end
-   if lspclient.name == 'sumneko_lua' then
-     return true
-   end
-   return false
-    end
+      if signatures[1].activeParameter >= 0 and #signatures[1].parameters == 1 then
+        return false
+      end
+      if lspclient.name == "sumneko_lua" then
+        return true
+      end
+      return false
+    end,
   }, bufnr)
 end
 
@@ -254,7 +254,7 @@ installer.register(lsp.Server:new {
 installer.register(lsp.Server:new {
   name = "jdtls",
   root_dir = lsp.get_server_root_path "jdtls",
-  installer = require("nvim-lsp-installer.installers.zx").file(vim.fn.stdpath "config" .. "lua/lsp/java/install.mjs"),
+  installer = require("nvim-lsp-installer.installers.zx").file(config_dir .. "lua/lsp/java/install.mjs"),
   default_options = {},
 })
 
@@ -395,19 +395,19 @@ installer.on_server_ready(function(server)
 
     local bundles = {
       vim.fn.glob(
-        vim.fn.stdpath "data"
+        data_dir
           .. "/dapinstall/java/java-debug/com.microsoft.java.debug.plugin/target/com.microsoft.java.debug.plugin-*.jar"
       ),
     }
 
     vim.list_extend(
       bundles,
-      vim.split(vim.fn.glob(vim.fn.stdpath "data" .. "/dapinstall/java/java-test/server/*.jar"), "\n")
+      vim.split(vim.fn.glob(data_dir .. "/dapinstall/java/java-test/server/*.jar"), "\n")
     )
 
     vim.list_extend(
       bundles,
-      vim.split(vim.fn.glob(vim.fn.stdpath "data" .. "/lsp_servers/jdtls/java-decompiler/server/*.jar"), "\n")
+      vim.split(vim.fn.glob(data_dir .. "/lsp_servers/jdtls/java-decompiler/server/*.jar"), "\n")
     )
 
     local on_attach = function(client, bufnr)
@@ -423,7 +423,7 @@ installer.on_server_ready(function(server)
       before_init = function()
         vim.notify("Starting eclipse.jdt.ls, this take a while...", "info", { title = "jdtls" })
       end,
-      cmd = { vim.fn.stdpath "config" .. "/bin/" .. jdtls_bin },
+      cmd = { config_dir .. "/bin/" .. jdtls_bin },
       on_attach = on_attach,
       capabilities = capabilities,
       root_dir = require("jdtls.setup").find_root { "build.gradle", "pom.xml", ".git" },
@@ -439,7 +439,7 @@ installer.on_server_ready(function(server)
           format = {
             enabled = O.java.format.enabled,
             settings = {
-              url = vim.fn.stdpath "config" .. "/lua/lsp/java/styles/" .. O.java.format.name .. ".xml",
+              url = config_dir .. "/lua/lsp/java/styles/" .. O.java.format.name .. ".xml",
               profile = O.java.format.profile,
             },
           },

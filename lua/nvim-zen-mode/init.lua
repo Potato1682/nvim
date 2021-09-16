@@ -10,7 +10,7 @@ require("zen-mode").setup {
     },
   },
   plugins = {
-    tmux = { enabled = vim.fn.exists "$TMUX" == 1 },
+    tmux = { enabled = vim.env.TMUX ~= nil },
   },
   on_open = function(_)
     vim.api.nvim_input "<Plug>(ScrollViewDisable)"

@@ -43,7 +43,7 @@ end
 local unique_name = "textDocument-rename"
 
 function M.close_rename_window()
-  if vim.fn.mode() == "i" then
+  if vim.api.nvim_get_mode().mode == "i" then
     vim.cmd [[ stopinsert ]]
   end
 
@@ -59,7 +59,7 @@ end
 
 function M.do_rename()
   local prompt_prefix = "❯ "
-  local new_name = vim.trim(vim.fn.getline("."):sub(#prompt_prefix + 1, -1))
+  local new_name = vim.trim(vim.api.nvim_get_current_line():sub(#prompt_prefix + 1, -1))
 
   M.close_rename_window()
 
@@ -84,7 +84,7 @@ function M.rename()
 
   M.close_rename_window()
 
-  pos[1], pos[2] = vim.fn.line ".", vim.fn.col "."
+  pos = vim.api.nvim_win_get_cursor(0)
 
   local opts = {
     height = 1,

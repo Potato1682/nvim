@@ -1,5 +1,5 @@
 require("line-notes").setup {
-  path = vim.fn.stdpath "data" .. "/line-notes.json", -- path where to save the file
+  path = data_dir .. "/line-notes.json", -- path where to save the file
   border_style = "rounded",
   preview_max_width = 80, -- maximum width of preview notes float window
   auto_preview = false,

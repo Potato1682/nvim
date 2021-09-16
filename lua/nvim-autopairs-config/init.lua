@@ -97,8 +97,9 @@ end
 -- replace autopairs' backspace function
 function _G.MPairs.check_bs()
   local line, column = unpack(vim.api.nvim_win_get_cursor(0))
-  local spaces = vim.fn.getline("."):match "^%s+"
-  local previous_line = vim.fn.getline(tostring(line - 1))
+  local spaces = vim.api.nvim_get_current_line():match "^%s+"
+  local _previous_lines = vim.api.nvim_buf_get_lines(0, line - 1, line - 1, false)
+  local previous_line = #_previous_lines <= 0 and "" or _previous_lines[1]
 
   local function bs()
     vim.api.nvim_feedkeys(npairs.autopairs_bs(), "n", true)
@@ -110,7 +111,7 @@ function _G.MPairs.check_bs()
     return
   end
 
-  local matched = vim.fn.getline("."):match "^%s+$"
+  local matched = vim.api.nvim_get_current_line():match "^%s+$"
 
   -- Delete current line if the line is spaces
   if matched ~= nil then
@@ -120,9 +121,11 @@ function _G.MPairs.check_bs()
       return
     end
 
+    local old_line = vim.api.nvim_win_get_cursor(0)[1]
+
     -- Check if the cursor is on last line
     -- If true, the cursor do not move up after deleting line
-    if vim.fn.line "." == vim.fn.line "$" then
+    if old_line == vim.fn.line "$" then
       vim.api.nvim_del_current_line()
 
       local new_line = vim.api.nvim_win_get_cursor(0)[1]

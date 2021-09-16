@@ -6,7 +6,11 @@ vim.b.loaded_html_ftplugin = true
 
 local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/javascript/"
 
-if vim.fn.glob(debug_install_dir .. "chrome-debug") == "" then
+local function debugger_exists(name)
+  return not vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir .. name) or {})
+end
+
+if debugger_exists "chrome-debug" then
   require("nvim-dap.install").install(
     "debug in chrome",
     debug_install_dir,
@@ -18,7 +22,7 @@ if vim.fn.glob(debug_install_dir .. "chrome-debug") == "" then
   )
 end
 
-if vim.fn.glob(debug_install_dir .. "firefox-debug") == "" then
+if debugger_exists "firefox-debug" then
   require("nvim-dap.install").install(
     "debug in firefox",
     debug_install_dir,

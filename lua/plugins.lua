@@ -664,7 +664,7 @@ local function init()
       {
         "puremourning/vimspector",
 
-        run = vim.fn.stdpath "config" .. "/providers/python3/.venv/bin/python3" .. " install_gadget.py --enable-c",
+        run = config_dir .. "/providers/python3/.venv/bin/python3" .. " install_gadget.py --enable-c",
 
         opt = true,
       },

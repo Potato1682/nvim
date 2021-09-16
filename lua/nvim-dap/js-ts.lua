@@ -1,6 +1,10 @@
-local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/javascript/"
+local debug_install_dir = data_dir .. "/dapinstall/javascript/"
 
-if vim.fn.glob(debug_install_dir .. "node-debug") == "" then
+local function debugger_exists(name)
+  return not vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir .. name) or {})
+end
+
+if debugger_exists("node-debug") == "" then
   require("nvim-dap.install").install(
     "node debug server",
     debug_install_dir,
@@ -12,7 +16,7 @@ if vim.fn.glob(debug_install_dir .. "node-debug") == "" then
   )
 end
 
-if vim.fn.glob(debug_install_dir .. "chrome-debug") == "" then
+if debugger_exists("chrome-debug") == "" then
   require("nvim-dap.install").install(
     "debug in chrome",
     debug_install_dir,
@@ -24,7 +28,7 @@ if vim.fn.glob(debug_install_dir .. "chrome-debug") == "" then
   )
 end
 
-if vim.fn.glob(debug_install_dir .. "firefox-debug") == "" then
+if debugger_exists("firefox-debug") == "" then
   require("nvim-dap.install").install(
     "debug in firefox",
     debug_install_dir,
@@ -61,7 +65,7 @@ dap.configurations.javascript = {
     type = "node2",
     request = "launch",
     program = "${file}",
-    cwd = vim.fn.getcwd(),
+    cwd = vim.loop.cwd(),
     sourceMaps = true,
     protocol = "inspector",
     console = "integratedTerminal",

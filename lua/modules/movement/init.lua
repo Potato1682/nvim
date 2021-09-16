@@ -1,9 +1,14 @@
 local M = {}
 
 local vim = vim
-local fn = vim.fn
-local relative_j_time = tonumber(fn.reltimestr(fn.reltime()))
-local relative_k_time = tonumber(fn.reltimestr(fn.reltime()))
+
+local function hrtime()
+  return vim.loop.hrtime() / 1000000000
+end
+
+local relative_j_time = hrtime()
+local relative_k_time = hrtime()
+
 local press_fre = 0
 
 function M.move_j()
@@ -14,8 +19,8 @@ function M.move_j()
   end
 
   if
-    tonumber(fn.reltimestr(fn.reltime())) - relative_j_time > 0.1
-    or tonumber(fn.reltimestr(fn.reltime())) - relative_j_time < 0.01
+    hrtime() - relative_j_time > 0.1
+    or hrtime() - relative_j_time < 0.01
   then
     press_fre = 0
   end
@@ -26,7 +31,7 @@ function M.move_j()
     step = 10
   end
 
-  relative_j_time = tonumber(fn.reltimestr(fn.reltime()))
+  relative_j_time = hrtime()
   press_fre = press_fre + 1
 
   local command
@@ -82,8 +87,8 @@ function M.move_k()
   end
 
   if
-    tonumber(fn.reltimestr(fn.reltime())) - relative_k_time > 0.1
-    or tonumber(fn.reltimestr(fn.reltime())) - relative_k_time < 0.01
+    hrtime() - relative_k_time > 0.1
+    or hrtime() - relative_k_time < 0.01
   then
     press_fre = 0
   end
@@ -94,7 +99,7 @@ function M.move_k()
     step = 10
   end
 
-  relative_k_time = tonumber(fn.reltimestr(fn.reltime()))
+  relative_k_time = hrtime()
   press_fre = press_fre + 1
 
   local command

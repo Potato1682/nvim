@@ -2,7 +2,7 @@ local M = {}
 
 local function get_buffer(bufexpr)
   if not bufexpr then
-    return vim.fn.bufnr()
+    return vim.api.nvim_win_get_buf(0)
   end
 
   if tonumber(bufexpr) then
@@ -67,7 +67,7 @@ end
 
 local function find_buffer(bufnr, buffer_table)
   for index, table_bufnr in ipairs(buffer_table) do
-    if bufnr ==  table_bufnr then
+    if bufnr == table_bufnr then
       return index
     end
   end
@@ -142,7 +142,7 @@ function M.delete(bufexpr)
 
   switch_buffer(windows, next_buffer)
 
-  if vim.fn.getbufvar(buffer, "&buftype") == "terminal" then
+  if vim.bo[buffer].buftype == "terminal" then
     vim.cmd("bd! " .. buffer)
   else
     vim.cmd("silent! confirm bd " .. buffer)

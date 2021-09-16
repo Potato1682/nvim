@@ -187,24 +187,24 @@ function _G.MJp.jp_object_move(mode, command)
 
     vim.cmd [[normal! v]]
 
-    fn.cursor(vfline, vfcol)
+    vim.api.nvim_win_set_cursor(0, { vlline, vlcol })
 
     direction = direction_pos == fn.getpos "." and "b" or "w"
 
     if direction == "w" then
-      fn.cursor(vlline, vlcol)
+      vim.api.nvim_win_set_cursor(0, { vlline, vlcol })
     end
   else
-    if fn.eval("'" .. fn.matchstr(fn.getline ".", ".", fn.col "." - 1) .. "'" .. " =~ '" .. space .. "'") == 1 then
+    if fn.eval("'" .. fn.matchstr(vim.api.nvim_get_current_line(), ".", vim.api.nvim_win_get_cursor(0)[2] - 1) .. "'" .. " =~ '" .. space .. "'") == 1 then
       is_space = true
 
-      fn.search(space .. [[\+]], "cbW", fn.line ".")
+      fn.search(space .. [[\+]], "cbW", vim.api.nvim_win_get_cursor(0)[1])
     else
       _G.MJp.jp_movement("nW", 1)
       _G.MJp.jp_movement("nB", 1)
 
-      if fn.line "." < position_1[2] then
-        fn.cursor(position_1[2], 1)
+      if vim.api.nvim_win_get_cursor(0)[1] < position_1[2] then
+        vim.api.nvim_win_set_cursor(0, { position_1[2], 1 })
       end
     end
   end
@@ -214,19 +214,26 @@ function _G.MJp.jp_object_move(mode, command)
   if direction == "b" then
     _G.MJp.move_ib()
   elseif direction == "w" then
-    if fn.col "." >= fn.col "$" - fn.strlen(fn.matchstr(fn.getline "."), ".$") then
-      fn.cursor(fn.line ".", fn.col "$")
+    local linenr, col = unpack(vim.api.nvim_win_get_cursor(0))
+    local end_col = fn.col "$"
+    local line = vim.api.nvim_get_current_line()
+
+    if col >= end_col - fn.strlen(fn.matchstr(line, ".$")) then
+      vim.api.nvim_win_set_cursor(0, { linenr, end_col })
     end
 
     local cursor_position = fn.getpos "."
     local space_position_2
 
+    linenr, col = unpack(vim.api.nvim_win_get_cursor(0))
+    line = vim.api.nvim_get_current_line()
+
     if
       is_space
-      or fn.eval("'" .. fn.matchstr(fn.getline ".", ".", fn.col "." - 1) .. "'" .. " =~ " .. "'" .. space .. "'")
+      or fn.eval("'" .. fn.matchstr(line, ".", col - 1) .. "'" .. " =~ " .. "'" .. space .. "'")
         == 1
     then
-      fn.search(space .. [[\+]], "cbW", fn.line ".")
+      fn.search(space .. [[\+]], "cbW", linenr)
 
       is_space = is_space or cursor_position ~= fn.getpos "."
 
@@ -234,7 +241,7 @@ function _G.MJp.jp_object_move(mode, command)
     end
 
     if fn.col "$" == 1 and not is_space then
-      is_space = fn.search([[^[\r\n]] .. space .. [[\+]], "ceW", fn.line "." + 1) > 0
+      is_space = fn.search([[^[\r\n]] .. space .. [[\+]], "ceW", vim.api.nvim_win_get_cursor(0)[1] + 1) > 0
 
       space_position_2 = fn.getpos "."
     end
@@ -247,31 +254,43 @@ function _G.MJp.jp_object_move(mode, command)
     if not (is_visual and not is_first) then
       local length = fn.strlen(fn.matchstr(fn.getline ".", ".", fn.col "." - 1))
 
-      is_one_char = fn.col "." == 1
+      _, col = unpack(vim.api.nvim_win_get_cursor(0))
+      line = vim.api.nvim_get_current_line()
+
+      is_one_char = col == 1
         or fn.eval(
-            "'" .. fn.matchstr(fn.getline ".", ".", fn.col "." - 1 - length) .. "'" .. " =~ " .. "'" .. separator .. "'"
+            "'" .. fn.matchstr(line, ".", col - 1 - length) .. "'" .. " =~ " .. "'" .. separator .. "'"
           )
           == 1
 
+      _, col = unpack(vim.api.nvim_win_get_cursor(0))
+      line = vim.api.nvim_get_current_line()
+
       is_one_char = is_one_char
         and (
-          fn.col "." == fn.col "$"
+          col == fn.col "$"
           or fn.eval(
-            "'" .. fn.matchstr(fn.getline ".", ".", fn.col "." - 1 + length) .. "'" .. " =~ " .. "'" .. separator .. "'"
+            "'" .. fn.matchstr(line, ".", col - 1 + length) .. "'" .. " =~ " .. "'" .. separator .. "'"
           )
         )
 
+      _, col = unpack(vim.api.nvim_win_get_cursor(0))
+      line = vim.api.nvim_get_current_line()
+
       if not is_one_char then
-        is_one_char = fn.col "." == 1
+        is_one_char = col == 1
           or fn.eval(
-            "'" .. fn.matchstr(fn.getline ".", ".", fn.col "." - 1 - length) .. "'" .. " =~ " .. "'" .. space .. "'"
+            "'" .. fn.matchstr(line, ".", col - 1 - length) .. "'" .. " =~ " .. "'" .. space .. "'"
           )
+
+        _, col = unpack(vim.api.nvim_win_get_cursor(0))
+        line = vim.api.nvim_get_current_line()
 
         is_one_char = is_one_char
           and (
-            fn.col "." == fn.col "$"
+            col == fn.col "$"
             or fn.eval(
-              "'" .. fn.matchstr(fn.getline ".", ".", fn.col "." - 1 + length) .. "'" .. " =~ " .. "'" .. space .. "'"
+              "'" .. fn.matchstr(line, ".", col - 1 + length) .. "'" .. " =~ " .. "'" .. space .. "'"
             )
           )
       end
@@ -280,7 +299,7 @@ function _G.MJp.jp_object_move(mode, command)
     if is_space then
       fn.setpos(".", space_position_2)
     elseif is_one_char then
-      position_1 = fn.col "."
+      position_1 = vim.api.nvim_win_get_cursor(0)[2]
 
       fn.setpos(".", position_1)
     elseif command == "i" then
@@ -290,8 +309,10 @@ function _G.MJp.jp_object_move(mode, command)
     end
   end
 
-  if fn.col "." == fn.col "$" then
-    fn.cursor(fn.line ".", fn.col "$" - 1)
+  local linenr, col = unpack(vim.api.nvim_win_get_cursor(0))
+
+  if col == fn.col "$" then
+    vim.api.nvim_win_set_cursor(0, { linenr, fn.col "$" - 1 })
   end
 
   local position_2 = fn.getpos "."
@@ -326,10 +347,16 @@ function _G.MJp.move_aw()
 
   _G.MJp.jp_movement("nE", 1)
 
-  if fn.col "." < fn.col "$" - fn.strlen(fn.matchstr(fn.getline ".", ".$")) then
+  local line = vim.api.nvim_get_current_line()
+  local col = vim.api.nvim_win_get_cursor(0)[2]
+
+  if col < fn.col "$" - fn.strlen(fn.matchstr(line, ".$")) then
     _G.MJp.jp_movement("nW", 1)
 
-    if fn.col "." ~= 1 and fn.col "." < fn.col "$" - fn.strlen(fn.matchstr(fn.getline ".", ".$")) then
+    line = vim.api.nvim_get_current_line()
+    col = vim.api.nvim_win_get_cursor(0)[2]
+
+    if col ~= 1 and col < fn.col "$" - fn.strlen(fn.matchstr(line, ".$")) then
       vim.cmd [[normal! h]]
     end
   end

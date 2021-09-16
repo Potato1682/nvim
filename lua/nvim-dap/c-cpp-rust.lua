@@ -19,7 +19,7 @@ M.start_c_debugger = function(args, mi_mode, mi_debugger_path)
       request = "launch",
       program = table.remove(args, 1),
       args = args,
-      cwd = vim.fn.getcwd(),
+      cwd = vim.loop.cwd(),
       env = { "VAR1=value1", "VAR2=value" }, -- environment variables are set via `ENV_VAR_NAME=value` pairs
       externalConsole = true,
       MIMode = mi_mode or "gdb",

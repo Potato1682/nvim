@@ -18,7 +18,7 @@ require("telescope").setup {
     buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 
     history = {
-      path = vim.fn.stdpath "data" .. "/databases/telescope_history.sqlite3",
+      path = data_dir .. "/databases/telescope_history.sqlite3",
       limit = 100,
     },
 

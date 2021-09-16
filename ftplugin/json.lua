@@ -19,22 +19,20 @@ local input = vim.api.nvim_input
 local modules = require "modules.indent"
 
 function _G.MJson.colon_complete()
-  local line = vim.fn.getline "."
-  local line_column = vim.api.nvim_win_get_cursor(0)
-  local linenr = line_column[1]
-  local cursor_position = line_column[2]
+  local line = vim.api.nvim_get_current_line()
+  local linenr, col = unpack(vim.api.nvim_win_get_cursor(0))
 
   local is_cursor_on_eol = #line == cursor_position
 
   if not is_cursor_on_eol then
-    if cursor_position == 1 then
-      cursor_position = 2
+    if col == 1 then
+      col = 2
     end
 
     local string_table = vim.split(line, "")
 
-    local before = table.concat(vim.list_slice(string_table, 1, cursor_position - 1), "")
-    local after = table.concat(vim.list_slice(string_table, cursor_position, vim.fn.col "$" - 1), "")
+    local before = table.concat(vim.list_slice(string_table, 1, col - 1), "")
+    local after = table.concat(vim.list_slice(string_table, col, vim.fn.col "$" - 1), "")
 
     vim.api.nvim_set_current_line(before .. ":" .. after)
 
@@ -45,14 +43,14 @@ function _G.MJson.colon_complete()
   local has_colon = key_regex == nil or key_regex == "null"
 
   if has_colon then
-    if cursor_position == 1 then
-      cursor_position = 2
+    if col == 1 then
+      col = 2
     end
 
     local string_table = vim.split(line, "")
 
-    local before = table.concat(vim.list_slice(string_table, 1, cursor_position - 1), "")
-    local after = table.concat(vim.list_slice(string_table, cursor_position, vim.fn.col "$" - 1), "")
+    local before = table.concat(vim.list_slice(string_table, 1, col - 1), "")
+    local after = table.concat(vim.list_slice(string_table, col, vim.fn.col "$" - 1), "")
 
     vim.api.nvim_set_current_line(before .. ":" .. after)
 
@@ -65,14 +63,14 @@ function _G.MJson.colon_complete()
     local quoted_result = vim.fn.substitute(line, [[^\s*\zs\w\+$]], [["\0"]], "")
 
     if quoted_result == nil or quoted_result == "null" then
-      if cursor_position == 1 then
-        cursor_position = 2
+      if col == 1 then
+        col = 2
       end
 
       local string_table = vim.split(line, "")
 
-      local before = table.concat(vim.list_slice(string_table, 1, cursor_position - 1), "")
-      local after = table.concat(vim.list_slice(string_table, cursor_position, vim.fn.col "$" - 1), "")
+      local before = table.concat(vim.list_slice(string_table, 1, col - 1), "")
+      local after = table.concat(vim.list_slice(string_table, col, vim.fn.col "$" - 1), "")
 
       vim.api.nvim_set_current_line(before .. ":" .. after)
 
@@ -86,11 +84,11 @@ function _G.MJson.colon_complete()
 
   vim.api.nvim_set_current_line(vim.api.nvim_get_current_line() .. ": ")
 
-  vim.fn.cursor(vim.fn.line ".", vim.fn.col "$")
+  vim.api.nvim_win_set_cursor(0, { vim.api.nvim_win_get_cursor(0)[1], 9999 })
 end
 
 function _G.MJson.comma_cr()
-  local line = vim.fn.getline "."
+  local line = vim.api.nvim_get_current_line()
   local line_column = vim.api.nvim_win_get_cursor(0)
   local linenr = line_column[1]
   local cursor_position = line_column[2]
@@ -98,7 +96,7 @@ function _G.MJson.comma_cr()
   local is_cursor_on_eol = #line == cursor_position
 
   if not is_cursor_on_eol or line:sub(cursor_position, cursor_position) == "," then
-    feedkeys(_G.MUtils.enter_confirm())
+    input("<CR>")
 
     return
   end
@@ -107,7 +105,8 @@ function _G.MJson.comma_cr()
 
   -- Append a line and move cursor
   vim.fn.append(".", "")
-  vim.fn.cursor(linenr + 1, vim.fn.col "$")
+
+  vim.api.nvim_win_set_cursor(0, { linenr + 1, 1 })
 
   input(modules.smart_indent())
 end

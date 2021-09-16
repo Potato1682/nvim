@@ -57,7 +57,7 @@ gls.left[1] = {
 gls.left[2] = {
   CurrentDirectory = {
     provider = function()
-      return "  " .. vim.fn.fnamemodify(vim.fn.getcwd(), ":t")
+      return "  " .. vim.fn.fnamemodify(vim.loop.cwd(), ":t")
     end,
     icon = icons.get "file-directory-outline",
     separator = "   ",
@@ -243,8 +243,8 @@ gls.right[1] = {
     condition = function()
       return not not vim.g.currentContainer
     end,
-    highlight = { "#d38aea", colors.bg }
-  }
+    highlight = { "#d38aea", colors.bg },
+  },
 }
 
 gls.right[2] = {

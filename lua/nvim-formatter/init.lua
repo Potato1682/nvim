@@ -1,4 +1,6 @@
-local format_install_dir = vim.fn.stdpath "data" .. "/fmtinstall/"
+local Path = require "plenary.path"
+
+local format_install_dir = data_dir .. "/fmtinstall/"
 
 local lua_bin = format_install_dir .. "lua/stylua"
 
@@ -35,7 +37,7 @@ local prettier_bin
 if vim.fn.executable "prettierd" then
   prettier_bin = "prettierd"
 elseif vim.fn.executable "./node_modules/.bin/prettierd" then
-  prettier_bin = vim.fn.expand "./node_modules/.bin/prettierd"
+  prettier_bin = Path:new("./node_modules/.bin/prettierd"):expand()
 elseif vim.fn.executable "prettier" then
   prettier_bin = "prettier"
 elseif vim.fn.executable "./node_modules/.bin/prettier" then

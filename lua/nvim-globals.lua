@@ -1,3 +1,8 @@
+data_dir = vim.fn.stdpath "data" .. "/"
+config_dir = vim.fn.stdpath "config" .. "/"
+
+-- This is settings section
+
 O = {
   author = "", -- REQUIRED
   leader = " ",

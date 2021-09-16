@@ -29,7 +29,7 @@ local function resume()
 end
 
 function M.resume_buf()
-  if vim.fn.line "." > 1 or check_buf() then
+  if vim.api.nvim_win_get_cursor(0)[1] > 1 or check_buf() then
     return
   end
 
@@ -47,7 +47,7 @@ function M.resume_ft()
     return
   end
 
-  if vim.fn.line "." > 1 then
+  if vim.api.nvim_win_get_cursor(0)[1] > 1 then
     return
   end
 

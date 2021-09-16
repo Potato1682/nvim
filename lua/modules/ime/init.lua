@@ -1,7 +1,9 @@
 local M = {}
 
+local os_name = vim.loop.os_uname().sysname
+
 local function is_linux()
-  return vim.fn.has "unix" == 1 and not vim.fn.has "macunix" == 1 and not vim.fn.has "win32unix" == 1
+  return os_name == "Linux"
 end
 
 local function is_docker()

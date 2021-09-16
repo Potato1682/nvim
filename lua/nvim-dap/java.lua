@@ -1,6 +1,6 @@
-local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/java/"
+local debug_install_dir = data_dir .. "/dapinstall/java/"
 
-if vim.fn.glob(debug_install_dir) == "" then
+if not vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir) or {}) then
   require("nvim-dap.install").install(
     "java debug",
     debug_install_dir,
@@ -9,9 +9,7 @@ if vim.fn.glob(debug_install_dir) == "" then
     ./mvnw clean install
   ]]
   )
-end
 
-if vim.fn.glob(debug_install_dir) == "" then
   require("nvim-dap.install").install(
     "java test runner",
     debug_install_dir,
