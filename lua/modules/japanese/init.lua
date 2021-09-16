@@ -254,7 +254,7 @@ function _G.MJp.jp_object_move(mode, command)
     if not (is_visual and not is_first) then
       local length = fn.strlen(fn.matchstr(fn.getline ".", ".", fn.col "." - 1))
 
-      _, col = unpack(vim.api.nvim_win_get_cursor(0))
+      col = vim.api.nvim_win_get_cursor(0)[2]
       line = vim.api.nvim_get_current_line()
 
       is_one_char = col == 1
@@ -263,7 +263,7 @@ function _G.MJp.jp_object_move(mode, command)
           )
           == 1
 
-      _, col = unpack(vim.api.nvim_win_get_cursor(0))
+      col = vim.api.nvim_win_get_cursor(0)[2]
       line = vim.api.nvim_get_current_line()
 
       is_one_char = is_one_char
@@ -274,7 +274,7 @@ function _G.MJp.jp_object_move(mode, command)
           )
         )
 
-      _, col = unpack(vim.api.nvim_win_get_cursor(0))
+      col = vim.api.nvim_win_get_cursor(0)[2]
       line = vim.api.nvim_get_current_line()
 
       if not is_one_char then
@@ -283,7 +283,7 @@ function _G.MJp.jp_object_move(mode, command)
             "'" .. fn.matchstr(line, ".", col - 1 - length) .. "'" .. " =~ " .. "'" .. space .. "'"
           )
 
-        _, col = unpack(vim.api.nvim_win_get_cursor(0))
+        col = vim.api.nvim_win_get_cursor(0)[2]
         line = vim.api.nvim_get_current_line()
 
         is_one_char = is_one_char
