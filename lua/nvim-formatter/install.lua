@@ -1,5 +1,4 @@
 local Path = require "plenary.path"
-local Job = require "plenary.job"
 
 local function install(name, dir, script)
   if type(dir) == "string" then
@@ -7,12 +6,6 @@ local function install(name, dir, script)
   end
 
   dir:mkdir({ parents = true, exists_ok = true })
-
-  local function chan_writer(chan)
-    return vim.schedule_wrap(function(_, data)
-      vim.api.nvim_chan_send(chan, data .. "\r\n")
-    end)
-  end
 
   local function on_exit(_, code)
     if code ~= 0 then
@@ -30,26 +23,28 @@ local function install(name, dir, script)
     return
   end
 
-  local shell = vim.opt.shell:get()
+  vim.cmd "botright split new"
+
+  vim.api.nvim_win_set_height(0, 15)
+
+  local bufnr = vim.api.nvim_win_get_buf(0)
+
+  if bufnr == 0 then
+    vim.notify("Cannot create installer buffer!", "error", { title = "dapinstall" })
+
+    return
+  end
+
+  local shell = vim.o.shell
 
   vim.opt.shell = "bash"
 
-  local chan = vim.api.nvim_open_term(bufnr, {})
+  vim.fn.termopen("set -e\n" .. script, {
+    cwd = dir:expand(),
+    on_exit = on_exit,
+  })
 
-  if chan == 0 then
-    vim.notify("Cannot create terminal instance!", "error", { title = "fmtinstall" })
-  end
-
-  Job
-    :new({
-      command = "bash",
-      args = { "-c", '"set -e\n' .. script .. '"' },
-      cwd = dir,
-      on_exit = on_exit,
-      on_etdout = chan_writer(chan),
-      on_stderr = chan_writer(chan),
-    })
-    :start()
+  vim.cmd "wincmd p"
 
   vim.opt.shell = shell
 end
