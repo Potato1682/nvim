@@ -109,6 +109,13 @@ function M.setup()
       { "BufWritePost", "plugins.lua", "source <afile> | PackerCompile" }
     },
     bufs = {
+      { "BufWritePost", "COMMIT_EDITMSG", "setlocal noundofile" },
+      { "BufWritePost,FileWritePost", "*.vim", "nested", [[if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]] },
+      { "BufWritePre", "/tmp/*", "setlocal noundofile" },
+      { "BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile" },
+      { "BufWritePre", "MERGE_MSG", "setlocal noundofile" },
+      { "BufWritePre", "*.tmp", "setlocal noundofile" },
+      { "BufWritePre", "*.tmp", "setlocal noundofile" },
       { "BufWritePre", "*.tmp", "setlocal noundofile" },
       { "BufWritePre", "*.log", "setlocal noundofile" },
       { "BufWritePre", "*.bak", "setlocal noundofile" },

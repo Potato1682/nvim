@@ -1298,6 +1298,14 @@ local function init()
     ft = "log",
   }
 
+  -- Solidity
+  use {
+    "ChristianChiarulli/vim-solidity",
+    as = "solidity",
+
+    ft = "solidity"
+  }
+
   -- Color converter
   use {
     "NTBBloodbath/color-converter.nvim",
