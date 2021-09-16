@@ -23,6 +23,8 @@ files["lua/lush_theme/amethyst.lua"].ignore = {
 
 globals = {
   "O",
-  "vim"
+  "vim",
+  "data_dir",
+  "config_dir"
 }
 
