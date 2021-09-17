@@ -27,7 +27,7 @@ local function install(name, dir, script)
 
   vim.api.nvim_win_set_height(0, 15)
 
-  local bufnr = vim.api.nvim_win_get_buf(0)
+  bufnr = vim.api.nvim_win_get_buf(0)
 
   if bufnr == 0 then
     vim.notify("Cannot create installer buffer!", "error", { title = "dapinstall" })

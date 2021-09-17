@@ -6,7 +6,8 @@ jobs = 4
 
 exclude_files = {
   "template/",
-  "lua/lsp/json/schemas.lua"
+  "lua/lsp/json/schemas.lua",
+  "plugin/packer_compiled.lua"
 }
 
 ignore = {
