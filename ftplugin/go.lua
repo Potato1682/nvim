@@ -51,7 +51,7 @@ require("events").nvim_create_autocmd { "BufWritePre", "*.go", "call v:lua.MGo.g
 
 local debug_install_dir = data_dir .. "/dapinstall/go"
 
-if not vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir) or {}) then
+if vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir) or {}) then
   require("nvim-dap.install").install(
     "go debug",
     debug_install_dir,

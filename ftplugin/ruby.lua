@@ -6,7 +6,7 @@ vim.g.loaded_ruby_ftplugin = true
 
 local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/ruby/"
 
-if not vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir) or {}) then
+if vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir) or {}) then
   require("nvim-dap.install").install(
     "ruby debug",
     debug_install_dir,

@@ -1,7 +1,7 @@
 local debug_install_dir = data_dir .. "/dapinstall/javascript/"
 
 local function debugger_exists(name)
-  return not vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir .. name) or {})
+  return vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir .. name) or {})
 end
 
 if debugger_exists("node-debug") == "" then

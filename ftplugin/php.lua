@@ -6,7 +6,7 @@ vim.g.loaded_php_ftplugin = true
 
 local debug_install_dir = vim.fn.stdpath "data" .. "/dapinstall/php/php-debug/"
 
-if not vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir) or {}) then
+if vim.tbl_isempty(vim.loop.fs_stat(debug_install_dir) or {}) then
   require("nvim-dap.install").install(
     "php debug",
     debug_install_dir,
