@@ -1,6 +1,6 @@
 vim.g.textmanip_hooks = {}
 
-function vim.g.textmanip_hooks.finish(tm)
+function _G.textmanip_hook(tm)
   local helper = vim.fn["textmanip#helper#get"]()
 
   if tm.linewise then
@@ -11,3 +11,6 @@ function vim.g.textmanip_hooks.finish(tm)
     helper.remove_trailing_WS(tm)
   end
 end
+
+vim.g.textmanip_hooks.finish = _G.textmanip_hook
+

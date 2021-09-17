@@ -383,35 +383,35 @@ installer.on_server_ready(function(server)
           return
         end
 
-        local read_ok, data = pcall(Path.read, poetry_file)
-
-        if not read_ok then
-          vim.notify(
-            "Cannot read pyproject.toml!\nlsp will disable poetry support for pyright.",
-            "warning",
-            { title = "lsp" }
-          )
-
-          return
-        end
-
-        local parse_ok, pyproject = pcall(toml.parse, data)
-
-        if not parse_ok then
-          vim.notify(
-            "malformed toml format in pyproject.toml!\nlsp will disable poetry support for pyright.",
-            "warning",
-            { title = "lsp" }
-          )
-
-          return
-        end
-
-        if pyproject.tool == nil or pyproject.tool.poetry == nil then
-          return
-        end
-
         defer_setup(async(function()
+          local read_ok, data = pcall(Path.read, poetry_file)
+
+          if not read_ok then
+            vim.notify(
+              "Cannot read pyproject.toml!\nlsp will disable poetry support for pyright.",
+              "warning",
+              { title = "lsp" }
+            )
+
+            return
+          end
+
+          local parse_ok, pyproject = pcall(toml.parse, data)
+
+          if not parse_ok then
+            vim.notify(
+              "malformed toml format in pyproject.toml!\nlsp will disable poetry support for pyright.",
+              "warning",
+              { title = "lsp" }
+            )
+
+            return
+          end
+
+          if pyproject.tool == nil or pyproject.tool.poetry == nil then
+            return
+          end
+
           local venv_path = vim.trim(vim.fn.system "poetry config virtualenvs.path")
           local venv_directory = vim.trim(vim.fn.system "poetry env list")
 

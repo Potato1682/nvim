@@ -172,6 +172,18 @@ local function init()
     event = "BufReadPost",
   }
 
+  -- Text manipulation
+  use {
+    "t9md/vim-textmanip",
+    as = "textmanip",
+
+    keys = "<Plug>(textmanip",
+
+    config = function()
+      require "nvim-textmanip"
+    end,
+  }
+
   -- Sandwich with quotes
   use {
     "machakann/vim-sandwich",
@@ -357,7 +369,7 @@ local function init()
   -- Highlighted Paste
   use {
     "ayosec/hltermpaste.vim",
-    as = "hltermpaste"
+    as = "hltermpaste",
   }
 
   -- Folding
@@ -1305,7 +1317,7 @@ local function init()
     "ChristianChiarulli/vim-solidity",
     as = "solidity",
 
-    ft = "solidity"
+    ft = "solidity",
   }
 
   -- Color converter
