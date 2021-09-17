@@ -660,3 +660,5 @@ installer.on_server_ready(function(server)
 
   vim.cmd [[ do User LspAttachBuffers ]]
 end)
+
+return { common_on_attach = common_on_attach }
