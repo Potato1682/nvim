@@ -42,6 +42,7 @@ if ok then
       TRACE = " ",
     },
   }
+
   vim.notify = notify
 end
 
