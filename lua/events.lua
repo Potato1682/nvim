@@ -69,7 +69,11 @@ function M.setup()
       { "BufEnter", "*", "setlocal formatoptions-=o" },
     },
     backspace = {
-      { "BufEnter", "*", "if luaeval('not not _G.MPairs') | imap <silent> <BS> <cmd>call v:lua.MPairs.check_bs()<cr>| endif" },
+      {
+        "BufEnter",
+        "*",
+        "if luaeval('not not _G.MPairs') | imap <silent> <BS> <cmd>call v:lua.MPairs.check_bs()<cr>| endif",
+      },
     },
     cursor = {
       { "WinEnter,BufEnter", "*", "lua require'modules.windows'.win_enter()" },
@@ -106,11 +110,16 @@ function M.setup()
       { "FileType", "dashboard", "nnoremap <silent> <buffer> q :q<cr>" },
     },
     auto_compile = {
-      { "BufWritePost", "plugins.lua", "source <afile> | PackerCompile" }
+      { "BufWritePost", "plugins.lua", "source <afile> | PackerCompile" },
     },
     bufs = {
       { "BufWritePost", "COMMIT_EDITMSG", "setlocal noundofile" },
-      { "BufWritePost,FileWritePost", "*.vim", "nested", [[if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]] },
+      {
+        "BufWritePost,FileWritePost",
+        "*.vim",
+        "nested",
+        [[if &l:autoread > 0 | source <afile> | echo 'source ' . bufname('%') | endif]],
+      },
       { "BufWritePre", "/tmp/*", "setlocal noundofile" },
       { "BufWritePre", "COMMIT_EDITMSG", "setlocal noundofile" },
       { "BufWritePre", "MERGE_MSG", "setlocal noundofile" },

@@ -87,7 +87,8 @@ npairs.add_rules(require "nvim-autopairs.rules.endwise-ruby")
 
 -- move up current line and delete old line.
 -- this function is used by backspace smart indent feature.
--- @param line_string current line in string. You can get this by following: `tostring(vim.api.nvim_win_get_cursor(0)[1])`
+-- @param line_string current line in string.
+--        You can get this by following: `tostring(vim.api.nvim_win_get_cursor(0)[1])`
 function _G.MPairs.move_and_delete(line_string)
   vim.cmd [[ nohlsearch ]]
   vim.cmd(line_string .. "d")

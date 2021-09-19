@@ -195,7 +195,16 @@ function _G.MJp.jp_object_move(mode, command)
       vim.api.nvim_win_set_cursor(0, { vlline, vlcol })
     end
   else
-    if fn.eval("'" .. fn.matchstr(vim.api.nvim_get_current_line(), ".", vim.api.nvim_win_get_cursor(0)[2] - 1) .. "'" .. " =~ '" .. space .. "'") == 1 then
+    if
+      fn.eval(
+        "'"
+          .. fn.matchstr(vim.api.nvim_get_current_line(), ".", vim.api.nvim_win_get_cursor(0)[2] - 1)
+          .. "'"
+          .. " =~ '"
+          .. space
+          .. "'"
+      ) == 1
+    then
       is_space = true
 
       fn.search(space .. [[\+]], "cbW", vim.api.nvim_win_get_cursor(0)[1])
@@ -228,11 +237,7 @@ function _G.MJp.jp_object_move(mode, command)
     linenr, col = unpack(vim.api.nvim_win_get_cursor(0))
     line = vim.api.nvim_get_current_line()
 
-    if
-      is_space
-      or fn.eval("'" .. fn.matchstr(line, ".", col - 1) .. "'" .. " =~ " .. "'" .. space .. "'")
-        == 1
-    then
+    if is_space or fn.eval("'" .. fn.matchstr(line, ".", col - 1) .. "'" .. " =~ " .. "'" .. space .. "'") == 1 then
       fn.search(space .. [[\+]], "cbW", linenr)
 
       is_space = is_space or cursor_position ~= fn.getpos "."
@@ -258,9 +263,7 @@ function _G.MJp.jp_object_move(mode, command)
       line = vim.api.nvim_get_current_line()
 
       is_one_char = col == 1
-        or fn.eval(
-            "'" .. fn.matchstr(line, ".", col - 1 - length) .. "'" .. " =~ " .. "'" .. separator .. "'"
-          )
+        or fn.eval("'" .. fn.matchstr(line, ".", col - 1 - length) .. "'" .. " =~ " .. "'" .. separator .. "'")
           == 1
 
       col = vim.api.nvim_win_get_cursor(0)[2]
@@ -269,9 +272,7 @@ function _G.MJp.jp_object_move(mode, command)
       is_one_char = is_one_char
         and (
           col == fn.col "$"
-          or fn.eval(
-            "'" .. fn.matchstr(line, ".", col - 1 + length) .. "'" .. " =~ " .. "'" .. separator .. "'"
-          )
+          or fn.eval("'" .. fn.matchstr(line, ".", col - 1 + length) .. "'" .. " =~ " .. "'" .. separator .. "'")
         )
 
       col = vim.api.nvim_win_get_cursor(0)[2]
@@ -279,9 +280,7 @@ function _G.MJp.jp_object_move(mode, command)
 
       if not is_one_char then
         is_one_char = col == 1
-          or fn.eval(
-            "'" .. fn.matchstr(line, ".", col - 1 - length) .. "'" .. " =~ " .. "'" .. space .. "'"
-          )
+          or fn.eval("'" .. fn.matchstr(line, ".", col - 1 - length) .. "'" .. " =~ " .. "'" .. space .. "'")
 
         col = vim.api.nvim_win_get_cursor(0)[2]
         line = vim.api.nvim_get_current_line()
@@ -289,9 +288,7 @@ function _G.MJp.jp_object_move(mode, command)
         is_one_char = is_one_char
           and (
             col == fn.col "$"
-            or fn.eval(
-              "'" .. fn.matchstr(line, ".", col - 1 + length) .. "'" .. " =~ " .. "'" .. space .. "'"
-            )
+            or fn.eval("'" .. fn.matchstr(line, ".", col - 1 + length) .. "'" .. " =~ " .. "'" .. space .. "'")
           )
       end
     end

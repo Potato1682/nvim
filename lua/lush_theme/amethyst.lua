@@ -73,12 +73,18 @@ local theme = lush(function()
     Comment { fg = hsluv "#7e8294", gui = "italic" }, -- any comment
     Lighter { bg = Normal.bg.li(8) },
     ColorColumn { bg = Lighter.bg.da(16) }, -- used for the columns set with 'colorcolumn'
-    Conceal { Comment, cterm = "", gui = "" }, -- placeholder characters substituted for concealed text (see 'conceallevel')
+
+    -- placeholder characters substituted for concealed text (see 'conceallevel')
+    Conceal { Comment, cterm = "", gui = "" },
+
     Cursor { bg = hsluv("#0072f3").ro(5) },
     lCursor { Cursor }, -- the character under the cursor when |language-mapping| is used (see 'guicursor')
     CursorIM { fg = Normal.fg.da(10), bg = Normal.bg.da(10) }, -- like Cursor, but used when in IME mode |CursorIM|
     CursorColumn { Lighter }, -- Screen-column at the cursor, when 'cursorcolumn' is set.
-    CursorLine { Lighter }, -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+
+    -- Screen-line at the cursor, when 'cursorline' is set.  Low-priority if foreground (ctermfg OR guifg) is not set.
+    CursorLine { Lighter },
+
     Directory { Green }, -- directory names (and other special names in listings)
     DiffAdd { bg = hsluv(131, 70, 25), blend = 13 }, -- diff mode: Added line |diff.txt|
     DiffAddSeparator { fg = Comment.fg, bg = DiffAdd.bg.da(20) },
@@ -87,7 +93,10 @@ local theme = lush(function()
     DiffModifiedSeparator { fg = Comment.fg, bg = DiffChange.bg.da(20) },
     DiffDelete { bg = hsluv(10, 80, 18), blend = 13 }, -- diff mode: Deleted line |diff.txt|
     DiffRemoveSeparator { fg = Comment.fg, bg = DiffDelete.bg.da(20) }, -- diff mode: Deleted line |diff.txt|
-    EndOfBuffer { Normal, fg = Normal.bg }, -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
+
+    -- filler lines (~) after the end of the buffer.  By default, this is highlighted like |hl-NonText|.
+    EndOfBuffer { Normal, fg = Normal.bg },
+
     Terminal { Normal, bg = Normal.bg.da(30) },
     TermCursor { Cursor }, -- cursor in a focused terminal
     TermCursorNC { bg = Cursor.bg.da(10) }, -- cursor in an unfocused terminal
@@ -99,26 +108,55 @@ local theme = lush(function()
     FoldColumn { Folded }, -- 'foldcolumn'
     SignColumn { Normal }, -- column where |signs| are displayed
     IncSearch { DiffText, fg = Normal.fg }, -- 'incsearch' highlighting; also used for the text replaced with ":s///c"
-    LineNr { fg = Normal.fg.da(60) }, -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
-    CursorLineNr { fg = Normal.fg.da(20), bg = Normal.bg.li(3) }, -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
-    MatchParen { bg = Normal.bg.li(15), gui = "underline" }, -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+
+    -- Line number for ":number" and ":#" commands, and when 'number' or 'relativenumber' option is set.
+    LineNr { fg = Normal.fg.da(60) },
+
+    -- Like LineNr when 'cursorline' or 'relativenumber' is set for the cursor line.
+    CursorLineNr { fg = Normal.fg.da(20), bg = Normal.bg.li(3) },
+
+    -- The character under the cursor or just before it, if it is a paired bracket, and its match. |pi_paren.txt|
+    MatchParen { bg = Normal.bg.li(15), gui = "underline" },
+
     ModeMsg { fg = Normal.fg.da(50), gui = "italic" }, -- 'showmode' message (e.g., "-- INSERT -- ")
     MsgArea { fg = Normal.fg.li(40), bg = Normal.bg.da(10) }, -- Area for messages and cmdline
     FloatBorder { fg = MsgArea.bg, bg = MsgArea.bg },
     MsgSeparator { bg = Normal.bg.da(15) }, -- Separator for scrolled messages, `msgsep` flag of 'display'
     MoreMsg { ModeMsg }, -- |more-prompt|
-    NonText { fg = Normal.fg.da(60) }, -- '@' at the end of the window, characters from 'showbreak' and other characters that do not really exist in the text (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line). See also |hl-EndOfBuffer|.
+
+    -- '@' at the end of the window, characters from 'showbreak'
+    -- and other characters that do not really exist in the text
+    -- (e.g., ">" displayed when a double-wide character doesn't fit at the end of the line).
+    -- See also |hl-EndOfBuffer|.
+    NonText { fg = Normal.fg.da(60) },
+
     Pmenu { NormalFloat }, -- Popup menu: normal item.
     PmenuSel { fg = Normal.fg.da(8), bg = hsluv "#4a4cfa" }, -- Popup menu: selected item.
     PmenuSbar { bg = NormalFloat.bg.da(8) }, -- Popup menu: scrollbar.
     PmenuThumb { bg = Normal.bg.li(50) }, -- Popup menu: Thumb of the scrollbar.
     Question { fg = Normal.fg.da(30).ro(20), gui = "italic" }, -- |hit-enter| prompt and yes/no questions
-    Search { DiffChange }, -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
-    SpecialKey { NonText }, -- Unprintable characters: text displayed differently from what it really is.  But not 'listchars' whitespace. |hl-Whitespace|
-    SpellBad { gui = "underline", sp = Red.fg.da(20) }, -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
-    SpellCap { gui = "underline", sp = Yellow.fg.da(30) }, -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
-    SpellLocal { gui = "underline", sp = Green.fg.da(30) }, -- Word that is recognized by the spellchecker as one that is used in another region. |spell| Combined with the highlighting used otherwise.
-    SpellRare { gui = "underline", sp = Purple.fg.da(30) }, -- Word that is recognized by the spellchecker as one that is hardly ever used.  |spell| Combined with the highlighting used otherwise.
+
+    -- Last search pattern highlighting (see 'hlsearch').  Also used for similar items that need to stand out.
+    Search { DiffChange },
+
+    -- Unprintable characters: text displayed differently from what it really is.
+    -- But not 'listchars' whitespace. |hl-Whitespace|
+    SpecialKey { NonText },
+
+    -- Word that is not recognized by the spellchecker. |spell| Combined with the highlighting used otherwise.
+    SpellBad { gui = "underline", sp = Red.fg.da(20) },
+
+    -- Word that should start with a capital. |spell| Combined with the highlighting used otherwise.
+    SpellCap { gui = "underline", sp = Yellow.fg.da(30) },
+
+    -- Word that is recognized by the spellchecker as one that is used in another region.
+    -- |spell| Combined with the highlighting used otherwise.
+    SpellLocal { gui = "underline", sp = Green.fg.da(30) },
+
+    -- Word that is recognized by the spellchecker as one that is hardly ever used.
+    -- |spell| Combined with the highlighting used otherwise.
+    SpellRare { gui = "underline", sp = Purple.fg.da(30) },
+
     StatusLine { Normal, bg = MsgArea.bg }, -- status line of current window
     StatusLineNc { fg = Normal.fg.da(20), bg = MsgArea.bg },
     StatusLineTerm { StatusLine },
@@ -172,7 +210,8 @@ local theme = lush(function()
     Error { gui = "undercurl", sp = hsluv "#ec7279" }, -- (preferred) any erroneous construct
     Warning { gui = "undercurl", sp = Yellow.fg },
 
-    Todo { fg = Purple.fg, gui = "italic,bold" }, -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    -- (preferred) anything that needs extra attention; mostly the keywords TODO FIXME and XXX
+    Todo { fg = Purple.fg, gui = "italic,bold" },
 
     -- These groups are for the native LSP client. Some other LSP clients may
     -- use these groups, or use their own. Consult your LSP client's
@@ -182,14 +221,24 @@ local theme = lush(function()
     -- LspReferenceRead                     { }, -- used for highlighting "read" references
     -- LspReferenceWrite                    { }, -- used for highlighting "write" references
 
-    LspDiagnosticsDefaultError { Red }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultWarning { Yellow }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultInformation { Blue }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
-    LspDiagnosticsDefaultHint { Green }, -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultError { Red },
+
+    -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultWarning { Yellow },
+
+    -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultInformation { Blue },
+
+    -- Used as the base highlight group. Other LspDiagnostic highlights link to this by default (except Underline)
+    LspDiagnosticsDefaultHint { Green },
 
     LspDiagnosticsUnderlineError { Error }, -- Used to underline "Error" diagnostics
     LspDiagnosticsUnderlineWarning { Warning }, -- Used to underline "Warning" diagnostics
-    LspDiagnosticsUnderlineInformation { gui = "undercurl", sp = Blue.fg }, -- Used to underline "Information" diagnostics
+
+    -- Used to underline "Information" diagnostics
+    LspDiagnosticsUnderlineInformation { gui = "undercurl", sp = Blue.fg },
+
     LspDiagnosticsUnderlineHint { gui = "undercurl", sp = Green.fg.li(20) }, -- Used to underline "Hint" diagnostics
 
     -- These groups are for the neovim tree-sitter highlights.
@@ -198,7 +247,8 @@ local theme = lush(function()
     -- TSError -> Error for example, so you do not have to define these unless
     -- you explicitly want to support Treesitter's improved syntax awareness.
 
-    TSAnnotation { fg = hsluv "#72737A" }, -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
+    -- For C++/Dart attributes, annotations that can be attached to the code to denote some kind of meta information.
+    TSAnnotation { fg = hsluv "#72737A" },
     TSAttribute { TSAnnotation }, -- (unstable) TODO: docs
     TSConstructor { Statement }, -- For constructor calls and definitions: ` { }` in Lua, and Java constructors.
     TSConstBuiltin { Statement }, -- For constant that are built in the language: `nil` in Lua.
@@ -210,7 +260,9 @@ local theme = lush(function()
     TSStringEscape { Character }, -- For escape characters within a string.
     TSType { Constant }, -- For types.
     TSVariable { Blue }, -- Any variable name that does not have another highlight.
-    TSVariableBuiltin { fg = PreProc.fg.li(20).ro(10) }, -- Variable names that are defined by the languages, like `this` or `self`.
+
+    -- Variable names that are defined by the languages, like `this` or `self`.
+    TSVariableBuiltin { fg = PreProc.fg.li(20).ro(10) },
 
     TSUnderline { fg = Normal.fg.da(30) }, -- For text to be represented with an underline.
     TSStrike { gui = "strikethrough" }, -- For strikethrough text.

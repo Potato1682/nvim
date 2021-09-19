@@ -10,10 +10,6 @@ exclude_files = {
   "plugin/packer_compiled.lua"
 }
 
-ignore = {
-  "631"
-}
-
 files["lua/modules/buffer/init.lua"].ignore = {
   "311"
 }
