@@ -31,6 +31,17 @@ require "plugins"
 local ok, notify = pcall(require, "notify")
 
 if ok then
+  notify.setup {
+    stages = (O.notification or {}).animation_style,
+
+    icons = {
+      ERROR = " ",
+      WARN = " ",
+      INFO = " ",
+      DEBUG = " ",
+      TRACE = " ",
+    },
+  }
   vim.notify = notify
 end
 

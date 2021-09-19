@@ -22,6 +22,10 @@ O = {
   cursor = {
     vfx = "pixeldust", -- Neovide only
   },
+  notification = {
+    -- @usage can be 'fade_slide_out', 'fade', 'slide' and 'static'
+    animation_style = "fade_in_slide_out"
+  },
   font = "JetBrains Mono NF",
   textwidth = 120,
   colorscheme = "amethyst",
@@ -62,8 +66,8 @@ O = {
   },
   typescript = {
     on_save = {
-      organize_imports = true
-    }
+      organize_imports = true,
+    },
   },
   python = {
     -- @usage can be 'unittest', 'pytest'
