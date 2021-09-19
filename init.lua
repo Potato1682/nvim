@@ -28,6 +28,8 @@ require "providers"
 
 require "plugins"
 
+require "colorscheme"
+
 local ok, notify = pcall(require, "notify")
 
 if ok then
@@ -45,8 +47,6 @@ if ok then
 
   vim.notify = notify
 end
-
-require "colorscheme"
 
 if vim.fn.executable "ctags" or vim.fn.executable "gtags" then
   require "nvim-tags"
