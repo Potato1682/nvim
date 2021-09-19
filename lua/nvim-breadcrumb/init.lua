@@ -4,7 +4,8 @@ require("nvim-gps").setup {
   icons = {
     ["class-name"] = icons.get "class" .. " ", -- Classes and class-like objects
     ["function-name"] = icons.get "package" .. " ", -- Functions
-    ["method-name"] = icons.get "package" .. " ",      -- Methods (functions inside class-like objects)
+    ["method-name"] = icons.get "package" .. " ", -- Methods (functions inside class-like objects)
+    ["container-name"] = icons.get "container" .. " ", -- Containers (example: lua tables)
   },
   languages = { -- You can disable any language individually here
     ["c"] = true,
