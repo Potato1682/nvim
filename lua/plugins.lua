@@ -532,6 +532,24 @@ local function init()
     end,
   }
 
+  use {
+    "ThePrimeagen/refactoring.nvim",
+    as = "refactoring",
+
+    requires = {
+      { "nvim-lua/plenary.nvim" },
+      { "nvim-treesitter/nvim-treesitter" },
+    },
+
+    config = function()
+      local refactor = require "refactoring"
+
+      refactor.setup()
+
+
+    end
+  }
+
   -- LSP
 
   use {

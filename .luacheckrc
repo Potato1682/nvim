@@ -11,7 +11,7 @@ exclude_files = {
 }
 
 files["lua/modules/buffer/init.lua"].ignore = {
-  "311"
+  "311/next"
 }
 
 files["lua/lush_theme/amethyst.lua"].ignore = {
