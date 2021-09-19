@@ -249,6 +249,10 @@ gls.left[15] = {
 gls.left[16] = {
   LightBulb = {
     provider = function()
+      if vim.b.current_lightbulb_status_text == nil then
+        vim.b.current_lightbulb_status_text = ""
+      end
+
       return require("nvim-lightbulb").get_status_text()
     end,
     condition = condition.check_active_lsp,
