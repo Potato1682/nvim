@@ -376,7 +376,7 @@ installer.on_server_ready(function(server)
         if not toml_ok then
           vim.notify(
             "lua-toml rocks not installed!\nlsp will disable poetry support for pyright.",
-            "warning",
+            vim.log.levels.WARN,
             { title = "lsp" }
           )
 
@@ -389,7 +389,7 @@ installer.on_server_ready(function(server)
           if not read_ok then
             vim.notify(
               "Cannot read pyproject.toml!\nlsp will disable poetry support for pyright.",
-              "warning",
+              vim.log.levels.WARN,
               { title = "lsp" }
             )
 
@@ -401,7 +401,7 @@ installer.on_server_ready(function(server)
           if not parse_ok then
             vim.notify(
               "malformed toml format in pyproject.toml!\nlsp will disable poetry support for pyright.",
-              "warning",
+              vim.log.levels.WARN,
               { title = "lsp" }
             )
 
@@ -571,7 +571,7 @@ installer.on_server_ready(function(server)
 
     require("jdtls").start_or_attach {
       before_init = function()
-        vim.notify("Starting eclipse.jdt.ls, this take a while...", "info", { title = "jdtls" })
+        vim.notify("Starting eclipse.jdt.ls, this take a while...", vim.log.levels.INFO, { title = "jdtls" })
       end,
       cmd = { config_dir .. "/bin/" .. jdtls_bin },
       on_attach = on_attach,

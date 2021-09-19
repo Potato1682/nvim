@@ -5,20 +5,20 @@ local function install(name, dir, script)
     dir = Path:new(dir)
   end
 
-  dir:mkdir({ parents = true, exists_ok = true })
+  dir:mkdir { parents = true, exists_ok = true }
 
   local function on_exit(_, code)
     if code ~= 0 then
-      vim.notify("Could not install " .. name .. "!", "error", { title = "fmtinstall" })
+      vim.notify("Could not install " .. name .. "!", vim.log.levels.ERROR, { title = "fmtinstall" })
     end
 
-    vim.notify("Successfully installed " .. name .. "!", "success", { title = "fmtinstall" })
+    vim.notify("Successfully installed " .. name .. "!", vim.log.levels.INFO, { title = "fmtinstall" })
   end
 
   local bufnr = vim.api.nvim_create_buf(false, false)
 
   if bufnr == 0 then
-    vim.notify("Cannot create installer buffer!", "error", { title = "fmtinstall" })
+    vim.notify("Cannot create installer buffer!", vim.log.levels.ERROR, { title = "fmtinstall" })
 
     return
   end
@@ -30,7 +30,7 @@ local function install(name, dir, script)
   bufnr = vim.api.nvim_win_get_buf(0)
 
   if bufnr == 0 then
-    vim.notify("Cannot create installer buffer!", "error", { title = "dapinstall" })
+    vim.notify("Cannot create installer buffer!", vim.log.levels.ERROR, { title = "dapinstall" })
 
     return
   end
