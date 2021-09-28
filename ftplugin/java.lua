@@ -5,7 +5,7 @@ end
 vim.g.loaded_java_ftplugin = true
 
 if vim.fn.glob(data_dir .. "/lsp_servers/jdtls/*") == "" then
-  require("nvim-lsp-installer").install("jdtls")
+  require("nvim-lsp-installer").install "jdtls"
 end
 
 require "nvim-dap.java"
@@ -46,4 +46,3 @@ modules.define_command("JShell", "lua require'jdtls'.jshell()", { buffer = true 
 modules.define_command("UpdateProject", "lua require'jdtls'.update_project_config()", { buffer = true })
 modules.define_command("JdtBytecode", "lua require'jdtls'.javap()", { buffer = true })
 modules.define_command("JdtJol", "lua require'jdtls'.jol()", { buffer = true })
-modules.define_command("Neoformat", "lua vim.lsp.buf.formatting()", { buffer = true })
