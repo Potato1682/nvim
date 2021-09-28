@@ -23,7 +23,7 @@ keymap("n", "<Leader>f", "<cmd>Telescope find_files<cr>", { noremap = true, sile
 keymap("n", "<Leader>;", "<cmd>Dashboard<cr>", { noremap = true, silent = true })
 
 -- close buffer
-keymap("n", "<leader>q", "<cmd>lua require'modules.buffer'.delete_buffer()<cr>", { noremap = true, silent = true })
+keymap("n", "<leader>q", "<cmd>lua require'modules.buffer'.delete()<cr>", { noremap = true, silent = true })
 
 -- generate documents
 keymap("n", "<leader>*", "<cmd>DogeGenerate<cr>", { noremap = true, silent = true })

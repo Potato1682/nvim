@@ -5,7 +5,7 @@ require("bufferline").setup {
     view = "multiwindow",
     tab_size = 24,
     close_command = function(bufnum)
-      require("modules.buffer").delete_buffer(bufnum)
+      require("modules.buffer").delete(bufnum)
     end,
     right_mouse_command = function(bufnum)
       vim.api.nvim_input "<ESC>"
