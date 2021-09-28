@@ -121,6 +121,14 @@ function M.previous()
 end
 
 function M.delete(bufexpr)
+  local buffer = get_buffer(bufexpr)
+
+  if #(vim.fn.win_findbuf(buffer)) > 1 then
+    vim.cmd(buffer .. "close")
+
+    return
+  end
+
   local buflisted = vim.fn.getbufinfo {
     buflisted = 1,
   }
@@ -130,8 +138,6 @@ function M.delete(bufexpr)
 
     return
   end
-
-  local buffer = get_buffer(bufexpr)
 
   if vim.fn.buflisted(buffer) == 0 then
     return
