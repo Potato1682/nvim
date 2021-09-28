@@ -175,6 +175,12 @@ require("bufferline").setup {
         text_align = "center",
       },
       {
+        filetype = "DiffviewFiles",
+        text = "Diff",
+        highlight = "Blue",
+        text_align = "center"
+      },
+      {
         filetype = "dbui",
         text = O.japanese and "データベース" or "DBUI",
         highlight = "Purple",
