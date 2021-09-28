@@ -35,11 +35,13 @@ if O.wrap_lines then
   vim.opt.wrap = true
   vim.opt.breakat = vim.opt.breakat + [[、。・\ ]]
   vim.opt.breakindent = true
+
   vim.opt.breakindentopt = {
     shift = 2,
     min = 20,
   }
-  vim.opt.showbreak = "↳ "
+
+  vim.opt.showbreak = "⌐"
   vim.opt.cpoptions = vim.opt.cpoptions + "n"
 else
   vim.opt.wrap = false
@@ -99,9 +101,8 @@ vim.opt.jumpoptions = "stack"
 
 vim.opt.list = true
 vim.opt.listchars = {
-  tab = "▏ ",
   trail = "•",
-  eol = "↲",
+  eol = "¬",
   precedes = "",
   extends = "",
   nbsp = "•",
