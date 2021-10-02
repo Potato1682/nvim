@@ -124,7 +124,7 @@ function M.delete(bufexpr)
   local buffer = get_buffer(bufexpr)
 
   if #(vim.fn.win_findbuf(buffer)) > 1 then
-    vim.cmd(buffer .. "close")
+    vim.cmd("close")
 
     return
   end
