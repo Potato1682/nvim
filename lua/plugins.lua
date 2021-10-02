@@ -906,10 +906,14 @@ local function init()
     "sindrets/diffview.nvim",
     as = "diffview",
 
-    after = "neogit",
+    cmd = {
+      "DiffviewOpen",
+    },
+
+    module = "diffview",
 
     config = function()
-      require("diffview").setup {}
+      require "nvim-diffview"
     end,
   }
 
