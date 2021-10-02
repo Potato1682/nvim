@@ -542,21 +542,15 @@ installer.on_server_ready(function(server)
       enable = true,
       lint = true,
       unstable = true,
+      importMap = "./import_map.json",
       codeLens = {
         implementations = true,
         references = true,
       },
     }
+
     opts.settings = {
-      deno = {
-        enable = true,
-        lint = true,
-        unstable = true,
-        codeLens = {
-          implementations = true,
-          references = true,
-        },
-      },
+      deno = opts.init_options,
     }
   end
 
