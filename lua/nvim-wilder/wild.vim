@@ -63,6 +63,17 @@ let s:gradient = map(copy(s:scale), { i, fg -> wilder#make_hl(
 \  "WilderPopupmenuAccent" . i, "Pmenu", [ {}, {}, { "foreground": fg, "bold": 0 }]
 \ )})
 
+let s:wildmenu_renderer = wilder#wildmenu_renderer(wilder#wildmenu_lightline_theme({
+  \   "use_powerline_symbols": 0,
+  \   "highlights": {
+  \     "mode": "Title",
+  \     "index": "Grey",
+  \     "left_arrow2": "Normal",
+  \     "right_arrow2": "Normal",
+  \   },
+  \   "highlighter": s:highlighter,
+  \ }))
+
 call wilder#set_option("renderer", wilder#renderer_mux({
   \ ":": wilder#popupmenu_renderer({
   \   "highlights": {
@@ -72,6 +83,7 @@ call wilder#set_option("renderer", wilder#renderer_mux({
   \   "winblend": 17,
   \   "ellipsis": "…",
   \   "left": [
+  \     " ",
   \     wilder#popupmenu_devicons({
   \       "get_icon": wilder#devicons_get_icon_from_nvim_web_devicons({
   \         "dir_icon": "",
@@ -88,14 +100,6 @@ call wilder#set_option("renderer", wilder#renderer_mux({
   \     wilder#popupmenu_scrollbar(),
   \   ],
   \ }),
-  \ "/": wilder#wildmenu_renderer(wilder#wildmenu_lightline_theme({
-  \   "use_powerline_symbols": 0,
-  \   "highlights": {
-  \     "mode": "Title",
-  \     "index": "Grey",
-  \     "left_arrow2": "Normal",
-  \     "right_arrow2": "Normal",
-  \   },
-  \   "highlighter": s:highlighter,
-  \ })),
+  \ "/": s:wildmenu_renderer,
+  \ "substitute": s:wildmenu_renderer
 \ }))
