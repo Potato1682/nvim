@@ -132,8 +132,8 @@ local japanese_mappings = {
     I = { "<cmd>LspInfo<cr>", "状態" },
     q = { "<cmd>Telescope quickfix<cr>", "クイックフィックス" },
     x = { "<cmd>cclose<cr>", "クイックフィックスを閉じる" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "ドキュメント内のシンボル" },
-    S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "ワークスペースのシンボル" },
+    s = { "<cmd>LspDocumentSymbol<cr>", "ドキュメント内のシンボル" },
+    S = { "<cmd>LspWorkspaceSymbol<cr>", "ワークスペースのシンボル" },
   },
   s = {
     name = "+検索",
@@ -276,8 +276,8 @@ local mappings = {
     I = { "<cmd>LspInfo<cr>", "Information" },
     q = { "<cmd>Telescope quickfix<cr>", "Quickfix" },
     x = { "<cmd>cclose<cr>", "Close Quickfix" },
-    s = { "<cmd>Telescope lsp_document_symbols<cr>", "Document Symbols" },
-    S = { "<cmd>Telescope lsp_workspace_symbols<cr>", "Workspace Symbols" },
+    s = { "<cmd>LspDocumentSymbol<cr>", "Document Symbols" },
+    S = { "<cmd>LspWorkspaceSymbol<cr>", "Workspace Symbols" },
   },
   s = {
     name = "+Search",
