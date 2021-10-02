@@ -125,8 +125,6 @@ vim.opt.errorbells = false
 
 vim.opt.secure = true
 
-vim.opt_global.spell = false
-
 local undo_dir = O.undo_dir or data_dir .. "/undos"
 
 os.execute("mkdir -p " .. undo_dir)

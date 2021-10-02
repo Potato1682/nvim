@@ -33,7 +33,6 @@ function M.win_enter()
     return
   end
 
-  vim.opt.spell = true
   vim.opt.spelllang = { "en", "cjk" }
 end
 
@@ -45,12 +44,6 @@ function M.win_leave()
   if O.cursorcolumn then
     vim.opt_local.cursorcolumn = false
   end
-
-  if vim.opt_local.buftype:get() ~= "" then
-    return
-  end
-
-  vim.opt.spell = false
 end
 
 function M.nvim_close_valid_window(winid)

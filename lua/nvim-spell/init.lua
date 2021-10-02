@@ -6,7 +6,7 @@ end
 
 spellsitter.setup {
   hl = "SpellBad",
-  captures = { "comment" },
+  captures = { "comment", "string" },
 }
 
 return true
