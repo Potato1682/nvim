@@ -1,6 +1,6 @@
 vim.g.dashboard_default_executive = "telescope"
 
-local headers_dir = config_dir .. "/lua/nvim-dashboard/headers/"
+local headers_dir = config_dir .. "lua/nvim-dashboard/headers/"
 local rnd = math.random()
 
 if rnd < 0.075 then
