@@ -1,3 +1,4 @@
+local ts_utils = require "nvim-treesitter.ts_utils"
 local npairs = require "nvim-autopairs"
 local cond = require "nvim-autopairs.conds"
 local Rule = require "nvim-autopairs.rule"
@@ -7,12 +8,28 @@ npairs.setup {
   enable_check_bracket_line = false,
   fast_wrap = {},
   map_bs = false,
+  check_ts = true,
 }
 
 require("nvim-autopairs.completion.cmp").setup {
   map_cr = true,
   map_complete = true,
 }
+
+local function check_node_type(types, node)
+  local node_type = node:type()
+  local result = false
+
+  for _, type in pairs(types) do
+    if node_type == type then
+      result = true
+
+      break
+    end
+  end
+
+  return result
+end
 
 npairs.add_rules {
   Rule(" ", " "):with_pair(function(options)
@@ -45,17 +62,12 @@ npairs.add_rules {
       return options.prev_char:match ".%]" ~= nil
     end)
     :use_key "}",
-  Rule(
-    "%(.*%)%s*%=>$",
-    " {  }",
-    { "typescript", "typescriptreact", "javascript", "javascriptreact", "typescript.tsx", "javascript.jsx" }
-  ):use_regex(true):set_end_pair_length(2),
   Rule("=", "")
     :with_pair(cond.not_inside_quote())
     :with_pair(function(options)
       local last_char = options.line:sub(options.col - 1, options.col - 1)
 
-      return last_char:match("[%w%=%s]")
+      return last_char:match "[%w%=%s]"
     end)
     :replace_endpair(function(options)
       local previous_2char = options.line:sub(options.col - 2, options.col - 1)
@@ -63,15 +75,46 @@ npairs.add_rules {
 
       next_char = next_char == " " and "" or " "
 
-      if previous_2char:match("%w$") then
+      local node = ts_utils.get_node_at_cursor()
+      local ft = vim.opt_local.filetype:get()
+
+      P(node and node:type() or nil)
+
+      if ft == "python" and not O.python.spaces_between_default_param then
+        if check_node_type({ "parameters", "argument_list" }, node) then
+          return ""
+        end
+      elseif ft == "html" then
+        if check_node_type({ "start_tag", "fragment", "element" }, node) then
+          return ""
+        end
+      elseif ft == "vue" then
+        if node:type() == "component" then
+          return ""
+        end
+      elseif ft == "svelte" then
+        if check_node_type({ "document", "start_tag", "element" }, node) then
+          return ""
+        end
+      elseif ft == "php" then
+        if check_node_type({ "fragment", "start_tag", "element" }, node) then
+          return ""
+        end
+      elseif vim.tbl_contains({ "javascriptreact", "javascript.jsx", "typescriptreact", "typescript.tsx" }, ft) then
+        if check_node_type({ "jsx_opening_element", "jsx_text" }, node) then
+          return ""
+        end
+      end
+
+      if previous_2char:match "%w$" then
         return "<bs> =" .. next_char
       end
 
-      if previous_2char:match("%=$") then
+      if previous_2char:match "%=$" then
         return next_char
       end
 
-      if previous_2char:match("=") then
+      if previous_2char:match "=" then
         return "<bs><bs>=" .. next_char
       end
 
@@ -79,7 +122,7 @@ npairs.add_rules {
     end)
     :set_end_pair_length(0)
     :with_move(cond.none())
-    :with_del(cond.none())
+    :with_del(cond.none()),
 }
 
 npairs.add_rules(require "nvim-autopairs.rules.endwise-lua")
@@ -136,7 +179,7 @@ function _G.MPairs.check_bs()
       vim.api.nvim_input "<Tab>"
 
       vim.defer_fn(function()
-        vim.api.nvim_input("<C-e>")
+        vim.api.nvim_input "<C-e>"
       end, 85)
 
       return

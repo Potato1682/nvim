@@ -72,6 +72,7 @@ O = {
   python = {
     -- @usage can be 'unittest', 'pytest'
     test_type = "pytest",
+    spaces_between_default_param = false,
     formatter = {
       enabled = true,
       -- @usage can be 'yapf', 'autopep8', 'black', 'pydevf', 'isort', 'docformatter', 'pyment'
