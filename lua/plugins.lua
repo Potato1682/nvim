@@ -66,6 +66,7 @@ local function init()
   use {
     { "nvim-lua/plenary.nvim", as = "plenary" },
     { "RishabhRD/popfix" },
+    { "MunifTanjim/nui.nvim", as = "nui" },
   }
 
   -- Design
