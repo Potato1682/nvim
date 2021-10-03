@@ -30,6 +30,7 @@ call wilder#set_option("pipeline", [
   \                    "cpsm_path": stdpath("data") . "/site/pack/packer/opt/cpsm/autoload"
   \                  }
   \                }],
+  \     "path": wilder#project_root([ ".hg", ".git", "package.json" ]),
   \     "cache_timestamp": { -> 1 },
   \   }),
   \   wilder#cmdline_pipeline({
