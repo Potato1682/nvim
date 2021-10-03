@@ -14,7 +14,7 @@ call wilder#set_option("pipeline", [
   \         "start_at_boundary": 0,
   \       }),
   \       "engine": "re2",
-  \       "sorter": wilder#python_lexical_sorter(),
+  \       "sorter": wilder#python_fuzzywuzzy_sorter(),
   \       "skip_cmdtype_check": 1,
   \     }),
   \   }),
@@ -27,7 +27,7 @@ call wilder#set_option("pipeline", [
   \     "filters": [{
   \                  "name": "cpsm_filter",
   \                  "opts": {
-  \                    "cpsm_path": stdpath("data") . "/dein/repos/github.com/nixprime/cpsm/autoload"
+  \                    "cpsm_path": stdpath("data") . "/site/pack/packer/opt/cpsm/autoload"
   \                  }
   \                }],
   \     "cache_timestamp": { -> 1 },
@@ -44,7 +44,7 @@ call wilder#set_option("pipeline", [
   \       "start_at_boundary": 0,
   \     }),
   \     "engine": "re2",
-  \     "sorter": wilder#python_lexical_sorter(),
+  \     "sorter": wilder#python_fuzzywuzzy_sorter(),
   \   }),
   \ ),
 \ ])
