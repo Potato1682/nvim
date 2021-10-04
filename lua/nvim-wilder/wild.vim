@@ -188,6 +188,13 @@ call wilder#set_option("renderer", wilder#renderer_mux({
   \   "bottom": [
   \     { ctx, result -> s:page_index(ctx, result) },
   \   ],
+  \   "empty_message": wilder#popupmenu_empty_message_with_spinner({
+  \     "message": luaeval("O.japanese") ? " 見つかりませんでした " : " No candidates found ",
+  \     "spinner_hl": "Purple",
+  \     "frames": [ "⠋ ", "⠙ ", "⠹ ", "⠸ ", "⠼ ", "⠴ ", "⠦ ", "⠧ ", "⠇ ", "⠏ " ],
+  \     "done": "  ",
+  \     "interval": 80
+  \   })
   \ }),
   \ "/": s:wildmenu_renderer,
   \ "substitute": s:wildmenu_renderer
