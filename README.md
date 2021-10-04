@@ -119,6 +119,8 @@ conflictStyle = diff3
 It may be because your Node.js version is too high.  
 May succeed by running these commands and temporarily lowering your Node.js version.
 
+Command example for environment using system Node.js:
+
 ```bash
 $ sudo npm i -g n
 $ cd ~/.local/share/nvim/dapinstall/java/java-test
@@ -145,5 +147,5 @@ These are runtime binaries:
 ### Discord Rich Presence is not working
 
 nvim is using [presence.nvim](https://github.com/andweeb/presence.nvim) to show Rich Presence.  
-If there is a Failed to get Discord IPC socket error, your particular OS may not yet be supported, check [Projects card](https://github.com/andweeb/presence.nvim/projects/1#column-14183588).
+If you saw `Failed to get Discord IPC socket` error, your particular OS may not yet be supported, check [Projects card](https://github.com/andweeb/presence.nvim/projects/1#column-14183588).
 Or if you're using Flatpak'ed discord, [this link](<https://github.com/flathub/com.discordapp.Discord/wiki/Rich-Precense-(discord-rpc)>) might useful.
