@@ -1,5 +1,31 @@
 let s:can_use_lua_pcre2 = luaeval("pcall(require, 'pcre2')")
 
+function! s:page_index(ctx, result) abort
+  let l:total = len(a:result.value) == 0 ? "-" : len(a:result.value)
+  let l:page_start = a:ctx.page[0] == -1 ? "" : a:ctx.page[0] + 1
+  let l:page_end   = a:ctx.page[1] == -1 ? "" : a:ctx.page[1] + 1
+  let l:displaywidth = len(l:total)
+
+  let l:selected = a:ctx.selected == -1 ? "-" : a:ctx.selected + 1
+
+  let l:result = " "
+  let l:result .= repeat(" ", l:displaywidth - len(l:selected)) . l:selected
+
+  if l:page_start == 1 && l:page_end == 1
+    let l:pages = " / " . 1
+  else
+    let l:pages = " / " . repeat(" ", l:displaywidth - len(l:page_start)) . l:page_start . "-" . repeat(" ", l:displaywidth - len(l:page_end)) . l:page_end
+  endif
+
+  if len(l:result) + len(l:pages) + 1 + len(l:total) <= a:ctx.width
+    let l:result .= l:pages
+  endif
+
+  let l:result .= " / " . l:total
+
+  return l:result
+endfunction
+
 call wilder#set_option("pipeline", [
   \ wilder#debounce(10),
   \ wilder#branch(
@@ -154,6 +180,9 @@ call wilder#set_option("renderer", wilder#renderer_mux({
   \   "right": [
   \     " ",
   \     wilder#popupmenu_scrollbar(),
+  \   ],
+  \   "bottom": [
+  \     { ctx, result -> s:page_index(ctx, result) },
   \   ],
   \ }),
   \ "/": s:wildmenu_renderer,
