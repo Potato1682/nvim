@@ -37,8 +37,7 @@ call wilder#set_option("pipeline", [
   \   wilder#cmdline_pipeline({
   \     "fuzzy": 2,
   \     "language": "python",
-  \     "fuzzy_filter": wilder#python_cpsm_filter(stdpath("data") . "/site/pack/packer/opt/cpsm/autoload"),
-  \     "sorter": wilder#python_fuzzywuzzy_sorter(),
+  \     "fuzzy_filter": wilder#lua_fzy_filter(),
   \     "set_pcre2_pattern": s:can_use_lua_pcre2 ? 1 : 0,
   \   }),
   \   wilder#python_search_pipeline({
