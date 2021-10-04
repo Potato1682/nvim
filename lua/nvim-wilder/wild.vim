@@ -123,35 +123,25 @@ let s:wildmenu_renderer = wilder#wildmenu_renderer({
   \     }),
   \     "hl": "Title",
   \   },
-  \   {
-  \     "value": wilder#wildmenu_powerline_separator("", "Title", "StatusLine"),
-  \   },
-  \   {
-  \     "value": " ",
-  \   },
-  \   {
-  \     "value": wilder#wildmenu_previous_arrow({
-  \       "previous": " ",
-  \     })
-  \   },
+  \   wilder#wildmenu_powerline_separator("", "Title", "StatusLine"),
+  \   " ",
+  \   wilder#wildmenu_previous_arrow({
+  \     "previous": " ",
+  \   }),
   \ ],
   \ "right": [
-  \   {
-  \     "value": wilder#wildmenu_next_arrow({
-  \       "next": " ",
-  \       "previous": "   ",
-  \       "hl": "Grey",
-  \     })
-  \   },
+  \   wilder#wildmenu_next_arrow({
+  \     "next": " ",
+  \     "previous": "   ",
+  \     "hl": "Grey",
+  \   }),
   \   {
   \     "value": " ",
   \     "hl": "Grey",
   \   },
-  \   {
-  \     "value": wilder#wildmenu_index({
-  \       "hl": "Grey",
-  \     })
-  \   },
+  \   wilder#wildmenu_index({
+  \     "hl": "Grey",
+  \   }),
   \ ],
   \ "highlighter": s:highlighter_with_gradient,
 \ })
@@ -179,7 +169,7 @@ call wilder#set_option("renderer", wilder#renderer_mux({
   \     wilder#popupmenu_buffer_flags({
   \       "flags": " a + ",
   \       "icons": { "+": "", "a": "", "h": "" },
-  \     })
+  \     }),
   \   ],
   \   "right": [
   \     " ",
@@ -193,9 +183,9 @@ call wilder#set_option("renderer", wilder#renderer_mux({
   \     "spinner_hl": "Purple",
   \     "frames": [ "⠋ ", "⠙ ", "⠹ ", "⠸ ", "⠼ ", "⠴ ", "⠦ ", "⠧ ", "⠇ ", "⠏ " ],
   \     "done": "  ",
-  \     "interval": 80
-  \   })
+  \     "interval": 80,
+  \   }),
   \ }),
   \ "/": s:wildmenu_renderer,
-  \ "substitute": s:wildmenu_renderer
+  \ "substitute": s:wildmenu_renderer,
 \ }))
