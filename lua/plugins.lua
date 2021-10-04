@@ -539,7 +539,6 @@ local function init()
 
     requires = {
       { "nvim-lua/plenary.nvim" },
-      { "nvim-treesitter/nvim-treesitter" },
     },
 
     config = function()
