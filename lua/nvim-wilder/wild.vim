@@ -68,27 +68,74 @@ let s:scale = ['#ec6449', '#f3784c', '#f88e53', '#fba35e', '#fdb76b',
 \              '#f5faad', '#ebf7a6', '#ddf1a0', '#ccea9f', '#b7e2a1',
 \              '#a0d9a3', '#89cfa5', '#72c3a7', '#5cb3ac', '#4ba0b1']
 
-let s:gradient = map(copy(s:scale), { i, fg -> wilder#make_hl(
+let s:popupmenu_gradient = map(copy(s:scale), { i, fg -> wilder#make_hl(
 \  "WilderPopupmenuAccent" . i, "Pmenu", [ {}, {}, { "foreground": fg, "bold": 0 }]
 \ )})
 
-let s:wildmenu_renderer = wilder#wildmenu_renderer(wilder#wildmenu_lightline_theme({
-  \   "use_powerline_symbols": 0,
-  \   "highlights": {
-  \     "mode": "Title",
-  \     "index": "Grey",
-  \     "left_arrow2": "Normal",
-  \     "right_arrow2": "Normal",
+let s:wildmenu_gradient = map(copy(s:scale), { i, fg -> wilder#make_hl(
+\  "WilderWildmenuAccent" . i, "MsgArea", [ {}, {}, { "foreground": fg, "bold": 0 }]
+\ )})
+
+let s:highlighter_with_gradient = wilder#highlighter_with_gradient(s:highlighters)
+
+let s:wildmenu_renderer = wilder#wildmenu_renderer({
+  \ "highlights": {
+  \   "gradient": s:wildmenu_gradient,
+  \   "separator": "Grey",
+  \ },
+  \ "ellipsis": "…",
+  \ "left": [
+  \   {
+  \     "value": "  ",
+  \     "hl": "Title",
   \   },
-  \   "highlighter": s:highlighter,
-  \ }))
+  \   {
+  \     "value": wilder#wildmenu_spinner({
+  \       "frames": [ "⠋ ", "⠙ ", "⠹ ", "⠸ ", "⠼ ", "⠴ ", "⠦ ", "⠧ ", "⠇ ", "⠏ " ],
+  \       "done": " ",
+  \       "interval": 80,
+  \     }),
+  \     "hl": "Title",
+  \   },
+  \   {
+  \     "value": wilder#wildmenu_powerline_separator("", "Title", "StatusLine"),
+  \   },
+  \   {
+  \     "value": " ",
+  \   },
+  \   {
+  \     "value": wilder#wildmenu_previous_arrow({
+  \       "previous": " ",
+  \     })
+  \   },
+  \ ],
+  \ "right": [
+  \   {
+  \     "value": wilder#wildmenu_next_arrow({
+  \       "next": " ",
+  \       "previous": "   ",
+  \       "hl": "Grey",
+  \     })
+  \   },
+  \   {
+  \     "value": " ",
+  \     "hl": "Grey",
+  \   },
+  \   {
+  \     "value": wilder#wildmenu_index({
+  \       "hl": "Grey",
+  \     })
+  \   },
+  \ ],
+  \ "highlighter": s:highlighter_with_gradient,
+\ })
 
 call wilder#set_option("renderer", wilder#renderer_mux({
   \ ":": wilder#popupmenu_renderer({
   \   "highlights": {
-  \     "gradient": s:gradient
+  \     "gradient": s:popupmenu_gradient,
   \   },
-  \   "highlighter": wilder#highlighter_with_gradient([ s:highlighter ]),
+  \   "highlighter": s:highlighter_with_gradient,
   \   "winblend": 17,
   \   "ellipsis": "…",
   \   "left": [
