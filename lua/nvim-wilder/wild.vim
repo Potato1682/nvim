@@ -1,3 +1,5 @@
+let s:can_use_lua_pcre2 = luaeval("pcall(require, 'pcre2')")
+
 call wilder#set_option("pipeline", [
   \ wilder#debounce(10),
   \ wilder#branch(
@@ -31,14 +33,13 @@ call wilder#set_option("pipeline", [
   \                  }
   \                }],
   \     "path": wilder#project_root([ ".hg", ".git", "package.json" ]),
-  \     "cache_timestamp": { -> 1 },
   \   }),
   \   wilder#cmdline_pipeline({
   \     "fuzzy": 2,
   \     "language": "python",
   \     "fuzzy_filter": wilder#python_cpsm_filter(stdpath("data") . "/site/pack/packer/opt/cpsm/autoload"),
   \     "sorter": wilder#python_fuzzywuzzy_sorter(),
-  \     "set_pcre2_pattern": 0,
+  \     "set_pcre2_pattern": s:can_use_lua_pcre2 ? 1 : 0,
   \   }),
   \   wilder#python_search_pipeline({
   \     "pattern": wilder#python_fuzzy_pattern({
@@ -50,10 +51,18 @@ call wilder#set_option("pipeline", [
   \ ),
 \ ])
 
-let s:highlighter = wilder#python_cpsm_highlighter({
-\   "cpsm_path": stdpath("data") . "/site/pack/packer/opt/cpsm/autoload",
-\   "highlight_mode": "detailed"
-\ })
+let s:highlighters = [
+  \ wilder#python_cpsm_highlighter({
+  \   "cpsm_path": stdpath("data") . "/site/pack/packer/opt/cpsm/autoload",
+  \   "highlight_mode": "detailed",
+  \ }),
+\ ]
+
+if s:can_use_lua_pcre2
+  let s:highlighters = extend([
+    \ wilder#lua_pcre2_highlighter()
+  \ ], s:highlighters)
+endif
 
 let s:scale = ['#ec6449', '#f3784c', '#f88e53', '#fba35e', '#fdb76b',
 \              '#fdca79', '#feda89', '#fee89a', '#fdf2a8', '#fbf8b0',

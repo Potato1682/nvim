@@ -835,6 +835,11 @@ local function init()
       "fzy-lua-native",
     },
 
+    rocks = {
+      "luarocks-fetch-gitrec",
+      "pcre2"
+    },
+
     requires = {
       -- Highlight engines
       {
