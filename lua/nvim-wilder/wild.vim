@@ -176,6 +176,10 @@ call wilder#set_option("renderer", wilder#renderer_mux({
   \         "default_hl": "Normal",
   \       }),
   \     }),
+  \     wilder#popupmenu_buffer_flags({
+  \       "flags": " a + ",
+  \       "icons": { "+": "", "a": "", "h": "" },
+  \     })
   \   ],
   \   "right": [
   \     " ",
