@@ -78,8 +78,6 @@ npairs.add_rules {
       local node = ts_utils.get_node_at_cursor()
       local ft = vim.opt_local.filetype:get()
 
-      P(node and node:type() or nil)
-
       if ft == "python" and not O.python.spaces_between_default_param then
         if check_node_type({ "parameters", "argument_list" }, node) then
           return ""
