@@ -67,13 +67,13 @@
   - Completion
   - Database support
   - Diagnostics
-    - Diagnostics report will shown on statusline, bufferline, editor and explorer
+    - Diagnostics report will show on statusline, bufferline, editor, and explorer
   - Show light bulb when code action is available
   - Show signature and document on hover
   - Automatic formatting
 - Rainbow brackets
 - Toggle comments
-- Show git status on editor
+- Show git status in editor
 - Wakatime support
 - Document generation
 - Indent line
@@ -86,7 +86,7 @@
   - Debug Control
   - Automatic DAP Installation
 - Automatic root setting
-- Increase number on editor
+- Increase number on the fly
 - Show current context on bracket ending
 - Online collaboration
 - Zen mode
@@ -108,7 +108,7 @@
 
 ### Can't use Merge Tool
 
-You need to add this settings to your git configuration:
+You need to add this setting to your git configuration:
 ```ini
 [merge]
 conflictStyle = diff3
@@ -138,7 +138,7 @@ Comment-out / Add the property to `/etc/containers/registries.conf` like this:
 unqualified-search-registries = ["docker.io"]
 ```
 
-If it doesn't work, you may not installed OCI runtime. ( code 126 )  
+If it doesn't work, you may not install OCI runtime. ( code 126 )  
 These are runtime binaries:
 
 - For cgroups v1 : `runc`
