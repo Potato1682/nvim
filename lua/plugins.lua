@@ -741,16 +741,6 @@ local function init()
     after = "neomake",
   }
 
-  -- Tags
-  use {
-    "jsfaint/gen_tags.vim",
-    as = "gen-tags",
-
-    cond = function()
-      return vim.fn.executable "ctags" or vim.fn.executable "gtags"
-    end,
-  }
-
   -- Search
   use { "kevinhwang91/nvim-hlslens", as = "hlslens" }
 
@@ -1337,14 +1327,6 @@ local function init()
     as = "log-highlight",
 
     ft = "log",
-  }
-
-  -- Solidity
-  use {
-    "ChristianChiarulli/vim-solidity",
-    as = "solidity",
-
-    ft = "solidity",
   }
 
   -- Color converter
