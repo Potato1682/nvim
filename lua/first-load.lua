@@ -4,7 +4,7 @@ local packer_path = packpath .. "opt/packer.nvim"
 local function create_directories()
   local data_path = vim.fn.stdpath "data"
 
-  for _, directory in ipairs { "undos", "swap", "session", "backup", "tags", "databases" } do
+  for _, directory in ipairs { "undos", "swap", "sessions", "backup", "tags", "databases" } do
     print("  > mkdir -p " .. data_path .. "/" .. directory)
     vim.fn.mkdir(data_path .. "/" .. directory, "p")
   end

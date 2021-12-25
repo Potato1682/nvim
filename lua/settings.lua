@@ -119,6 +119,18 @@ vim.opt.writebackup = false
 vim.opt.autowrite = true
 vim.opt.writeany = true
 
+vim.opt.sessionoptions = {
+  "blank",
+  "buffers",
+  "curdir",
+  "folds",
+  "help",
+  "tabpages",
+  "winsize",
+  "winpos",
+  "terminal"
+}
+
 vim.opt.sh = O.shell
 
 vim.opt.errorbells = false

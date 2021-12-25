@@ -128,20 +128,12 @@ local function init()
   -- Notification
   use { "rcarriga/nvim-notify", as = "notify" }
 
-  -- Dashboard
+  -- Automatically restore session
   use {
-    "glepnir/dashboard-nvim",
-    as = "dashboard",
-
-    cond = function()
-      -- Checker from dashboard-nvim code
-      return vim.fn.argc() == 0 and vim.fn.line2byte "$" == -1
-    end,
-
-    cmd = "Dashboard",
+    "rmagatti/auto-session",
 
     config = function()
-      require "nvim-dashboard"
+      require "nvim-auto-session"
     end,
   }
 
