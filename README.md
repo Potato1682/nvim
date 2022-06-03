@@ -1,3 +1,5 @@
+# This project has been moved and is no longer maintained, please consider using [Potato1682/naap](https://github.com/Potato1682/naap).
+
 <h1 align="center">nvim</h1>
 <p align="center">
   <a href="https://neovim.io">
